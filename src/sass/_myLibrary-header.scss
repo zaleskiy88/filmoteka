@@ -48,16 +48,10 @@
 
 .header-library__btnWatc{
     margin-right: 16px;
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: 1.33;
 }
 
 .header-library__btnQue{
     cursor: pointer; 
-    font-size: 16px;
-    font-family: Roboto;
-    line-height: 1.33;
 }
 
 .header-library__navigation{
@@ -83,4 +77,13 @@
 
 .header-library__libraryPage{
     text-decoration: none;
+}
+
+.header-library__libraryPage::after{
+    content: "";
+    display: block;
+    width: 50%;
+    height: 3px;
+    background-color: #FF6B08;
+    margin-left: auto;
 }
