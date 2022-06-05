@@ -18,7 +18,7 @@ export async function getDataMovies(searchQuery) {
     },
   });
 
-  return await response.data.results; // возвращает объект с данными фильмов. Для того чтоб достучатся к свойствам page, total_pages, total_results нужно обратится к response.data
+  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
 
 export async function getMoreDataMovies(searchQuery) {
@@ -35,7 +35,7 @@ export async function getMoreDataMovies(searchQuery) {
     },
   });
 
-  return response.data.results; // возвращает объект с данными фильмов. Для того чтоб достучатся к свойствам page, total_pages, total_results нужно обратится к response.data
+  return response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
 
 //первый запрос популярных фильмов
@@ -47,7 +47,7 @@ export async function getTrendingMoviesData() {
     },
   });
 
-  return await response.data.results; // возвращает объект с данными фильмов. Для того чтоб достучатся к свойствам page, total_pages, total_results нужно обратится к response.data
+  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
 
 export async function getMoreTrendingMoviesData() {
@@ -60,5 +60,7 @@ export async function getMoreTrendingMoviesData() {
     },
   });
 
-  return await response.data.results; // возвращает объект с данными фильмов. Для того чтоб достучатся к свойствам page, total_pages, total_results нужно обратится к response.data
+  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
+
+getDataMovies('black');
