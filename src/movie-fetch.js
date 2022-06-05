@@ -22,7 +22,7 @@ export async function getDataMovies(searchQuery) {
 }
 
 //
-export async function getMoreMoviesData(searchQuery) {
+export async function getMoreDataMovies(searchQuery) {
   moviesPage =
     searchQueryStr === searchQuery ? (moviesPage += 1) : (moviesPage = 1);
 
@@ -35,14 +35,14 @@ export async function getMoreMoviesData(searchQuery) {
 }
 
 //первый запрос популярных фильмов
-export async function getTrendingMovies() {
+export async function getTrendingMoviesData() {
   const response = await axios.get(`${TRENDING_URL}?api_key=${API_KEY}`);
   const dataResults = await response.data.results; // возвращает объект с данными фильмов. Для того чтоб достучатся к свойствам page, total_pages, total_results нужно обратится к response.data
 
   return dataResults;
 }
 
-export async function getMoreTrendingMovies() {
+export async function getMoreTrendingMoviesData() {
   page += 1;
   const response = await axios.get(
     `${TRENDING_URL}?api_key=${API_KEY}&page=${page}`
