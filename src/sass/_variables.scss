@@ -1,7 +1,8 @@
 :root {
-  --text-color-1: #000000;
-  --text-color-2: #545454;
-  --text-color-3: #ff001b;
+  --text-color-main: #000000;
+  --text-color-header: #ffffff;
+  --text-color-footer: #545454;
+  --text-color-alert: #ff001b;
   --brand-color-1: #ffffff;
   --brand-color-2: #ff6b08;
   --bg-color: #ffffff;
@@ -9,4 +10,4 @@
 // Точки перелома
 $mob: 480px;
 $tab: 768px;
-$desc: 1200px;
+$desc: 1024px;
