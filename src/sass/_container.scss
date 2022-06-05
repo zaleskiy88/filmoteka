@@ -4,14 +4,14 @@
     width: 100%;
     margin: 0 auto;
     padding: 0 20px;
-    @media screen and (min-width: $mob) {
+    @media screen and (min-width: 420px) {
         width: 420px;
     }
-    @media screen and (min-width: $tab) {
+    @media screen and (min-width: 768px) {
         width: 768px;
         padding: 0 32px;
       }
-    @media screen and (min-width: $desc) {
+    @media screen and (min-width: 1024px) {
         width: 1024px;
     }
 }
