@@ -1,6 +1,6 @@
 
 const btnTheme = document.querySelector('#dark-theme');
-const body = document.querySelector('.body');
+const body = document.querySelector('.body-theme');
 
 const localTheme = localStorage.getItem('color-theme');
 

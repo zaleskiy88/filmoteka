@@ -1,6 +1,6 @@
 @import "./variables";
 /* light-theme.css */
-.body{
+.body-theme{
     color:var(--text-color-main) ;
     background-color: var(--bg-color);
     
@@ -8,7 +8,7 @@
 
 /* dark-theme.css */
 
-.body.dark-theme{
+.body-theme.dark-theme{
     color:red ;
     background-color: #2b002b ;
     
@@ -77,7 +77,7 @@
     width: 9px;
     left: 4px;
     bottom: 4px;
-    background-color: white;
+    background-color: var(--bg-color);
     -webkit-transition: .4s;
     transition: .4s;
   }
