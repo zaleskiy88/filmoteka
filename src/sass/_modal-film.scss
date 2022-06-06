@@ -1,50 +1,72 @@
+.backdrop-film {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .film-card {
-  @media screen and (max-width: 419px) and (min-width: 420px) {
-    display: block;
-    padding: 48px 20px 40px 20px;
-  }
-  @media screen and (min-width: 768px) {
+  background-color: cyan;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 280px;
+  height: 940px;
+  padding: 48px 20px 40px 20px;
+
+  @media screen and (min-width: $tab) {
     display: flex;
+    width: 704px;
+    height: 552px;
     text-align: left;
     padding: 40px 72px 40px 36px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $desc) {
     display: flex;
+    width: 814px;
+    height: 558px;
     text-align: left;
     padding: 40px 16px 40px 16px;
   }
 }
 .film-img {
-  background-color: blue;
+  background-color: burlywood;
   @media screen and (max-width: 419px) {
     width: 240px;
     height: 357px;
+    margin-bottom: 20px;
   }
-  @media screen and (min-width: 420px) {
+  @media screen and (min-width: $mob) {
     width: 240px;
     height: 357px;
+    margin-bottom: 20px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tab) {
     width: 264px;
     height: 374px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $desc) {
     width: 375px;
     height: 478px;
   }
 }
 
 .film-list {
-  @media screen and (max-width: 419px) and (min-width: 420px) {
+  @media screen and (max-width: 419px) and (min-width: $mob) {
     display: block;
-    margin-top: 20px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tab) {
     display: block;
+    width: 264px;
     margin-left: 68px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $desc) {
     display: block;
+    width: 391px;
     margin-left: 16px;
   }
 }
@@ -55,33 +77,38 @@
   font-size: 20px;
   line-height: 23px;
   color: #000000;
-  @media screen and (min-width: 1024px) {
+  margin-bottom: 20px;
+  @media screen and (min-width: $desc) {
     font-size: 30px;
     line-height: 35px;
   }
 }
 .film-info {
   display: flex;
-  align-items: baseline;
 }
 .film-text {
+  margin-bottom: 8px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+  align-items: baseline;
 }
 .film-text__left {
   margin-right: 40px;
   color: #8c8c8c;
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $desc) {
     margin-right: 83px;
   }
 }
 .film-text__right {
   color: #000000;
+  margin-bottom: 20px;
 }
-
+.film-info__item {
+  margin-bottom: 20px;
+}
 .film-about {
   font-family: 'Roboto';
   font-style: normal;
@@ -93,9 +120,12 @@
 .btn-add {
   display: flex;
   bottom: 0px;
+  justify-content: space-between;
+  @media screen and (min-width: $desc) {
+    justify-content: flex-start;
+  }
 }
 .button {
-  cursor: pointer;
   display: flex;
   text-align: center;
   align-items: center;
@@ -108,25 +138,28 @@
   background: #ffffff;
   border: 1px solid #000000;
   border-radius: 5px;
-  margin: 20px 20px;
+
   @media screen and (max-width: 419px) {
     width: 110px;
     height: 44px;
   }
-  @media screen and (min-width: 420px) {
+  @media screen and (min-width: $mob) {
     width: 110px;
     height: 44px;
   }
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tab) {
     width: 125px;
     height: 44px;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: $desc) {
     width: 136px;
     height: 44px;
+    margin-right: 15px;
   }
 }
-.btn-activ {
+
+.button :hover,
+.button :focus {
   background: #ff6b01;
   color: #ffffff;
   border: 0;
