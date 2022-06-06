@@ -1,3 +1,5 @@
+@import "./variables";
+
 /* .header-library {
     width: 1024px;
     height: 216px;
@@ -59,15 +61,15 @@
 .btn-library{
     width: 148px;
     height: 42px;
-    border: 1px solid #fff;
-    color: #fff;
+    border: 1px solid var(--text-color-header);
+    color: var(--text-color-header);
     background-color: transparent;
     cursor: pointer;
     font-size: 16px;
     font-family: Roboto;
     line-height: 1.33;
 
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: $mob) {
         width: 129px;
         height: 44px
     }
@@ -76,7 +78,7 @@
 .header-library__btnWatc{
     margin-right: 16px;
 
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: $mob) {
         margin-right: 20px;
     }
 }
@@ -94,7 +96,7 @@
     margin-top: 49px;
     z-index: 1;
 
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: $mob) {
         margin-right: 20px;
         margin-top: 44px;
     }
@@ -102,7 +104,7 @@
 
 .navigation-btn{
     text-decoration: none;
-    color: #fff;
+    color: var(--text-color-header);
     cursor: pointer; 
     font-family: roboto;
     font-weight: 500;
@@ -123,7 +125,7 @@
     display: block;
     width: 100%;
     height: 3px;
-    background-color: #FF6B08;
+    background-color: var(--brand-colo);
     margin-left: auto;
 }
 
@@ -136,7 +138,7 @@
     margin-left: 72px;
     z-index: 1;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: $tab) {
         margin-left: 32px;
     }
 }
@@ -181,9 +183,9 @@
     margin: 0 auto;
   }
   // dpr2 и 280px+
-  @media (min-device-pixel-ratio: 2) and (min-width: 280px),
-    (min-resolution: 192dpi) and (min-width: 280px),
-    (min-resolution: 2dppx) and (min-width: 280px) {
+  @media (min-device-pixel-ratio: 2) and (min-width: $mob),
+    (min-resolution: 192dpi) and (min-width: $mob),
+    (min-resolution: 2dppx) and (min-width: $mob) {
     .header {
       background-image: linear-gradient(
           to right,
@@ -195,7 +197,7 @@
   }
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: $tab) {
   .header-lib {
     background-image: linear-gradient(
         to right,
@@ -208,9 +210,9 @@
     // width: 768px;
   }
   // dpr2 и 768px
-  @media (min-device-pixel-ratio: 2) and (min-width: 768px),
-    (min-resolution: 192dpi) and (min-width: 768px),
-    (min-resolution: 2dppx) and (min-width: 768px) {
+  @media (min-device-pixel-ratio: 2) and (min-width: $tab),
+    (min-resolution: 192dpi) and (min-width: $tab),
+    (min-resolution: 2dppx) and (min-width: $tab) {
     .header {
       background-image: linear-gradient(
           to right,
@@ -222,7 +224,7 @@
 }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: $desc) {
     .header-lib {
       background-image: linear-gradient(
           to right,
@@ -234,9 +236,9 @@
       // width: 1024px;
     }
     // dpr2 и 1024px
-    @media (min-device-pixel-ratio: 2) and (min-width: 1024px),
-      (min-resolution: 192dpi) and (min-width: 1024px),
-      (min-resolution: 2dppx) and (min-width: 1024px) {
+    @media (min-device-pixel-ratio: 2) and (min-width: $desc),
+      (min-resolution: 192dpi) and (min-width: $descx),
+      (min-resolution: 2dppx) and (min-width: $desc) {
       .header {
         background-image: linear-gradient(
             to right,
