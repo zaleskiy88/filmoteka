@@ -1,3 +1,133 @@
-.modal-film {
-  background-color: #FFFFFF;
+.film-card {
+  @media screen and (max-width: 419px) and (min-width: 420px) {
+    display: block;
+    padding: 48px 20px 40px 20px;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    text-align: left;
+    padding: 40px 72px 40px 36px;
+  }
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    text-align: left;
+    padding: 40px 16px 40px 16px;
+  }
+}
+.film-img {
+  background-color: blue;
+  @media screen and (max-width: 419px) {
+    width: 240px;
+    height: 357px;
+  }
+  @media screen and (min-width: 420px) {
+    width: 240px;
+    height: 357px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 264px;
+    height: 374px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 375px;
+    height: 478px;
+  }
+}
+
+.film-list {
+  @media screen and (max-width: 419px) and (min-width: 420px) {
+    display: block;
+    margin-top: 20px;
+  }
+  @media screen and (min-width: 768px) {
+    display: block;
+    margin-left: 68px;
+  }
+  @media screen and (min-width: 1024px) {
+    display: block;
+    margin-left: 16px;
+  }
+}
+.film-title {
+  font-family: 'Roboto';
+  font-style: 40;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #000000;
+  @media screen and (min-width: 1024px) {
+    font-size: 30px;
+    line-height: 35px;
+  }
+}
+.film-info {
+  display: flex;
+  align-items: baseline;
+}
+.film-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+.film-text__left {
+  margin-right: 40px;
+  color: #8c8c8c;
+  @media screen and (min-width: 1024px) {
+    margin-right: 83px;
+  }
+}
+.film-text__right {
+  color: #000000;
+}
+
+.film-about {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 20px;
+  color: #000000;
+}
+.btn-add {
+  display: flex;
+  bottom: 0px;
+}
+.button {
+  cursor: pointer;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin: 20px 20px;
+  @media screen and (max-width: 419px) {
+    width: 110px;
+    height: 44px;
+  }
+  @media screen and (min-width: 420px) {
+    width: 110px;
+    height: 44px;
+  }
+  @media screen and (min-width: 768px) {
+    width: 125px;
+    height: 44px;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 136px;
+    height: 44px;
+  }
+}
+.btn-activ {
+  background: #ff6b01;
+  color: #ffffff;
+  border: 0;
 }
