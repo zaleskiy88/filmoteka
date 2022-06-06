@@ -1,0 +1,27 @@
+.page-nav {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.page-nav__list button {
+margin-right: 15px;
+width: 30px;
+height: 30px;
+}
+
+.page-nav__list{
+    display: flex;
+}
+
+.page-nav__btn {
+    width: 40px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.page-nav__btn-pag {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
