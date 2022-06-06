@@ -237,7 +237,7 @@
     }
     // dpr2 и 1024px
     @media (min-device-pixel-ratio: 2) and (min-width: $desc),
-      (min-resolution: 192dpi) and (min-width: $descx),
+      (min-resolution: 192dpi) and (min-width: $desc),
       (min-resolution: 2dppx) and (min-width: $desc) {
       .header {
         background-image: linear-gradient(
