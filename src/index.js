@@ -1,6 +1,6 @@
 import {
   getDataMovies,
-  getMoreMoviesData,
-  getTrendingMovies,
-  getMoreTrendingMovies,
-} from './movie-fetch';
+  getMoreDataMovies,
+  getTrendingMoviesData,
+  getMoreTrendingMoviesData,
+} from './js/movie-fetch';
