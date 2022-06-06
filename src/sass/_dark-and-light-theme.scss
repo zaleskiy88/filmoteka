@@ -29,7 +29,7 @@
     margin-top: 90px;
     z-index: 1;
 
-    @media screen and (max-width: 420px) {
+    @media screen and (max-width: $tab) {
         margin-right: 32px;
     }
 
