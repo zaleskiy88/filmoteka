@@ -164,13 +164,13 @@
 } */
 
 
-.header {
+.header-lib {
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/RectangleHall.jpg);
+      url(../images/header-librarу/header-library-1-mob-min.jpg);
     // background-color: #2a2a2a;
     background-size: cover;
     background-position: top;
@@ -190,6 +190,60 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../images/header/header-mob-2x.jpeg);
+        url(../images/header-librarу/header-library-2-mob-min.jpg);
+    }
+  }
+
+
+@media screen and (min-width: 768px) {
+  .header-lib {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url(../images/header-librarу/header-library-1-tab-min.jpg);
+
+    padding-top: 48.4px;
+    // width: 768px;
+  }
+  // dpr2 и 768px
+  @media (min-device-pixel-ratio: 2) and (min-width: 768px),
+    (min-resolution: 192dpi) and (min-width: 768px),
+    (min-resolution: 2dppx) and (min-width: 768px) {
+    .header {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/header-librarу/header-library-2-tab-min.jpg);
+    }
+}
+}
+
+@media screen and (min-width: 1024px) {
+    .header-lib {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/header-librarу/header-library-1-min.jpg);
+      background-position: top;
+      // width: 1024px;
+    }
+    // dpr2 и 1024px
+    @media (min-device-pixel-ratio: 2) and (min-width: 1024px),
+      (min-resolution: 192dpi) and (min-width: 1024px),
+      (min-resolution: 2dppx) and (min-width: 1024px) {
+      .header {
+        background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.56),
+            rgba(0, 0, 0, 0.56)
+          ),
+          url(../images/header-librarу/header-library-2-min.jpg);
+      }
     }
   }
