@@ -82,7 +82,7 @@
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--brand-colo);
+    background-color: var(--brand-color);
     margin-left: auto;
 }
 
@@ -111,12 +111,12 @@
       ),
       url(../images/header-librarу/header-library-1-mob-min.jpg);
     background-size: cover;
-    background-position: top;
+    background-position: bottom;
     width: 100%;
     height: 230px;
     margin: 0 auto;
   }
-  
+
   @media (min-device-pixel-ratio: 2) and (min-width: $mob),
     (min-resolution: 192dpi) and (min-width: $mob),
     (min-resolution: 2dppx) and (min-width: $mob) {
