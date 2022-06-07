@@ -1,4 +1,4 @@
-import itemsTemplate from './templates/card-of-list.hbs';
+import itemsTemplate from '../templates/card-of-list.hbs';
 
 const axios = require('axios').default;
 
