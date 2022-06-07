@@ -184,7 +184,10 @@ body {
   //   background: transparent;
   //   padding-top: 45px;
   //   border-bottom: 0.5px solid #ffffff;
-
+  outline: none;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
   width: 100%;
   background-color: inherit;
   border-bottom: 1px solid white;
