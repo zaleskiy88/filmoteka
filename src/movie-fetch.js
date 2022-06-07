@@ -7,25 +7,22 @@ const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
 
 const parameters = { page: 1, moviesPage: 1, searchQueryStr: '' };
-// ! ------------------------------------------------------------------------------------------
+const gallery = document.querySelector('.gallery');
+
+// Получение массива жанров
 async function getGenresIds() {
   const response = await axios.get(
     'https://api.themoviedb.org/3/genre/movie/list?api_key=842344de8347536aefc6f17e8e76d4bd&language=en-US'
   );
 
-  //console.log('genres :>> ', genres.data.genres);
   return response.data.genres;
 }
-
-//===========================================
-const gallery = document.querySelector('.gallery');
 
 async function galleryMarkup() {
   const moviesData = await getTrendingMoviesData();
   const genres = await getGenresIds();
 
-  // console.log('moviesData :>> ', moviesData.results[0]);
-
+  // Создание объекта в котором хранится информация для Handlebars
   const movieCategories = moviesData.results.map(movie => {
     const catArr = [];
     const dataRelease = movie.release_date.slice(0, 4);
@@ -39,6 +36,7 @@ async function galleryMarkup() {
       backdrop_path: movie.backdrop_path,
     };
 
+    // Сравнивает жанры из массива жанров с id жанров из общего запроса и добавляет нужные в объект для Handlebars
     const genresFilm = function () {
       movie.genre_ids.map(id =>
         genres.find(el => {
@@ -48,17 +46,16 @@ async function galleryMarkup() {
         })
       );
     };
-    genresFilm();
 
+    genresFilm();
     return movieInfo;
   });
 
+  // Создание разметки
   const markup = itemsTemplate(movieCategories);
   gallery.insertAdjacentHTML('beforeend', markup);
 }
-galleryMarkup();
 
-// ! ------------------------------------------------------------------------------------------
 //первый запрос для поиска фильма по-имени
 export async function getDataMovies(searchQuery) {
   parameters.searchQueryStr = searchQuery;
@@ -116,4 +113,5 @@ export async function getMoreTrendingMoviesData() {
   return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
 
+galleryMarkup();
 getDataMovies('black');
