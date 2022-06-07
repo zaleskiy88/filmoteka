@@ -23,31 +23,35 @@ const gallery = document.querySelector('.gallery');
 async function galleryMarkup() {
   const moviesData = await getTrendingMoviesData();
   const genres = await getGenresIds();
+
   // console.log('moviesData :>> ', moviesData.results[0]);
 
   const movieCategories = moviesData.results.map(movie => {
     const catArr = [];
+    const dataRelease = movie.release_date.slice(0, 4);
+    const nameOfFilm = movie.title.toUpperCase();
     const movieInfo = {
-      name: movie.title,
-      release: movie.release_date,
+      name: nameOfFilm,
+      release: dataRelease,
       id: movie.id,
       genres: catArr,
       poster_path: movie.poster_path,
       backdrop_path: movie.backdrop_path,
     };
 
-    movie.genres = movie.genre_ids.map(id =>
-      genres.find(el => {
-        if (el.id === id) {
-          return catArr.push(el.name);
-        }
-      })
-    );
+    const genresFilm = function () {
+      movie.genre_ids.map(id =>
+        genres.find(el => {
+          if (el.id === id) {
+            return catArr.push(el.name);
+          }
+        })
+      );
+    };
+    genresFilm();
 
     return movieInfo;
   });
-
-  console.log('movieCategories :>> ', movieCategories);
 
   const markup = itemsTemplate(movieCategories);
   gallery.insertAdjacentHTML('beforeend', markup);
