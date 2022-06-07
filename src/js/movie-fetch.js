@@ -6,6 +6,16 @@ const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
 
 const parameters = { page: 1, moviesPage: 1, searchQueryStr: '' };
 
+
+// Получение массива жанров
+export async function getGenresIds() {
+  const response = await axios.get(
+    'https://api.themoviedb.org/3/genre/movie/list?api_key=842344de8347536aefc6f17e8e76d4bd&language=en-US'
+  );
+
+  return response.data.genres;
+}
+
 //первый запрос для поиска фильма по-имени
 export async function getDataMovies(searchQuery) {
   parameters.searchQueryStr = searchQuery;
@@ -62,5 +72,3 @@ export async function getMoreTrendingMoviesData() {
 
   return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
-
-getDataMovies('black');
