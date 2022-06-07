@@ -112,6 +112,3 @@ export async function getMoreTrendingMoviesData() {
 
   return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
-
-galleryMarkup();
-getDataMovies('black');
