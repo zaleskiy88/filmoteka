@@ -1,3 +1,163 @@
-.modal-film {
-  background-color: #FFFFFF;
+.backdrop-film {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.film-card {
+  background-color: var(--bg-color);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+
+  display: block;
+  width: 280px;
+  height: 940px;
+  padding: 48px 20px 40px 20px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  @media screen and (min-width: $tab) {
+    display: flex;
+    width: 704px;
+    height: 552px;
+    text-align: left;
+    padding: 40px 72px 40px 36px;
+  }
+  @media screen and (min-width: $desc) {
+    display: flex;
+    width: 814px;
+    height: 558px;
+    text-align: left;
+    padding: 40px 16px 40px 16px;
+  }
+}
+.film-img {
+  background-color: burlywood;
+  @media screen and (max-width: 419px) {
+    width: 240px;
+    height: 357px;
+    margin-bottom: 20px;
+  }
+  @media screen and (min-width: $mob) {
+    width: 240px;
+    height: 357px;
+    margin-bottom: 20px;
+  }
+  @media screen and (min-width: $tab) {
+    width: 264px;
+    height: 374px;
+  }
+  @media screen and (min-width: $desc) {
+    width: 375px;
+    height: 478px;
+  }
+}
+
+.film-list {
+  @media screen and (max-width: 419px) and (min-width: $mob) {
+    display: block;
+  }
+  @media screen and (min-width: $tab) {
+    display: block;
+    width: 264px;
+    margin-left: 68px;
+  }
+  @media screen and (min-width: $desc) {
+    display: block;
+    width: 391px;
+    margin-left: 16px;
+  }
+}
+.film-title {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  color: var(--text-color-main);
+  margin-bottom: 20px;
+  @media screen and (min-width: $desc) {
+    font-size: 30px;
+    line-height: 1.17;
+  }
+}
+.film-info {
+  display: flex;
+}
+.film-text {
+  margin-bottom: 8px;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  align-items: baseline;
+}
+.film-text__left {
+  margin-right: 40px;
+  color: #8c8c8c;
+  @media screen and (min-width: $desc) {
+    margin-right: 83px;
+  }
+}
+.film-text__right {
+  color: var(--text-color-main);
+  margin-bottom: 20px;
+}
+.film-info__item {
+  margin-bottom: 20px;
+}
+.film-about {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  color: var(--text-color-main);
+}
+.btn-add {
+  display: flex;
+  bottom: 0px;
+  justify-content: space-between;
+  @media screen and (min-width: $desc) {
+    justify-content: flex-start;
+  }
+}
+.button {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  background: var(--bg-color);
+  border: 1px solid var(--text-color-main);
+  border-radius: 5px;
+
+  @media screen and (max-width: 419px) {
+    width: 110px;
+    height: 44px;
+  }
+  @media screen and (min-width: $mob) {
+    width: 110px;
+    height: 44px;
+  }
+  @media screen and (min-width: $tab) {
+    width: 125px;
+    height: 44px;
+  }
+  @media screen and (min-width: $desc) {
+    width: 136px;
+    height: 44px;
+    margin-right: 15px;
+  }
+}
+
+.button :hover,
+.button :focus {
+  background: #ff6b01;
+  color: var(--text-color-header);
+  border: 0;
 }

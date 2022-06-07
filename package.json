@@ -12,7 +12,7 @@
     "url": "git+https://github.com/NastyaAndreeva/filmoteka.git"
   },
   "keywords": [],
-  "author": "Go to Dream <andreeva.anastasiya.v@gmail.com>",
+  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/NastyaAndreeva/filmoteka/issues"
@@ -26,9 +26,12 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
+    "buffer": "^6.0.3",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
-    "posthtml-include": "^1.7.4"
+    "parcel-transformer-hbs": "^1.0.4",
+    "posthtml-include": "^1.7.4",
+    "process": "^0.11.10"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
