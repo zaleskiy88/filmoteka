@@ -1,0 +1,125 @@
+@import './variables.scss';
+
+.modal-footer {
+    display: flex;
+
+}
+.modal-footer-social {
+    display: none;
+}
+.modal-footer__open-btn {
+    border: none;
+    background-color: var(--bg-color);
+    font-size: 28px;
+}
+
+.modal-footer-bg {
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 153, 0, 0.56),
+        rgba(222, 118, 38, 0.56)
+    );
+}
+
+.modal-footer-social {
+    @media screen and (min-width:$mob) {
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 300px;
+    width: 100%;
+    z-index: 5;
+    background-color: var(--brand-color);
+    transition: .3s;
+    transform: translateY(-50px);
+    }
+    
+
+    @media screen and (min-width:$tab) {
+        bottom: 0;
+    }
+}
+
+.modal-footer-social__info {
+    font-size: 16px;
+    font-family: 'Roboto';
+    line-height: 1.5;
+}
+
+.modal-footer-social__link {
+    padding: 10px;
+    text-align: center;
+}
+
+// .modal-footer-social__link:first-child {
+// padding-left: 15px;
+// }
+
+
+
+img {
+    height: 120px;
+    width: 100px;
+    flex-wrap: wrap;
+}
+
+
+
+.modal-footer-social__item {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style:none;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+}
+.modal-footer-social__item li {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    overflow: hidden;
+}
+/* Заголовок, текст и ссылка */
+// .modal-footer-social__item li h3{
+//     color: #fff;
+//     margin: 5px;
+// }
+.modal-footer-social__item li p{
+    color: #fff;
+    margin: 5px;
+}
+
+.modal-footer-social__item li > div {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.modal-footer-social__item li:hover > div {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+.modal-footer-social__item li div {
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.35); /* Фон блока при наведении */
+}
+.modal-footer-social__item li img {
+    transition: all 0.3s linear;
+}
+.modal-footer-social__item li:hover img {
+    transform: scale(1.5);
+}
+.modal-footer-social__item li:hover div {
+    opacity: 1;
+}
