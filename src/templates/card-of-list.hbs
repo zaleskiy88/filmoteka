@@ -1,7 +1,11 @@
-<div class='film-card'>
-  <img class='film-card__photo' src='' alt='' />
-  <div class='film-card__data'>
-    <p class='film-card__name'></p>
-    <p class='film-card__info'></p>
+{{#each this}}
+  <div class='movie-card'>
+    <img
+      src='https://image.tmdb.org/t/p/w500${movieInfo.poster_path}'
+      alt={{name}}
+    />
+    <h5 class='movie-name'>{{title}}</h5>
+    <p class='movie-gendres'>{{genres}}</p>
+    <p class='movie-release-year'>{{release_date}}</p>
   </div>
-</div>
+{{/each}}
