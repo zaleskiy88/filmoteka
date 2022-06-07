@@ -14,17 +14,20 @@
 }
 
 .movie-card {
-  width: 309px;
-  margin-right: 32px;
+
   margin-bottom: 32px;
   @media screen and (min-width: $mob) {
     margin-right: 0;
     width: 280px;
   }
-@media screen and (min-width: $tab) {
+  @media screen and (min-width: $tab) {
   margin-right: 32px;
   width: 336px;
   }
+  @media screen and (min-width: $desc) {
+    width: 309px;
+    margin-right: 16px;
+    }
 }
 
 .movie-data {
