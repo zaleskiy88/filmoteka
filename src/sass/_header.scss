@@ -1,8 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
 *,
 *:before,
 *:after {
@@ -145,7 +140,17 @@ body {
   margin-right: 10px;
 }
 .header__logotext-link {
-  display: none;
+
+  font-family: Roboto;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 0.85;
+  color: #fff;
+
+  @media screen and (max-width: 420px) {
+    display: none;
+}
+    
 }
 
 .header__navigation-list {
@@ -157,7 +162,7 @@ body {
 .header__navigation-item:not(:last-child) {
   margin-right: 39px;
 }
-.header__navigation-button {
+.header__navigation-link {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -203,10 +208,10 @@ body {
   top: 4px;
   right: 0px;
 }
-.header__navigation-button.current {
+.header__navigation-link.current {
   position: relative;
 }
-.руфвук__navigation-button.current::after {
+.header__navigation-link.current::after {
   position: absolute;
   top: 13px;
   display: block;
@@ -244,17 +249,17 @@ body {
     }
   }
 
-  .руфвук__logo-list {
+  .header__logo-list {
     padding: 0;
     height: 35px;
     align-items: center;
   }
-  .руфвук__navigation-list {
+  .header__navigation-list {
     padding-top: 9px;
     margin-bottom: 40px;
     padding-left: 0;
   }
-  .руфвук__logotext-link {
+  .header__logotext-link {
     display: block;
     font-weight: 500;
     font-size: 30px;
@@ -293,3 +298,5 @@ body {
     }
   }
 }
+
+

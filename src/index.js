@@ -1,10 +1,9 @@
 import {
   getDataMovies,
-  getMoreMoviesData,
-  getMoreTrendingMoviesData,
+  getMoreDataMovies,
   getTrendingMoviesData,
-} from './movie-fetch';
-
+  getMoreTrendingMoviesData,
+} from './js/movie-fetch';
 const mainGallery = document.querySelector("#home-gallery");
 
 async function generateMurkup() {
@@ -17,5 +16,3 @@ async function generateMurkup() {
 }
 
 generateMurkup();
-
-
