@@ -133,7 +133,7 @@ body {
   margin-right: 10px;
 }
 .header__logo-list:hover > .header__logo-icon {
-  stroke: var(--text-color-caption);
+  stroke: #ff6b08;
   transition: stroke 300ms;
 }
 
@@ -187,25 +187,24 @@ body {
 
   width: 100%;
   background-color: inherit;
-  border-bottom: 1px solid var(--bg-color);
+  border-bottom: 1px solid white;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   padding-bottom: 4px;
   padding-left: 1px;
   color: var(--bg-color);
   &:hover,
   &:focus {
-    border-bottom: 1px solid var(--text-color-captio);
+    border-bottom: 1px solid #ff6b08;
     transition: border-bottom 500ms;
   }
 }
-
 .header__input::placeholder {
   font-size: 14px;
   line-height: 16px;
   padding-left: 1px;
+
   color: var(--bg-color);
 }
-
 .header__input-wrapper {
   width: 280px;
   height: 20px;
@@ -236,7 +235,7 @@ body {
   content: '';
   height: 3px;
   width: 100%;
-  background-color: var(--text-color-captio);
+  background-color: var(--brand-color);
   margin-bottom: 20px;
 }
 
