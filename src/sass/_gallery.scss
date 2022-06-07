@@ -1,14 +1,30 @@
+@import "./variables";
+
 .gallery {
-  margin: 60px 32px;
+  margin-right: -16px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  padding-top: 60px;
+  @media screen and (min-width: $mob) {
+    margin-right: 0;
+}
+@media screen and (min-width: $tab) {
+  margin-right: -32px;
+  }
 }
 
 .movie-card {
-  width: 20%;
-  margin: 16;
-  font-size: 0;
+  width: 309px;
+  margin-right: 32px;
+  margin-bottom: 32px;
+  @media screen and (min-width: $mob) {
+    margin-right: 0;
+    width: 280px;
+  }
+@media screen and (min-width: $tab) {
+  margin-right: 32px;
+  width: 336px;
+  }
 }
 
 .movie-data {
@@ -16,7 +32,7 @@
 }
 
 .movie-info {
-  color: #ff6b08;
+  color: var(--brand-color);
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
