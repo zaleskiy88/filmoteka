@@ -1,5 +1,5 @@
 .footer {
-  background-color: #f7f7f7;
+  background-color: var(--bg-color-footer);
   width: 100%;
   bottom: 0;
 }
@@ -29,7 +29,7 @@
   }
 }
 .footer-text {
-  color: #545454;
+  color: var(--text-color-footer);
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
@@ -53,16 +53,16 @@
 }
 
 .footer-heart-span {
-  color: #ff6b08;
+  color: var(--text-color-caption);
   font-size: 16px;
 }
 .footer-team-link {
   text-decoration: underline;
-  color: #545454;
+  color: var(--text-color-footer);
   &:hover,
   &:focus {
-    text-shadow: #6b6f72 1px 0 10px;
-    color: #ff6b08;
+    text-shadow: var(--text-sgadow-footer) 1px 0 10px;
+    color: var(--text-color-caption);
   }
 }
 
