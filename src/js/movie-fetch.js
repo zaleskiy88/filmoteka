@@ -5,49 +5,51 @@ const axios = require('axios').default;
 const API_KEY = '842344de8347536aefc6f17e8e76d4bd';
 const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
+const MOVIE_GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
 
 const parameters = { page: 1, moviesPage: 1, searchQueryStr: '' };
 const gallery = document.querySelector('.gallery');
 
 // Получение массива жанров
-async function getGenresIds() {
-  const response = await axios.get(
-    'https://api.themoviedb.org/3/genre/movie/list?api_key=842344de8347536aefc6f17e8e76d4bd&language=en-US'
-  );
+async function getGenresAndIds() {
+  const response = await axios.get(`${MOVIE_GENRES_URL}?api_key=${API_KEY}`);
 
   return response.data.genres;
 }
 
-async function galleryMarkup() {
-  const moviesData = await getTrendingMoviesData();
-  const genres = await getGenresIds();
+// генератор разметки галереи с фильмами
+async function moviesGalleryMarkup(movieFetchCallback) {
+  const moviesData = await movieFetchCallback(searchQuery); //получаем данные о фильмах
+  const genres = await getGenresAndIds(); //получаем жанры и айдишники фильмов {}
 
   // Создание объекта в котором хранится информация для Handlebars
   const movieCategories = moviesData.results.map(movie => {
-    const catArr = [];
+    const genresArr = [];
     const dataRelease = movie.release_date.slice(0, 4);
-    const nameOfFilm = movie.title.toUpperCase();
+    const movieNameUpperCase = movie.title.toUpperCase();
+
+    //объект в котором содержаться необходимые свойства для подальшей отрисовки карточки фильма
     const movieInfo = {
-      name: nameOfFilm,
+      name: movieNameUpperCase,
       release: dataRelease,
       id: movie.id,
-      genres: catArr,
+      genres: genresArr,
       poster_path: movie.poster_path,
       backdrop_path: movie.backdrop_path,
     };
 
     // Сравнивает жанры из массива жанров с id жанров из общего запроса и добавляет нужные в объект для Handlebars
-    const genresFilm = function () {
+    const movieGenres = function () {
       movie.genre_ids.map(id =>
         genres.find(el => {
           if (el.id === id) {
-            return catArr.push(el.name);
+            return genresArr.push(el.name);
           }
         })
       );
     };
 
-    genresFilm();
+    movieGenres();
     return movieInfo;
   });
 
