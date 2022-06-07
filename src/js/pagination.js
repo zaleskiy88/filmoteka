@@ -1,15 +1,12 @@
 import axios from 'axios';
 
-const axiosPaginations = axios.create();
+const axiosPagination = axios.create();
 
 const refs = {
-    pagesList : document.querySelector('#paginations'),
-    incrementBtn : document.querySelector('#increment'),
-    decrementBtn: document.querySelector('#decrement'),
-    previosPagesBtn: document.querySelector('#previos'),
-    nextPagesBtn: document.querySelector('#next'),
-    
+    pageList: document.querySelector('.pagination__list'),
 }
+
+let totalPages = 20;
 
 const params = {
     page: 1,
@@ -17,7 +14,7 @@ const params = {
 
 async function getPage () { 
     try {
-        return await axiosPaginations.get('https://api.themoviedb.org/3/trending/all/day?api_key=842344de8347536aefc6f17e8e76d4bd', { params });
+        return await axiosPagination.get('https://api.themoviedb.org/3/trending/all/day?api_key=842344de8347536aefc6f17e8e76d4bd', { params });
     }
     catch (error) {
         if (error.response) {
@@ -31,89 +28,31 @@ async function getTotalPages() {
     return data.total_pages;
 }
 
-function createPageList(pagesPerPage, startPage, inc) { 
 
-    for (let i = startPage+inc; i <= pagesPerPage+inc; i++) {
-        let btn = document.createElement('button');
-        btn.innerHTML = i;
-        refs.pagesList.appendChild(btn);
+function createPagesItems(totalPages, page) { 
+    let itemPage = '';
+    let activPage;
+    let beforePage = page - 1;
+    let afterPage = page + 1;
+
+    if (page > 1) { 
+        
+        itemPage += `<li class="btn" onclick="createPagesItems(totalPages, ${page-1})"><span>←</span></li>`
+    }
+    for (let pageLength = beforePage; pageLength <= afterPage; pageLength++) { 
+        if (page == pageLength) {
+            activPage = "active";
+        }
+        else { 
+            activPage = "";
+        }
+       itemPage += `<li class="numb ${activPage}"><span>${pageLength}</span></li>`
     }
 
-}
-
-createPageList(6, 1, 0);
-
-function onPageNumberBtnrClick(e) { 
-    if (e.target.nodeName !== 'BUTTON') { 
-        return;
+    if (page < totalPages) { 
+        itemPage += `<li class="btn" onclick="createPagesItems(totalPages, ${page+1})"><span>→</span></li>`
     }
-    params.page = Number(e.target.textContent);
-    getPage();
+    refs.pageList.innerHTML = itemPage;
 }
 
-refs.pagesList.addEventListener('click', onPageNumberBtnrClick)
-
-
-/////////////////////////////////////////////////////////////////////////////////
-function onIncrementBtnClick(e) { 
-    e.preventDefault();
-    params.page += 1;
-    getPage();
-    // decrementBtn.removeAttribute('disabled');
-}
-
-function onDecrementBtnClick(e) { 
-    e.preventDefault();
-    if (params.page > 1) { 
-        params.page -= 1;
-        getPage();
-    }
-    return
-}
-
-refs.incrementBtn.addEventListener('click', onIncrementBtnClick);
-refs.decrementBtn.addEventListener('click', onDecrementBtnClick);
-///////////////////////////////////////////////////////////////////////////////////
-
-function onNextBtnClick() { 
-    refs.pagesList.innerHTML = '';
-    createPageList(6, 1, 3);
-    getPage();
-}
-refs.nextPagesBtn.addEventListener('click', onNextBtnClick);
-
-
-function onPreviostBtnClick() { 
-    refs.pagesList.innerHTML = '';
-    createPageList(6, 1, 0);
-    getPage();
-}
-refs.previosPagesBtn.addEventListener('click', onPreviostBtnClick);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function paginate(array, page_size, page_number) {
-
-//   return array.slice((page_number - 1) * page_size, page_number * page_size);
-// }
-
-// async function transformTotalPageAmount() { 
-//     const totalPageAmount = await getTotalPages();
-//     const array = [];
-//     for (let i = 1; i <= totalPageAmount; i++) { 
-//         array.push(i)
-//     }
-//     return array;
-// }
+ createPagesItems(totalPages, 5)
