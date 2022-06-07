@@ -1,0 +1,183 @@
+.login-modal {
+    overflow:hidden;
+    position: relative;
+    height: 560px;
+    width: 405px;
+    margin: auto;
+    padding: 60px 60px;
+    background:tomato;
+    box-shadow: 0px 30px 60px -5px #000;
+  }
+  
+  .login-modal_form {
+    margin-top: 50px;
+  }
+  
+  .login-modal__in {
+    margin-left: 20px;
+    padding-left: 12px;
+    font-size: 22px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+    display: inline-block;
+    font-weight: 100;
+    cursor: pointer;
+  }
+
+  .login-modal__active {
+  border-bottom: 2px solid #1161ed;
+  }
+
+  .login-modal__noactive {
+    color: rgba(255, 255, 255, 0.2);
+    }
+
+  .login-modal__up {
+    cursor: pointer;
+    padding-left: 12px;
+    font-size: 22px;
+    text-transform: uppercase;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+    display: inline-block;
+    font-weight: 100;
+    margin-left: 20px;
+  }
+
+  .login-modal__nonactive:first-child {
+    padding-left: 0px;
+  }
+  
+  .login-modal__name {
+    text-transform: uppercase;
+    font-size: 12px;
+    opacity: 0.4; 
+    transition: all 0.5s ease-in-out;
+    margin-left: 20px;
+  }
+
+  .login-modal__password{
+      margin-top: 30px;
+  }
+  
+  .login-modal__text {
+    border: none;
+    width: 89%;
+    padding: 10px 20px;
+    display: block;
+    height: 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0);
+    overflow: hidden;
+    margin-top: 5px;
+    transition: all 0.5s ease-in-out;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+  }
+  
+  .login-modal__text:focus {
+    outline: 0;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0);
+  }
+  
+  .login-modal__text:focus + span {
+    opacity: 0.6;
+  }
+  
+  .login-modal__custom-checkbox {
+    -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 2px;
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    margin-top: 25px;
+    display: inline-block;
+    font-size: 14px;
+  }
+  
+  .login-modal__custom-checkbox:checked {
+    background-color: rgba(17, 97, 237, 1);
+  }
+  
+  .login-modal__custom-checkbox:checked:after {
+    content: '\2714';
+    font-size: 10px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    color: #fff;
+  }
+  
+  .login-modal__custom-checkbox:focus {
+    outline: none;
+  }
+  
+  .login-modal__keep {
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 5px;
+  }
+  
+  .signin {
+    background-color: #1161ed;
+    color: #FFF;
+    width: 100%;
+    padding: 10px 20px;
+    display: block;
+    height: 39px;
+    border-radius: 20px;
+    margin-top: 30px;
+    transition: all 0.5s ease-in-out;
+    border: none;
+    text-transform: uppercase;
+  }
+  
+  .signin:hover {
+    background: #4082f5;
+    box-shadow: 0px 4px 35px -5px #4082f5;
+    cursor: pointer;
+  }
+  
+  .signin:focus {
+    outline: none;
+  }
+  
+  hr {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    top: 85px;
+    position: relative;
+  }
+  
+  .login-modal__forgot--password {
+    text-align: center;
+    display: block;
+    top: 120px;
+    position: relative;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+
+
+////////////////////////модалка регистраций//////////////////////////////
+
+.modal{
+
+    position: absolute;
+    top:110px;
+    left: 0px;
+    height: 450px;
+    width: 405px;
+    margin: auto;
+    padding: 60px 60px;
+    background:tomato;
+    transform: translateX(100%);
+    transition: transform 2250ms cubic-bezier(.99,.98,0,-0.01);
+}
