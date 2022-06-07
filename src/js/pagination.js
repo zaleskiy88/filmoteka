@@ -29,7 +29,7 @@ async function getTotalPages() {
 }
 
 
-function createPagesItems(totalPages, page) { 
+window.createPagesItems = function (totalPages, page) { 
     let itemPage = '';
     let activPage;
     let beforePage = page - 1;
@@ -37,7 +37,8 @@ function createPagesItems(totalPages, page) {
 
     if (page > 1) { 
         
-        itemPage += `<li class="btn" onclick="createPagesItems(totalPages, ${page-1})"><span>←</span></li>`
+        itemPage += `<li class="btn prev" onclick="createPagesItems(totalPages, ${page - 1})"><span>←</span></li>`;
+
     }
     for (let pageLength = beforePage; pageLength <= afterPage; pageLength++) { 
         if (page == pageLength) {
@@ -56,3 +57,4 @@ function createPagesItems(totalPages, page) {
 }
 
  createPagesItems(totalPages, 5)
+
