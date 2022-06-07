@@ -44,9 +44,7 @@ async function generateMurkup() {
   });
 
   // Создание разметки
-gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
 }
-
-
 
 generateMurkup();
