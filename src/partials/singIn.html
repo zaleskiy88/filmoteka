@@ -1,37 +1,116 @@
 
 
 <div class="login-modal">
+    <button class="modal-close">close</button>
         <h2 class="login-modal__in login-modal__active"> sign in </h2>
             <h2 class="login-modal__up login-modal__noactive"> sign up </h2>
-    <form class="login-modal_form">
-            <p class="login-modal__name">username</p>
-        <input type="text" class="login-modal__text" name="username">
-            <p  class="login-modal__name login-modal__password">password</p>
-        <input type="password" class="login-modal__text" tex name="password">
+<form class="login-modal_form registration-form">
+            <label class="registration-label">
+                <input type="email" name="email" id="email" required />
+                <div class="label-text">Email</div>
+            </label>
+            <label class="registration-label">
+                <input type="password" name="" id="password" required />
+                <div class="label-text">password</div>
+            </label>
                 
                 <br>
         <input type="checkbox" id="checkbox-1-1" class="login-modal__custom-checkbox" />
             <label class="login-modal__keep" for="checkbox-1-1">Keep me Signed in</label>
                 <button class="signin">Sign In</button>
             <hr>
-            <a class="login-modal__forgot--password" href="#">Forgot Password?</a>
-    </form>
+    <div class="social">
+        <ul class="list social__network">
+            <li class="social__block">
+                <a class="social__link" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
+                    <svg class="social__svg" width="20" height="20">
+                    <use href="./images/symbol-defs.svg#icon-instagram"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="social__block">
+                    <a class="social__link" href="https://twitter.com/" rel="noopener noreferrer" target="_blank">
+                    <svg class="social__svg" width="20" height="20">
+                    <use href="./images/symbol-defs.svg#icon-twitter"></use>
+                    </svg>
+                </a>
+            </li>
+            <li class="social__block">
+                <a class="social__link" href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
+                    <svg class="social__svg" width="20" height="20">
+                        <use href="./images/symbol-defs.svg#icon-facebook">
+                        </use>
+                    </svg>
+                </a>
+            </li>
+            <li class="social__block">
+                <a class="social__link" href="https://linkedin.com/" rel="noopener noreferrer" target="_blank">
+                    <svg class="social__svg" width="20" height="20">
+                    <use href="./images/symbol-defs.svg#icon-linkedin">
+                    </use>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a class="login-modal__forgot--password" href="#">Forgot Password?</a>
+</form>
 
     
-    <div class="modal">
-        <form class="login-modal_form">
-                <p class="login-modal__name">username</p>
-            <input type="text" class="login-modal__text" name="username">
-                <p  class="login-modal__name login-modal__password">password</p>
-            <input type="password" class="login-modal__text" tex name="password">
-                    
-                    <br>
-            <input type="checkbox" id="checkbox-1-2" class="login-modal__custom-checkbox" />
-                <label class="login-modal__keep" for="checkbox-1-2">Keep me Signed in</label>
-                    <button class="signin">Sign In</button>
-                <hr>
-                <a class="login-modal__forgot--password" href="#">Forgot Password?</a>
-        </form>
+    <div class="registration-modal">
+        <form class="registration-form">
+            <label class="registration-label">
+              <input name="name" id="name" type="text" required />
+              <div class="label-text">Full Name</div>
+            </label>
+            <label class="registration-label">
+              <input type="email" name="email" id="email" required />
+              <div class="label-text">Email</div>
+            </label>
+            <label class="registration-label">
+              <input type="password" name="" id="password" required />
+              <div class="label-text">password</div>
+            </label>
+            <label class="registration-label">
+                <input type="password" name="" id="password" required />
+                <div class="label-text">Repeat password</div>
+              </label>
+              <div class="social">
+                <ul class="list social__network">
+                    <li class="social__block">
+                        <a class="social__link" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
+                            <svg class="social__svg" width="20" height="20">
+                            <use href="./images/symbol-defs.svg#icon-instagram"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social__block">
+                            <a class="social__link" href="https://twitter.com/" rel="noopener noreferrer" target="_blank">
+                            <svg class="social__svg" width="20" height="20">
+                            <use href="./images/symbol-defs.svg#icon-twitter"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social__block">
+                        <a class="social__link" href="https://www.facebook.com/" rel="noopener noreferrer" target="_blank">
+                            <svg class="social__svg" width="20" height="20">
+                                <use href="./images/symbol-defs.svg#icon-facebook">
+                                </use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="social__block">
+                        <a class="social__link" href="https://linkedin.com/" rel="noopener noreferrer" target="_blank">
+                            <svg class="social__svg" width="20" height="20">
+                            <use href="./images/symbol-defs.svg#icon-linkedin">
+                            </use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <button class="registration-btn" type="submit" value="Submit">Submit</button>
+          </form>
         </div>
 
 </div>
