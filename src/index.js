@@ -6,7 +6,7 @@ import {
   getGenresIds,
 } from './js/movie-fetch';
 
-import lightbox from './js/modal-film.js';
+import { initLightbox } from './js/modal-film.js';
 
 import itemsTemplate from './templates/list-of-card.hbs';
 
@@ -26,6 +26,7 @@ async function generateMarkup() {
 
   // Rendering markup
   gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  console.log('generate markup');
 }
 
 
@@ -42,7 +43,7 @@ async function onSearchInput(event) {
   gallery.innerHTML = itemsTemplate(movieCategories);
 }
 
-async function generateMoviesWithGenres(data){
+async function generateMoviesWithGenres(data) {
   const genres = await getGenresIds();
 
   // Creating an object that stores data for handlebars template
@@ -75,6 +76,10 @@ async function generateMoviesWithGenres(data){
   });
 }
 
-generateMarkup();
+generateMarkup().then(() => {
+  document.querySelectorAll('.gallery a').forEach(el => {
+    el.addEventListener('click', initLightbox);
+  });
+});
 
 searchInput.addEventListener("input", debounce(onSearchInput, DEBOUNCE_DELAY));

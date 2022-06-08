@@ -1,5 +1,4 @@
 {{#each this}}
-<template>
 <div class="backdrop-film ">
 <div class="film-card">
     <div class="film-img">
@@ -16,7 +15,7 @@
                 <b class="film-text">Genre</b>
             </div>
             <div class="film-text__right">
-                <p class="film-text">{{vote_average / vote_count}}</p>
+                <p class="film-text">{{vote_average}} / {{vote_count}}</p>
                 <p class="film-text">{{popularity}}</p>
                 <p class="film-text">{{original_title}}</p>
                 <p class="film-text">{{genres}}</p>
@@ -24,10 +23,10 @@
         </div>
         <p class="film-info__item">
             <b class="film-text">About</b></br>
-            <b class="film-about">{{overviev}}</b>
+            <b class="film-about">{{overview}}</b>
         </p>
 
-        <div class="btn-add" id="js-add-to-list">
+        <div class="btn-add" id="js-add-to-list" data-id="{{id}}">
             <button class="button" id="add-watched" type="button">add to Watched</button>
             <button class="button" id="add-queue" type="button">add to queue</button>
         </div>
@@ -35,5 +34,4 @@
 
 </div>
 </div>
-</template>
 {{/each}}

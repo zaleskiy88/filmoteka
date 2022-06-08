@@ -1,38 +1,15 @@
 import modalFilm from '../templates/modal-film.hbs';
-import SimpleLightbox from "simplelightbox";
-import getDataMovies from '../js/movie-fetch';
+import SimpleLightbox from "simple-lightbox";
+import "simple-lightbox/dist/simpleLightbox.min.css";
+import { getDataMovie } from '../js/movie-fetch';
 
 
-//async function renderGallery() {
-//    const result = await API.getDataMovies();
-//    appendFilm(result.data.total_results);
-    
-//}
-//function appendFilm(card) {
-//    gallery.insertAdjacentHTML('beforeend', modalFilm(card));
-//}
-const lightbox = new SimpleLightbox('.gallery a', {
-    
-    enableKeyboard: true,
-});
-lightbox.refresh()
-
-
-
-/*
-import * as basicLightbox from 'basiclightbox';
-
-
-function onModalFilm(evt) {
-    evt.preventDefault();
+export const initLightbox = async (e) => {
+    e.preventDefault();
+    const { id: movieId } = e.currentTarget.dataset;
+    const movieModal = new SimpleLightbox();
+    const dataMovie = await getDataMovie(movieId);
+    const markup = await modalFilm([dataMovie])
+    movieModal.setContent(markup).show();
 }
-    const instance = basicLightbox.create(
-        document.querySelector('template'),
-
-        { onShow: () => { window.addEventListener('keydown', onKeydown) } },
-        { onClose: () => { window.removeEventListener('keydown', onKeydown) } } ,
-    );
- 
-    instance.show();
- */
 
