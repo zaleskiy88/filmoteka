@@ -1,5 +1,6 @@
-
-<div class="backdrop-film visually-hidden">
+{{#each this}}
+<template>
+<div class="backdrop-film ">
 <div class="film-card">
     <div class="film-img">
         <img src='https://image.tmdb.org/t/p/original{{poster_path}}' alt={{name}} />
@@ -34,3 +35,5 @@
 
 </div>
 </div>
+</template>
+{{/each}}

@@ -6,6 +6,8 @@ import {
   getGenresIds,
 } from './js/movie-fetch';
 
+// import './js/modal-film.js';
+
 import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs'
 
@@ -17,7 +19,7 @@ var debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
 
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('#home-gallery');
 
 const searchInput = document.querySelector("input");
 
