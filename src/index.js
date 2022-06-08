@@ -12,7 +12,7 @@ var debounce = require('lodash.debounce');
 
 const DEBOUNCE_DELAY = 300;
 
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('#home-gallery');
 
 const searchInput = document.querySelector("input");
 
