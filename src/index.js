@@ -9,8 +9,9 @@ import {
 import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs'
 
-const element = document.querySelector('.preloader');
-element.innerHTML = preloader();
+const preloaderContainer = document.querySelector('.preloader');
+preloaderContainer.innerHTML = preloader(); 
+
 
 var debounce = require('lodash.debounce');
 
@@ -27,7 +28,11 @@ async function generateMarkup() {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
-  gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  setTimeout(() => {
+    preloaderContainer.innerHTML = '';
+    gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  }, 2000)
+ 
 }
 
 
@@ -41,7 +46,10 @@ async function onSearchInput(event) {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
+
   gallery.innerHTML = itemsTemplate(movieCategories);
+
+  
 }
 
 async function generateMoviesWithGenres(data){
@@ -80,3 +88,4 @@ async function generateMoviesWithGenres(data){
 generateMarkup();
 
 searchInput.addEventListener("input", debounce(onSearchInput, DEBOUNCE_DELAY));
+
