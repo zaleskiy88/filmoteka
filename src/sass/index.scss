@@ -1,3 +1,4 @@
+@import './dark-and-light-theme';
 @import './reset';
 @import './variables';
 @import './common';
@@ -7,4 +8,6 @@
 @import './modal-film';
 @import './container';
 @import './gallery';
-@import './pagination';
+@import './header';
+@import './footer';
+@import './preloader';

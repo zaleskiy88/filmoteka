@@ -1,28 +1,49 @@
-<header class="header">
-    <div class="header__container">
-      <div class="header__wrapper"> 
-        <a class="header__logo-list" href="./index.html">
-          <svg class="header__logo-icon" height="24" width="24">
+<header class="header container">
+  <div class="header__container">
+    <div class="header__wrapper">
+      <a class="header__logo-list" href="./index.html">
+        <svg class="header__logo-icon" height="24" width="24">
           <use href="./images/sprite.svg#icon-film-logo"></use>
         </svg>
-      <span class="header__logotext-link">Filmoteka</span>
+        <span class="header__logotext-link">Filmoteka</span>
       </a>
-        <nav class="header__navigation">
-          <ul class="header__navigation-list">
-              <li class="header__navigation-item"><button class="header__navigation-button current" type="button">Home</button></li>
-              <li class="header__navigation-item"><button class="header__navigation-button" type="button">my library</button></li>
-            </ul>
-        </nav>
-      </div> 
-      <form class="header__input-wrapper search-form " id="search-form">
-        <input
-        class="header__input"
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Поиск фильмов"
-        />
-        <button class="header__button-search" type="submit"><svg class="header__input-icon" width="12" height="12"><use href="./images/sprite.svg#icon-search"></use></svg></button>
-      </form>
+      <nav class="header__navigation">
+        <ul class="header__navigation-list">
+          <li class="header__navigation-item">
+            <a class="header__navigation-link current" href="./index.html"
+              >Home</a
+            >
+          </li>
+          <li class="header__navigation-item">
+            <a class="header__navigation-link" href="./library.html"
+              >my library</a
+            >
+          </li>
+        </ul>
+      </nav>
     </div>
-  </header>
+    <form class="header__input-wrapper search-form" id="search-form">
+      <input
+        class="header__input"
+        type="text"
+        name="searchQuery"
+        autocomplete="off"
+        placeholder="Поиск фильмов"
+      />
+      <button class="header__button-search">
+        <svg class="header__input-icon" width="12" height="12">
+          <use href="./images/sprite.svg#icon-search"></use>
+        </svg>
+      </button>
+    </form>
+    <div class="theme">
+      <span class="theme-text">Theme</span>
+      <label class="switch">
+        <input type="checkbox" id="dark-theme" />
+        <span class="slider round"></span>
+      </label>
+    </div>
+    
+  </div>
+  
+</header>

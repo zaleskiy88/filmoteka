@@ -1,13 +1,11 @@
+<div class="backdrop-film visually-hidden">
 <div class="film-card">
     <div class="film-img">
-
     </div>
 
     <div class="film-list">
         <p class="film-title">{{Title}}</p>
-
-        <div class="film-info">
-           
+        <div class="film-info">           
             <div class="film-text__left">
                 <p class="film-text">Vote / Votes</p>
                 <p class="film-text">Popularity</p>
@@ -15,23 +13,26 @@
                 <b class="film-text">Genre</b>
             </div>
             <div class="film-text__right">
-                <p class="film-result">{{Vote / Votes}}</p>
-                <p class="film-result">{{Popularity}}</p>
-                <p class="film-result">{{Original Title}}</p>
-                <p class="film-result">{{Genre}}</p>
-            </div>
-                        
+                <p class="film-text">{{vote_average / vote_count}}</p>
+                <p class="film-text">{{popularity}}</p>
+                <p class="film-text">{{original_title}}</p>
+                <p class="film-text">{{genres}}</p>
+            </div>                        
         </div>
-
         <p class="film-info__item">
-            <b class="film-result">About</b>
-            <span class="film-about">{{About}}</span>
+            <b class="film-text">About</b></br>
+            <b class="film-about">Four of the West’s most infamous outlaws assemble to steal a huge stash of gold from the most corrupt settlement of the
+            gold rush towns. But not all goes to plan one is killed and the other three escapes with bags of gold hide out in the
+            abandoned gold mine where they happen across another gang of three – who themselves were planning to hit the very same
+            bank! As tensions rise, things go from bad to worse as they realise the bags of gold are filled with lead... they’ve
+            been double crossed – but by who and how?</b>
         </p>
 
         <div class="btn-add">
-            <button class="button btn-activ" type="button">add to Watched</button>
+            <button class="button " type="button">add to Watched</button>
             <button class="button" type="button">add to queue</button>
         </div>
     </div>
 
+</div>
 </div>

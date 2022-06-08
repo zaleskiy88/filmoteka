@@ -1,5 +1,50 @@
+@import "./variables";
+
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  margin-right: -16px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 60px;
+  @media screen and (min-width: $mob) {
+    margin-right: 0;
+}
+@media screen and (min-width: $tab) {
+  margin-right: -32px;
+  }
+}
+
+.movie-card {
+
+  margin-bottom: 32px;
+  @media screen and (min-width: $mob) {
+    margin-right: 0;
+    width: 280px;
+  }
+  @media screen and (min-width: $tab) {
+  margin-right: 32px;
+  width: 336px;
+  }
+  @media screen and (min-width: $desc) {
+    width: 309px;
+    margin-right: 16px;
+    }
+}
+
+.movie-data {
+  margin-top: 8px;
+}
+
+.movie-info {
+  color: var(--brand-color);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.movie-name {
+  color: #000000;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
 }
