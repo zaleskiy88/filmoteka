@@ -6,9 +6,12 @@ import {
   getGenresIds,
 } from './js/movie-fetch';
 
+import itemsTemplate from './templates/list-of-card.hbs'
+
 // import './js/modal-film.js';
 
 const form = document.querySelector("form");
+const gallery = document.querySelector('#home-gallery');
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
