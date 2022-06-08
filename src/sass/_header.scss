@@ -318,3 +318,33 @@ body {
     }
   }
 }
+
+//доп кнопки регистрации
+
+#googleUser {
+  @media screen and (max-width: 767px) {
+    margin-left: 0px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.navigation__button.signOut {
+  display: none;
+}
+
+.navigation__button.signIn {
+  display: block;
+}
+
+.navigation__item.sign-in {
+  @media screen and (max-width: 767px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-direction: unset;
+  }
+}
