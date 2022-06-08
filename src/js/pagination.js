@@ -8,6 +8,7 @@ const refs = {
 
 const params = {
     page: 1,
+    lastPage: 100
 }
 
 function generateButtons(page, lastPage) {
@@ -16,6 +17,7 @@ function generateButtons(page, lastPage) {
         const button = `<button>${i}</button>`;
         buttons.push(button);
     }
+    buttons.push(`<button>...</button><button>${params.lastPage}</button>`)
     return buttons;
 }
 
@@ -24,7 +26,18 @@ refs.paginationList.innerHTML =  generateButtons(1, 5).join("");
 refs.paginationList.addEventListener('click', onPaginationBtnClick);
 
 function onPaginationBtnClick(event) {
+    // if (event.target.textContent === "...") {
+    //     console.log(params.page);
+        // refs.paginationList.innerHTML =  generateButtons(params.page - 1, params.page + 1).join("");
+    // params.page -= 1;
+    // }
     params.page = Number(event.target.textContent);
+    if (params.page > 3) {
+        refs.prevBtn.disabled = false;
+    }
+    else {
+        refs.prevBtn.disabled = true;
+    }
     if (params.page - 2 <= 0) {
         refs.paginationList.innerHTML =  generateButtons(1, 5).join("");
         return;
@@ -40,11 +53,11 @@ function onPrevBtnClick() {
     if (params.page - 4 < 0) {
         return;
     }
-    refs.paginationList.innerHTML =  generateButtons(params.page - 4, params.page).join("");
-    params.page -= 2;
+    refs.paginationList.innerHTML =  generateButtons(params.page - 3, params.page).join("");
+    params.page -= 1;
 }
 
 function onNextBtnClick() {
-    refs.paginationList.innerHTML =  generateButtons(params.page, params.page + 4).join("");
-    params.page += 2;
+    refs.paginationList.innerHTML =  generateButtons(params.page, params.page + 3).join("");
+    params.page += 1;
 }
