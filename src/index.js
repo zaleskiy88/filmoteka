@@ -4,17 +4,21 @@ import {
   getTrendingMoviesData,
   getMoreTrendingMoviesData,
   getGenresIds,
+  getOneMovieById,
 } from './js/movie-fetch';
+
 import SimpleLightbox from 'simplelightbox';
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 // import './js/modal-film.js';
-var lightbox = new SimpleLightbox('.gallery a', { /* options */ });
+var lightbox = new SimpleLightbox('.gallery a', {
+  /* options */
+});
 
 import itemsTemplate from './templates/list-of-card.hbs';
 
 const gallery = document.querySelector('#home-gallery');
 
-const form = document.querySelector("form");
+const form = document.querySelector('form');
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -35,7 +39,9 @@ async function onSearchSubmit(event) {
   //   return;
   // }
 
-  const moviesData = await getDataMovies(event.currentTarget.elements.searchQuery.value);
+  const moviesData = await getDataMovies(
+    event.currentTarget.elements.searchQuery.value
+  );
 
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -43,7 +49,7 @@ async function onSearchSubmit(event) {
   gallery.innerHTML = itemsTemplate(movieCategories);
 }
 
-async function generateMoviesWithGenres(data){
+async function generateMoviesWithGenres(data) {
   const genres = await getGenresIds();
 
   // Creating an object that stores data for handlebars template
@@ -78,4 +84,4 @@ async function generateMoviesWithGenres(data){
 
 generateMarkup();
 
-form.addEventListener("submit", onSearchSubmit);
+form.addEventListener('submit', onSearchSubmit);
