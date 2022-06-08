@@ -6,18 +6,49 @@ import {
   getGenresIds,
 } from './js/movie-fetch';
 
+// import './js/modal-film.js';
+
 import itemsTemplate from './templates/list-of-card.hbs';
 
-const gallery = document.querySelector('.gallery');
+var debounce = require('lodash.debounce');
 
-async function generateMurkup() {
+const DEBOUNCE_DELAY = 300;
+
+const gallery = document.querySelector('#home-gallery');
+
+const searchInput = document.querySelector("input");
+
+async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
+
+  // Creating an object that stores data for handlebars template
+  const movieCategories = await generateMoviesWithGenres(moviesData);
+
+  // Rendering markup
+  gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+}
+
+
+async function onSearchInput(event) {
+  if (event.target.value === "") {
+    gallery.innerHTML = "";
+    generateMarkup();
+    return;
+  }
+  const moviesData = await getDataMovies(event.target.value);
+  const movieCategories = await generateMoviesWithGenres(moviesData);
+
+  // Rendering markup
+  gallery.innerHTML = itemsTemplate(movieCategories);
+}
+
+async function generateMoviesWithGenres(data){
   const genres = await getGenresIds();
 
-  // Создание объекта в котором хранится информация для Handlebars
-  const movieCategories = moviesData.results.map(movie => {
+  // Creating an object that stores data for handlebars template
+  return data.results.map(movie => {
     const catArr = [];
-    const dataRelease = movie.release_date.slice(0, 4);
+    const dataRelease = movie.release_date?.slice(0, 4) || 2022;
     const nameOfFilm = movie.title.toUpperCase();
     const movieInfo = {
       name: nameOfFilm,
@@ -28,7 +59,7 @@ async function generateMurkup() {
       backdrop_path: movie.backdrop_path,
     };
 
-    // Сравнивает жанры из массива жанров с id жанров из общего запроса и добавляет нужные в объект для Handlebars
+    // Comparing ganres taken from the general ganre array with IDs and adding ganres' values in the object for handlebars template
     const genresFilm = function () {
       movie.genre_ids.map(id =>
         genres.find(el => {
@@ -42,11 +73,8 @@ async function generateMurkup() {
     genresFilm();
     return movieInfo;
   });
-
-  // Создание разметки
-gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
 }
 
+generateMarkup();
 
-
-generateMurkup();
+searchInput.addEventListener("input", debounce(onSearchInput, DEBOUNCE_DELAY));
