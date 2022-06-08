@@ -6,6 +6,8 @@ import {
   getGenresIds,
 } from './js/movie-fetch';
 
+import './js/modal-film.js';
+
 import itemsTemplate from './templates/list-of-card.hbs';
 
 var debounce = require('lodash.debounce');
