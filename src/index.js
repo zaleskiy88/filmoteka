@@ -5,14 +5,8 @@ import {
   getMoreTrendingMoviesData,
   getGenresIds,
 } from './js/movie-fetch';
-import SimpleLightbox from 'simplelightbox';
-import "simplelightbox/dist/simple-lightbox.min.css";
+
 // import './js/modal-film.js';
-var lightbox = new SimpleLightbox('.gallery a', { /* options */ });
-
-import itemsTemplate from './templates/list-of-card.hbs';
-
-const gallery = document.querySelector('#home-gallery');
 
 const form = document.querySelector("form");
 
@@ -29,11 +23,6 @@ async function generateMarkup() {
 
 async function onSearchSubmit(event) {
   event.preventDefault();
-  // if (event.target.value === "") {
-  //   gallery.innerHTML = "";
-  //   generateMarkup();
-  //   return;
-  // }
 
   const moviesData = await getDataMovies(event.currentTarget.elements.searchQuery.value);
 
@@ -79,3 +68,4 @@ async function generateMoviesWithGenres(data){
 generateMarkup();
 
 form.addEventListener("submit", onSearchSubmit);
+
