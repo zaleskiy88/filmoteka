@@ -1,4 +1,4 @@
-import modalFilm from './templates/modal-film.hbs';
+import modalFilm from '../templates/modal-film.hbs';
 
 import * as basicLightbox from 'basiclightbox';
 
