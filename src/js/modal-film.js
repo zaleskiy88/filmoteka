@@ -7,7 +7,7 @@ function onModalFilm(evt) {
     evt.preventDefault();
 }
     const instance = basicLightbox.create(
-        document.querySelector('template'),
+        document.querySelector('.movie-card'),
 
         { onShow: () => { window.addEventListener('keydown', onKeydown) } },
         { onClose: () => { window.removeEventListener('keydown', onKeydown) } } ,
