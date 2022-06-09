@@ -10,9 +10,9 @@ const emailLogin = document.querySelector('#email');
 const passwordLogin = document.querySelector('#password-1'); 
 const formLog = document.querySelector('.login-modal_form'); 
 
-singIn.addEventListener('click', onCloseModalRegistration);
+singIn.addEventListener('click', onCloseModalRegistrationClick);
 
-function onCloseModalRegistration(){
+function onCloseModalRegistrationClick(){
     if(singIn.classList.contains('login-modal__active')){
         return
     }
@@ -25,9 +25,9 @@ function onCloseModalRegistration(){
     }
 };
 
-singUp.addEventListener('click', onOpenModalRegistration);
+singUp.addEventListener('click', onOpenModalRegistrationClick);
 
-function onOpenModalRegistration(){
+function onOpenModalRegistrationClick(){
     if(singUp.classList.contains('login-modal__active')){
         return
     }
@@ -46,7 +46,7 @@ btnSignin.addEventListener('click', () => {
 
 btnModalClose.addEventListener('click', () => {
     modalnput.style.display = 'none';
-    onCloseModalRegistration();
+    onCloseModalRegistrationClick();
 });
 
 
@@ -59,7 +59,7 @@ function closeModalKeydown(event){
     return
     }
     modalnput.style.display = 'none';
-    onCloseModalRegistration();
+    onCloseModalRegistrationClick();
   }
 
   ////////////////////////remember login and password//////////////////////////////

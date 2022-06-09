@@ -23,11 +23,11 @@ if (localCxheckboxLog !=="") {
 
 function switchThemeColor() {
 if (document.querySelector('.dark-theme')){
-    localStorage.setItem('checkbox-theme', 'true'); // сохраняем
-    localStorage.setItem('color-theme','dark-theme'); // сохраняем
+    localStorage.setItem('checkbox-theme', 'true'); // save
+    localStorage.setItem('color-theme','dark-theme'); // save
 }else {
-    localStorage.removeItem('color-theme'); // удаляем
-    localStorage.removeItem('checkbox-theme'); // удаляем
+    localStorage.removeItem('color-theme'); // delete
+    localStorage.removeItem('checkbox-theme'); // delete
 }
 }
 
