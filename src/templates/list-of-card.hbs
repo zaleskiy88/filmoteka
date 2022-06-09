@@ -1,9 +1,18 @@
 {{#each this}}
-  <div class='movie-card'>
+<<<<<<< Updated upstream
+  <a class='movie-card' href='https://image.tmdb.org/t/p/w500{{poster_path}}' data-id='{{id}}'>
+    <img
+      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+      alt={{name}}
+      width='500'
+    />
+=======
+  <a class='movie-card' href='#' data-id='{{id}}'>
     <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt={{name}} />
+>>>>>>> Stashed changes
     <div class='movie-data'>
       <h5 class='movie-name'>{{name}}</h5>
       <p class='movie-info'>{{genres}} | {{release}}</p>
     </div>
-  </div>
+  </a>
 {{/each}}
