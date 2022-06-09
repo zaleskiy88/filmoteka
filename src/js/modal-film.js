@@ -1,6 +1,6 @@
 import modalFilm from '../templates/modal-film.hbs';
 
-import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from "simple-lightbox";
 //import "simplelightbox/dist/simpleLightbox.min.css";
 import { getDataMovies } from './movie-fetch';
 
