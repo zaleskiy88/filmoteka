@@ -6,7 +6,7 @@ import {
   getGenresIds,
 } from './js/movie-fetch';
 
-import './js/modal-film.js';
+import { initLightbox } from'./js/modal-film.js';
 
 import itemsTemplate from './templates/list-of-card.hbs';
 
