@@ -10,9 +10,9 @@ const emailLogin = document.querySelector('#email');
 const passwordLogin = document.querySelector('#password-1'); 
 const formLog = document.querySelector('.login-modal_form'); 
 
-singIn.addEventListener('click', closeRegistration);
+singIn.addEventListener('click', onCloseModalRegistration);
 
-function closeRegistration(){
+function onCloseModalRegistration(){
     if(singIn.classList.contains('login-modal__active')){
         return
     }
@@ -25,9 +25,9 @@ function closeRegistration(){
     }
 };
 
-singUp.addEventListener('click', openRegistration)
+singUp.addEventListener('click', onOpenModalRegistration);
 
-function openRegistration(){
+function onOpenModalRegistration(){
     if(singUp.classList.contains('login-modal__active')){
         return
     }
@@ -46,7 +46,7 @@ btnSignin.addEventListener('click', () => {
 
 btnModalClose.addEventListener('click', () => {
     modalnput.style.display = 'none';
-    closeRegistration();
+    onCloseModalRegistration();
 });
 
 
@@ -59,10 +59,10 @@ function closeModalKeydown(event){
     return
     }
     modalnput.style.display = 'none';
-    closeRegistration();
+    onCloseModalRegistration();
   }
 
-  ////////////////////////запоминание логина и пароля//////////////////////////////
+  ////////////////////////remember login and password//////////////////////////////
   
     const localLogin = localStorage.getItem('login') || '';
     const localPassword = localStorage.getItem('password')|| '';
@@ -81,13 +81,13 @@ if (localCxheckboxLog !== "") {
 
 function rememberAndDeletLoginAndPassword() {
     if(mobalCheckBox.checked){
-        localStorage.setItem('checkboxlog', true); // сохраняем
-        localStorage.setItem('login', emailLogin.value); // сохраняем
-        localStorage.setItem('password', passwordLogin.value); // сохраняем
+        localStorage.setItem('checkboxlog', true); // save
+        localStorage.setItem('login', emailLogin.value); // save
+        localStorage.setItem('password', passwordLogin.value); // save
     }else {
-        localStorage.removeItem('login'); // удаляем
-        localStorage.removeItem('password'); // удаляем
-        localStorage.removeItem('checkboxlog');// удаляем
+        localStorage.removeItem('login'); // delete
+        localStorage.removeItem('password'); // delete
+        localStorage.removeItem('checkboxlog');// delete
     }
     }
 
