@@ -8,6 +8,11 @@ import {
 
 import { initLightbox } from './js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs';
+import preloader from './templates/preloader.hbs'
+
+const preloaderContainer = document.querySelector('.preloader');
+preloaderContainer.innerHTML = preloader(); 
+
 
 const form = document.querySelector("form");
 const gallery = document.querySelector('#home-gallery');
@@ -19,7 +24,11 @@ async function generateMarkup() {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
-  gallery.innerHTML = itemsTemplate(movieCategories);
+  setTimeout(() => {
+    preloaderContainer.innerHTML = '';
+    gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  }, 2000)
+
 }
 
 async function onSearchSubmit(event) {
@@ -30,7 +39,10 @@ async function onSearchSubmit(event) {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
+
   gallery.innerHTML = itemsTemplate(movieCategories);
+
+  
 }
 
 async function generateMoviesWithGenres(data){
