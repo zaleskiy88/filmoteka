@@ -10,7 +10,9 @@ const emailLogin = document.querySelector('#email');
 const passwordLogin = document.querySelector('#password-1'); 
 const formLog = document.querySelector('.login-modal_form'); 
 
-singIn.addEventListener('click', () => {
+singIn.addEventListener('click', onCloseModalRegistrationClick);
+
+function onCloseModalRegistrationClick(){
     if(singIn.classList.contains('login-modal__active')){
         return
     }
@@ -21,27 +23,31 @@ singIn.addEventListener('click', () => {
         singIn.classList.add('login-modal__active');
         singIn.classList.remove('login-modal__noactive');
     }
-});
+};
 
-singUp.addEventListener('click', () => {
+singUp.addEventListener('click', onOpenModalRegistrationClick);
+
+function onOpenModalRegistrationClick(){
     if(singUp.classList.contains('login-modal__active')){
         return
     }
     else{
-        modalRegistration.style.transform = 'translateX(0)';
-        singIn.classList.add('login-modal__noactive');
-        singIn.classList.remove('login-modal__active');
+        modalRegistration.style.transform = 'translateX(0%)';
         singUp.classList.add('login-modal__active');
         singUp.classList.remove('login-modal__noactive');
+        singIn.classList.add('login-modal__noactive');
+        singIn.classList.remove('login-modal__active');
     }
-});
+};
 
 btnSignin.addEventListener('click', () => {
     modalnput.style.display = 'block';
 });
 
 btnModalClose.addEventListener('click', () => {
-    modalnput.style.display = 'none';})
+    modalnput.style.display = 'none';
+    onCloseModalRegistrationClick();
+});
 
 
 
@@ -53,12 +59,14 @@ function closeModalKeydown(event){
     return
     }
     modalnput.style.display = 'none';
+    onCloseModalRegistrationClick();
   }
 
-  ////////////////////////запоминание логина и пароля//////////////////////////////
+  ////////////////////////remember login and password//////////////////////////////
   
     const localLogin = localStorage.getItem('login') || '';
     const localPassword = localStorage.getItem('password')|| '';
+    const localCxheckboxLog = localStorage.getItem('checkboxlog') || '';
 
 if (localLogin !=="") {
     emailLogin.value = localLogin;
@@ -66,16 +74,20 @@ if (localLogin !=="") {
 if (localPassword !=="") {
     passwordLogin.value = localPassword;
 }
+if (localCxheckboxLog !== "") {
+    mobalCheckBox.checked = true;
+}
 
 
 function rememberAndDeletLoginAndPassword() {
     if(mobalCheckBox.checked){
-
-        localStorage.setItem('login',emailLogin.value); // сохраняем
-        localStorage.setItem('password',passwordLogin.value); // сохраняем
+        localStorage.setItem('checkboxlog', true); // save
+        localStorage.setItem('login', emailLogin.value); // save
+        localStorage.setItem('password', passwordLogin.value); // save
     }else {
-        localStorage.removeItem('login'); // удаляем
-        localStorage.removeItem('password'); // удаляем
+        localStorage.removeItem('login'); // delete
+        localStorage.removeItem('password'); // delete
+        localStorage.removeItem('checkboxlog');// delete
     }
     }
 
