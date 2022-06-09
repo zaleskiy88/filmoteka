@@ -9,7 +9,7 @@ export const initLightbox = async (e) => {
     e.preventDefault();
     const { id: movieId } = e.currentTarget.dataset;
     const movieModal = new SimpleLightbox();
-    const dataMovie = await getDataMovie(movieId);
+    const dataMovie = await getDataMovies(movieId);
     const markup = await modalFilm([dataMovie])
     movieModal.setContent(markup).show();
 }
