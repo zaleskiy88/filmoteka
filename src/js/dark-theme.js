@@ -15,11 +15,19 @@ function darkThemeColor(){
     switchThemeColor() ;
 };
 
+const localCxheckboxLog = localStorage.getItem('checkbox-theme') || '';
+
+if (localCxheckboxLog !=="") {
+    btnTheme.checked = true;
+}
+
 function switchThemeColor() {
 if (document.querySelector('.dark-theme')){
+    localStorage.setItem('checkbox-theme', 'true'); // сохраняем
     localStorage.setItem('color-theme','dark-theme'); // сохраняем
 }else {
     localStorage.removeItem('color-theme'); // удаляем
+    localStorage.removeItem('checkbox-theme'); // удаляем
 }
 }
 
