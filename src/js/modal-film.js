@@ -13,3 +13,12 @@ export const initLightbox = async (e) => {
     movieModal.setContent(markup).show();
 }
 
+
+function onEscKeyPress(event) {
+  const ESC_KEY_CODE = 'Escape';
+  const isEscKey = event.code === ESC_KEY_CODE;
+
+  if (isEscKey) {
+    onCloseModal();
+  }
+}
