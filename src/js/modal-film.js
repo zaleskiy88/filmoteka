@@ -1,7 +1,8 @@
 import modalFilm from '../templates/modal-film.hbs';
-import SimpleLightbox from "simple-lightbox";
-import "simple-lightbox/dist/simpleLightbox.min.css";
-import { getDataMovie } from '../js/movie-fetch';
+
+import SimpleLightbox from "simplelightbox";
+//import "simplelightbox/dist/simpleLightbox.min.css";
+import { getDataMovies } from './movie-fetch';
 
 
 export const initLightbox = async (e) => {

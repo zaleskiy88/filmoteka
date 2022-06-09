@@ -7,16 +7,15 @@ import {
 } from './js/movie-fetch';
 
 import { initLightbox } from './js/modal-film.js';
-
 import itemsTemplate from './templates/list-of-card.hbs';
+import preloader from './templates/preloader.hbs'
 
-var debounce = require('lodash.debounce');
+const preloaderContainer = document.querySelector('.preloader');
+preloaderContainer.innerHTML = preloader(); 
 
-const DEBOUNCE_DELAY = 300;
 
+const form = document.querySelector("form");
 const gallery = document.querySelector('#home-gallery');
-
-const searchInput = document.querySelector("input");
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -25,22 +24,25 @@ async function generateMarkup() {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
-  gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
-  console.log('generate markup');
+  setTimeout(() => {
+    preloaderContainer.innerHTML = '';
+    gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  }, 2000)
+
 }
 
+async function onSearchSubmit(event) {
+  event.preventDefault();
 
-async function onSearchInput(event) {
-  if (event.target.value === "") {
-    gallery.innerHTML = "";
-    generateMarkup();
-    return;
-  }
-  const moviesData = await getDataMovies(event.target.value);
+  const moviesData = await getDataMovies(event.currentTarget.elements.searchQuery.value);
+
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
+
   gallery.innerHTML = itemsTemplate(movieCategories);
+
+  
 }
 
 async function generateMoviesWithGenres(data) {
@@ -82,4 +84,5 @@ generateMarkup().then(() => {
   });
 });
 
-searchInput.addEventListener("input", debounce(onSearchInput, DEBOUNCE_DELAY));
+form.addEventListener("submit", onSearchSubmit);
+

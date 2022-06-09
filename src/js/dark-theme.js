@@ -8,10 +8,12 @@ if (localTheme ==="dark-theme") {
     body.classList.add('dark-theme');
 }
 
-btnTheme.addEventListener('click', () => {
+btnTheme.addEventListener('click', darkThemeColor);
+
+function darkThemeColor(){
     body.classList.toggle('dark-theme');
     switchThemeColor() ;
-});
+};
 
 function switchThemeColor() {
 if (document.querySelector('.dark-theme')){
