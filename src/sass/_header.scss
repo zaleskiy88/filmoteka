@@ -330,21 +330,29 @@ body {
   }
 }
 
-.navigation__button.signOut {
-  display: none;
-}
+// .navigation__button.signOut {
+//   display: none;
+// }
 
-.navigation__button.signIn {
+.header__navigation-button.signIn {
   display: block;
 }
 
-.navigation__item.sign-in {
+.header__navigation-item.sign-in {
   @media screen and (max-width: 767px) {
     display: flex;
     flex-direction: column-reverse;
+  }
+  .header__navigation-item.sign-in:not(:last-child) {
+    margin-right: 39px;
   }
   @media screen and (min-width: 768px) {
     display: flex;
     flex-direction: unset;
   }
+}
+
+// тема
+.theme {
+  margin-right: 185px;
 }
