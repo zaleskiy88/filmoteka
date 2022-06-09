@@ -1,12 +1,12 @@
 
-<div class="backdrop-film visually-hidden">
+<div class="backdrop-film  visually-hidden">
 <div class="film-card">
     <div class="film-img">
         <img src='https://image.tmdb.org/t/p/original{{poster_path}}' alt={{name}} />
     </div>
 
     <div class="film-list">
-        <p class="film-title">{{Title}}</p>
+        <p class="film-title">{{title}}</p>
         <div class="film-info">           
             <div class="film-text__left">
                 <p class="film-text">Vote / Votes</p>
@@ -26,8 +26,8 @@
             <b class="film-about">{{overviev}}</b>
         </p>
 
-        <div class="btn-add" id="js-add-to-list">
-            <button class="button" id="add-watched" type="button">add to Watched</button>
+        <div class="btn-add" id="js-add-to-list" data-id="{{id}}">
+            <button class="button" id="add-watched" type="button">add to watched</button>
             <button class="button" id="add-queue" type="button">add to queue</button>
         </div>
     </div>
