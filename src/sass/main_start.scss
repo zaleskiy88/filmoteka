@@ -17,7 +17,9 @@
   @mixin scale($val) {
     transform: scale($val);
   }
-
+  body{
+    overflow: hidden;
+  }
   html, body {
     /* overflow: hidden; */
     width: 100%;
