@@ -7,16 +7,10 @@ import {
 } from './js/movie-fetch';
 
 import { initLightbox } from'./js/modal-film.js';
+import itemsTemplate from './templates/list-of-card.hbs'
 
-import itemsTemplate from './templates/list-of-card.hbs';
-
-var debounce = require('lodash.debounce');
-
-const DEBOUNCE_DELAY = 300;
-
-const gallery = document.querySelector('.gallery');
-
-const searchInput = document.querySelector("input");
+const form = document.querySelector("form");
+const gallery = document.querySelector('#home-gallery');
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -25,17 +19,15 @@ async function generateMarkup() {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
-  gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  gallery.innerHTML = itemsTemplate(movieCategories);
+  lightbox.refresh();
 }
 
+async function onSearchSubmit(event) {
+  event.preventDefault();
 
-async function onSearchInput(event) {
-  if (event.target.value === "") {
-    gallery.innerHTML = "";
-    generateMarkup();
-    return;
-  }
-  const moviesData = await getDataMovies(event.target.value);
+  const moviesData = await getDataMovies(event.currentTarget.elements.searchQuery.value);
+
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
@@ -77,4 +69,5 @@ async function generateMoviesWithGenres(data){
 
 generateMarkup();
 
-searchInput.addEventListener("input", debounce(onSearchInput, DEBOUNCE_DELAY));
+form.addEventListener("submit", onSearchSubmit);
+
