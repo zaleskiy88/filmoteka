@@ -45,7 +45,7 @@ async function onSearchSubmit(event) {
   
 }
 
-async function generateMoviesWithGenres(data){
+async function generateMoviesWithGenres(data) {
   const genres = await getGenresIds();
 
   // Creating an object that stores data for handlebars template
@@ -78,7 +78,11 @@ async function generateMoviesWithGenres(data){
   });
 }
 
-generateMarkup();
+generateMarkup().then(() => {
+  document.querySelectorAll('.gallery a').forEach(el => {
+    el.addEventListener('click', initLightbox);
+  });
+});
 
 form.addEventListener("submit", onSearchSubmit);
 
