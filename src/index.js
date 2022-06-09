@@ -20,7 +20,6 @@ async function generateMarkup() {
 
   // Rendering markup
   gallery.innerHTML = itemsTemplate(movieCategories);
-  lightbox.refresh();
 }
 
 async function onSearchSubmit(event) {
