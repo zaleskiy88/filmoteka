@@ -1,8 +1,7 @@
 {{#each this}}
-<template>
 <div class="backdrop-film ">
 <div class="film-card">
-    <div class="film-img">
+    <div class="film-img" href="https://image.tmdb.org/t/p/original{{poster_path}}'">
         <img src='https://image.tmdb.org/t/p/original{{poster_path}}' alt={{name}} />
     </div>
 
@@ -27,7 +26,7 @@
             <b class="film-about">{{overviev}}</b>
         </p>
 
-        <div class="btn-add" id="js-add-to-list">
+        <div class="btn-add" id="js-add-to-list" data-id="{{id}}">
             <button class="button" id="add-watched" type="button">add to Watched</button>
             <button class="button" id="add-queue" type="button">add to queue</button>
         </div>
@@ -35,5 +34,4 @@
 
 </div>
 </div>
-</template>
 {{/each}}

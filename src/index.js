@@ -6,9 +6,8 @@ import {
   getGenresIds,
 } from './js/movie-fetch';
 
+import { initLightbox } from'./js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs'
-
-// import './js/modal-film.js';
 
 const form = document.querySelector("form");
 const gallery = document.querySelector('#home-gallery');
