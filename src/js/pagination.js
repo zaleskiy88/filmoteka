@@ -21,7 +21,7 @@ function generateButtons(page, lastPage) {
     return buttons;
 }
 
-refs.paginationList.innerHTML =  generateButtons(1, 5).join("");
+// refs.paginationList.innerHTML =  generateButtons(1, 5).join("");
 
 refs.paginationList.addEventListener('click', onPaginationBtnClick);
 
@@ -61,3 +61,42 @@ function onNextBtnClick() {
     refs.paginationList.innerHTML =  generateButtons(params.page, params.page + 3).join("");
     params.page += 1;
 }
+
+const maxPage = 20;
+
+const pagesArray = Array.apply(null, {
+  length: maxPage ?? 0,
+})
+  .map(Number.call, Number)
+  .map((item) => item + 1);
+
+  console.log(pagesArray);
+
+  function renderSpan(value) {
+    return `<span>${value}</span>`; 
+  }
+
+  const currentPage = 10;
+
+  const result = pagesArray.length <= 3
+          ? pagesArray.map((item) => renderSpan(item))
+          : pagesArray.map((item) => {
+              if (
+                item === maxPage ||
+                item === 1 ||
+                item === currentPage - 1 ||
+                item === currentPage + 1 ||
+                item === currentPage + 2 ||
+                item === currentPage - 2 ||
+                item === currentPage
+              )
+              {
+                return renderSpan(item);
+              }
+              if(item === currentPage - 2 || item === currentPage + 2) {
+                return "<span>...</span>";
+              }
+                 
+              });
+console.log("result: ", result);
+refs.paginationList.innerHTML = result;
