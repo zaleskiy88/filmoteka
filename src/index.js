@@ -15,8 +15,8 @@ const preloaderContainer = document.querySelector('.preloader');
 preloaderContainer.innerHTML = preloader(); 
 
 const form = document.querySelector("form");
+const footer = document.querySelector(".footer");
 const gallery = document.querySelector('#home-gallery');
-
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -28,6 +28,7 @@ async function generateMarkup() {
   setTimeout(() => {
     preloaderContainer.innerHTML = '';
     gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+    footer.style.position = "static";
   }, 2000)
 
 }
