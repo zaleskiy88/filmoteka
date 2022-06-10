@@ -5,7 +5,7 @@ const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
 const GET_ONE_MOVIE_URL = `https://api.themoviedb.org/3/movie`;
 const MOVIE_GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
-const MOVIE_URL = 'https://api.themoviedb.org/3/movie/'
+const MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
 
 const parameters = {
   page: 1,
@@ -95,7 +95,6 @@ export async function getMoreTrendingMoviesData() {
 //который находится в < a class='movie-card' data-movie-id={ { id } }> как дата атрибут.
 //пример:getOneMovieById(элемент.dataset.movieId)
 export async function getOneMovieById(movieId) {
-  movieId = Number(a.dataset.movieId);
   // запрос на один фильм по movie_id
   const response = await axios.get(`${GET_ONE_MOVIE_URL}/${movieId}`, {
     params: {
