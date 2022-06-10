@@ -14,7 +14,7 @@ const parameters = {
   movieId: null,
 };
 
-// Получение массива жанров
+// Get genres array
 export async function getGenresIds() {
   const response = await axios.get(`${MOVIE_GENRES_URL}?api_key=${API_KEY}`);
 
