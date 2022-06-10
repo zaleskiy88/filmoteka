@@ -15,8 +15,8 @@ const preloaderContainer = document.querySelector('.preloader');
 preloaderContainer.innerHTML = preloader(); 
 
 const form = document.querySelector("form");
-const gallery = document.querySelector('#home-gallery');
 const footer = document.querySelector(".footer");
+const gallery = document.querySelector('#home-gallery');
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
