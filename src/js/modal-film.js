@@ -4,7 +4,6 @@ import SimpleLightbox from "simple-lightbox";
 //import "simplelightbox/dist/simpleLightbox.min.css";
 import { getDataMovies } from './movie-fetch';
 
-
 export const initLightbox = async (e) => {
     e.preventDefault();
     const { id: movieId } = e.currentTarget.dataset;

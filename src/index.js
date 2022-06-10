@@ -4,6 +4,7 @@ import {
   getTrendingMoviesData,
   getMoreTrendingMoviesData,
   getGenresIds,
+  getOneMovieById,
 } from './js/movie-fetch';
 
 import { initLightbox } from './js/modal-film.js';
@@ -13,9 +14,9 @@ import preloader from './templates/preloader.hbs'
 const preloaderContainer = document.querySelector('.preloader');
 preloaderContainer.innerHTML = preloader(); 
 
-
 const form = document.querySelector("form");
 const gallery = document.querySelector('#home-gallery');
+
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -34,7 +35,9 @@ async function generateMarkup() {
 async function onSearchSubmit(event) {
   event.preventDefault();
 
-  const moviesData = await getDataMovies(event.currentTarget.elements.searchQuery.value);
+  const moviesData = await getDataMovies(
+    event.currentTarget.elements.searchQuery.value
+  );
 
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -84,5 +87,4 @@ generateMarkup().then(() => {
   });
 });
 
-form.addEventListener("submit", onSearchSubmit);
-
+form.addEventListener('submit', onSearchSubmit);
