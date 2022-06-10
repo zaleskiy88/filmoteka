@@ -94,7 +94,6 @@ export async function getMoreTrendingMoviesData() {
 //To make a request of one movie by movie-id, it is neccesary to pass movie-id as an function argument
 //You can find movie-id as an HTML data atribute here: < a class='movie-card' data-movie-id={ { id } }>
 export async function getOneMovieById(movieId) {
-  //movieId = Number(a.dataset.movieId);
   // request for one movie by movie_id
   const response = await axios.get(`${GET_ONE_MOVIE_URL}/${movieId}`, {
     params: {
