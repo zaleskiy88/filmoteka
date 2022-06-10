@@ -1,5 +1,4 @@
 import {getMoreTrendingMoviesData, getGenresIds,} from "./movie-fetch";
-console.log(getGenresIds);
 import itemsTemplate from '../templates/list-of-card.hbs';
 const refs = {
     paginationList: document.querySelector(".pagination-list"),
@@ -36,7 +35,7 @@ async function onPaginationBtnClick(event) {
 }
 
 function renderingPaginationMarkup(currentPage) {
-    const result = pagesArray.length <= 3
+    let result = pagesArray.length <= 3
     ? pagesArray.map((item) => renderSpan(item))
     : pagesArray.map((item) => {
         if (
@@ -56,16 +55,23 @@ function renderingPaginationMarkup(currentPage) {
         }
         return "";
            
-        });
+        }).join("");
+        if (currentPage > 1) {
+          result = "<span><=</span>" + result;
+        }
+        if (currentPage >= 1 && currentPage !== maxPage) {
+          result = result + "<span>=></span>";
+        }
 
-    refs.paginationList.innerHTML = result.join("");
+
+    refs.paginationList.innerHTML = result;
+    console.log(result);
 }
 
 renderingPaginationMarkup(1);
 
 async function generateMoviesWithGenres(data) {
   const genres = await getGenresIds();
-  console.log(data);
 
   // Creating an object that stores data for handlebars template
   return data.map(movie => {
