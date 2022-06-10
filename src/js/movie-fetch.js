@@ -5,7 +5,7 @@ const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
 const GET_ONE_MOVIE_URL = `https://api.themoviedb.org/3/movie`;
 const MOVIE_GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
-const MOVIE_URL = 'https://api.themoviedb.org/3/movie/'
+const MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
 
 const parameters = {
   page: 1,
@@ -23,18 +23,16 @@ export async function getGenresIds() {
 
 //Get one movie by id
 export async function getDataMovie(id) {
-  // parameters.searchQueryStr = searchQuery;
-
   const response = await axios.get(`${MOVIE_URL}${id}`, {
     params: {
       api_key: API_KEY,
     },
   });
 
-  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
+  return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
-//первый запрос для поиска фильма по-имени
+//First request for searching movie by name
 export async function getDataMovies(searchQuery) {
   parameters.searchQueryStr = searchQuery;
 
@@ -46,7 +44,7 @@ export async function getDataMovies(searchQuery) {
     },
   });
 
-  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
+  return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
 export async function getMoreDataMovies(searchQuery) {
@@ -63,10 +61,10 @@ export async function getMoreDataMovies(searchQuery) {
     },
   });
 
-  return response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
+  return response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
-//первый запрос популярных фильмов
+//First request for get trending movies
 export async function getTrendingMoviesData() {
   const response = await axios.get(`${TRENDING_URL}`, {
     params: {
@@ -75,7 +73,7 @@ export async function getTrendingMoviesData() {
     },
   });
 
-  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
+  return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
 export async function getMoreTrendingMoviesData() {
@@ -88,23 +86,21 @@ export async function getMoreTrendingMoviesData() {
     },
   });
 
-  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
+  return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
-//========================================
-//чтоб вызвать запрос функции нужно передать аргументом айдишник фильма,
-//который находится в < a class='movie-card' data-movie-id={ { id } }> как дата атрибут.
-//пример:getOneMovieById(элемент.dataset.movieId)
+
+//To make a request of one movie by movie-id, it is neccesary to pass movie-id as an function argument
+//You can find movie-id as an HTML data atribute here: < a class='movie-card' data-movie-id={ { id } }>
 export async function getOneMovieById(movieId) {
-  movieId = Number(a.dataset.movieId);
-  // запрос на один фильм по movie_id
+  // request for one movie by movie_id
   const response = await axios.get(`${GET_ONE_MOVIE_URL}/${movieId}`, {
     params: {
       api_key: API_KEY,
     },
   });
-  // массив наших любимых жанров:)
+  // array of our beloved genres:)
   const genresArr = [];
-  // обьект со всеми нужными свойствами для подальшей отрисовки
+  // an object with all the necessary properties for further rendering
   const movieData = {
     poster_path: response.data.poster_path,
     title: response.data.title,
@@ -115,7 +111,7 @@ export async function getOneMovieById(movieId) {
     genres: genresArr,
     overview: response.data.overview,
   };
-  // генерация массива наших любимых жанров:)
+  // generating an array of our beloved genres:)
   response.data.genres.map(genre => {
     genresArr.push(genre.name);
   });
