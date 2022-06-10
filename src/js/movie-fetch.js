@@ -23,8 +23,6 @@ export async function getGenresIds() {
 
 //Get one movie by id
 export async function getDataMovie(id) {
-  // parameters.searchQueryStr = searchQuery;
-
   const response = await axios.get(`${MOVIE_URL}${id}`, {
     params: {
       api_key: API_KEY,
