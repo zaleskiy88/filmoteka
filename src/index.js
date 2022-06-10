@@ -92,6 +92,7 @@ generateMarkup().then(() => {
 form.addEventListener('submit', onSearchSubmit);
 
 
+// form.addEventListener("submit", onSearchSubmit);
 
 
 ////////////////////////// Firebase //////////////////////////
