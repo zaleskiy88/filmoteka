@@ -13,8 +13,9 @@ import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs'
 
 const gallery = document.querySelector('.gallery');
+const preloaderContainer = document.querySelector(".preloader");
 
-const searchInput = document.querySelector("input");
+const form = document.querySelector("form");
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();

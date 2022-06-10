@@ -76,8 +76,8 @@ export async function getTrendingMoviesData() {
   return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
-export async function getMoreTrendingMoviesData() {
-  parameters.page += 1;
+export async function getMoreTrendingMoviesData(page) {
+  parameters.page = page;
 
   const response = await axios.get(`${TRENDING_URL}`, {
     params: {
@@ -86,7 +86,7 @@ export async function getMoreTrendingMoviesData() {
     },
   });
 
-  return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
+  return response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
 //To make a request of one movie by movie-id, it is neccesary to pass movie-id as an function argument
