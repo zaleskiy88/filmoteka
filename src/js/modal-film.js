@@ -1,24 +1,24 @@
 import modalFilm from '../templates/modal-film.hbs';
 
-import * as basicLightbox from 'basiclightbox';
+import SimpleLightbox from "simple-lightbox";
+//import "simplelightbox/dist/simpleLightbox.min.css";
+import { getDataMovies } from './movie-fetch';
 
-function onModalFilm(evt) {
-  evt.preventDefault();
+export const initLightbox = async (e) => {
+    e.preventDefault();
+    const { id: movieId } = e.currentTarget.dataset;
+    const movieModal = new SimpleLightbox();
+    const dataMovie = await getDataMovies(movieId);
+    const markup = await modalFilm([dataMovie])
+    movieModal.setContent(markup).show();
 }
 
-const instance = basicLightbox.create(
-  document.querySelector('.movie-card'),
 
-  {
-    onShow: () => {
-      window.addEventListener('keydown', onKeydown);
-    },
-  },
-  {
-    onClose: () => {
-      window.removeEventListener('keydown', onKeydown);
-    },
+function onEscKeyPress(event) {
+  const ESC_KEY_CODE = 'Escape';
+  const isEscKey = event.code === ESC_KEY_CODE;
+
+  if (isEscKey) {
+    onCloseModal();
   }
-);
-
-instance.show();
+}

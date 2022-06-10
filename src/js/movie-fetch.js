@@ -5,6 +5,7 @@ const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
 const GET_ONE_MOVIE_URL = `https://api.themoviedb.org/3/movie`;
 const MOVIE_GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
+const MOVIE_URL = 'https://api.themoviedb.org/3/movie/'
 
 const parameters = {
   page: 1,
@@ -18,6 +19,19 @@ export async function getGenresIds() {
   const response = await axios.get(`${MOVIE_GENRES_URL}?api_key=${API_KEY}`);
 
   return response.data.genres;
+}
+
+//Get one movie by id
+export async function getDataMovie(id) {
+  // parameters.searchQueryStr = searchQuery;
+
+  const response = await axios.get(`${MOVIE_URL}${id}`, {
+    params: {
+      api_key: API_KEY,
+    },
+  });
+
+  return await response.data; // возвращает объект с данными о запросе{ page, results, total_pages, total_results }. Для того чтоб достучатся к фильмам нужно обратится к response.data.results
 }
 
 //первый запрос для поиска фильма по-имени

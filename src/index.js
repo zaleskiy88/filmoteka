@@ -7,18 +7,16 @@ import {
   getOneMovieById,
 } from './js/movie-fetch';
 
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-// import './js/modal-film.js';
-var lightbox = new SimpleLightbox('.gallery a', {
-  /* options */
-});
-
+import { initLightbox } from './js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs';
+import preloader from './templates/preloader.hbs'
 
+const preloaderContainer = document.querySelector('.preloader');
+preloaderContainer.innerHTML = preloader(); 
+
+const form = document.querySelector("form");
 const gallery = document.querySelector('#home-gallery');
 
-const form = document.querySelector('form');
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -27,17 +25,15 @@ async function generateMarkup() {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
-  gallery.innerHTML = itemsTemplate(movieCategories);
-  lightbox.refresh();
+  setTimeout(() => {
+    preloaderContainer.innerHTML = '';
+    gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+  }, 2000)
+
 }
 
 async function onSearchSubmit(event) {
   event.preventDefault();
-  // if (event.target.value === "") {
-  //   gallery.innerHTML = "";
-  //   generateMarkup();
-  //   return;
-  // }
 
   const moviesData = await getDataMovies(
     event.currentTarget.elements.searchQuery.value
@@ -46,7 +42,10 @@ async function onSearchSubmit(event) {
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
+
   gallery.innerHTML = itemsTemplate(movieCategories);
+
+  
 }
 
 async function generateMoviesWithGenres(data) {
@@ -82,6 +81,10 @@ async function generateMoviesWithGenres(data) {
   });
 }
 
-generateMarkup();
+generateMarkup().then(() => {
+  document.querySelectorAll('.gallery a').forEach(el => {
+    el.addEventListener('click', initLightbox);
+  });
+});
 
 form.addEventListener('submit', onSearchSubmit);
