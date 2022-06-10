@@ -84,10 +84,11 @@
   top: 0;
   left: 0;
   margin-top: 45px;
-  margin-left: 71px;
+  margin-left: 32px;
 
-  @media screen and (max-width: $tab) {
-      margin-left: 32px;
+  @media screen and (max-width: $mob) {
+    margin-top: 40px;
+    margin-left: 20px;
   }
 }
 
@@ -122,13 +123,10 @@
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 71px;
+    margin-right: 32px;
     margin-top: 49px;
     z-index: 1;
 
-    @media screen and (max-width: $tab) {
-        margin-right: 32px;
-    }
 
     @media screen and (max-width: $mob) {
         margin-right: 20px;
@@ -148,6 +146,10 @@
 
 .header-library__homePage{
     margin-right: 39px;
+
+    @media screen and (max-width: $tab) {
+      margin-right: 40px;
+  }
 }
 
 .header-library__libraryPage{

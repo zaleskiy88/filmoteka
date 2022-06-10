@@ -28,8 +28,8 @@
   position: absolute;
   top: 0;
     right: 0;
-    margin-right: 71px;
-    margin-top: 90px;
+    margin-right: 32px;
+    margin-top: 80px;
     z-index: 1;
 
     @media screen and (max-width: $tab) {
@@ -38,7 +38,7 @@
 
     @media screen and (max-width: $mob) {
         margin-right: 20px;
-        margin-top: 90px;
+        margin-top: 80px;
     }
 }
 
