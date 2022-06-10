@@ -10,7 +10,8 @@ const body = document.querySelector('body');
 const mainStart = sessionStorage.getItem('main-display')|| "";
 
 if (mainStart !== "") {
-    main.style.display = 'none';
+    main.style.display = 'none'
+    body.style.overflow = 'visible';
 }
 
 superButton.addEventListener('click', () => {
