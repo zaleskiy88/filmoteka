@@ -9,6 +9,7 @@ gallery.addEventListener('click', onModalClick);
 backdrop.addEventListener('click', onBackdropClick);
 
 function onBackdropClick(event) {
+  event.preventDefault();
   if(event.target === event.currentTarget) {
     backdrop.classList.add("visually-hidden");
   }
