@@ -1,3 +1,5 @@
+import Swiper from "swiper";
+
 const refs = {
   openModal: document.querySelector('.modal-footer__open-modal'),
   closeModal: document.querySelector('.modal-footer__close-modal'),
@@ -32,4 +34,5 @@ function onEscKeydown(e) {
   }
 }
 
-new Swiper('.modal-footer__image');
+
+const swiper = new Swiper('.wrapper');
