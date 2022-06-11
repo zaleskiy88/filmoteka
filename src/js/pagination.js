@@ -1,5 +1,6 @@
 import {getMoreTrendingMoviesData, generateMoviesWithGenres} from "./movie-fetch";
 import itemsTemplate from '../templates/list-of-card.hbs';
+import preloader from '../templates/preloader.hbs';
 
 const refs = {
     paginationList: document.querySelector(".pagination-list"),
@@ -33,7 +34,8 @@ async function renderingFilmsMarkup(currentPage) {
 }
 
 async function onPaginationBtnClick(event) {
-  console.log(event.target.nodeName);
+  gallery.innerHTML = preloader();
+  preloaderContainer.style.marginLeft = "auto";
   if(event.target.nodeName !== "SPAN") {
     return;
   }

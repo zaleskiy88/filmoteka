@@ -10,10 +10,11 @@ import {
 
 import { initLightbox } from './js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs';
-import preloader from './templates/preloader.hbs'
+import preloader from './templates/preloader.hbs';
 
 const gallery = document.querySelector('.gallery');
 const preloaderContainer = document.querySelector(".preloader");
+preloaderContainer.innerHTML = preloader();
 
 const form = document.querySelector("form");
 
@@ -82,3 +83,5 @@ async function generateMoviesWithGenres(data) {
 }
 
 generateMarkup();
+
+form.addEventListener('submit', onSearchSubmit)

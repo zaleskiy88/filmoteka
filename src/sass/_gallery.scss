@@ -1,16 +1,18 @@
 @import "./variables";
 
 .gallery {
-  margin-right: -16px;
-  display: flex;
-  flex-wrap: wrap;
   padding-top: 60px;
   @media screen and (min-width: $mob) {
     margin-right: 0;
 }
 @media screen and (min-width: $tab) {
   margin-right: -32px;
+  display: flex;
+  flex-wrap: wrap;
   }
+  @media screen and (min-width: $desc) {
+    margin-right: -32px;
+    }
 }
 
 .movie-card {
