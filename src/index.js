@@ -1,43 +1,91 @@
-const refs = {
-  openModal: document.querySelector('.modal-footer__open-modal'),
-  closeModal: document.querySelector('.modal-footer__close-modal'),
-  backdrop: document.querySelector('.backdrop'),
-};
-
-refs.openModal.addEventListener('click', onOpenModal);
-refs.closeModal.addEventListener('click', onCloseModal);
-refs.backdrop.addEventListener('click', onBackdropClick);
-
- 
-function onOpenModal() {
-  window.addEventListener('keydown', onEscKeydown);
-  document.body.classList.add('show-modal');
-}
-
-function onCloseModal() {
-  window.removeEventListener('keydown', onEscKeydown);
-  document.body.classList.remove('show-modal');
-}
-
-function onBackdropClick(e) {
-  if (e.currenTarget === e.target) {
-    onCloseModal();
-  }
-}
-
-function onEscKeydown(e) {
-  const ESC_KEY_CODE = 'Escape';
-  if (e.code === ESC_KEY_CODE) {
-    onCloseModal();
-  }
-}
-
-new Swiper('.modal-footer__image');
-
 import {
   getDataMovies,
   getMoreDataMovies,
   getTrendingMoviesData,
   getMoreTrendingMoviesData,
+  getGenresIds,
+  getOneMovieById,
 } from './js/movie-fetch';
 
+import { initLightbox } from './js/modal-film.js';
+import itemsTemplate from './templates/list-of-card.hbs';
+import preloader from './templates/preloader.hbs'
+
+const preloaderContainer = document.querySelector('.preloader');
+preloaderContainer.innerHTML = preloader(); 
+
+const form = document.querySelector("form");
+const footer = document.querySelector(".footer");
+const gallery = document.querySelector('#home-gallery');
+
+async function generateMarkup() {
+  const moviesData = await getTrendingMoviesData();
+
+  // Creating an object that stores data for handlebars template
+  const movieCategories = await generateMoviesWithGenres(moviesData);
+
+  // Rendering markup
+  setTimeout(() => {
+    preloaderContainer.innerHTML = '';
+    gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+    footer.style.position = "static";
+  }, 2000)
+
+}
+
+async function onSearchSubmit(event) {
+  event.preventDefault();
+
+  const moviesData = await getDataMovies(
+    event.currentTarget.elements.searchQuery.value
+  );
+
+  const movieCategories = await generateMoviesWithGenres(moviesData);
+
+  // Rendering markup
+
+  gallery.innerHTML = itemsTemplate(movieCategories);
+
+  
+}
+
+async function generateMoviesWithGenres(data) {
+  const genres = await getGenresIds();
+
+  // Creating an object that stores data for handlebars template
+  return data.results.map(movie => {
+    const catArr = [];
+    const dataRelease = movie.release_date?.slice(0, 4) || 2022;
+    const nameOfFilm = movie.title.toUpperCase();
+    const movieInfo = {
+      name: nameOfFilm,
+      release: dataRelease,
+      id: movie.id,
+      genres: catArr,
+      poster_path: movie.poster_path,
+      backdrop_path: movie.backdrop_path,
+    };
+
+    // Comparing ganres taken from the general ganre array with IDs and adding ganres' values in the object for handlebars template
+    const genresFilm = function () {
+      movie.genre_ids.map(id =>
+        genres.find(el => {
+          if (el.id === id) {
+            return catArr.push(el.name);
+          }
+        })
+      );
+    };
+
+    genresFilm();
+    return movieInfo;
+  });
+}
+
+generateMarkup().then(() => {
+  document.querySelectorAll('.gallery a').forEach(el => {
+    el.addEventListener('click', initLightbox);
+  });
+});
+
+form.addEventListener('submit', onSearchSubmit);
