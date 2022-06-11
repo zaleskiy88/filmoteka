@@ -1,3 +1,5 @@
+import Notiflix from 'notiflix';
+
 import {
   getDataMovies,
   getMoreDataMovies,
@@ -9,13 +11,13 @@ import {
 
 import { initLightbox } from './js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs';
-import preloader from './templates/preloader.hbs'
+import preloader from './templates/preloader.hbs';
 
 const preloaderContainer = document.querySelector('.preloader');
-preloaderContainer.innerHTML = preloader(); 
+preloaderContainer.innerHTML = preloader();
 
-const form = document.querySelector("form");
-const footer = document.querySelector(".footer");
+const form = document.querySelector('form');
+const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
 
 async function generateMarkup() {
@@ -28,14 +30,16 @@ async function generateMarkup() {
   setTimeout(() => {
     preloaderContainer.innerHTML = '';
     gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
-    footer.style.position = "static";
-  }, 2000)
-
+    footer.style.position = 'static';
+  }, 2000);
 }
 
 async function onSearchSubmit(event) {
   event.preventDefault();
-
+  if (event.currentTarget.elements.searchQuery.value === '') {
+    Notiflix.Notify.info('Search query cannot be empty.');
+    return;
+  }
   const moviesData = await getDataMovies(
     event.currentTarget.elements.searchQuery.value
   );
@@ -45,8 +49,6 @@ async function onSearchSubmit(event) {
   // Rendering markup
 
   gallery.innerHTML = itemsTemplate(movieCategories);
-
-  
 }
 
 async function generateMoviesWithGenres(data) {
