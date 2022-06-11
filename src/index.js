@@ -1,4 +1,5 @@
 import Notiflix from 'notiflix';
+import './js/pagination';
 
 import {
   getDataMovies,
@@ -14,11 +15,11 @@ import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs';
 
 const preloaderContainer = document.querySelector('.preloader');
-preloaderContainer.innerHTML = preloader();
-
 const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
+
+preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -84,10 +85,6 @@ async function generateMoviesWithGenres(data) {
   });
 }
 
-generateMarkup().then(() => {
-  document.querySelectorAll('.gallery a').forEach(el => {
-    el.addEventListener('click', initLightbox);
-  });
-});
+generateMarkup();
 
 form.addEventListener('submit', onSearchSubmit);
