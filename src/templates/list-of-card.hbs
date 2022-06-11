@@ -1,9 +1,10 @@
 {{#each this}}
-  <a class='movie-card' href='#' data-id='{{id}}'>
+  <a class='movie-card' href='#'>
     <img
-      src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+      src='https://image.tmdb.org/t/p/w500{{poster_path}}' | 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'
       alt={{name}}
       width='500'
+      data-id='{{id}}'
     />
     <div class='movie-data'>
       <h5 class='movie-name'>{{name}}</h5>

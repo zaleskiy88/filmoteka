@@ -1,0 +1,20 @@
+.pagination {
+    display: flex;
+}
+
+.pagination span {
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+} 
+
+.pagination-list>span:hover {
+    color: var(--bg-color);
+    background-color: var(--brand-color);
+}
+
+.pagination span.active {
+    background-color: tomato;
+    color: var(--text-color-header);
+}

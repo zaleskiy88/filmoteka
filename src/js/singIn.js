@@ -8,9 +8,29 @@ const btnModalClose = document.querySelector('.modal-close');
 const mobalCheckBox = document.querySelector('#checkbox-log');
 const emailLogin = document.querySelector('#email');
 const passwordLogin = document.querySelector('#password-1'); 
-const formLog = document.querySelector('.login-modal_form'); 
+const formLog = document.querySelector('.login-modal_form');
+const body = document.querySelector('body');
 
-singIn.addEventListener('click', onCloseModalRegistrationClick);
+
+function onEventListener(){
+
+    singIn.addEventListener('click', onCloseModalRegistrationClick);
+    singUp.addEventListener('click', onOpenModalRegistrationClick);
+    btnModalClose.addEventListener('click', onCloseModalLoginClick);
+    formLog.addEventListener('submit', saveLocalStorage);
+    window.addEventListener('keydown', closeModalKeydown);
+}
+
+function ofEventListener(){
+    singIn.removeEventListener('click', onOpenModalLoginClick);
+    singUp.removeEventListener('click', onOpenModalRegistrationClick);
+    btnModalClose.removeEventListener('click', onCloseModalLoginClick);
+    formLog.removeEventListener('submit', saveLocalStorage);
+    window.removeEventListener('keydown', closeModalKeydown);
+}
+
+
+//singIn.addEventListener('click', onCloseModalRegistrationClick);
 
 function onCloseModalRegistrationClick(){
     if(singIn.classList.contains('login-modal__active')){
@@ -25,7 +45,7 @@ function onCloseModalRegistrationClick(){
     }
 };
 
-singUp.addEventListener('click', onOpenModalRegistrationClick);
+//singUp.addEventListener('click', onOpenModalRegistrationClick);
 
 function onOpenModalRegistrationClick(){
     if(singUp.classList.contains('login-modal__active')){
@@ -40,27 +60,40 @@ function onOpenModalRegistrationClick(){
     }
 };
 
-btnSignin.addEventListener('click', () => {
-    modalnput.style.display = 'block';
-});
+btnSignin.addEventListener('click', onOpenModalLoginClick);
 
-btnModalClose.addEventListener('click', () => {
+function onOpenModalLoginClick(){
+    modalnput.style.display = 'block';
+    body.style.overflow = 'hidden';
+    onEventListener();
+};
+
+//btnModalClose.addEventListener('click', onCloseModalLoginClick);
+
+function onCloseModalLoginClick(){
     modalnput.style.display = 'none';
+    body.style.overflow = 'visible';
     onCloseModalRegistrationClick();
-});
+    ofEventListener()
+};
 
 
 
 ////////////////////////close modal in ESC//////////////////////////////
-window.addEventListener("keydown", closeModalKeydown);
+//window.addEventListener("keydown", closeModalKeydown);
 
 function closeModalKeydown(event){
     if(event.code !== "Escape"){
-    return
+        return
     }
-    modalnput.style.display = 'none';
-    onCloseModalRegistrationClick();
-  }
+
+    else{
+        modalnput.style.display = 'none';
+        body.style.overflow = 'visible';
+        onCloseModalRegistrationClick();
+        ofEventListener()
+    }
+}
 
   ////////////////////////remember login and password//////////////////////////////
   
@@ -91,7 +124,9 @@ function rememberAndDeletLoginAndPassword() {
     }
     }
 
-formLog.addEventListener('submit', (event) => {
-    event.preventDefault();
+//formLog.addEventListener('submit', saveLocalStorage);
+
+function  saveLocalStorage(e){
+    e.preventDefault();
     rememberAndDeletLoginAndPassword();
-});
+};
