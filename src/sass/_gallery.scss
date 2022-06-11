@@ -16,7 +16,7 @@
 }
 
 .movie-card {
-
+  cursor: pointer;
   margin-bottom: 32px;
   @media screen and (min-width: $mob) {
     margin-right: 0;
