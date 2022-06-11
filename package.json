@@ -25,7 +25,8 @@
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0",
     "simple-lightbox": "^2.1.0",
-    "simplelightbox": "^2.10.3"
+    "simplelightbox": "^2.10.3",
+    "swiper": "^8.2.3"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
