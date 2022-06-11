@@ -255,6 +255,10 @@
   display: inline-block;
   margin: 15px 30px;
 	transition: all 0.4s;
+
+  @media screen and (max-width: $mob) {
+   margin:15px 0px; ;
+  }
 }
 
 .registration-btn:hover, registration-btn:focus {
