@@ -1,75 +1,48 @@
 @import './variables.scss';
 
-.modal-footer {
-    display: flex;
-
-}
-.modal-footer-social {
-    display: none;
-}
-.modal-footer__open-btn {
-    border: none;
-    background-color: var(--bg-color);
-    font-size: 28px;
-}
-
-.modal-footer-bg {
+.backdrop {
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(
-        to right,
-        rgba(255, 153, 0, 0.56),
-        rgba(222, 118, 38, 0.56)
-    );
-}
+    background-repeat: repeat;
+    background-size: contain;
+    background-position: start;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 
-.modal-footer-social {
-    @media screen and (min-width:$mob) {
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: 300px;
-    width: 100%;
-    z-index: 5;
-    background-color: var(--brand-color);
-    transition: .3s;
-    transform: translateY(-50px);
-    }
-    
-
-    @media screen and (min-width:$tab) {
-        bottom: 0;
+    @media screen and (min-width: $tab) {
+        width: 768px;
     }
 }
 
-.modal-footer-social__info {
+.modal-footer__name {
     font-size: 16px;
     font-family: 'Roboto';
     line-height: 1.5;
 }
 
-.modal-footer-social__link {
+.modal-footer__link {
     padding: 10px;
     text-align: center;
 }
 
-// .modal-footer-social__link:first-child {
-// padding-left: 15px;
-// }
-
-
-
-img {
-    height: 120px;
-    width: 100px;
-    flex-wrap: wrap;
+a {
+    color: #fff;
+    direction: none;
 }
 
+img {
+    height: 400px;
+    width: 100vw;
 
+    @media screen and (min-width: $tab) {
+        display: flex;
+        width: 300px;
+        height: 350px;
+    }
+}
 
-.modal-footer-social__item {
+.modal-footer__image {
     flex-wrap: wrap;
     display: flex;
     align-items: center;
@@ -78,25 +51,26 @@ img {
     margin: 0 auto;
     width: 100%;
     text-align: center;
-    padding: 0;
+    padding: 30px auto;
 }
-.modal-footer-social__item li {
+.modal-footer__image li {
     position: relative;
     display: inline-block;
     margin: 0;
     overflow: hidden;
+    min-width: 0;
 }
 /* Заголовок, текст и ссылка */
 // .modal-footer-social__item li h3{
 //     color: #fff;
 //     margin: 5px;
 // }
-.modal-footer-social__item li p{
+.modal-footer__image li p{
     color: #fff;
     margin: 5px;
 }
 
-.modal-footer-social__item li > div {
+.modal-footer__image li > div {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -104,22 +78,39 @@ img {
     justify-content: center;
     flex-direction: column;
 }
-.modal-footer-social__item li:hover > div {
+.modal-footer__image li:hover > div {
+    // background-image: url(../images/modal-footer/pngwing1.com.png);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: center;
     position: absolute;
     overflow: hidden;
     top: 0;
     left: 0;
 }
-.modal-footer-social__item li div {
+.modal-footer__image li div {
     opacity: 0;
-    background-color: rgba(0, 0, 0, 0.35); /* Фон блока при наведении */
+    background-color: rgba(134, 132, 132, 0.35);
 }
-.modal-footer-social__item li img {
+.modal-footer__image li img {
     transition: all 0.3s linear;
 }
-.modal-footer-social__item li:hover img {
+.modal-footer__image li:hover img {
     transform: scale(1.5);
+    
 }
-.modal-footer-social__item li:hover div {
+.modal-footer__image li:hover div {
     opacity: 1;
 }
+
+body.show-modal .backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: initial;
+}
+
+body.show-modal .modal-footer {
+    transform: scale(1);
+}
+
+
