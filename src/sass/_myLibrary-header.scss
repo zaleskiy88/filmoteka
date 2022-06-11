@@ -217,3 +217,8 @@
     background-color:  var(--brand-color);
     border:none ;
   }
+
+  .select-lib{ 
+    opacity: 0;
+    pointer-events: none;
+  }
