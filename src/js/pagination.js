@@ -36,8 +36,8 @@ async function renderingFilmsMarkup(currentPage) {
 
 async function onPaginationBtnClick(event) {
   footer.style.position = "fixed";
-  gallery.innerHTML = preloader();
-  preloaderContainer.style.marginLeft = "auto";
+  preloaderContainer.innerHTML = preloader();
+  gallery.innerHTML = "";
   if(event.target.nodeName !== "SPAN") {
     return;
   }
