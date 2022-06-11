@@ -32,7 +32,7 @@ function onEscKeydown(e) {
   }
 }
 
-new Swiper ('.modal-footer__image')
+new Swiper('.modal-footer__image');
 
 import {
   getDataMovies,
