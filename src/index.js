@@ -15,7 +15,7 @@ import preloader from './templates/preloader.hbs';
 const gallery = document.querySelector('.gallery');
 const preloaderContainer = document.querySelector(".preloader");
 
-preloaderContainer.innerHTML = preloader();
+// preloaderContainer.innerHTML = preloader();
 
 const form = document.querySelector("form");
 
