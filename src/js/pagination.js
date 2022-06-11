@@ -1,12 +1,11 @@
 import {getMoreTrendingMoviesData, generateMoviesWithGenres} from "./movie-fetch";
 import itemsTemplate from '../templates/list-of-card.hbs';
+
 const refs = {
     paginationList: document.querySelector(".pagination-list"),
 }
-
 const gallery = document.querySelector('.gallery');
 const preloaderContainer = document.querySelector(".preloader");
-
 const maxPage = 20;
 let currentPage = 1;
 
@@ -20,10 +19,24 @@ const pagesArray = Array.apply(null, {
     return `<span data-value='${value}'>${value}</span>`; 
   }
 
-refs.paginationList.addEventListener('click', onPaginationBtnClick);
+async function renderingFilmsMarkup(currentPage) {
+  renderingPaginationMarkup(currentPage);
+      const data = await getMoreTrendingMoviesData(currentPage);
+      const movieCategories = await generateMoviesWithGenres(data.results);
+
+  // Rendering markup
+        setTimeout(() => {
+          preloaderContainer.innerHTML = '';
+          gallery.innerHTML= itemsTemplate(movieCategories);
+          footer.style.position = "static";
+        }, 2000);
+}
 
 async function onPaginationBtnClick(event) {
-  event.target.classList.add("pagination_active")
+  console.log(event.target.nodeName);
+  if(event.target.nodeName !== "SPAN") {
+    return;
+  }
     if (event.target.dataset.span === "prev") {
       currentPage -= 1;
       renderingFilmsMarkup(currentPage);
@@ -39,11 +52,13 @@ async function onPaginationBtnClick(event) {
       {
         currentPage += 1;
         renderingFilmsMarkup(currentPage);
+        console.log("max dots");
         return;
       }
       else {
         currentPage -= 1;
         renderingFilmsMarkup(currentPage);
+        console.log("min dots");
       return;
       }
     }
@@ -80,19 +95,14 @@ function renderingPaginationMarkup(currentPage) {
           result = result + "<span data-span='next'>=></span>";
         }
     refs.paginationList.innerHTML = result;
+    console.log(refs.paginationList.querySelectorAll("span"));
+    refs.paginationList.querySelectorAll("span").forEach(item => {
+      if (item.innerHTML == currentPage) {
+        item.classList.toggle("active");
+      }
+    });
 }
 
 renderingPaginationMarkup(1);
 
-async function renderingFilmsMarkup(currentPage) {
-  renderingPaginationMarkup(currentPage);
-      const data = await getMoreTrendingMoviesData(currentPage);
-      const movieCategories = await generateMoviesWithGenres(data.results);
-
-  // Rendering markup
-        setTimeout(() => {
-          preloaderContainer.innerHTML = '';
-          gallery.innerHTML= itemsTemplate(movieCategories);
-          footer.style.position = "static";
-        }, 2000);
-}
+refs.paginationList.addEventListener('click', onPaginationBtnClick);

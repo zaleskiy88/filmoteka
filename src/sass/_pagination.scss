@@ -7,8 +7,14 @@
     height: 20px;
     margin-right: 20px;
     cursor: pointer;
+} 
+
+.pagination-list>span:hover {
+    color: var(--bg-color);
+    background-color: var(--brand-color);
 }
 
-.pagination_active {
+.pagination span.active {
     background-color: tomato;
+    color: var(--text-color-header);
 }
