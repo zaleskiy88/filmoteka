@@ -4,7 +4,6 @@ const select = document.querySelector('#lang');
 const html = document.querySelector('html');
 const AllLng = ['en', 'ru', 'uk'];
 
-
 const lengStart = localStorage.getItem('lang') || '';
 
 if(lengStart !== ''){
