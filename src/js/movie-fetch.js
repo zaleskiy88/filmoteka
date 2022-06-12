@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+import Notiflix from 'notiflix';
 
 const API_KEY = '842344de8347536aefc6f17e8e76d4bd';
 const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
@@ -44,6 +45,16 @@ export async function getDataMovies(searchQuery) {
     },
   });
 
+  if (response.data.total_results === 0) {
+    Notiflix.Notify.failure(
+      'Sorry, there are no films matching your search query. Please try again.'
+    );
+    return;
+  } else {
+    Notiflix.Notify.success(
+      `Hooray! We found ${response.data.total_results} films.`
+    );
+  }
   return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 

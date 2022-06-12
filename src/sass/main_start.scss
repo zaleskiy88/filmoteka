@@ -17,7 +17,7 @@
   @mixin scale($val) {
     transform: scale($val);
   }
-  body{
+  .body-start-img{
     overflow: hidden;
   }
   html, body {
