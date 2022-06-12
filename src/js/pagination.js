@@ -1,17 +1,17 @@
 import {getMoreTrendingMoviesData, generateMoviesWithGenres, getMoreDataMovies} from "./movie-fetch";
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
-import { searchQuery } from "../index";
+// import searchQuery from "../index";
 
 const refs = {
   paginationList: document.querySelector('.pagination-list'),
+  input: document.querySelector(".header__input")
 };
 const gallery = document.querySelector('.gallery');
 const preloaderContainer = document.querySelector('.preloader');
 const footer = document.querySelector('.footer');
 const maxPage = 20;
 let currentPage = 1;
-console.log(searchQuery);
 
 const pagesArray = Array.apply(null, {
   length: maxPage ?? 0,
@@ -26,8 +26,8 @@ function renderSpan(value) {
 async function renderingFilmsMarkup(currentPage) {
       renderingPaginationMarkup(currentPage);
       let data = null;
-      if (searchQuery) {
-        data = await getMoreDataMovies(searchQuery, currentPage)
+      if (refs.input?.value) {
+        data = await getMoreDataMovies(refs.input?.value, currentPage)
       }
       else {
         data = await getMoreTrendingMoviesData(currentPage);
