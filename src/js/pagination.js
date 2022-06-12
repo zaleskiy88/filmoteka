@@ -1,6 +1,7 @@
 import {getMoreTrendingMoviesData, generateMoviesWithGenres, getMoreDataMovies} from "./movie-fetch";
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
+import { searchQuery } from "../index";
 
 const refs = {
     paginationList: document.querySelector(".pagination-list"),
@@ -8,10 +9,8 @@ const refs = {
 const gallery = document.querySelector('.gallery');
 const preloaderContainer = document.querySelector(".preloader");
 const footer = document.querySelector(".footer");
-const input = document.querySelector('input');
 const maxPage = 20;
 let currentPage = 1;
-let searchQuery = input.searchQuery;
 
 const pagesArray = Array.apply(null, {
   length: maxPage ?? 0,
@@ -26,13 +25,12 @@ const pagesArray = Array.apply(null, {
 async function renderingFilmsMarkup(currentPage) {
       renderingPaginationMarkup(currentPage);
       let data = null;
-      if (searchQuery !== "") {
+      if (searchQuery) {
         data = await getMoreDataMovies(searchQuery, currentPage)
       }
       else {
         data = await getMoreTrendingMoviesData(currentPage);
       }
-      console.log(data);
       const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
@@ -47,6 +45,7 @@ async function onPaginationBtnClick(event) {
   footer.style.position = "fixed";
   preloaderContainer.innerHTML = preloader();
   gallery.innerHTML = "";
+  console.log(currentPage);
   if(event.target.nodeName !== "SPAN") {
     return;
   }
@@ -65,13 +64,11 @@ async function onPaginationBtnClick(event) {
       {
         currentPage += 1;
         renderingFilmsMarkup(currentPage);
-        console.log("max dots");
         return;
       }
       else {
         currentPage -= 1;
         renderingFilmsMarkup(currentPage);
-        console.log("min dots");
       return;
       }
     }
@@ -107,12 +104,15 @@ function renderingPaginationMarkup(currentPage) {
         if (currentPage >= 1 && currentPage !== maxPage) {
           result = result + "<span data-span='next'>=></span>";
         }
-    refs.paginationList.innerHTML = result;
+        if (refs.paginationList) {
+          refs.paginationList.innerHTML = result;
     refs.paginationList.querySelectorAll("span").forEach(item => {
       if (item.innerHTML == currentPage) {
         item.classList.toggle("active");
       }
     });
+        }
+    
 }
 
 renderingPaginationMarkup(1);
