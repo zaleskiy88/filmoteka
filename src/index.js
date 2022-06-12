@@ -19,7 +19,7 @@ const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
 
-preloaderContainer.innerHTML = preloader();
+// preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
