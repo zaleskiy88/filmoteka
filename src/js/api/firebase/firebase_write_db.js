@@ -30,7 +30,7 @@ const removeFromQueue = async (movieId) => {
             queue: arrayRemove(parseInt(movieId))
         });
     } catch (error) {
-        throw Error(`Error removing from ${movieList}:`, e);
+        throw Error(`Error removing from queue:`, e);
     }
 }
 const addToQueue = async (movieId) => {

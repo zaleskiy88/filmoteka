@@ -34,42 +34,33 @@ const buttonStates = {
     }
 }
 
-const useState = (defaultValue) => {
-    let value = defaultValue;
-    const getValue = () => value;
-    const setValue = newValue => {
-        value = newValue
-    }
-    return [getValue, setValue];
-}
-
 const ModalMovie = (function () {
-    const [addWatchedBtnState, setAddWatchedBtnState] = useState(buttonStates.addWatchedBtn.default);
-    const [addQueueBtnState, setAddQueueBtnState] = useState(buttonStates.addQueueBtn.default);
-    const [movieId, setMovieId] = useState(null);
+    let addWatchedBtnState = buttonStates.addWatchedBtn.default;
+    let addQueueBtnState = buttonStates.addQueueBtn.default;
+    let movieId = null;
     const checkIfMovieIsInList = (movieId, list) => list?.includes(parseInt(movieId));
 
     function init() {
-        setMovieId(refsMovieLists().addListBtnGroup.dataset.id);
+        movieId = refsMovieLists().addListBtnGroup.dataset.id;
 
-        const movieInQueueList = checkIfMovieIsInList(movieId(), currentUser.movieLists.queue)
-        const movieInWatchedList = checkIfMovieIsInList(movieId(), currentUser.movieLists.watched)
+        const movieInQueueList = checkIfMovieIsInList(movieId, currentUser.movieLists.queue)
+        const movieInWatchedList = checkIfMovieIsInList(movieId, currentUser.movieLists.watched)
 
-        setAddQueueBtnState(movieInQueueList ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default);
-        setAddWatchedBtnState(movieInWatchedList ? buttonStates.addWatchedBtn.inWatched : buttonStates.addWatchedBtn.default);
+        addQueueBtnState = movieInQueueList ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default;
+        addWatchedBtnState = movieInWatchedList ? buttonStates.addWatchedBtn.inWatched : buttonStates.addWatchedBtn.default;
         return ModalMovie;
     }
     function listBtnHandler(e) {
         if (e.target.nodeName !== "BUTTON") return;
         if (e.target.id === 'add-queue') {
-            addQueueBtnState().action(movieId());
-            setAddQueueBtnState(addQueueBtnState().default ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default);
+            addQueueBtnState.action(movieId);
+            addQueueBtnState = addQueueBtnState.default ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default;
         }
         if (e.target.id === 'add-watched') {
-            addWatchedBtnState().action(movieId());
-            if (addWatchedBtnState().default) {
-                setAddWatchedBtnState(buttonStates.addWatchedBtn.inWatched);
-                setAddQueueBtnState(buttonStates.addQueueBtn.default);
+            addWatchedBtnState.action(movieId);
+            if (addWatchedBtnState.default) {
+                addWatchedBtnState = buttonStates.addWatchedBtn.inWatched;
+                addQueueBtnState = buttonStates.addQueueBtn.default;
             }
         }
         ModalMovie
@@ -78,14 +69,14 @@ const ModalMovie = (function () {
 
     }
     function render() {
-        refsMovieLists().addListBtnGroup.innerHTML = view();
+        refsMovieLists().addListBtnGroup.innerHTML = currentUser.isAuth ? view() : ''
         return ModalMovie
     }
 
     function view() {
         return `
-            <button class="button" id="add-watched" type="button" data-lng="${addWatchedBtnState().lngKey}">${addWatchedBtnState().text}</button>
-            <button class="button" id="add-queue" type="button" data-lng="${addQueueBtnState().lngKey}">${addQueueBtnState().text}</button>
+            <button class="button" id="add-watched" type="button" ${addWatchedBtnState.watched ? 'disabled' : ''} data-lng="${addWatchedBtnState.lngKey}">${addWatchedBtnState.text}</button>
+            <button class="button" id="add-queue"  type="button" data-lng="${addQueueBtnState.lngKey}">${addQueueBtnState.text}</button>
         `
     }
 

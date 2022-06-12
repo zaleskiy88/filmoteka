@@ -5,6 +5,7 @@ onAuthStateChanged(auth, user => {
     if (user) {
         console.log('User is signed in');
         console.log(user.displayName);
+        currentUser.isAuth = true;
         currentUser.userName = user.displayName;
         currentUser.userEmail = user.email;
         currentUser.userUiid = user.uid;
