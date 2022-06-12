@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="eg">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,23 +16,25 @@
     <link rel="stylesheet" href="./sass/_header.scss" />
     <link rel="stylesheet" href="./sass/_footer.scss" />
   </head>
-  <body class="body-theme">
+  <body class="body-theme body-start-img">
     <include src="./partials/header.html"></include>
     <main>
       <section class="container">
         <div class="gallery" id="home-gallery"></div>
+        <div class="preloader"></div>
+        <div class="pagination"><div class="pagination-list"></div></div>
       </section>
-      <div class="pagination"><div class="pagination-list"></div></div>
     </main>
     <include src="./partials/main_start.html"></include>
     <include src="./partials/singIn.html"></include>
     <include src="./partials/modal-film.html"></include>
-    <div class="preloader"></div>
+
     <div class="backdrop-film visually-hidden"></div>
     <include src="./partials/footer.html"></include>
     <script src="./index.js" type="module"></script>
     <script src="./js/dark-theme.js" type="module"></script>
     <script src="./js/singIn.js" type="module"></script>
     <script src="./js/main_start.js" type="module"></script>
+    <script src="./js/lng.js" type="module"></script>
   </body>
 </html>

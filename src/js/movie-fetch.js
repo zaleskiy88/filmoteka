@@ -1,4 +1,5 @@
 const axios = require('axios').default;
+import Notiflix from 'notiflix';
 
 const API_KEY = '842344de8347536aefc6f17e8e76d4bd';
 const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
@@ -9,6 +10,7 @@ const MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
 
 const htmlEl = document.querySelector('html');
 const pageLanguage = htmlEl.attributes.lang.value;
+console.log('pageLanguage :>> ', pageLanguage);
 
 const parameters = {
   page: 1,
@@ -59,6 +61,16 @@ export async function getDataMovies(searchQuery) {
       : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
+  if (response.data.total_results === 0) {
+    Notiflix.Notify.failure(
+      'Sorry, there are no films matching your search query. Please try again.'
+    );
+    return;
+  } else {
+    Notiflix.Notify.success(
+      `Hooray! We found ${response.data.total_results} films.`
+    );
+  }
   return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
@@ -153,8 +165,8 @@ export async function getOneMovieById(movieId) {
     genres: genresArr,
     overview: response.data.overview,
   };
-  // generating an array of our beloved genres:)
 
+  // generating an array of our beloved genres:)
   response.data.genres.map(genre => {
     genresArr.push(genre.name);
   });

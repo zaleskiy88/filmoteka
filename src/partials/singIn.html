@@ -2,27 +2,27 @@
 
 <div class="login-modal">
     <button class="modal-close"></button>
-        <h2 class="login-modal__in login-modal__active"> sign in </h2>
-            <h2 class="login-modal__up login-modal__noactive"> sign up </h2>
+        <h2 class="login-modal__in login-modal__active" data-lng="ModalIn"> sign in </h2>
+            <h2 class="login-modal__up login-modal__noactive" data-lng="ModalUp"> sign up </h2>
 <form class="login-modal_form registration-form">
             <label class="registration-label">
                 <input type="email" name="email" id="email" required />
-                <div class="label-text">Email</div>
+                <div class="label-text" data-lng="Email">Email</div>
             </label>
             <label class="registration-label">
                 <input type="password" name="" id="password-1" required />
-                <div class="label-text">password</div>
+                <div class="label-text" data-lng="Password">password</div>
             </label>
                 
                 <br>
         <input type="checkbox" id="checkbox-log" class="login-modal__custom-checkbox" />
-            <label class="login-modal__keep" for="checkbox-log">Keep me Signed in</label>
-                <button class="signin">Sign In</button>
+            <label class="login-modal__keep" for="checkbox-log" data-lng="modal-checkbox">Keep me Signed in</label>
+                <button class="signin" data-lng="BtnModalIn">Sign In</button>
             <hr>
     <div class="social">
         <ul class="list social__network">
             <li class="social__block">
-                <a class="social__link" href="https://www.instagram.com/" rel="noopener noreferrer" target="_blank">
+                <a class="social__link" href="https://www.gmail.com/" rel="noopener noreferrer" target="_blank">
                     <svg class="social__svg" width="20" height="20">
                     <use href="./images/social-link.svg#icon-gmail"></use>
                     </svg>
@@ -53,7 +53,7 @@
             </li>
         </ul>
     </div>
-    <a class="login-modal__forgot--password" href="#">Forgot Password?</a>
+    <a class="login-modal__forgot--password" href="#" data-lng="BadMemary">Forgot Password?</a>
 </form>
 
     
@@ -61,19 +61,19 @@
         <form class="registration-form">
             <label class="registration-label">
               <input name="name" id="name" type="text" required />
-              <div class="label-text">Full Name</div>
+              <div class="label-text" data-lng="FullName">Full Name</div>
             </label>
             <label class="registration-label">
               <input type="email" name="email" id="email-reg" required />
-              <div class="label-text">Email</div>
+              <div class="label-text" data-lng="EmailReg">Email</div>
             </label>
             <label class="registration-label">
               <input type="password" name="" id="password-2" required />
-              <div class="label-text">password</div>
+              <div class="label-text" data-lng="PasswordReg">password</div>
             </label>
             <label class="registration-label">
                 <input type="password" name="" id="password-3" required />
-                <div class="label-text">Repeat password</div>
+                <div class="label-text" data-lng="RepeatPasswordReg">Repeat password</div>
               </label>
               <div class="social">
                 <ul class="list social__network">
@@ -109,7 +109,7 @@
                     </li>
                 </ul>
             </div>
-            <button class="registration-btn" type="submit" value="Submit">Submit</button>
+            <button class="registration-btn" type="submit" value="Submit" data-lng="BtnRegistrationg">Registration</button>
           </form>
         </div>
 

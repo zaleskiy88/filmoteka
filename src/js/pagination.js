@@ -7,6 +7,7 @@ const refs = {
 }
 const gallery = document.querySelector('.gallery');
 const preloaderContainer = document.querySelector(".preloader");
+const footer = document.querySelector(".footer");
 const maxPage = 20;
 let currentPage = 1;
 
@@ -34,8 +35,9 @@ async function renderingFilmsMarkup(currentPage) {
 }
 
 async function onPaginationBtnClick(event) {
-  gallery.innerHTML = preloader();
-  preloaderContainer.style.marginLeft = "auto";
+  footer.style.position = "fixed";
+  preloaderContainer.innerHTML = preloader();
+  gallery.innerHTML = "";
   if(event.target.nodeName !== "SPAN") {
     return;
   }
