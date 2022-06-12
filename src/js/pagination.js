@@ -11,6 +11,7 @@ const preloaderContainer = document.querySelector('.preloader');
 const footer = document.querySelector('.footer');
 const maxPage = 20;
 let currentPage = 1;
+console.log(searchQuery);
 
 const pagesArray = Array.apply(null, {
   length: maxPage ?? 0,

@@ -19,7 +19,7 @@ const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
 
 preloaderContainer.innerHTML = preloader();
-export let searchQuery = null;
+let searchQuery = null;
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -36,7 +36,7 @@ async function generateMarkup() {
 }
 
 async function onSearchSubmit(event) {
-  // event.preventDefault();
+  event.preventDefault();
   searchQuery = event.currentTarget.elements.searchQuery.value;
   if (event.currentTarget.elements.searchQuery.value === '') {
     Notiflix.Notify.info('Search query cannot be empty.');
@@ -89,3 +89,5 @@ async function generateMoviesWithGenres(data) {
 generateMarkup();
 
 form.addEventListener('submit', onSearchSubmit);
+
+export {searchQuery}
