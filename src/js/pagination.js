@@ -1,4 +1,4 @@
-import {getMoreTrendingMoviesData, generateMoviesWithGenres} from "./movie-fetch";
+import {getMoreTrendingMoviesData, generateMoviesWithGenres, getMoreDataMovies} from "./movie-fetch";
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
 
@@ -8,6 +8,7 @@ const refs = {
 const gallery = document.querySelector('.gallery');
 const preloaderContainer = document.querySelector(".preloader");
 const footer = document.querySelector(".footer");
+const input = document.querySelector('input');
 const maxPage = 20;
 let currentPage = 1;
 
@@ -22,8 +23,15 @@ const pagesArray = Array.apply(null, {
   }
 
 async function renderingFilmsMarkup(currentPage) {
-  renderingPaginationMarkup(currentPage);
-      const data = await getMoreTrendingMoviesData(currentPage);
+      renderingPaginationMarkup(currentPage);
+      let data = null;
+      if (input && input.value !== "") {
+        data = await getMoreDataMovies(input.value, currentPage)
+      }
+      else {
+        data = await getMoreTrendingMoviesData(currentPage);
+      }
+      
       const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
@@ -35,6 +43,7 @@ async function renderingFilmsMarkup(currentPage) {
 }
 
 async function onPaginationBtnClick(event) {
+  console.log(currentPage);
   footer.style.position = "fixed";
   preloaderContainer.innerHTML = preloader();
   gallery.innerHTML = "";
