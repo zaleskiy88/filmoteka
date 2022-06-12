@@ -2,134 +2,87 @@ import firebaseWriteDb from "./api/firebase/firebase_write_db";
 import refsMovieLists from "../constants/refsMovieLists";
 import currentUser from './storage/currentUser';
 
-
-// Catch modal opening event
-// Set event listeners for modal
-// Catch click on button "Add to queue"
-//      Add movie to queue
-//      "Remove from queue"
-//      Display message "Movie added to queue"??
-// Catch click on button "Add to watched"
-//      Add movie to watched
-//      Remove movie from queue
-// Revome event listeners for modal
-//////////////////////////////////////////////////////////////////////////////////////////////
-// const MyReact = {
-//     state: null,
-//     stateInitialized: false,
-//     setState(newState) {
-//         console.log('newState: ', newState);
-//         if (this.state !== newState);
-//         {
-//             this.state = newState;
-//         }
-//         console.log("newCount event calls setState: ", this.state);
-//     },
-//     useState(initialValue) {
-//         this.setState = this.setState.bind(this);
-//         if (!this.stateInitialized) {
-//             this.stateInitialized = true;
-//             this.state = initialValue;
-//         }
-//         console.log("Component calls useState: ", this.state);
-//         return [this.state, this.setState];
-//     },
-// };
 const buttonStates = {
     addWatchedBtn: {
         inWatched: {
+            watched: true,
             text: 'Watched',
             lngKey: 'addWatchedBtn_watched',
-            // action: firebaseWriteDb.addToWatched
+            action: () => { },
         },
         default: {
+            default: true,
             text: 'Add to watched',
             lngKey: 'addWatchedBtn',
+            action: firebaseWriteDb.addToWatched
         },
     },
     addQueueBtn: {
         inQueue: {
+            queued: true,
             text: 'Remove from queue',
             lngKey: 'addQueueBtn_queue',
+            action: firebaseWriteDb.removeFromQueue
 
         },
         default: {
+            default: true,
             text: 'Add to queue',
             lngKey: 'addQueueBtn',
+            action: firebaseWriteDb.addToQueue
         }
     }
 }
 
 const useState = (defaultValue) => {
     let value = defaultValue;
-    const getValue = () => value
+    const getValue = () => value;
     const setValue = newValue => {
-        console.log('useState new value: ', newValue);
         value = newValue
     }
-    console.log('useState thos: ', this);
     return [getValue, setValue];
 }
 
-const App = (function () {
-    // useState.bind(this);
+const ModalMovie = (function () {
     const [addWatchedBtnState, setAddWatchedBtnState] = useState(buttonStates.addWatchedBtn.default);
     const [addQueueBtnState, setAddQueueBtnState] = useState(buttonStates.addQueueBtn.default);
-    const checkIfMovieIsInList = (movieId, list) => {
-        const movieInList = list.includes(movieId);
-        return movieInList;
-    }
     const [movieId, setMovieId] = useState(null);
+    const checkIfMovieIsInList = (movieId, list) => list?.includes(parseInt(movieId));
 
+    function init() {
+        setMovieId(refsMovieLists().addListBtnGroup.dataset.id);
 
-    function incer(e) {
-        // State.counter += 1;
-        console.log('event: ', e);
-        if (e.target.nodeName !== "BUTTON") { return }
-        // const movieId = e.target.dataset.id;
-        // const movieInQueueList = checkIfMovieIsInList(movieId, currentUser.movieLists.queue)
-        // const movieInWatchedList = checkIfMovieIsInList(movieId, currentUser.movieLists.watched)
-        // if (movieInQueueList) {
-        //     firebaseWriteDb.removeFromQueue(movieId);
-        //     setAddQueueBtnState(buttonStates.addQueueBtn.default);
-        // } else {
-        //     firebaseWriteDb.addToQueue(movieId);
-        //     setAddQueueBtnState(buttonStates.addQueueBtn.inQueue);
-        // }
+        const movieInQueueList = checkIfMovieIsInList(movieId(), currentUser.movieLists.queue)
+        const movieInWatchedList = checkIfMovieIsInList(movieId(), currentUser.movieLists.watched)
 
-        App
+        setAddQueueBtnState(movieInQueueList ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default);
+        setAddWatchedBtnState(movieInWatchedList ? buttonStates.addWatchedBtn.inWatched : buttonStates.addWatchedBtn.default);
+        return ModalMovie;
+    }
+    function listBtnHandler(e) {
+        if (e.target.nodeName !== "BUTTON") return;
+        if (e.target.id === 'add-queue') {
+            addQueueBtnState().action(movieId());
+            setAddQueueBtnState(addQueueBtnState().default ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default);
+        }
+        if (e.target.id === 'add-watched') {
+            addWatchedBtnState().action(movieId());
+            if (addWatchedBtnState().default) {
+                setAddWatchedBtnState(buttonStates.addWatchedBtn.inWatched);
+                setAddQueueBtnState(buttonStates.addQueueBtn.default);
+            }
+        }
+        ModalMovie
             .render()
             .setupEvents();
 
     }
     function render() {
-        console.log('render called');
-        if (!movieId()) {
-            setMovieId(Number(refsMovieLists().addListBtnGroup.dataset.id));
-        }
-
-        const movieInQueueList = checkIfMovieIsInList(movieId(), currentUser.movieLists.queue)
-        const movieInWatchedList = checkIfMovieIsInList(movieId(), currentUser.movieLists.watched)
-        if (movieInQueueList) {
-            firebaseWriteDb.removeFromQueue(movieId());
-            setAddQueueBtnState(buttonStates.addQueueBtn.default);
-        } else {
-            firebaseWriteDb.addToQueue(movieId());
-            setAddQueueBtnState(buttonStates.addQueueBtn.inQueue);
-        }
-
-        console.log('addWatchedBtnState ', addWatchedBtnState());
-        console.log('addQueueBtnState ', addQueueBtnState());
-        console.log('movieId ', movieId());
         refsMovieLists().addListBtnGroup.innerHTML = view();
-        return App
+        return ModalMovie
     }
 
     function view() {
-        //   return `
-        //     <div>Counter ${State.counter}</div>
-        //     <button class="counter">INC</button>
-        //   `
         return `
             <button class="button" id="add-watched" type="button" data-lng="${addWatchedBtnState().lngKey}">${addWatchedBtnState().text}</button>
             <button class="button" id="add-queue" type="button" data-lng="${addQueueBtnState().lngKey}">${addQueueBtnState().text}</button>
@@ -139,69 +92,16 @@ const App = (function () {
     function setupEvents() {
         let button =
             refsMovieLists().addListBtnGroup
-                .addEventListener("click", App.incer)
+                .addEventListener("click", ModalMovie.listBtnHandler)
     }
 
-    return { render, incer, setupEvents }
+    document.addEventListener('modal-film-opened', (e) => {
+        ModalMovie
+            .init()
+            .render()
+            .setupEvents();
+    });
+
+    return { init, render, listBtnHandler, setupEvents }
 
 })();
-
-
-
-
-
-const checkIfMovieIsInList = (movieId, list) => {
-    const movieInList = list.includes(movieId);
-    return movieInList;
-}
-const onAddListBtnClick = async (event) => {
-    console.log('onAddListBtnClick fired');
-    event.preventDefault();
-    const movieId = event.currentTarget.dataset.id;
-    const elId = event.target.id;
-    if (elId === 'add-queue') {
-        firebaseWriteDb.addToQueue(movieId).then(() => {
-            console.log('addToQueue success');
-        });
-    }
-    if (elId === 'add-watched') { firebaseWriteDb.addToWatched(movieId); }
-
-}
-const addModalFilmEventListener = (e) => {
-    App
-        .render()
-        .setupEvents();
-
-    // // refsMovieLists().addListBtnGroup.addEventListener('click', onAddListBtnClick);
-    // console.log('e: ', e);
-    // const movieId = refsMovieLists().addListBtnGroup.dataset.id;
-    // const addWatchedBtn = refsMovieLists().addWatchedBtn;
-    // const addQueueBtn = refsMovieLists().addQueueBtn;
-    // const movieInQueueList = checkIfMovieIsInList(movieId, currentUser.movieLists.queue);
-    // const movieInWatchedList = checkIfMovieIsInList(movieId, currentUser.movieLists.watched);
-    // console.log('currentUser.movieLists.queue: ', currentUser.movieLists.queue);
-    // console.log('movieId: ', movieId);
-    // console.log('is in queue list: ', movieInQueueList);
-    // console.log('is in watched list: ', movieInWatchedList);
-    // // Update Add to queue button
-    // if (movieInQueueList) {
-    //     addQueueBtn.textContent = 'Remove from queue';
-    //     addWatchedBtn.addEventListener('click', async function onAddWatchedBtnClick(event) {
-    //         firebaseWriteDb.removeFromQueue(movieId);
-    //     });
-    // }
-    // // Update Add to watched button
-    // if (movieInWatchedList) {
-    //     addWatchedBtn.textContent = 'Watched';
-    // }
-}
-const removeModalFilmEventListener = () => {
-    // refs.addQueueBtn.removeEventListener('click', addModalFilmEventListener);
-    // refs.addWatchedBtn.removeEventListener('click', onAddWatchedBtnClick);
-
-}
-
-document.addEventListener('modal-film-opened', addModalFilmEventListener);
-
-
-export default { addModalFilmEventListener, onAddListBtnClick }
