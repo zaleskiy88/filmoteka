@@ -25,6 +25,7 @@ async function onModalClick(event) {
   const markup = modalFilm(dataMovie);
   backdrop.innerHTML = markup;
   backdrop.classList.remove("visually-hidden");
+  backdrop.dispatchEvent(new CustomEvent('modal-film-opened', { bubbles: true }));
 }
 
 

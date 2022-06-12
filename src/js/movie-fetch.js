@@ -113,6 +113,7 @@ export async function getOneMovieById(movieId) {
   const genresArr = [];
   // an object with all the necessary properties for further rendering
   const movieData = {
+    id: response.data.id,
     poster_path: response.data.poster_path,
     title: response.data.title,
     vote_average: response.data.vote_average,
@@ -126,7 +127,6 @@ export async function getOneMovieById(movieId) {
   response.data.genres.map(genre => {
     genresArr.push(genre.name);
   });
-
   return movieData;
 }
 
