@@ -5,3 +5,5 @@ googleIn.addEventListener('click', auth.logInByGoogle);
 
 const googleOut = document.querySelector('#signout');
 googleOut.addEventListener('click', auth.logOut);
+
+console.log();
