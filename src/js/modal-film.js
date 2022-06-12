@@ -10,14 +10,14 @@ gallery.addEventListener('click', onModalClick);
 
 function onBackdropClick(event) {
   event.preventDefault();
-  if(event.target === event.currentTarget) {
+  if (event.target === event.currentTarget) {
     backdrop.classList.add("visually-hidden");
     document.body.style.overflow = "visible";
   }
 }
 
 async function onModalClick(event) {
-  if(event.target.nodeName !== "IMG") {
+  if (event.target.nodeName !== "IMG") {
     return;
   }
   document.body.style.overflow = "hidden";
@@ -27,6 +27,7 @@ async function onModalClick(event) {
   const markup = modalFilm(dataMovie);
   backdrop.innerHTML = markup;
   backdrop.classList.remove("visually-hidden");
+  backdrop.dispatchEvent(new CustomEvent('modal-film-opened', { bubbles: true }));
 }
 
 
