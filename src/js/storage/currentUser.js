@@ -4,7 +4,7 @@ export default {
     userEmail: '',
     userUiid: '',
     movieLists: {},
-    clear: () => {
+    clear() {
         this.isAuth = false;
         this.userName = '';
         this.userEmail = '';

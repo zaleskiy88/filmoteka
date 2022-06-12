@@ -1,6 +1,19 @@
 import currentUser from '../../storage/currentUser';
-import { setDoc, updateDoc, arrayUnion, arrayRemove, doc } from 'firebase/firestore';
-import { db } from './firebase_app';
+import { onAuthStateChanged, getAuth } from 'firebase/auth';
+import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, onSnapshot } from 'firebase/firestore';
+import { db, auth } from './firebase_app';
+
+onAuthStateChanged(getAuth(), user => {
+    if (user) {
+        onSnapshot(
+            doc(db, "users", user.uid),
+            (doc) => {
+                currentUser.movieLists = doc.data();
+            });
+    } else {
+        currentUser.clear();
+    }
+});
 
 const updateUserMovies = async ({ movieId, movieList }) => {
     console.log('updateUserMovies fired');
@@ -10,7 +23,7 @@ const updateUserMovies = async ({ movieId, movieList }) => {
             [movieList]: arrayUnion(movieId)
         }, { merge: true });
     } catch (e) {
-        throw Error(`Error adding to queue: ${movieList}`, e);
+        throw Error(`Error adding to ${movieList}:`, e);
     }
 }
 const removeFromQueue = async (movieId) => {
@@ -18,9 +31,8 @@ const removeFromQueue = async (movieId) => {
         updateDoc(doc(db, "users", currentUser.userUiid), {
             queue: arrayRemove(movieId)
         });
-
     } catch (error) {
-        console.log('Error removing from queue:', error);
+        throw Error(`Error removing from ${movieList}:`, e);
     }
 }
 const addToQueue = async (movieId) => {
