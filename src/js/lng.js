@@ -40,6 +40,14 @@ function changeLang() {
       }
     }
   }
+  function changeLng() {
+    let hash = window.location.hash;
+    hash = hash.slice(1);
+    if (!AllLng.includes(hash)) {
+      location.href = window.location.pathname + '#en';
+      localStorage.setItem('lang', 'en');
+    }
+  }
 }
 
 langSelector.addEventListener('change', e => window.location.reload());

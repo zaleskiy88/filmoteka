@@ -42,7 +42,7 @@ const lengArr={
     },
 
     "btnTurn": {
-        "en": "Turn",
+        "en": "GUEUE",
         "ru": "Очередь",
         "uk": "Черга"
     },
@@ -84,7 +84,7 @@ const lengArr={
     },
 
     "modal-checkbox": {
-        "en": "Remember me",
+        "en": "Keep me Signed in",
         "ru": "Оставаться в системе",
         "uk": "Залишатися в системі"
     },
