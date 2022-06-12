@@ -36,15 +36,15 @@ const lengArr={
     },
 
     "btnWatched": {
-        "en": "Watched",
-        "ru": "Просмотренные",
-        "uk": "Переглянуті"
+        "en": "WATCHED",
+        "ru": "ПРОСМОТРЕНО",
+        "uk": "ПЕРЕГЛЯНУТО"
     },
 
     "btnTurn": {
-        "en": "GUEUE",
-        "ru": "Очередь",
-        "uk": "Черга"
+        "en": "QUEUE",
+        "ru": "ОЧЕРЕДЬ",
+        "uk": "ЧЕРГА"
     },
 
     "ModalIn": {

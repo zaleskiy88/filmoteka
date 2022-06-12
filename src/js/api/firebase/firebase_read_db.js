@@ -14,18 +14,18 @@ async function getUsersMovieList(typeOfList, event) {
     try {
         const docSnap = await getDoc(usersCollection);  // send querry
         if (!docSnap.data()) {
-            Notiflix.Notify.failure(`У вас отсутствуют фильмы в разделе WATCHED и QUEUE`);
+            Notiflix.Confirm.show(`You have no movies in WATCHED и QUEUE`, '', 'Ok', '', '', '', {titleColor: '#111111', okButtonBackground: '#ff6b08'});
             return usersList;
         }
      
-        usersList = (typeOfList === 'WATCHED') ? docSnap.data().watched : docSnap.data().queue;    // get movie list array 
+        usersList = (typeOfList === 'btn-watched') ? docSnap.data().watched : docSnap.data().queue;    // get movie list array 
         if (usersList.length === 0) {
-            Notiflix.Notify.failure(`У вас отсутствуют фильмы в разделе ${typeOfList}`);
+            Notiflix.Confirm.show(`You have no movies in ${typeOfList === 'btn-watched' ? 'WATCHED' : 'QUEUE'}`, '', 'Ok', '', '', '', {titleColor: '#111111', okButtonBackground: '#ff6b08'});
         }
         return usersList;
     }
     catch {
-        Notiflix.Notify.failure(`Ой, что-то пошло не так... Пожалуйста, повторите попытку.`);
+        Notiflix.Notify.failure(`Oh, something is wrong. Try again, please...`);
     }
 }
 
