@@ -1,39 +1,46 @@
-@import "./variables";
+@import './variables';
 
 .gallery {
   padding-top: 60px;
   @media screen and (min-width: $mob) {
     margin-right: 0;
-}
-@media screen and (min-width: $tab) {
-  margin-right: -32px;
-  display: flex;
-  flex-wrap: wrap;
+  }
+  @media screen and (min-width: $tab) {
+    margin-right: -32px;
+    display: flex;
+    flex-wrap: wrap;
   }
   @media screen and (min-width: $desc) {
     margin-right: -32px;
-    }
+  }
 }
 
 .movie-card {
+  background: var(--bg-color);
+  border-radius: 5px;
+  @media screen and (max-width: 419px) {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
   cursor: pointer;
-  margin-bottom: 32px;
   @media screen and (min-width: $mob) {
     margin-right: 0;
-    width: 280px;
+    margin-bottom: 20px;
   }
   @media screen and (min-width: $tab) {
-  margin-right: 32px;
-  width: 336px;
+    margin-right: 32px;
+    margin-bottom: 32px;
+    width: 336px;
   }
   @media screen and (min-width: $desc) {
     width: 309px;
     margin-right: 16px;
-    }
+  }
 }
 
 .movie-data {
   margin-top: 8px;
+  padding-left: 5px;
 }
 
 .movie-info {
