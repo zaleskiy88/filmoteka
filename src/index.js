@@ -12,10 +12,7 @@ import {
 
 import Swiper from './../node_modules/swiper/swiper-bundle';
 import "./js/modal-footer";
-// import onOpenModal from './js/modal-footer.js';
 
-
-import { initLightbox } from './js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs';
 
@@ -25,8 +22,6 @@ var swiper = new Swiper(".swiper", {
     prevEl: ".swiper-button-prev",
   },
 });
-
-console.log(swiper);
 
 
 const preloaderContainer = document.querySelector('.preloader');
