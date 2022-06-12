@@ -325,3 +325,13 @@ body {
   position: absolute;
   margin-top: 38px;
 }
+
+.header__select{
+  background-color: transparent;
+  color: var(--bg-color);
+  border: none;
+}
+
+.header__select--option{
+  color: var(--text-color-main);
+}

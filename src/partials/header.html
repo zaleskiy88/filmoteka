@@ -12,14 +12,14 @@
         <nav class="header__navigation">
           <ul class="header-library__navigation">
             <li class="header__navigation-item sign-in">
-            <button id="signin" class="header__navigation-link" href=" /">
+            <button id="signin" class="header__navigation-link" data-lng="headerSignIn" href=" /">
               Sign in 
             </button>
             <div id="googleUser"></div>
           </li>
 
-              <li class="header__navigation-item"><a class="header__navigation-link current" href="./index.html">Home</a></li>
-              <li class="header__navigation-item"><a class="header__navigation-link" href="./library.html">my library</a></li>
+              <li class="header__navigation-item"><a class="header__navigation-link current" data-lng="btnHome" href="./index.html">Home</a></li>
+              <li class="header__navigation-item"><a class="header__navigation-link" data-lng="btnLibrary" href="./library.html">my library</a></li>
      
             </ul>
         </nav>
@@ -27,13 +27,19 @@
 
 <!-- <div class="header__theme"> -->
 <div class="theme">
-          <span class="theme-text">Theme</span>
+          <span class="theme-text" data-lng="Theme">Theme</span>
             <label class="switch">
                 <input type="checkbox" id="dark-theme">
                 <span class="slider round"></span>
             </label>
     </div>
 <!-- </div> -->
+
+<select class="header__select" id="lang">
+  <option class="header__select--option" value="en" selected>Eng</option>
+  <option class="header__select--option" value="ru">Rus</option>
+  <option class="header__select--option" value="uk">Ukr</option>
+ </select>
 
 
       <form class="header__input-wrapper search-form" id="search-form">
@@ -42,7 +48,7 @@
         type="text"
         name="searchQuery"
         autocomplete="off"
-        placeholder="Поиск фильмов"
+        placeholder="Search films"
       />
       <button class="header__button-search">
         <svg class="header__input-icon" width="12" height="12">
