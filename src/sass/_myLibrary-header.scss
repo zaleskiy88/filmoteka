@@ -209,12 +209,12 @@
     opacity: 0;
     pointer-events: none;
   }
-}
+
   margin-right: 16px;
 
-  @media screen and (max-width: $mob) {
-    margin-right: 20px;
-  }
+  // @media screen and (max-width: $mob) {
+  //   margin-right: 20px;
+  // }
 }
 
 // .header-library__btnQue{

@@ -1,0 +1,15 @@
+.auth-hide {
+    display: none;
+}
+
+.header__user-name {
+    color: var(--text-color-caption);
+    margin-top: 20px;
+    text-transform: uppercase;
+    background-color: inherit;
+    font-family: Roboto;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px;
+}

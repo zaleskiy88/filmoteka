@@ -21,8 +21,6 @@ const gallery = document.querySelector('#home-gallery');
 
 // preloaderContainer.innerHTML = preloader();
 
-const form = document.querySelector("form");
-
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
 
@@ -99,16 +97,16 @@ import currentUser from './js/storage/currentUser';
 import apiFirebase from './js/api/firebase';
 console.log(apiFirebase);
 
-document.querySelector('.header-library__btnQue').addEventListener('click', () => {
-  console.log(userMovies.queue);
-});
-document.querySelector('.header-library__btnWatc').addEventListener('click', () => {
-  console.log(userMovies.wathced);
-});
-document.querySelector('.theme').addEventListener('click', () => {
-  myUser.addToQueue(Math.random());
-  // console.log(object);
-})
+// document.querySelector('.header-library__btnQue').addEventListener('click', () => {
+//   console.log(userMovies.queue);
+// });
+// document.querySelector('.header-library__btnWatc').addEventListener('click', () => {
+//   console.log(userMovies.wathced);
+// });
+// document.querySelector('.theme').addEventListener('click', () => {
+//   myUser.addToQueue(Math.random());
+//   // console.log(object);
+// })
 
 //!-- need to delete
 //From temp partial
