@@ -90,6 +90,7 @@ generateMarkup();
 form.addEventListener('submit', onSearchSubmit);
 
 
+// form.addEventListener("submit", onSearchSubmit);
 
 ////////////////////////// Firebase //////////////////////////
 import currentUser from './js/storage/currentUser';
