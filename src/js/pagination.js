@@ -11,6 +11,7 @@ const footer = document.querySelector(".footer");
 const input = document.querySelector('input');
 const maxPage = 20;
 let currentPage = 1;
+let searchQuery = input.searchQuery;
 
 const pagesArray = Array.apply(null, {
   length: maxPage ?? 0,
@@ -25,13 +26,13 @@ const pagesArray = Array.apply(null, {
 async function renderingFilmsMarkup(currentPage) {
       renderingPaginationMarkup(currentPage);
       let data = null;
-      if (input && input.value !== "") {
-        data = await getMoreDataMovies(input.value, currentPage)
+      if (searchQuery !== "") {
+        data = await getMoreDataMovies(searchQuery, currentPage)
       }
       else {
         data = await getMoreTrendingMoviesData(currentPage);
       }
-      
+      console.log(data);
       const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
@@ -43,7 +44,6 @@ async function renderingFilmsMarkup(currentPage) {
 }
 
 async function onPaginationBtnClick(event) {
-  console.log(currentPage);
   footer.style.position = "fixed";
   preloaderContainer.innerHTML = preloader();
   gallery.innerHTML = "";
@@ -108,7 +108,6 @@ function renderingPaginationMarkup(currentPage) {
           result = result + "<span data-span='next'>=></span>";
         }
     refs.paginationList.innerHTML = result;
-    console.log(refs.paginationList.querySelectorAll("span"));
     refs.paginationList.querySelectorAll("span").forEach(item => {
       if (item.innerHTML == currentPage) {
         item.classList.toggle("active");
