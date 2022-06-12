@@ -1,5 +1,5 @@
 {{#each this}}
-  <a class='movie-card' href='#'>
+  <div class='movie-card' href='#'>
     <img
       src='https://image.tmdb.org/t/p/w500{{poster_path}}' | 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'
       alt={{name}}
@@ -10,5 +10,5 @@
       <h5 class='movie-name'>{{name}}</h5>
       <p class='movie-info'>{{genres}} | {{release}}</p>
     </div>
-  </a>
+  </div>
 {{/each}}
