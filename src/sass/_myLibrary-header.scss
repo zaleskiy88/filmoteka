@@ -200,7 +200,6 @@
     width: 129px;
     height: 44px;
   }
-  
   .header-library__btnQue{
     background-color:  var(--brand-color);
     border:none ;
@@ -211,8 +210,6 @@
     pointer-events: none;
   }
 }
-
-.header-library__btnWatc {
   margin-right: 16px;
 
   @media screen and (max-width: $mob) {

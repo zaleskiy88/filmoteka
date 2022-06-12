@@ -21,6 +21,8 @@ const gallery = document.querySelector('#home-gallery');
 
 // preloaderContainer.innerHTML = preloader();
 
+const form = document.querySelector("form");
+
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
 
