@@ -1,5 +1,3 @@
-import Swiper from "swiper";
-
 const refs = {
   openModal: document.querySelector('.modal-footer__open-modal'),
   closeModal: document.querySelector('.modal-footer__close-modal'),
@@ -11,18 +9,18 @@ refs.closeModal.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
  
-function onOpenModal() {
+export function onOpenModal() {
   window.addEventListener('keydown', onEscKeydown);
-  document.body.classList.add('show-modal');
+  refs.backdrop.classList.remove('visually-hidden');
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeydown);
-  document.body.classList.remove('show-modal');
+  refs.backdrop.classList.add('visually-hidden');
 }
 
 function onBackdropClick(e) {
-  if (e.currenTarget === e.target) {
+  if (e.currentTarget === e.target) {
     onCloseModal();
   }
 }
@@ -33,6 +31,3 @@ function onEscKeydown(e) {
     onCloseModal();
   }
 }
-
-
-const swiper = new Swiper('.wrapper');

@@ -1,119 +1,116 @@
 @import './variables.scss';
-// @import 'swiper/css';
+@import url('../../node_modules/swiper/swiper-bundle.css');
+
 
 .backdrop {
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 57%;
+  transform: scale(1);
+  transition: transform 400ms;
 
-    @media screen and (min-width: $tab) {
-        width: 768px;
-    }
-}
-
-.modal-footer__name {
-    font-size: 16px;
-    font-family: 'Roboto';
-    line-height: 1.5;
+@media screen and (min-width: $tab) {
+  top: 59%;
 }
 
-.modal-footer__link {
-    padding: 10px;
-    text-align: center;
+@media screen and (min-width: $desc) {
+  bottom: 0;
 }
-
-a {
-    color: #fff;
-    direction: none;
-}
-
-img {
-    
-
-    @media screen and (min-width: $tab) {
-        display: flex;
-        width: 300px;
-        height: 350px;
-    }
-}
-
-.modal-footer__image {
-    flex-wrap: wrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    list-style:none;
-    margin: 0 auto;
-    width: 100%;
-    text-align: center;
-    padding: 30px auto;
-}
-.modal-footer__image li {
-    position: relative;
-    display: inline-block;
-    margin: 0;
-    overflow: hidden;
-    min-width: 0;
-}
-/* Заголовок, текст и ссылка */
-// .modal-footer-social__item li h3{
-//     color: #fff;
-//     margin: 5px;
-// }
-.modal-footer__image li p{
-    color: #fff;
-    margin: 5px;
-}
-
-.modal-footer__image li > div {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.modal-footer__image li:hover > div {
-    // background-image: url(../images/modal-footer/pngwing1.com.png);
-    // background-repeat: no-repeat;
-    // background-size: cover;
-    // background-position: center;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-}
-.modal-footer__image li div {
-    opacity: 0;
-    background-color: rgba(134, 132, 132, 0.35);
-}
-.modal-footer__image li img {
-    transition: all 0.3s linear;
-}
-.modal-footer__image li:hover img {
-    transform: scale(1.5);
-    
-}
-.modal-footer__image li:hover div {
-    opacity: 1;
 }
 
 body.show-modal .backdrop {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: initial;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+  transform: scale(0.5);
+  transition: opacity 400ms,
+  visibility 400ms;
 }
 
 body.show-modal .footer-team-link {
-    transform: scale(1);
+  transform: scale(1);
+}
+
+.swiper {
+  width: 100%;
+  height: 450px;
+
+@media screen and (min-width: $tab) {
+  width: 100%;
+}
+
+@media screen and (min-width: $desc) {
+  width: 100%;
+  bottom: 145px;
+}
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  background-color: rgba(236, 151, 82, 0.8);
+}
+
+.swiper-slide img {
+  display: block;
+  width: 320px;
+  height: 280px;
+  object-fit: cover;
+}
+
+.modal-info {
+  position: relative;
+  text-align: center;
+}
+
+.modal-info__name {
+  position: absolute;
+  width: 320px;
+  height: 30px;
+  top: 110px;
+  left: -320px;
+  margin: 0 auto;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  align-items: center;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: rgba(47, 48, 58, 0.8);
+  transition: color 250ms linear,
+  bordtr 250ms linear;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.swiper-slide__hover:hover {
+  border-radius: 50%;
+}
+
+.swiper-wrapper {
+  background-color: var(--text-color-caption);
 }
 
 
-.wrapper {
-  width: 600px;
-  height: 300px;
-}
+
+
+
 
 
