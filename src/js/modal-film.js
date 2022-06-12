@@ -1,4 +1,7 @@
 import modalFilm from '../templates/modal-film.hbs';
+import SimpleLightbox from "simple-lightbox";
+import "simple-lightbox/dist/simpleLightbox.min.css";
+import { getDataMovie } from '../js/movie-fetch';
 
 import { getDataMovies, getOneMovieById } from './movie-fetch';
 
@@ -10,13 +13,13 @@ backdrop.addEventListener('click', onBackdropClick);
 
 function onBackdropClick(event) {
   event.preventDefault();
-  if(event.target === event.currentTarget) {
+  if (event.target === event.currentTarget) {
     backdrop.classList.add("visually-hidden");
   }
 }
 
 async function onModalClick(event) {
-  if(event.target.nodeName !== "IMG") {
+  if (event.target.nodeName !== "IMG") {
     return;
   }
   window.addEventListener('keydown', onEscKeyDown);
