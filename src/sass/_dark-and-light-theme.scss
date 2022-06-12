@@ -2,18 +2,16 @@
 /* light-theme.css */
 .body-theme{
     color:var(--text-color-main) ;
-    background-color: var(--bg-color);
+    background-color: var(--text-color-header) ;
     
 }
 
 /* dark-theme.css */
 
 .body-theme.dark-theme{
-    color:red ;
-    background-color: #2b002b ;
-    
+    color:var(--text-dark-theme) ;
+    background-color: var(--dark-theme)  ; 
 }
-
 
 /////////////////////////////////////////////////переключатель темы//////////////////////////////////////////////
 
@@ -107,3 +105,36 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+/////////////////////////////////////////////style-dark-theme.css//////////////////////////////////////////////////////
+.footer.dark-theme{
+  color:var(--text-dark-theme) ;
+  background-color: var(--dark-theme) ; 
+}
+
+.footer-text.dark-theme{
+  color:var(--text-dark-theme) ;
+}
+
+.footer-team-link.dark-theme{
+  color:var(--text-dark-theme) ;
+}
+
+.signin.dark-theme{
+  color:var(--text-dark-theme) ;
+  background-color: var(--dark-theme) ; 
+}
+
+.registration-form.dark-theme{
+  color:var(--text-dark-theme) ;
+  background-color: var(--dark-theme) ; 
+}
+
+.label-text.dark-theme{
+  color:var(--text-dark-theme) ;
+}
+
+.registration-btn.dark-theme{
+  color:var(--text-dark-theme) ;
+  background-color: var(--dark-theme) ; 
+}
