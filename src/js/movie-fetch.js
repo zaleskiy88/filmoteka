@@ -6,11 +6,8 @@ const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
 const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
 const GET_ONE_MOVIE_URL = `https://api.themoviedb.org/3/movie`;
 const MOVIE_GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
-const MOVIE_URL = 'https://api.themoviedb.org/3/movie/';
 
-const htmlEl = document.querySelector('html');
-const pageLanguage = htmlEl.attributes.lang.value;
-console.log('pageLanguage :>> ', pageLanguage);
+const pageLanguage = localStorage.lang;
 
 const parameters = {
   page: 1,
@@ -24,21 +21,11 @@ export async function getGenresIds() {
   const response = await axios.get(`${MOVIE_GENRES_URL}`, {
     params: {
       api_key: API_KEY,
+      language: pageLanguage,
     },
   });
 
   return response.data.genres;
-}
-
-//Get one movie by id
-export async function getDataMovie(id) {
-  const response = await axios.get(`${MOVIE_URL}${id}`, {
-    params: {
-      api_key: API_KEY,
-    },
-  });
-
-  return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
 }
 
 //First request for searching movie by name
