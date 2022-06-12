@@ -10,7 +10,6 @@ import {
   getOneMovieById,
 } from './js/movie-fetch';
 
-import { initLightbox } from './js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs';
 
@@ -19,7 +18,7 @@ const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
 
-// preloaderContainer.innerHTML = preloader();
+preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -88,9 +87,6 @@ async function generateMoviesWithGenres(data) {
 generateMarkup();
 
 form.addEventListener('submit', onSearchSubmit);
-
-
-// form.addEventListener("submit", onSearchSubmit);
 
 ////////////////////////// Firebase //////////////////////////
 import currentUser from './js/storage/currentUser';
