@@ -27,7 +27,6 @@ function changeUrlLng() {
     if(!AllLng.includes(hash)){
         location.href = window.location.pathname + "#en";
         localStorage.setItem('lang', "en");
-        html.setAttribute('lang', "en");
     }
     html.setAttribute('lang', hash);
     localStorage.setItem('lang', hash);
