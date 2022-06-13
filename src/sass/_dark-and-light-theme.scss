@@ -1,18 +1,4 @@
 @import "./variables";
-/* light-theme.css */
-.body-theme{
-    color:var(--text-color-main) ;
-    background-color: var(--text-color-header) ;
-    
-}
-
-/* dark-theme.css */
-
-.body-theme.dark-theme{
-    color:var(--text-dark-theme) ;
-    background-color: var(--dark-theme)  ; 
-}
-
 /////////////////////////////////////////////////переключатель темы//////////////////////////////////////////////
 
 .theme{
@@ -107,34 +93,71 @@
   }
 
 /////////////////////////////////////////////style-dark-theme.css//////////////////////////////////////////////////////
-.footer.dark-theme{
-  color:var(--text-dark-theme) ;
-  background-color: var(--dark-theme) ; 
+/* light-theme.css */
+.body-theme{
+  color:var(--text-color-main) ;
+  background-color: var(--text-color-header) ;
+  
 }
 
-.footer-text.dark-theme{
-  color:var(--text-dark-theme) ;
-}
+/* dark-theme.css */
 
-.footer-team-link.dark-theme{
+.body-theme.dark-theme{
   color:var(--text-dark-theme) ;
-}
+  background-color: var(--dark-theme)  ; 
 
-.signin.dark-theme{
-  color:var(--text-dark-theme) ;
-  background-color: var(--dark-theme) ; 
-}
 
-.registration-form.dark-theme{
-  color:var(--text-dark-theme) ;
-  background-color: var(--dark-theme) ; 
-}
+  .footer{
+    color:var(--text-dark-theme) ;
+    background-color: var(--dark-theme) ; 
+  }
 
-.label-text.dark-theme{
-  color:var(--text-dark-theme) ;
-}
+  .footer{
+    color:var(--text-dark-theme) ;
+    background-color: var(--dark-theme) ; 
+  }
 
-.registration-btn.dark-theme{
-  color:var(--text-dark-theme) ;
-  background-color: var(--dark-theme) ; 
+  .footer-text{
+    color:var(--text-dark-theme) ;
+  }
+  
+  .footer-team-link{
+    color:var(--text-dark-theme) ;
+  }
+  .signin{
+    color:var(--text-dark-theme) ;
+    background-color: var(--dark-theme) ; 
+  }
+  
+  .registration-form{
+    color:var(--text-dark-theme) ;
+    background-color: var(--dark-theme) ; 
+  }
+  
+  .label-text{
+    color:var(--text-dark-theme) ;
+  }
+  
+  .registration-btn{
+    color:var(--text-dark-theme) ;
+    background-color: var(--dark-theme) ; 
+  }
+
+  .film-card {
+    background-color: var(--dark-theme);
+    color:var(--text-dark-theme) ;
+  }
+  .film-about {
+    background-color: var(--dark-theme);
+    color:var(--text-dark-theme) ;
+  }
+  .film-title {
+    color:var(--text-dark-theme) ;
+  }
+  .film-text__right {
+    color:var(--text-dark-theme) ;
+  }
+  .film-text__left {
+    color:rgba(255, 255, 255, 0.70); 
+  }
 }

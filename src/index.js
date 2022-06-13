@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 import './js/pagination';
+import './js/modal-film';
 
 import {
   getDataMovies,
@@ -10,14 +11,18 @@ import {
   getOneMovieById,
 } from './js/movie-fetch';
 
-import { initLightbox } from './js/modal-film.js';
 import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs';
-
+import apiFirebase from './js/api/firebase';
+import MovieLists from './js/movie-lists';
 const preloaderContainer = document.querySelector('.preloader');
 const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
+const myLibraryBtn = document.querySelector('#myLibraryBtn');
+
+myLibraryBtn.addEventListener('click', handleMyLibraryClick);
+
 
 preloaderContainer.innerHTML = preloader();
 
@@ -44,6 +49,7 @@ async function onSearchSubmit(event) {
   const moviesData = await getDataMovies(
     event.currentTarget.elements.searchQuery.value
   );
+  console.log(moviesData);
 
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
