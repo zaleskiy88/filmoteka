@@ -1,4 +1,11 @@
 <div class="film-card">
+
+    <button type="button" class="btn-modal-film ">
+      <svg  class="btn-modal-film-icon" width="14" height="14">X
+        <use href="./images/close-film.svg"></use>
+      </svg>
+    </button>
+
     <div class="film-img">
         <img src='https://image.tmdb.org/t/p/original{{poster_path}}' 
         alt={{name}} 
@@ -7,30 +14,36 @@
 
     <div class="film-list">
         <p class="film-title">{{title}}</p>
-        <div class="film-info">           
-            <div class="film-text__left">
-                <p class="film-text ">Vote / Votes</p>
-                <p class="film-text">Popularity</p>
-                <p class="film-text">Original Title</p>
-                <b class="film-text">Genre</b>
-            </div>
-            <div class="film-text__right">
-                <p class="film-text vote-film"> 
+        <div class="film-info">
+            <p class="film-text ">
+                <b class="film-text__left" data-lng="FilmVot">Vote / Votes</b>
+                <b class="film-text film-text__right vote-film"> 
                     <span class="box-film">{{vote_average}}</span> / 
-                    <span class="box-film-vote">{{vote_count}}</span></p>
-                <p class="film-text">{{popularity}}</p>
-                <p class="film-text">{{original_title}}</p>
-                <p class="film-text">{{genres}}</p>
-            </div>                        
+                    <span class="box-film-vote">{{vote_count}}</span></b>
+            </p>
+            <p class="film-text ">
+                <b class="film-text__left" data-lng="FilmPop">Popularity</b>
+                <b class="film-text__right">{{popularity}}</b>
+            </p>
+            <p class="film-text ">
+                <b class="film-text__left" data-lng="FilmTit">Original Title</b>
+                <b class="film-text__right">{{original_title}}</b>
+            </p>
+            <p class="film-text ">
+                <b class="film-text__left" data-lng="FilmGen">Genre</b>
+                <b class="film-text__right">{{genres}}</b>
+
+            </p>                       
         </div>
         <p class="film-info__item">
-            <b class="film-text">About</b></br>
+            <b class="film-text" data-lng="FilmAb">ABOUT</b>
             <b class="film-about">{{overview}}</b>
         </p>
 
         <div class="btn-add" id="js-add-to-list" data-id="{{id}}">
-            <button class="button" id="add-watched" type="button">add to watched</button>
-            <button class="button" id="add-queue" type="button">add to queue</button>
+            <button class="button" id="add-watched" type="button" data-lng="FilmWat">ADD TO WATCHED</button>
+            <button class="button" id="add-queue" type="button" data-lng="FilmQue">ADD TO QUEUE</button>
         </div>
     </div>
+     
 </div>
