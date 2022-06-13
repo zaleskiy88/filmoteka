@@ -129,8 +129,8 @@ window.addEventListener("scroll", () => {
 // handle a click on the button Up
 function onUpClick() {
     document.documentElement.scrollTop = 0;
+}
 if (gallery) {
   generateMarkup();
   form.addEventListener('submit', onSearchSubmit);
-}
 }
