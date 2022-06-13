@@ -10,6 +10,7 @@ const emailLogin = document.querySelector('#email');
 const passwordLogin = document.querySelector('#password-1'); 
 const formLog = document.querySelector('.login-modal_form');
 const body = document.querySelector('body');
+const backdropIn = document.querySelector('.backdrop-in');
 
 
 function onEventListener(){
@@ -19,6 +20,7 @@ function onEventListener(){
     btnModalClose.addEventListener('click', onCloseModalLoginClick);
     formLog.addEventListener('submit', saveLocalStorage);
     window.addEventListener('keydown', closeModalKeydown);
+    backdropIn.addEventListener('click', onBackdropClick);
 }
 
 function ofEventListener(){
@@ -27,6 +29,7 @@ function ofEventListener(){
     btnModalClose.removeEventListener('click', onCloseModalLoginClick);
     formLog.removeEventListener('submit', saveLocalStorage);
     window.removeEventListener('keydown', closeModalKeydown);
+    backdropIn.removeEventListener('click', onBackdropClick);
 }
 
 
@@ -63,7 +66,7 @@ function onOpenModalRegistrationClick(){
 btnSignin.addEventListener('click', onOpenModalLoginClick);
 
 function onOpenModalLoginClick(){
-    modalnput.style.display = 'block';
+    backdropIn.style.display = 'block';
     body.style.overflow = 'hidden';
     onEventListener();
 };
@@ -71,7 +74,7 @@ function onOpenModalLoginClick(){
 //btnModalClose.addEventListener('click', onCloseModalLoginClick);
 
 function onCloseModalLoginClick(){
-    modalnput.style.display = 'none';
+    backdropIn.style.display = 'none';
     body.style.overflow = 'visible';
     onCloseModalRegistrationClick();
     ofEventListener()
@@ -88,11 +91,25 @@ function closeModalKeydown(event){
     }
 
     else{
-        modalnput.style.display = 'none';
+        backdropIn.style.display = 'none';
         body.style.overflow = 'visible';
         onCloseModalRegistrationClick();
         ofEventListener()
     }
+}
+
+//////////////////////////////////////////////////////////close modal in backdrop//////////////////////////////////////////////////////////////
+
+//backdropIn.addEventListener('click', onBackdropClick);
+
+function onBackdropClick(event) {
+  event.preventDefault();
+  if (event.target === event.currentTarget) {
+        backdropIn.style.display = 'none';
+        body.style.overflow = 'visible';
+        onCloseModalRegistrationClick();
+        ofEventListener()
+  }
 }
 
   ////////////////////////remember login and password//////////////////////////////

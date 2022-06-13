@@ -10,16 +10,19 @@
       </a>
     </div>
         <nav class="header__navigation">
+
           <ul class="header-library__navigation">
             <li class="header__navigation-item sign-in">
-            <button id="signin" class="header__navigation-link" data-lng="headerSignIn" href=" /">
-              Sign in 
-            </button>
-            <div id="googleUser"></div>
+              <button id="signin" class="header__navigation-link" data-lng="headerSignIn" href=" /">
+                Sign in 
+              </button>
+              <button id="signout" class="header__navigation-link auth-hide" data-lng="signOutBtn" href=" /">
+                Sign out
+              </button>
+              <div id="googleUser" class="header__user-name auth-hide"></div>
           </li>
-
-              <li class="header__navigation-item"><a class="header__navigation-link current" data-lng="btnHome" href="./index.html">Home</a></li>
-              <li class="header__navigation-item"><a class="header__navigation-link" data-lng="btnLibrary" href="./library.html">my library</a></li>
+          <li class="header__navigation-item"><a class="header__navigation-link current" data-lng="btnHome" href="./index.html">Home</a></li>
+          <li class="header__navigation-item"><a class="header__navigation-link unactive" data-lng="btnLibrary" href="./library.html" id="myLibraryBtn">my library</a></li>
      
             </ul>
         </nav>
