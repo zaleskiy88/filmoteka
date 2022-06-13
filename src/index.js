@@ -19,6 +19,9 @@ const preloaderContainer = document.querySelector('.preloader');
 const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
+const myLibraryBtn = document.querySelector('#myLibraryBtn');
+
+myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 
 
 preloaderContainer.innerHTML = preloader();

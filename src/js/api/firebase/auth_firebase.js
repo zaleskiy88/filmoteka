@@ -1,6 +1,7 @@
 import { auth, provider } from './firebase_app'
 import { onAuthStateChanged, signInWithRedirect, signOut } from 'firebase/auth';
 import currentUser from '../../storage/currentUser';
+import Notiflix from 'notiflix';
 
 const logInBtn = document.querySelector('#signin');
 const logOutBtn = document.querySelector('#signout');
@@ -14,12 +15,19 @@ onAuthStateChanged(auth, user => {
         currentUser.userEmail = user.email;
         currentUser.userUiid = user.uid;
         currentUser.isAuth = true;
-
-        logInBtn.classList.toggle('auth-hide');
+        localStorage.setItem('user-id', currentUser.userUiid);
+        localStorage.setItem('user-name', currentUser.userName);
+        localStorage.setItem('auth', currentUser.isAuth);
+    try {
+            logInBtn.classList.toggle('auth-hide');
         logOutBtn.classList.toggle('auth-hide');
         googleUser.classList.toggle('auth-hide');
         googleUser.textContent = currentUser.userName;
-
+        myLibraryBtn.classList.remove('unactive');
+        localStorage.removeItem('user-id');
+        localStorage.removeItem('user-name');
+        localStorage.removeItem('auth');
+    } catch (error) {}
     } else {
         console.log('User is signed out');
         currentUser.isAuth = false;
@@ -27,6 +35,7 @@ onAuthStateChanged(auth, user => {
         currentUser.userEmail = '';
         currentUser.userUiid = '';
         currentUser.movieLists = {};
+        myLibraryBtn.classList.add('unactive');
     }
 });
 
