@@ -18,6 +18,9 @@ const preloaderContainer = document.querySelector('.preloader');
 const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
+const myLibraryBtn = document.querySelector('#myLibraryBtn');
+
+myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 
 // preloaderContainer.innerHTML = preloader();
 
@@ -154,23 +157,28 @@ add_watched.addEventListener('click', () => {
   console.log('add watched');
   apiFirebase.add.addToWatched(Math.random());
 });
-//Выборка данных из базы
-// get.addEventListener('click', () => {
-//   console.log('get');
-//   const usr = authGoogleAPI.getDocument();
-//   //Получаем промис с результатом в виде объекта с двумя массивами - очередь и просмотренные
-//   usr
-//     .then(result => {
-//       console.log('Result ', result);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// });
-//!END -- need to delete
-stat.addEventListener('click', () => {
-  console.log('stat');
-  console.log(currentUser);
-});
 
-// UserClass.authStateListener();
+// is user is unauth then my library is unactive
+function handleMyLibraryClick(ev) {
+    const lang = localStorage.getItem('lang') || '';
+    let message;
+    if (!currentUser.isAuth) {
+        ev.preventDefault();
+        switch (lang) {
+        case 'en':
+                message = 'Please, sign in to enter My library';
+            break;
+        case 'ru':
+                message = 'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
+            break;
+        case 'uk':
+                message = 'Будь ласка, авторизуйтесь, що зайти у розділ Моя бібліотека';
+            break;
+}
+        Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+    }
+}
+
+
+
+
