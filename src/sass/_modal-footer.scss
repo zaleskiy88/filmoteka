@@ -63,49 +63,47 @@ body.show-modal .footer-team-link {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  background-color: rgba(236, 151, 82, 0.8);
+  background-color: transparent;
+  background-image: url(../images/фильм-min.jpg);
+  background-size: contain;
 }
 
 .swiper-slide img {
   display: block;
-  width: 320px;
-  height: 280px;
+  width: 420px;
+  height: 312px;
   object-fit: cover;
 }
 
-.modal-info {
-  position: relative;
+.modal-info{
+  width: 420px;
+  height: 30px;
+  position: absolute;
+  top : 380px;
   text-align: center;
+  background-color: var(--brand-color);
 }
 
+
 .modal-info__name {
-  position: absolute;
-  width: 320px;
-  height: 30px;
-  top: 110px;
-  left: -320px;
-  margin: 0 auto;
+  margin-top: 5px;
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
   line-height: 1.14;
-  text-align: center;
-  align-items: center;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #fff;
-  background-color: rgba(47, 48, 58, 0.8);
-  transition: color 250ms linear,
-  bordtr 250ms linear;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
+  /* background-color: var(--brand-color)*/
+} 
 
 .swiper-slide__hover:hover {
   border-radius: 50%;
 }
 
 .swiper-wrapper {
-  background-color: var(--text-color-caption);
+  background-color: transparent;
+
 }
 
 
@@ -115,7 +113,7 @@ body.show-modal .footer-team-link {
 .swiper-social{
   position: absolute;
   top : 80px;
-  right: 600px;
+  right: 350px;
 }
 
 .swiper-social__network {
