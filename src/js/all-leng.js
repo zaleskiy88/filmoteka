@@ -1,7 +1,7 @@
-const lengArr={
+const lengArr = {
     "btnHome": {
         "en": "Home",
-        "ru": "Главная",   
+        "ru": "Главная",
         "uk": "Головна"
     },
 
@@ -36,15 +36,15 @@ const lengArr={
     },
 
     "btnWatched": {
-        "en": "Watched",
-        "ru": "Просмотренные",
-        "uk": "Переглянуті"
+        "en": "WATCHED",
+        "ru": "ПРОСМОТРЕНО",
+        "uk": "ПЕРЕГЛЯНУТО"
     },
 
     "btnTurn": {
-        "en": "GUEUE",
-        "ru": "Очередь",
-        "uk": "Черга"
+        "en": "QUEUE",
+        "ru": "ОЧЕРЕДЬ",
+        "uk": "ЧЕРГА"
     },
 
     "ModalIn": {
@@ -64,8 +64,8 @@ const lengArr={
         "ru": "Войти",
         "uk": "Увійти"
     },
-    
-    "Email": { 
+
+    "Email": {
         "en": "Email",
         "ru": "Почта",
         "uk": "Пошта"
@@ -92,7 +92,7 @@ const lengArr={
     "BadMemary": {
         "en": "Forgot Password?",
         "ru": "Забыли пароль?",
-        "uk": "Забули пароль?" 
+        "uk": "Забули пароль?"
     },
 
     "FullName": {
@@ -123,6 +123,26 @@ const lengArr={
         "en": "Registration",
         "ru": "Регистрация",
         "uk": "Реєстрація"
+    },
+    "addWatchedBtn": {
+        "en": "Add to watched",
+        "ru": "Добавить в просмотренные",
+        "uk": "Додати в переглянуті"
+    },
+    "addWatchedBtn_watched": {
+        "en": "Watched",
+        "ru": "Просмотрен",
+        "uk": "Переглянутий"
+    },
+    "addQueueBtn": {
+        "en": "Add to queue",
+        "ru": "Добавить в очередь",
+        "uk": "Додати в чергу"
+    },
+    "addQueueBtn_queue": {
+        "en": "Remove from queue",
+        "ru": "Удалить из очереди",
+        "uk": "Видалити з черги"
     },
 }
 
