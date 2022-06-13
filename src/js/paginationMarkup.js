@@ -12,16 +12,13 @@ function renderSpan(value) {
 
 export function renderingPaginationMarkup(currentPage) {
   let maxPage = refs.input?.value 
-    ? Number(localStorage.getItem("onSearchTotalPages")) 
+    ? Number(JSON.parse(localStorage.getItem("searchData")).onSearchTotalPages) 
     : Number(localStorage.getItem("trendingTotalPages"));
     const pagesArray = Array.apply(null, {
   length: maxPage ?? 0,
 })
   .map(Number.call, Number)
-  .map((item) => item + 1)
-  console.log("maxPage markup", maxPage);
-  console.log(pagesArray);
-
+  .map((item) => item + 1);
     let result = pagesArray.length <= 3
     ? pagesArray.map((item) => renderSpan(item))
     : pagesArray.map((item) => {
@@ -52,8 +49,7 @@ export function renderingPaginationMarkup(currentPage) {
         }
         if (refs.paginationList) {
           refs.paginationList.innerHTML = result;
-          console.log(result);
-    refs.paginationList.querySelectorAll("span").forEach(item => {
+          refs.paginationList.querySelectorAll("span").forEach(item => {
       if (item.innerHTML == currentPage) {
         item.classList.toggle("active");
       }

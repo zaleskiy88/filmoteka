@@ -33,9 +33,9 @@ if (myLibraryBtn) {
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
   console.log("index", moviesData.total_pages);
-  renderingPaginationMarkup(1);
+
   localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
-  
+  renderingPaginationMarkup(1);
   // Creating an object that stores data for handlebars template
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -49,16 +49,20 @@ async function generateMarkup() {
 
 async function onSearchSubmit(event) {
   event.preventDefault();
-  if (event.currentTarget.elements.searchQuery.value === '') {
+  const searchQuery = event.currentTarget?.elements.searchQuery.value;
+  if (searchQuery === '') {
     Notiflix.Notify.info('Search query cannot be empty.');
     return;
   }
   const moviesData = await getDataMovies(
-    event.currentTarget.elements.searchQuery.value
+    searchQuery
   );
-  renderingPaginationMarkup(1, moviesData.total_pages);
-  localStorage.setItem("onSearchTotalPages", moviesData.total_pages ?? 0);
-  
+  const searchData ={
+    "onSearchTotalPages": moviesData.total_pages ?? 0,
+    "onSearchQuery": searchQuery ?? "",
+  }
+  localStorage.setItem("searchData", JSON.stringify(searchData));
+  renderingPaginationMarkup(1);
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
