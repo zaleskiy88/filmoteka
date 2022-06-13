@@ -3,10 +3,11 @@
 
 
 .backdrop {
-  width: 100%;
+  width: 50%;
   height: 100%;
   position: fixed;
-  left: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
   top: 57%;
   transform: scale(1);
   transition: transform 400ms;
@@ -112,9 +113,9 @@ body.show-modal .footer-team-link {
 
 .swiper-social{
   position: absolute;
-  top : 80px;
-  right: 350px;
+right: 50px;
 }
+
 
 .swiper-social__network {
   display: flex;
