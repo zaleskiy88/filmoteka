@@ -49,6 +49,7 @@ async function onSearchSubmit(event) {
   const moviesData = await getDataMovies(
     event.currentTarget.elements.searchQuery.value
   );
+  console.log(moviesData);
 
   const movieCategories = await generateMoviesWithGenres(moviesData);
 

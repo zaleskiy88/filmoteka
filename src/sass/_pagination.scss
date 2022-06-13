@@ -1,21 +1,43 @@
+@import './variables';
+
 .pagination {
     display: flex;
     justify-content: center;
+    line-height: 40px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    font-weight: 500;
+    font-size: 12px;
 }
 
 .pagination span {
-    width: 20px;
-    height: 20px;
-    margin-right: 20px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 15%;
+    // margin-right: 8px;
     cursor: pointer;
+    fill: #000000;
 } 
 
-.pagination-list>span:hover {
-    color: var(--bg-color);
-    background-color: var(--brand-color);
-}
+// .pagination-list>span:hover {
+//     color: var(--bg-color);
+//     background-color: var(--brand-color);
+// }
 
 .pagination span.active {
-    background-color: tomato;
+    background-color:var(--text-color-caption);
     color: var(--text-color-header);
 }
+
+.pagination__prev {
+    background-color: var(--bg-color-footer);
+}
+
+.pagination__next {
+    background-color: var(--bg-color-footer);
+}
+
+
+
