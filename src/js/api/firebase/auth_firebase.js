@@ -42,6 +42,7 @@ onAuthStateChanged(auth, user => {
 function logInByGoogle() {
     console.log('login API');
     signInWithRedirect(auth, provider);
+    // return getRedirectResult(auth);
 }
 function logOut() {
     console.log('logout API');

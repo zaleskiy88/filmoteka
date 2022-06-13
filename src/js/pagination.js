@@ -1,13 +1,15 @@
-import {getMoreTrendingMoviesData, generateMoviesWithGenres} from "./movie-fetch";
+import {getMoreTrendingMoviesData, generateMoviesWithGenres, getMoreDataMovies} from "./movie-fetch";
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
+// import searchQuery from "../index";
 
 const refs = {
-    paginationList: document.querySelector(".pagination-list"),
-}
+  paginationList: document.querySelector('.pagination-list'),
+  input: document.querySelector(".header__input")
+};
 const gallery = document.querySelector('.gallery');
-const preloaderContainer = document.querySelector(".preloader");
-const footer = document.querySelector(".footer");
+const preloaderContainer = document.querySelector('.preloader');
+const footer = document.querySelector('.footer');
 const maxPage = 20;
 let currentPage = 1;
 
@@ -15,54 +17,69 @@ const pagesArray = Array.apply(null, {
   length: maxPage ?? 0,
 })
   .map(Number.call, Number)
-  .map((item) => item + 1);
+  .map(item => item + 1);
 
-  function renderSpan(value) {
-    return `<span data-value='${value}'>${value}</span>`; 
-  }
+function renderSpan(value) {
+  return `<span data-value='${value}'>${value}</span>`;
+}
 
 async function renderingFilmsMarkup(currentPage) {
-  renderingPaginationMarkup(currentPage);
-      const data = await getMoreTrendingMoviesData(currentPage);
+      renderingPaginationMarkup(currentPage);
+      let data = null;
+      if (refs.input?.value) {
+        data = await getMoreDataMovies(refs.input?.value, currentPage)
+      }
+      else {
+        data = await getMoreTrendingMoviesData(currentPage);
+      }
       const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
-        setTimeout(() => {
-          preloaderContainer.innerHTML = '';
-          gallery.innerHTML= itemsTemplate(movieCategories);
-          footer.style.position = "static";
-        }, 2000);
+  setTimeout(() => {
+    preloaderContainer.innerHTML = '';
+    gallery.innerHTML = itemsTemplate(movieCategories);
+    footer.style.position = 'static';
+  }, 2000);
 }
 
 async function onPaginationBtnClick(event) {
-  footer.style.position = "fixed";
+  footer.style.position = 'fixed';
   preloaderContainer.innerHTML = preloader();
-  gallery.innerHTML = "";
-  if(event.target.nodeName !== "SPAN") {
+  gallery.innerHTML = '';
+  if (event.target.nodeName !== 'SPAN') {
     return;
   }
-    if (event.target.dataset.span === "prev") {
-      currentPage -= 1;
-      renderingFilmsMarkup(currentPage);
-        return;
-    }
-    if (event.target.dataset.span === "next") {
+  if (event.target.dataset.span === 'prev') {
+    currentPage -= 1;
+    renderingFilmsMarkup(currentPage);
+    return;
+  }
+  if (event.target.dataset.span === 'next') {
+    currentPage += 1;
+    renderingFilmsMarkup(currentPage);
+    return;
+  }
+  if (event.target.dataset.value === 'dots') {
+    if (Number(event.target.nextElementSibling?.dataset?.value) === maxPage) {
       currentPage += 1;
       renderingFilmsMarkup(currentPage);
       return;
+    } else {
+      currentPage -= 1;
+      renderingFilmsMarkup(currentPage);
+      return;
     }
+  }
     if (event.target.dataset.value === "dots") {
       if (Number(event.target.nextElementSibling?.dataset?.value) === maxPage)
       {
         currentPage += 1;
         renderingFilmsMarkup(currentPage);
-        console.log("max dots");
         return;
       }
       else {
         currentPage -= 1;
         renderingFilmsMarkup(currentPage);
-        console.log("min dots");
       return;
       }
     }
@@ -98,13 +115,15 @@ function renderingPaginationMarkup(currentPage) {
         if (currentPage >= 1 && currentPage !== maxPage) {
           result = result + "<span data-span='next'>=></span>";
         }
-    refs.paginationList.innerHTML = result;
-    console.log(refs.paginationList.querySelectorAll("span"));
+        if (refs.paginationList) {
+          refs.paginationList.innerHTML = result;
     refs.paginationList.querySelectorAll("span").forEach(item => {
       if (item.innerHTML == currentPage) {
         item.classList.toggle("active");
       }
     });
+        }
+    
 }
 
 renderingPaginationMarkup(1);
