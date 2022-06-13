@@ -15,14 +15,16 @@ import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs';
 import apiFirebase from './js/api/firebase';
 import MovieLists from './js/movie-lists';
+import currentUser from './js/storage/currentUser';
 const preloaderContainer = document.querySelector('.preloader');
 const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
 const myLibraryBtn = document.querySelector('#myLibraryBtn');
+const upBtn = document.querySelector('.go-up');             // button up to top page
+upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 
 myLibraryBtn.addEventListener('click', handleMyLibraryClick);
-console.log(currentUser.isAuth);
 preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
@@ -112,4 +114,16 @@ function handleMyLibraryClick(ev) {
 }
         Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
     }
+}
+
+// scroll handle to add an endless gallery
+window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 70) {                      // on / off button up
+        upBtn.classList.add("on-screen")}
+        else {upBtn.classList.remove("on-screen")}
+});
+
+// handle a click on the button Up
+function onUpClick() {
+    document.documentElement.scrollTop = 0;
 }

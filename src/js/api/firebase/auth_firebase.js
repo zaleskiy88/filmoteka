@@ -1,7 +1,6 @@
 import { auth, provider } from './firebase_app'
 import { onAuthStateChanged, signInWithRedirect, signOut } from 'firebase/auth';
 import currentUser from '../../storage/currentUser';
-import Notiflix from 'notiflix';
 
 const logInBtn = document.querySelector('#signin');
 const logOutBtn = document.querySelector('#signout');

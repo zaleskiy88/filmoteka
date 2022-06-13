@@ -59,6 +59,7 @@ async function getUsersMovieList(typeOfList, event) {
                 break;
         }
         Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 94, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+        console.log(error);
     }
     
     return usersList;

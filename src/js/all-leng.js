@@ -144,6 +144,12 @@ const lengArr = {
         "ru": "Удалить из очереди",
         "uk": "Видалити з черги"
     },
+
+    "signOutBtn": {
+        "en": "Sign Out",
+        "ru": "Выйти",
+        "uk": "Вийти"
+    }
 }
 
 export default lengArr;
