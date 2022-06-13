@@ -11,7 +11,7 @@ import {
   getGenresIds,
   getOneMovieById,
 } from './js/movie-fetch';
-import Swiper from '../../node_modules/swiper/swiper-bundle';
+import Swiper from './../node_modules/swiper/swiper-bundle';
 import "./js/modal-footer";
 
 import itemsTemplate from './templates/list-of-card.hbs';
