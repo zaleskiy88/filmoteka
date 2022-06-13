@@ -11,6 +11,18 @@ import {
   getGenresIds,
   getOneMovieById,
 } from './js/movie-fetch';
+import Swiper from './../node_modules/swiper/swiper-bundle';
+import "./js/modal-footer";
+
+import itemsTemplate from './templates/list-of-card.hbs';
+import preloader from './templates/preloader.hbs';
+
+var swiper = new Swiper(".swiper", {
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 
 import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs';
