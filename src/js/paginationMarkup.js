@@ -6,23 +6,22 @@ const refs = {
     footer:document.querySelector('.footer'),
   };
 
-let maxPage = refs.input?.value 
-? Number(localStorage.getItem("onSearchTotalPages")) 
-: Number(localStorage.getItem("trendingTotalPages"));
-async function getTotalPagesArray() { 
-  const array = [];
-  for (let i = 1; i <= maxPage; i++) { 
-      array.push(i)
-  }
-  return array;
-}
-
 function renderSpan(value) {
     return `<span data-value='${value}'>${value}</span>`;
   }
 
-export async function renderingPaginationMarkup(currentPage, maxPage) {
-    const pagesArray = await getTotalPagesArray();
+export function renderingPaginationMarkup(currentPage) {
+  let maxPage = refs.input?.value 
+    ? Number(localStorage.getItem("onSearchTotalPages")) 
+    : Number(localStorage.getItem("trendingTotalPages"));
+    const pagesArray = Array.apply(null, {
+  length: maxPage ?? 0,
+})
+  .map(Number.call, Number)
+  .map((item) => item + 1)
+  console.log("maxPage markup", maxPage);
+  console.log(pagesArray);
+
     let result = pagesArray.length <= 3
     ? pagesArray.map((item) => renderSpan(item))
     : pagesArray.map((item) => {
@@ -53,6 +52,7 @@ export async function renderingPaginationMarkup(currentPage, maxPage) {
         }
         if (refs.paginationList) {
           refs.paginationList.innerHTML = result;
+          console.log(result);
     refs.paginationList.querySelectorAll("span").forEach(item => {
       if (item.innerHTML == currentPage) {
         item.classList.toggle("active");

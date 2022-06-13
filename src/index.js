@@ -30,10 +30,10 @@ if (myLibraryBtn) {
   //myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 }
 
-
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
-  renderingPaginationMarkup(1, moviesData.total_pages);
+  console.log("index", moviesData.total_pages);
+  renderingPaginationMarkup(1);
   localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
   
   // Creating an object that stores data for handlebars template
