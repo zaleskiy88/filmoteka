@@ -71,5 +71,7 @@ async function onPaginationBtnClick(event) {
     currentPage = Number(event.target.textContent);
     renderingFilmsMarkup(currentPage);
 }
+if (refs.paginationList) {
+  refs.paginationList.addEventListener('click', onPaginationBtnClick);
+}
 
-refs.paginationList.addEventListener('click', onPaginationBtnClick);

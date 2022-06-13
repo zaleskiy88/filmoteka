@@ -21,11 +21,10 @@ const form = document.querySelector('form');
 const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
 const myLibraryBtn = document.querySelector('#myLibraryBtn');
+if (myLibraryBtn) {
+  //myLibraryBtn.addEventListener('click', handleMyLibraryClick);
+}
 
-// myLibraryBtn.addEventListener('click', handleMyLibraryClick);
-
-
-preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
@@ -94,7 +93,7 @@ async function generateMoviesWithGenres(data) {
     return movieInfo;
   });
 }
-
-generateMarkup();
-
-form.addEventListener('submit', onSearchSubmit);
+if (gallery) {
+  generateMarkup();
+  form.addEventListener('submit', onSearchSubmit);
+}

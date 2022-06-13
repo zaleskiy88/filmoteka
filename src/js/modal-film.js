@@ -13,7 +13,10 @@ if(langStart === ""){
 const gallery = document.querySelector(".gallery");
 const backdrop = document.querySelector(".backdrop-film");
 gallery.addEventListener('click', onModalClick);
-backdrop.addEventListener('click', onBackdropClick);
+if (backdrop) {
+  backdrop.addEventListener('click', onBackdropClick);
+}
+
 
 function onBackdropClick(event) {
   event.preventDefault();

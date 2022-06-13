@@ -17,8 +17,6 @@ async function getTotalPagesArray() {
   return array;
 }
 
-console.log(maxPage);
-
 function renderSpan(value) {
     return `<span data-value='${value}'>${value}</span>`;
   }
