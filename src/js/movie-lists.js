@@ -43,8 +43,8 @@ const ModalMovie = (function () {
     function init() {
         movieId = refsMovieLists().addListBtnGroup.dataset.id;
 
-        const movieInQueueList = checkIfMovieIsInList(movieId, currentUser.movieLists.queue)
-        const movieInWatchedList = checkIfMovieIsInList(movieId, currentUser.movieLists.watched)
+        const movieInQueueList = checkIfMovieIsInList(movieId, currentUser.movieLists?.queue)
+        const movieInWatchedList = checkIfMovieIsInList(movieId, currentUser.movieLists?.watched)
 
         addQueueBtnState = movieInQueueList ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default;
         addWatchedBtnState = movieInWatchedList ? buttonStates.addWatchedBtn.inWatched : buttonStates.addWatchedBtn.default;

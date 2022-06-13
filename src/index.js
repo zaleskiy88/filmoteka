@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import './js/pagination';
 import './js/modal-film';
+import {renderingPaginationMarkup} from './js/paginationMarkup';
 
 import {
   getDataMovies,
@@ -24,12 +25,17 @@ const myLibraryBtn = document.querySelector('#myLibraryBtn');
 const upBtn = document.querySelector('.go-up');             // button up to top page
 upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 
-myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 preloaderContainer.innerHTML = preloader();
+if (myLibraryBtn) {
+  //myLibraryBtn.addEventListener('click', handleMyLibraryClick);
+}
+
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
-
+  renderingPaginationMarkup(1, moviesData.total_pages);
+  localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
+  
   // Creating an object that stores data for handlebars template
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -50,8 +56,9 @@ async function onSearchSubmit(event) {
   const moviesData = await getDataMovies(
     event.currentTarget.elements.searchQuery.value
   );
-  console.log(moviesData);
-
+  renderingPaginationMarkup(1, moviesData.total_pages);
+  localStorage.setItem("onSearchTotalPages", moviesData.total_pages ?? 0);
+  
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
@@ -92,11 +99,7 @@ async function generateMoviesWithGenres(data) {
   });
 }
 
-generateMarkup();
-
-form.addEventListener('submit', onSearchSubmit);
-
-// is user is unauth then my library is unactive
+// if user is unauth then my library is unactive
 function handleMyLibraryClick(ev) {
     const lang = localStorage.getItem('lang') || '';
     if (!currentUser.isAuth) {
@@ -109,7 +112,7 @@ function handleMyLibraryClick(ev) {
                 message = 'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
             break;
         case 'uk':
-                message = 'Будь ласка, авторизуйтесь, що зайти у розділ Моя бібліотека';
+                message = 'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
             break;
 }
         Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
@@ -126,4 +129,7 @@ window.addEventListener("scroll", () => {
 // handle a click on the button Up
 function onUpClick() {
     document.documentElement.scrollTop = 0;
+if (gallery) {
+  generateMarkup();
+  form.addEventListener('submit', onSearchSubmit);
 }
