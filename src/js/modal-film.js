@@ -62,8 +62,8 @@ function onEscKeyDown(event) {
   if (isEscKey) {
     backdrop.classList.add("visually-hidden");
     document.body.style.overflow = "visible";
-    btnModalFilm.removeEventListener('click', onCloseModalFilm);
-    /* window.removeEventListener('keydown', onEscKeyDown) */
+    /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
+    window.removeEventListener('keydown', onEscKeyDown)
   }
 }
 
