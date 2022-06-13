@@ -5,8 +5,10 @@ import { getDataMovies, getOneMovieById } from './movie-fetch';
 
 const gallery = document.querySelector(".gallery");
 const backdrop = document.querySelector(".backdrop-film");
+const btnModalFilm = document.querySelector(".btn-modal-film");
 gallery.addEventListener('click', onModalClick);
-// backdrop.addEventListener('click', onBackdropClick);
+backdrop.addEventListener('click', onBackdropClick);
+btnModalFilm.addEventListener('click', closeModalFilm);
 
 function onBackdropClick(event) {
   event.preventDefault();
@@ -39,4 +41,15 @@ function onEscKeyDown(event) {
     backdrop.classList.add("visually-hidden");
     window.removeEventListener('keydown', onEscKeyDown)
   }
+
+}
+function onCloseModalFilm() {
+   backdrop.classList.add("visually-hidden");
+ window.removeEventListener('keydown', onEscKeyDown);
+//}
+//btnModalFilm.onclick = function() {
+//    backdrop.style.display = "none";
+//}
+function closeModalFilm() {
+  backdrop.classList.add("visually-hidden");
 }
