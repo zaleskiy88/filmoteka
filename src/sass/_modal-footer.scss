@@ -110,6 +110,56 @@ body.show-modal .footer-team-link {
 
 
 
+//////////////////////social media//////////////////////////////
+
+.swiper-social{
+  position: absolute;
+  top : 80px;
+  right: 600px;
+}
+
+.swiper-social__network {
+  display: flex;
+  justify-content: center;
+  @media screen and(max-width:1064px) {
+  justify-content: center;}
+}
+
+.swiper-social__block {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.swiper-social__link {
+display: flex;
+align-items: center;
+justify-content: center;
+height: 44px;
+width: 44px;
+border-radius: 50%;
+  fill: blue;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+
+  &:hover,
+  &:focus {
+background-color: black;
+fill: var(--text-color-header);
+outline: none;
+}
+}
+
+
+.swiper-social__svg {
+width: 20px;
+height: 20px;
+--brand-color: currentColor;
+}
+
+
 
 
 
