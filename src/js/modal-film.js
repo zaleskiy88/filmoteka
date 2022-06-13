@@ -12,16 +12,15 @@ if(langStart === ""){
 
 const gallery = document.querySelector(".gallery");
 const backdrop = document.querySelector(".backdrop-film");
-const btnModalFilm = document.querySelector(".btn-modal-film");
 gallery.addEventListener('click', onModalClick);
 backdrop.addEventListener('click', onBackdropClick);
 
 function onBackdropClick(event) {
   event.preventDefault();
   if (event.target === event.currentTarget) {
+    /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
     backdrop.classList.add("visually-hidden");
     document.body.style.overflow = "visible";
-    /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
   }
 }
 
@@ -51,7 +50,8 @@ async function onModalClick(event) {
     backdrop.classList.remove("visually-hidden");
     backdrop.dispatchEvent(new CustomEvent('modal-film-opened', { bubbles: true }));
   }
-  //btnModalFilm.addEventListener('click', onCloseModalFilm);
+   const btnModalFilm = document.querySelector(".btn-modal-film")
+   btnModalFilm.addEventListener('click', onCloseModalFilm);
 }
 
 
@@ -60,15 +60,15 @@ function onEscKeyDown(event) {
   const isEscKey = event.code === ESC_KEY_CODE;
 
   if (isEscKey) {
-    backdrop.classList.add("visually-hidden");
-    document.body.style.overflow = "visible";
     /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
+    backdrop.classList.add("visually-hidden");
+    document.body.style.overflow = "visible"; 
     window.removeEventListener('keydown', onEscKeyDown)
   }
 }
 
-/* function onCloseModalFilm() {
+ function onCloseModalFilm() {
+  /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
   backdrop.classList.add("visually-hidden");
   document.body.style.overflow = "visible";
-  btnModalFilm.removeEventListener('click', onCloseModalFilm);
-} */
+} 
