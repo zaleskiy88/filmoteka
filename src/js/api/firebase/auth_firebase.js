@@ -19,7 +19,7 @@ onAuthStateChanged(auth, user => {
         localStorage.setItem('user-name', currentUser.userName);
         localStorage.setItem('auth', currentUser.isAuth);
     try {
-            logInBtn.classList.toggle('auth-hide');
+        logInBtn.classList.toggle('auth-hide');
         logOutBtn.classList.toggle('auth-hide');
         googleUser.classList.toggle('auth-hide');
         googleUser.textContent = currentUser.userName;
@@ -53,6 +53,9 @@ function logOut() {
             logOutBtn.classList.toggle('auth-hide');
             googleUser.classList.toggle('auth-hide');
             console.log(currentUser);
+            localStorage.removeItem('user-id');
+            localStorage.removeItem('user-name');
+            localStorage.removeItem('auth');
         })
         .catch(error => {
             console.log('Sign-out error', error);

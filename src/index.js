@@ -22,8 +22,7 @@ const gallery = document.querySelector('#home-gallery');
 const myLibraryBtn = document.querySelector('#myLibraryBtn');
 
 myLibraryBtn.addEventListener('click', handleMyLibraryClick);
-
-
+console.log(currentUser.isAuth);
 preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
@@ -94,3 +93,23 @@ async function generateMoviesWithGenres(data) {
 generateMarkup();
 
 form.addEventListener('submit', onSearchSubmit);
+
+// is user is unauth then my library is unactive
+function handleMyLibraryClick(ev) {
+    const lang = localStorage.getItem('lang') || '';
+    if (!currentUser.isAuth) {
+        ev.preventDefault();
+        switch (lang) {
+        case 'en':
+                message = 'Please, sign in to enter My library';
+            break;
+        case 'ru':
+                message = 'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
+            break;
+        case 'uk':
+                message = 'Будь ласка, авторизуйтесь, що зайти у розділ Моя бібліотека';
+            break;
+}
+        Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+    }
+}
