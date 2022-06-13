@@ -25,7 +25,7 @@ const myLibraryBtn = document.querySelector('#myLibraryBtn');
 const upBtn = document.querySelector('.go-up');             // button up to top page
 upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 
-// preloaderContainer.innerHTML = preloader();
+preloaderContainer.innerHTML = preloader();
 if (myLibraryBtn) {
   //myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 }
