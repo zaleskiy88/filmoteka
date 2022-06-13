@@ -10,7 +10,7 @@ async function getUsersMovieList(typeOfList, event) {
     const lang = localStorage.getItem('lang') || '';
     let message;
     if (event) { event.preventDefault() };                             // block reload page
-        const usersCollection = doc(db, 'users', '2i1T2rjd9xPzQ3BNETY8W5RQGLl1' || localStorage.getItem('user-name') ||  userInfo.userUiid);       // forming a querry
+        const usersCollection = doc(db, 'users', userInfo.userUiid);   // forming a querry
 
     try {
         const docSnap = await getDoc(usersCollection);  // send querry
