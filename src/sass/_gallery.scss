@@ -18,6 +18,7 @@
 .movie-card {
   background: var(--bg-color);
   border-radius: 5px;
+  object-fit: cover;
   @media screen and (max-width: 419px) {
     margin-right: 0;
     margin-bottom: 20px;
@@ -56,4 +57,19 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
+}
+
+.movie-card img{
+  @media screen and (min-width: $mob) {
+    width: 280px;
+    height: 398px;
+  }
+  @media screen and (min-width: $tab) {
+    width: 346px;
+    height: 445px;
+  }
+  @media screen and (min-width: $desc) {
+    width: 309px;
+    height: 449px;
+  }
 }
