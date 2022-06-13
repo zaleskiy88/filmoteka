@@ -1,6 +1,7 @@
 import Notiflix from 'notiflix';
 import './js/pagination';
 import './js/modal-film';
+import {renderingPaginationMarkup} from './js/paginationMarkup';
 
 import {
   getDataMovies,
@@ -21,14 +22,15 @@ const footer = document.querySelector('.footer');
 const gallery = document.querySelector('#home-gallery');
 const myLibraryBtn = document.querySelector('#myLibraryBtn');
 
-myLibraryBtn.addEventListener('click', handleMyLibraryClick);
+// myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 
 
 preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
-
+  localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
+  renderingPaginationMarkup(1, moviesData.total_pages);
   // Creating an object that stores data for handlebars template
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -49,8 +51,8 @@ async function onSearchSubmit(event) {
   const moviesData = await getDataMovies(
     event.currentTarget.elements.searchQuery.value
   );
-  console.log(moviesData);
-
+  localStorage.setItem("onSearchTotalPages", moviesData.total_pages ?? 0);
+  renderingPaginationMarkup(1, moviesData.total_pages);
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
