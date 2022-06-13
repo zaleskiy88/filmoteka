@@ -1,6 +1,6 @@
 import modalFilm from '../templates/modal-film.hbs';
 
-import { getDataMovies, getOneMovieById } from './movie-fetch';
+import {getOneMovieById } from './movie-fetch';
 
 
 const gallery = document.querySelector(".gallery");
@@ -8,7 +8,7 @@ const backdrop = document.querySelector(".backdrop-film");
 const btnModalFilm = document.querySelector(".btn-modal-film");
 gallery.addEventListener('click', onModalClick);
 backdrop.addEventListener('click', onBackdropClick);
-btnModalFilm.addEventListener('click', closeModalFilm);
+// btnModalFilm.addEventListener('click', onCloseModalFilm);
 
 function onBackdropClick(event) {
   event.preventDefault();
@@ -39,6 +39,7 @@ function onEscKeyDown(event) {
 
   if (isEscKey) {
     backdrop.classList.add("visually-hidden");
+    document.body.style.overflow = "visible";
     window.removeEventListener('keydown', onEscKeyDown)
   }
 
@@ -46,10 +47,4 @@ function onEscKeyDown(event) {
 function onCloseModalFilm() {
    backdrop.classList.add("visually-hidden");
  window.removeEventListener('keydown', onEscKeyDown);
-//}
-//btnModalFilm.onclick = function() {
-//    backdrop.style.display = "none";
-//}
-function closeModalFilm() {
-  backdrop.classList.add("visually-hidden");
 }
