@@ -29,8 +29,9 @@ preloaderContainer.innerHTML = preloader();
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
-  localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
   renderingPaginationMarkup(1, moviesData.total_pages);
+  localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
+  
   // Creating an object that stores data for handlebars template
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -51,8 +52,9 @@ async function onSearchSubmit(event) {
   const moviesData = await getDataMovies(
     event.currentTarget.elements.searchQuery.value
   );
-  localStorage.setItem("onSearchTotalPages", moviesData.total_pages ?? 0);
   renderingPaginationMarkup(1, moviesData.total_pages);
+  localStorage.setItem("onSearchTotalPages", moviesData.total_pages ?? 0);
+  
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
