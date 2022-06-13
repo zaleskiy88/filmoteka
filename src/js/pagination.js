@@ -1,14 +1,12 @@
 import {getMoreTrendingMoviesData, generateMoviesWithGenres, getMoreDataMovies} from "./movie-fetch";
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
-import parameters from "./movie-fetch";
 import {renderingPaginationMarkup} from "./paginationMarkup";
 // import searchQuery from "../index";
 
 
 const refs = {
   paginationList: document.querySelector('.pagination-list'),
-  input: document.querySelector(".header__input"),
   gallery:document.querySelector('.gallery'),
   preloaderContainer:document.querySelector('.preloader'),
   footer:document.querySelector('.footer'),
@@ -16,7 +14,7 @@ const refs = {
 
 let currentPage = 1;
 
-let maxPage = refs.input?.value 
+let maxPage = localStorage.getItem("searchData") 
 ? Number(localStorage.getItem("onSearchTotalPages")) 
 : Number(localStorage.getItem("trendingTotalPages"));
 /////////////////////////////////////////////////////////
@@ -24,8 +22,8 @@ let maxPage = refs.input?.value
 async function renderingFilmsMarkup(currentPage) {
       renderingPaginationMarkup(currentPage);
       let data = null;
-      if (refs.input?.value) {
-        data = await getMoreDataMovies(refs.input?.value, currentPage);
+      if (localStorage.getItem("searchData")) {
+        data = await getMoreDataMovies(JSON.parse(localStorage.getItem("searchData")).onSearchQuery, currentPage);
       }
       else {
         data = await getMoreTrendingMoviesData(currentPage);
@@ -71,6 +69,7 @@ async function onPaginationBtnClick(event) {
     currentPage = Number(event.target.textContent);
     renderingFilmsMarkup(currentPage);
 }
+
 if (refs.paginationList) {
   refs.paginationList.addEventListener('click', onPaginationBtnClick);
 }
