@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
 import './js/pagination';
+import './js/modal-film';
 
 import {
   getDataMovies,
