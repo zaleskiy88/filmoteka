@@ -16,15 +16,9 @@
     width: 40px;
     height: 40px;
     border-radius: 15%;
-    // margin-right: 8px;
     cursor: pointer;
     fill: #000000;
 } 
-
-// .pagination-list>span:hover {
-//     color: var(--bg-color);
-//     background-color: var(--brand-color);
-// }
 
 .pagination span.active {
     background-color:var(--text-color-caption);
