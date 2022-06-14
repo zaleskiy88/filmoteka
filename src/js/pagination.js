@@ -13,13 +13,10 @@ let maxPage = localStorage.getItem("searchData")
 
 async function renderingFilmsMarkup(currentPage) {
       renderingPaginationMarkup(currentPage);
-      let data = null;
-      if (JSON.parse(localStorage.getItem("searchData"))?.onSearchQuery) {
-        data = await getMoreDataMovies(JSON.parse(localStorage.getItem("searchData")).onSearchQuery, currentPage);
-      }
-      else {
-        data = await getMoreTrendingMoviesData(currentPage);
-      }
+      let data = JSON.parse(localStorage.getItem("searchData"))?.onSearchQuery ? 
+      await getMoreDataMovies(JSON.parse(localStorage.getItem("searchData")).onSearchQuery, currentPage)
+     :await getMoreTrendingMoviesData(currentPage);
+console.log(data);
       const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
