@@ -1,4 +1,6 @@
 import refs from '../constants/refs';
+import currentUser from './storage/currentUser';
+import Notiflix from 'notiflix';
 // handle a click on the button Up
 function onUpClick() {
   document.documentElement.scrollTo({
@@ -28,10 +30,7 @@ function handleMyLibraryClick(e) {
 }
 
 refs.upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
-
-if (refs.myLibraryBtn) {
-  refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);
-  }
+refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 
 window.addEventListener("scroll", () => {
     if (window.pageYOffset > 70) {                      // on / off button up

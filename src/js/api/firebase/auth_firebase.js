@@ -16,11 +16,9 @@ onAuthStateChanged(auth, user => {
         refs.googleOut.classList.toggle('auth-hide');
         refs.googleUser.classList.toggle('auth-hide');
         refs.googleUser.textContent = currentUser.userEmail;
-        myLibraryBtn.classList.remove('unactive');
     } catch (error) {}
     } else {
         currentUser.clear();
-        myLibraryBtn.classList.add('unactive');
     }
 });
 
