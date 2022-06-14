@@ -42,12 +42,11 @@ if(preloaderContainer) {
 }
 
 if (myLibraryBtn) {
-  //myLibraryBtn.addEventListener('click', handleMyLibraryClick);
+  myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 }
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
-  console.log("index", moviesData.total_pages);
 
   localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
   renderingPaginationMarkup(1);
@@ -122,6 +121,7 @@ async function generateMoviesWithGenres(data) {
 function handleMyLibraryClick(ev) {
     const lang = localStorage.getItem('lang') || '';
     if (!currentUser.isAuth) {
+      let message = "";
         ev.preventDefault();
         switch (lang) {
         case 'en':
@@ -147,7 +147,10 @@ window.addEventListener("scroll", () => {
 
 // handle a click on the button Up
 function onUpClick() {
-    document.documentElement.scrollTop = 0;
+  document.documentElement.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
 }
 if (gallery) {
   generateMarkup();

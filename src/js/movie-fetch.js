@@ -43,9 +43,9 @@ export async function getDataMovies(searchQuery) {
 
   //checking if poster_path has an image url
   response.data.results.forEach(result => {
-    result.poster_path = result.poster_path
-      // ? result.poster_path
-      // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
+    result.poster_path = result.poster_path;
+    // ? result.poster_path
+    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
   if (response.data.total_results === 0) {
@@ -73,9 +73,9 @@ export async function getMoreDataMovies(searchQuery, page) {
 
   //checking if poster_path has an image url
   response.data.results.forEach(result => {
-    result.poster_path = result.poster_path
-      // ? result.poster_path
-      // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
+    result.poster_path = result.poster_path;
+    // ? result.poster_path
+    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
   return response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
@@ -93,9 +93,9 @@ export async function getTrendingMoviesData() {
 
   //checking if poster_path has an image url
   response.data.results.forEach(result => {
-    result.poster_path = result.poster_path
-      // ? result.poster_path
-      // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
+    result.poster_path = result.poster_path;
+    // ? result.poster_path
+    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
   return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
@@ -114,9 +114,9 @@ export async function getMoreTrendingMoviesData(page) {
 
   //checking if poster_path has an image url
   response.data.results.forEach(result => {
-    result.poster_path = result.poster_path
-      // ? result.poster_path
-      // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
+    result.poster_path = result.poster_path;
+    // ? result.poster_path
+    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
   return response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
@@ -138,8 +138,8 @@ export async function getOneMovieById(movieId) {
   const movieData = {
     id: response.data.id,
     poster_path: response.data.poster_path,
-      // ? response.data.poster_path
-      // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png',
+    // ? response.data.poster_path
+    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png',
     title: response.data.title,
     vote_average: response.data.vote_average,
     vote_count: response.data.vote_count,
