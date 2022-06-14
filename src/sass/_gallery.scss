@@ -18,14 +18,18 @@
 .movie-card {
   background: var(--bg-color);
   border-radius: 5px;
-  object-fit: cover;
+  // display: block;
+ 
+  @media screen and (max-width: 767px) {
+    width: 280px;
+  }
   @media screen and (max-width: 419px) {
-    margin-right: 0;
+    // margin-right: 0;
     margin-bottom: 20px;
   }
   cursor: pointer;
   @media screen and (min-width: $mob) {
-    margin-right: 0;
+    // margin-right: 0;
     margin-bottom: 20px;
   }
   @media screen and (min-width: $tab) {
@@ -60,6 +64,7 @@
 }
 
 .movie-card img{
+  object-fit: cover;
   @media screen and (min-width: $mob) {
     width: 280px;
     height: 398px;

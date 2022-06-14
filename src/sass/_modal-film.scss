@@ -135,11 +135,12 @@
   margin-bottom: 20px;
 }
 .film-about {
+  display: block;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
   color: var(--text-color-main);
-  height: 150px;
+  max-height: 150px;
     overflow: scroll;
 }
 .btn-add {
