@@ -14,6 +14,7 @@ function handleMyLibraryClick(e) {
     const lang = localStorage.getItem('lang') || '';
     if (!currentUser.isAuth) {
         e.preventDefault();
+        let message = "";
         switch (lang) {
         case 'en':
                 message = 'Please, sign in to enter My library';
