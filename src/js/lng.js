@@ -1,22 +1,20 @@
 import langArr from './all-leng.js';
-
-const langSelector = document.querySelector('#lang');
-const html = document.querySelector('html');
+import refs from '../constants/refs';
 const AllLng = ['en', 'ru', 'uk'];
 
 const langStart = localStorage.getItem('lang') || '';
 
 if (langStart !== '') {
-  langSelector.value = langStart;
+  refs.langSelector.value = langStart;
   location.href = window.location.pathname + '#' + langStart;
 }
 
 changeLang();
 
-langSelector.addEventListener('change', changeUrlLng);
+refs.langSelector.addEventListener('change', changeUrlLng);
 
 function changeUrlLng() {
-  let lang = langSelector.value;
+  let lang = refs.langSelector.value;
   location.href = window.location.pathname + '#' + lang;
   changeLang();
 }
@@ -27,17 +25,15 @@ function changeLang() {
   if (!AllLng.includes(hash)) {
     location.href = window.location.pathname + '#en';
     localStorage.setItem('lang', 'en');
-    html.setAttribute('lang', 'en');
+    refs.html.setAttribute('lang', 'en');
   }
-  html.setAttribute('lang', hash);
+  refs.html.setAttribute('lang', hash);
   localStorage.setItem('lang', hash);
-  langSelector.value = hash;
+  refs.langSelector.value = hash;
   for (let key in langArr) {
     let elem = document.querySelector(`[data-lng="${key}"]`);
-    if (elem) {
-      if (key) {
-        elem.innerHTML = langArr[key][hash];
-      }
+    if (elem && key) {
+      elem.innerHTML = langArr[key][hash];
     }
   }
   function changeLng() {
@@ -50,6 +46,6 @@ function changeLang() {
   }
 }
 
-langSelector.addEventListener('change', e => window.location.reload());
+refs.langSelector.addEventListener('change', e => window.location.reload());
 
 export { changeLang };

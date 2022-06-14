@@ -104,7 +104,12 @@
   color:var(--text-dark-theme) ;
   background-color: var(--dark-theme)  ; 
 
-
+  .movie-card {
+    background-color: var(--dark-theme) ; 
+  }
+  .movie-name {
+    color: var(--text-dark-theme) ; 
+  }
   .footer{
     color:var(--text-dark-theme) ;
     background-color: var(--dark-theme) ; 
