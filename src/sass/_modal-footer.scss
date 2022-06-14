@@ -14,15 +14,11 @@ body .modal-footer__open-modal {
   top: 57%;
   transform: scale(1);
   transition: color 250ms linear,
-  bordtr 250ms linear;
+  border 250ms linear;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 @media screen and (min-width: $tab) {
   top: 59%;
-}
-
-@media screen and (min-width: $desc) {
-  width: 50%;
 }
 }
 
@@ -126,8 +122,9 @@ body.show-modal .footer-team-link {
 }
 
 .modal-footer__close {
+  position: relative;
 top: 0;
-left: 0;
+right: 50%;
 }
 
 .modal-footer__close-modal {
@@ -155,7 +152,10 @@ left: 0;
 
 
 //////////////////////social media//////////////////////////////
-
+.swiper {
+  width: 50%;
+  // position: relative;
+}
 .swiper-social{
   position: absolute;
   right: 50px;
@@ -205,9 +205,3 @@ width: 20px;
 height: 20px;
 --brand-color: currentColor;
 }
-
-
-
-
-
-
