@@ -42,7 +42,7 @@ if(preloaderContainer) {
 }
 
 if (myLibraryBtn) {
-  //myLibraryBtn.addEventListener('click', handleMyLibraryClick);
+  myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 }
 
 async function generateMarkup() {
