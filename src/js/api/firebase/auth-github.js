@@ -6,24 +6,26 @@ import localizeString from "../../utils/localizeString";
 const provider = new GithubAuthProvider();
 const githubIn = document.querySelector('#github-login');
 
-githubIn.addEventListener('click', function logInByGithub() {
-    console.log('logInByGithub');
-    try {
-        localStorage.setItem('authProvider', 'github');
-        signInWithRedirect(auth, provider);
-    } catch (error) {
-        throw new Error(error);
+if (githubIn) {
+    githubIn.addEventListener('click', function logInByGithub() {
+        console.log('logInByGithub');
+        try {
+            localStorage.setItem('authProvider', 'github');
+            signInWithRedirect(auth, provider);
+        } catch (error) {
+            throw new Error(error);
+        }
+    });
+    const tmpAuthProvider = localStorage.getItem('authProvider');
+    if (tmpAuthProvider === 'github') {
+        getRedirectResult(auth)
+            .then((result) => {
+                const credential = GithubAuthProvider.credentialFromResult(result);
+                if (credential) {
+                    localStorage.removeItem('authProvider');
+                }
+            }).catch((error) => {
+                Notiflix.Notify.failure(localizeString(error.code));
+            });
     }
-});
-const tmpAuthProvider = localStorage.getItem('authProvider');
-if (tmpAuthProvider === 'github') {
-    getRedirectResult(auth)
-        .then((result) => {
-            const credential = GithubAuthProvider.credentialFromResult(result);
-            if (credential) {
-                localStorage.removeItem('authProvider');
-            }
-        }).catch((error) => {
-            Notiflix.Notify.failure(localizeString(error.code));
-        });
 }
