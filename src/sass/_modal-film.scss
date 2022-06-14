@@ -22,10 +22,6 @@
       height: 570px;
       overflow: scroll;
     }
-    @media screen and (min-width: $mob) {
-      height: 570px;
-      overflow: scroll;
-    }
   @media screen and (min-width: $tab) {
     display: flex;
     width: 704px;
@@ -142,7 +138,9 @@
 .film-info__item {
   margin-bottom: 20px;
   height: 200px;
-  overflow: scroll;
+  @media screen and (max-width: 419px) {
+    overflow: scroll;
+  }
 }
 .film-about {
   font-weight: 500;
