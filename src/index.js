@@ -11,6 +11,18 @@ import {
   getGenresIds,
   getOneMovieById,
 } from './js/movie-fetch';
+import Swiper from './../node_modules/swiper/swiper-bundle';
+import "./js/modal-footer";
+
+import itemsTemplate from './templates/list-of-card.hbs';
+import preloader from './templates/preloader.hbs';
+
+var swiper = new Swiper(".swiper", {
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 
 import itemsTemplate from './templates/list-of-card.hbs';
 import preloader from './templates/preloader.hbs';
@@ -25,17 +37,20 @@ const myLibraryBtn = document.querySelector('#myLibraryBtn');
 const upBtn = document.querySelector('.go-up');             // button up to top page
 upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 
-preloaderContainer.innerHTML = preloader();
+if(preloaderContainer) {
+  preloaderContainer.innerHTML = preloader();
+}
+
 if (myLibraryBtn) {
   //myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 }
 
-
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
-  renderingPaginationMarkup(1, moviesData.total_pages);
+  console.log("index", moviesData.total_pages);
+
   localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
-  
+  renderingPaginationMarkup(1);
   // Creating an object that stores data for handlebars template
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -49,16 +64,20 @@ async function generateMarkup() {
 
 async function onSearchSubmit(event) {
   event.preventDefault();
-  if (event.currentTarget.elements.searchQuery.value === '') {
+  const searchQuery = event.currentTarget?.elements.searchQuery.value;
+  if (searchQuery === '') {
     Notiflix.Notify.info('Search query cannot be empty.');
     return;
   }
   const moviesData = await getDataMovies(
-    event.currentTarget.elements.searchQuery.value
+    searchQuery
   );
-  renderingPaginationMarkup(1, moviesData.total_pages);
-  localStorage.setItem("onSearchTotalPages", moviesData.total_pages ?? 0);
-  
+  const searchData ={
+    "onSearchTotalPages": moviesData.total_pages ?? 0,
+    "onSearchQuery": searchQuery ?? "",
+  }
+  localStorage.setItem("searchData", JSON.stringify(searchData));
+  renderingPaginationMarkup(1);
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
   // Rendering markup
