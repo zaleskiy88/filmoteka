@@ -175,6 +175,11 @@ const lengArr = {
         "ru": "Электронная почта уже используется.",
         "uk": "Електронна пошта вже використовується."
     },
+    "auth/account-exists-with-different-credential": {
+        "en": "Email already associated with another account.",
+        "ru": "Электронная почта уже привязана к другому аккаунту.",
+        "uk": "Електронна пошта вже прив'язана до іншого акаунту."
+    },
     "signUpSuccess": {
         "en": "Registration successful",
         "ru": "Регистрация прошла успешно",

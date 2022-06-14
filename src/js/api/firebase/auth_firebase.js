@@ -9,7 +9,7 @@ const googleUser = document.querySelector('#googleUser');
 onAuthStateChanged(auth, user => {
     if (user) {
         console.log('User is signed in');
-        console.log(user.displayName);
+        console.log(user);
         currentUser.userName = user.displayName;
         currentUser.userEmail = user.email;
         currentUser.userUiid = user.uid;
@@ -17,16 +17,16 @@ onAuthStateChanged(auth, user => {
         localStorage.setItem('user-id', currentUser.userUiid);
         localStorage.setItem('user-name', currentUser.userName);
         localStorage.setItem('auth', currentUser.isAuth);
-    try {
-        logInBtn.classList.toggle('auth-hide');
-        logOutBtn.classList.toggle('auth-hide');
-        googleUser.classList.toggle('auth-hide');
-        googleUser.textContent = currentUser.userName;
-        myLibraryBtn.classList.remove('unactive');
-        localStorage.removeItem('user-id');
-        localStorage.removeItem('user-name');
-        localStorage.removeItem('auth');
-    } catch (error) {}
+        try {
+            logInBtn.classList.toggle('auth-hide');
+            logOutBtn.classList.toggle('auth-hide');
+            googleUser.classList.toggle('auth-hide');
+            googleUser.textContent = currentUser.userName;
+            myLibraryBtn.classList.remove('unactive');
+            localStorage.removeItem('user-id');
+            localStorage.removeItem('user-name');
+            localStorage.removeItem('auth');
+        } catch (error) { }
     } else {
         console.log('User is signed out');
         currentUser.isAuth = false;
