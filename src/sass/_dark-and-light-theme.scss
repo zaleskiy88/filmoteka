@@ -160,4 +160,8 @@
   .film-text__left {
     color:rgba(255, 255, 255, 0.70); 
   }
+
+  .pagination__prev, .pagination__next {
+    color: var(--dark-theme);
+  }
 }
