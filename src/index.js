@@ -47,7 +47,6 @@ if (myLibraryBtn) {
 
 async function generateMarkup() {
   const moviesData = await getTrendingMoviesData();
-  console.log("index", moviesData.total_pages);
 
   localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
   renderingPaginationMarkup(1);

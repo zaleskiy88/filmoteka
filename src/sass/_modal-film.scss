@@ -133,8 +133,8 @@
 }
 .film-info__item {
   margin-bottom: 20px;
-  max-height: 200px;
-  @media screen and (max-width: 419px) {
+  max-height: 150px;
+  @media screen and (max-width: 767px) {
     overflow: scroll;
   }
 }
