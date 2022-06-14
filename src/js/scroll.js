@@ -1,6 +1,7 @@
-const myLibraryBtn = document.querySelector('#myLibraryBtn');
-const upBtn = document.querySelector('.go-up');             // button up to top page
-
+// const myLibraryBtn = document.querySelector('#myLibraryBtn');
+// const upBtn = document.querySelector('.go-up');             // button up to top page
+import refs from '../constants/refs';
+console.log(refs);
 // handle a click on the button Up
 function onUpClick() {
   document.documentElement.scrollTo({
@@ -9,6 +10,7 @@ function onUpClick() {
   });
 }
 
+// if user is unauth then my library is unactive
 function handleMyLibraryClick(e) {
     const lang = localStorage.getItem('lang') || '';
     if (!currentUser.isAuth) {
@@ -28,14 +30,14 @@ function handleMyLibraryClick(e) {
     }
 }
 
-upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
+refs.upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 
-if (myLibraryBtn) {
-    myLibraryBtn.addEventListener('click', handleMyLibraryClick);
+if (refs.myLibraryBtn) {
+  refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);
   }
 
 window.addEventListener("scroll", () => {
     if (window.pageYOffset > 70) {                      // on / off button up
-        upBtn.classList.add("on-screen")}
-        else {upBtn.classList.remove("on-screen")}
+      refs.upBtn.classList.add("on-screen")}
+        else {refs.upBtn.classList.remove("on-screen")}
 });

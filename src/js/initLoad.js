@@ -1,11 +1,8 @@
 import {renderingPaginationMarkup} from './paginationMarkup';
 import {
     getDataMovies,
-    getMoreDataMovies,
     getTrendingMoviesData,
-    getMoreTrendingMoviesData,
     getGenresIds,
-    getOneMovieById,
   } from './movie-fetch';
 import apiFirebase from './api/firebase';
 import MovieLists from './movie-lists';
@@ -104,8 +101,6 @@ async function generateMoviesWithGenres(data) {
     return movieInfo;
   });
 }
-
-// if user is unauth then my library is unactive
 
 
 // scroll handle to add an endless gallery
