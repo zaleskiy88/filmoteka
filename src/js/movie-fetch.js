@@ -1,11 +1,6 @@
 const axios = require('axios').default;
 import Notiflix from 'notiflix';
-
-const API_KEY = '842344de8347536aefc6f17e8e76d4bd';
-const SEARCH_URL = `https://api.themoviedb.org/3/search/movie/`;
-const TRENDING_URL = `https://api.themoviedb.org/3/trending/movie/day`;
-const GET_ONE_MOVIE_URL = `https://api.themoviedb.org/3/movie`;
-const MOVIE_GENRES_URL = 'https://api.themoviedb.org/3/genre/movie/list';
+import constants from '../constants/constants';
 
 const pageLanguage = localStorage.lang;
 
@@ -18,9 +13,9 @@ const parameters = {
 
 // Get genres array
 export async function getGenresIds() {
-  const response = await axios.get(`${MOVIE_GENRES_URL}`, {
+  const response = await axios.get(`${constants.MOVIE_GENRES_URL}`, {
     params: {
-      api_key: API_KEY,
+      api_key: constants.API_KEY,
       language: pageLanguage,
     },
   });
@@ -32,20 +27,18 @@ export async function getGenresIds() {
 export async function getDataMovies(searchQuery) {
   parameters.searchQueryStr = searchQuery;
 
-  const response = await axios.get(`${SEARCH_URL}`, {
+  const response = await axios.get(`${constants.SEARCH_URL}`, {
     params: {
-      api_key: API_KEY,
+      api_key: constants.API_KEY,
       query: searchQuery,
       page: 1,
       language: pageLanguage,
     },
   });
 
-  //checking if poster_path has an image url
+  //checking whether the poster_path has an image url
   response.data.results.forEach(result => {
     result.poster_path = result.poster_path;
-    // ? result.poster_path
-    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
   if (response.data.total_results === 0) {
@@ -62,20 +55,18 @@ export async function getDataMovies(searchQuery) {
 }
 
 export async function getMoreDataMovies(searchQuery, page) {
-  const response = await axios.get(`${SEARCH_URL}`, {
+  const response = await axios.get(`${constants.SEARCH_URL}`, {
     params: {
-      api_key: API_KEY,
+      api_key: constants.API_KEY,
       query: searchQuery,
       page,
       language: pageLanguage,
     },
   });
 
-  //checking if poster_path has an image url
+  //checking whether poster_path has an image url
   response.data.results.forEach(result => {
-    result.poster_path = result.poster_path;
-    // ? result.poster_path
-    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
+      result.poster_path = result.poster_path;
   });
 
   return response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
@@ -83,9 +74,9 @@ export async function getMoreDataMovies(searchQuery, page) {
 
 //First request for get trending movies
 export async function getTrendingMoviesData() {
-  const response = await axios.get(`${TRENDING_URL}`, {
+  const response = await axios.get(`${constants.TRENDING_URL}`, {
     params: {
-      api_key: API_KEY,
+      api_key: constants.API_KEY,
       page: parameters.page,
       language: pageLanguage,
     },
@@ -94,8 +85,6 @@ export async function getTrendingMoviesData() {
   //checking if poster_path has an image url
   response.data.results.forEach(result => {
     result.poster_path = result.poster_path;
-    // ? result.poster_path
-    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
   return await response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
@@ -104,9 +93,9 @@ export async function getTrendingMoviesData() {
 export async function getMoreTrendingMoviesData(page) {
   parameters.page = page;
 
-  const response = await axios.get(`${TRENDING_URL}`, {
+  const response = await axios.get(`${constants.TRENDING_URL}`, {
     params: {
-      api_key: API_KEY,
+      api_key: constants.API_KEY,
       page: parameters.page,
       language: pageLanguage,
     },
@@ -115,8 +104,6 @@ export async function getMoreTrendingMoviesData(page) {
   //checking if poster_path has an image url
   response.data.results.forEach(result => {
     result.poster_path = result.poster_path;
-    // ? result.poster_path
-    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png'; //default image path
   });
 
   return response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
@@ -126,9 +113,9 @@ export async function getMoreTrendingMoviesData(page) {
 //You can find movie-id as an HTML data atribute here: < a class='movie-card' data-movie-id={ { id } }>
 export async function getOneMovieById(movieId) {
   // request for one movie data by movie_id
-  const response = await axios.get(`${GET_ONE_MOVIE_URL}/${movieId}`, {
+  const response = await axios.get(`${constants.GET_ONE_MOVIE_URL}/${movieId}`, {
     params: {
-      api_key: API_KEY,
+      api_key: constants.API_KEY,
       language: pageLanguage,
     },
   });
@@ -138,8 +125,6 @@ export async function getOneMovieById(movieId) {
   const movieData = {
     id: response.data.id,
     poster_path: response.data.poster_path,
-    // ? response.data.poster_path
-    // : 'https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png',
     title: response.data.title,
     vote_average: response.data.vote_average,
     vote_count: response.data.vote_count,

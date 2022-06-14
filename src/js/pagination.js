@@ -2,15 +2,7 @@ import {getMoreTrendingMoviesData, generateMoviesWithGenres, getMoreDataMovies} 
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
 import {renderingPaginationMarkup} from "./paginationMarkup";
-// import searchQuery from "../index";
-
-
-const refs = {
-  paginationList: document.querySelector('.pagination-list'),
-  gallery:document.querySelector('.gallery'),
-  preloaderContainer:document.querySelector('.preloader'),
-  footer:document.querySelector('.footer'),
-};
+import refs from '../constants/refs';
 
 let currentPage = 1;
 

@@ -1,10 +1,7 @@
 import { auth, provider } from './firebase_app'
 import { onAuthStateChanged, signInWithRedirect, signOut } from 'firebase/auth';
 import currentUser from '../../storage/currentUser';
-
-const logInBtn = document.querySelector('#signin');
-const logOutBtn = document.querySelector('#signout');
-const googleUser = document.querySelector('#googleUser');
+import refs from '../../../constants/refs';
 
 onAuthStateChanged(auth, user => {
     if (user) {
@@ -18,10 +15,10 @@ onAuthStateChanged(auth, user => {
         localStorage.setItem('user-name', currentUser.userName);
         localStorage.setItem('auth', currentUser.isAuth);
     try {
-        logInBtn.classList.toggle('auth-hide');
-        logOutBtn.classList.toggle('auth-hide');
-        googleUser.classList.toggle('auth-hide');
-        googleUser.textContent = currentUser.userName;
+        refs.btnSignin.classList.toggle('auth-hide');
+        refs.googleOut.classList.toggle('auth-hide');
+        refs.googleUser.classList.toggle('auth-hide');
+        refs.googleUser.textContent = currentUser.userName;
         myLibraryBtn.classList.remove('unactive');
         localStorage.removeItem('user-id');
         localStorage.removeItem('user-name');
@@ -48,9 +45,9 @@ function logOut() {
     signOut(auth)
         .then(() => {
             console.log('Sign-out successful');
-            logInBtn.classList.toggle('auth-hide');
-            logOutBtn.classList.toggle('auth-hide');
-            googleUser.classList.toggle('auth-hide');
+            refs.btnSignin.classList.toggle('auth-hide');
+            refs.googleOut.classList.toggle('auth-hide');
+            refs.googleUser.classList.toggle('auth-hide');
             console.log(currentUser);
             localStorage.removeItem('user-id');
             localStorage.removeItem('user-name');

@@ -4,6 +4,7 @@ import {
     getTrendingMoviesData,
     getGenresIds,
   } from './movie-fetch';
+import refs from '../constants/refs';
 import apiFirebase from './api/firebase';
 import MovieLists from './movie-lists';
 import currentUser from './storage/currentUser';
@@ -19,13 +20,10 @@ var swiper = new Swiper(".swiper", {
   },
 });
 
-const preloaderContainer = document.querySelector('.preloader');
-const form = document.querySelector('form');
-const footer = document.querySelector('.footer');
-const gallery = document.querySelector('#home-gallery');
+const homeGallery = document.querySelector('#home-gallery');
 
-if(preloaderContainer) {
-  preloaderContainer.innerHTML = preloader();
+if(refs.preloaderContainer) {
+  refs.preloaderContainer.innerHTML = preloader();
 }
 
 
@@ -40,9 +38,9 @@ async function generateMarkup() {
 
   // Rendering markup
   setTimeout(() => {
-    preloaderContainer.innerHTML = '';
-    gallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
-    footer.style.position = 'static';
+    refs.preloaderContainer.innerHTML = '';
+    refs.homeGallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+    refs.footer.style.position = 'static';
   }, 2000);
 }
 
@@ -66,7 +64,7 @@ async function onSearchSubmit(event) {
 
   // Rendering markup
 
-  gallery.innerHTML = itemsTemplate(movieCategories);
+  refs.homeGallery.innerHTML = itemsTemplate(movieCategories);
 }
 
 async function generateMoviesWithGenres(data) {
@@ -105,7 +103,7 @@ async function generateMoviesWithGenres(data) {
 
 // scroll handle to add an endless gallery
 
-if (gallery) {
+if (refs.homeGallery) {
   generateMarkup();
-  form.addEventListener('submit', onSearchSubmit);
+  refs.searchForm.addEventListener('submit', onSearchSubmit);
 }

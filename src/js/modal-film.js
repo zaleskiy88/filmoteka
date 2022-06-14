@@ -1,8 +1,8 @@
 import modalFilmEn from '../templates/modal-film-en.hbs';
 import modalFilmRu from '../templates/modal-film-ru.hbs';
 import modalFilmUk from '../templates/modal-film-uk.hbs';
-
 import {getOneMovieById } from './movie-fetch';
+import refs from '../constants/refs';
 
 let langStart = localStorage.getItem('lang') || '';
 if(langStart === ""){
@@ -10,11 +10,10 @@ if(langStart === ""){
   langStart = 'en';
 }
 
-const gallery = document.querySelector(".gallery");
 const backdrop = document.querySelector(".backdrop-film");
-gallery.addEventListener('click', onModalClick);
-if (backdrop) {
-  backdrop.addEventListener('click', onBackdropClick);
+refs.gallery.addEventListener('click', onModalClick);
+if (refs.backdropFilm) {
+  refs.backdropFilm.addEventListener('click', onBackdropClick);
 }
 
 
@@ -22,7 +21,7 @@ function onBackdropClick(event) {
   event.preventDefault();
   if (event.target === event.currentTarget) {
     /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
-    backdrop.classList.add("visually-hidden");
+    refs.backdropFilm.classList.add("visually-hidden");
     document.body.style.overflow = "visible";
   }
 }
@@ -35,26 +34,26 @@ async function onModalClick(event) {
   window.addEventListener('keydown', onEscKeyDown);
   const movieId = event.target.dataset.id;
   const dataMovie = await getOneMovieById(movieId);
-  if(langStart === "en"){
-    const markup = modalFilmEn(dataMovie);
-    backdrop.innerHTML = markup;
-    backdrop.classList.remove("visually-hidden");
-    backdrop.dispatchEvent(new CustomEvent('modal-film-opened', { bubbles: true }));
+  let markup = null;
+  switch (langStart) {
+    case "en":
+      markup = modalFilmEn(dataMovie);
+      break;
+    case "ru":
+      markup = modalFilmRu(dataMovie);
+      break;
+    case "uk":
+      markup = modalFilmUk(dataMovie);
+      break;
+    default:
+      console.log("Invalid language");
+      break;
   }
-  if(langStart === "ru"){
-    const markup = modalFilmRu(dataMovie);
-    backdrop.innerHTML = markup;
-    backdrop.classList.remove("visually-hidden");
-    backdrop.dispatchEvent(new CustomEvent('modal-film-opened', { bubbles: true }));
-  }
-  if(langStart === "uk"){
-    const markup = modalFilmUk(dataMovie);
-    backdrop.innerHTML = markup;
-    backdrop.classList.remove("visually-hidden");
-    backdrop.dispatchEvent(new CustomEvent('modal-film-opened', { bubbles: true }));
-  }
-   const btnModalFilm = document.querySelector(".btn-modal-film")
-   btnModalFilm.addEventListener('click', onCloseModalFilm);
+    refs.backdropFilm.innerHTML = markup;
+    refs.backdropFilm.classList.remove("visually-hidden");
+    refs.backdropFilm.dispatchEvent(new CustomEvent('modal-film-opened', { bubbles: true }));
+    const btnModalFilm = document.querySelector(".btn-modal-film")
+    btnModalFilm.addEventListener('click', onCloseModalFilm);
 }
 
 
@@ -64,7 +63,7 @@ function onEscKeyDown(event) {
 
   if (isEscKey) {
     /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
-    backdrop.classList.add("visually-hidden");
+    refs.backdropFilm.classList.add("visually-hidden");
     document.body.style.overflow = "visible"; 
     window.removeEventListener('keydown', onEscKeyDown)
   }
@@ -72,6 +71,6 @@ function onEscKeyDown(event) {
 
  function onCloseModalFilm() {
   /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
-  backdrop.classList.add("visually-hidden");
+  refs.backdropFilm.classList.add("visually-hidden");
   document.body.style.overflow = "visible";
 } 

@@ -1,7 +1,4 @@
-// const myLibraryBtn = document.querySelector('#myLibraryBtn');
-// const upBtn = document.querySelector('.go-up');             // button up to top page
 import refs from '../constants/refs';
-console.log(refs);
 // handle a click on the button Up
 function onUpClick() {
   document.documentElement.scrollTo({

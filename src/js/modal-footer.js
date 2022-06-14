@@ -1,8 +1,4 @@
-const refs = {
-  openModal: document.querySelector('.modal-footer__open-modal'),
-  closeModal: document.querySelector('.modal-footer__close-modal'),
-  backdrop: document.querySelector('.backdrop'),
-};
+import refs from '../constants/refs';
 
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModal.addEventListener('click', onCloseModal);

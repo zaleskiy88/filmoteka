@@ -1,5 +1,5 @@
 import firebaseWriteDb from "./api/firebase/firebase_write_db";
-import refsMovieLists from "../constants/refs";
+import refsMovieLists from "../constants/refsMovieLists";
 import currentUser from './storage/currentUser';
 
 const buttonStates = {
