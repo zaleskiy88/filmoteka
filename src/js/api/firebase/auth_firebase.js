@@ -11,26 +11,15 @@ onAuthStateChanged(auth, user => {
         currentUser.userEmail = user.email;
         currentUser.userUiid = user.uid;
         currentUser.isAuth = true;
-        localStorage.setItem('user-id', currentUser.userUiid);
-        localStorage.setItem('user-name', currentUser.userName);
-        localStorage.setItem('auth', currentUser.isAuth);
     try {
         refs.btnSignin.classList.toggle('auth-hide');
         refs.googleOut.classList.toggle('auth-hide');
         refs.googleUser.classList.toggle('auth-hide');
-        refs.googleUser.textContent = currentUser.userName;
+        refs.googleUser.textContent = currentUser.userEmail;
         myLibraryBtn.classList.remove('unactive');
-        localStorage.removeItem('user-id');
-        localStorage.removeItem('user-name');
-        localStorage.removeItem('auth');
     } catch (error) {}
     } else {
-        console.log('User is signed out');
-        currentUser.isAuth = false;
-        currentUser.userName = '';
-        currentUser.userEmail = '';
-        currentUser.userUiid = '';
-        currentUser.movieLists = {};
+        currentUser.clear();
         myLibraryBtn.classList.add('unactive');
     }
 });
@@ -40,6 +29,7 @@ function logInByGoogle() {
     signInWithRedirect(auth, provider);
     // return getRedirectResult(auth);
 }
+
 function logOut() {
     console.log('logout API');
     signOut(auth)
@@ -48,10 +38,6 @@ function logOut() {
             refs.btnSignin.classList.toggle('auth-hide');
             refs.googleOut.classList.toggle('auth-hide');
             refs.googleUser.classList.toggle('auth-hide');
-            console.log(currentUser);
-            localStorage.removeItem('user-id');
-            localStorage.removeItem('user-name');
-            localStorage.removeItem('auth');
         })
         .catch(error => {
             console.log('Sign-out error', error);
