@@ -319,6 +319,11 @@ body {
   background-color: transparent;
   color: var(--bg-color);
   border: none;
+  margin-left: 32px;
+
+  @media screen and (max-width: $mob) {
+    margin-left: 20px;
+  }
 }
 
 .header__select--option {
