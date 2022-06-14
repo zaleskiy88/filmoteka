@@ -16,7 +16,6 @@ async function renderingFilmsMarkup(currentPage) {
       let data = JSON.parse(localStorage.getItem("searchData"))?.onSearchQuery ? 
       await getMoreDataMovies(JSON.parse(localStorage.getItem("searchData")).onSearchQuery, currentPage)
      :await getMoreTrendingMoviesData(currentPage);
-console.log(data);
       const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
