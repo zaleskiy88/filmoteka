@@ -66,7 +66,7 @@ export async function getMoreDataMovies(searchQuery, page) {
 
   //checking whether poster_path has an image url
   response.data.results.forEach(result => {
-      result.poster_path = result.poster_path;
+    result.poster_path = result.poster_path;
   });
 
   return response.data; // returns an object with request data{ page, results, total_pages, total_results }. To access the movies list (an array of objects) use response.data.results
@@ -113,12 +113,15 @@ export async function getMoreTrendingMoviesData(page) {
 //You can find movie-id as an HTML data atribute here: < a class='movie-card' data-movie-id={ { id } }>
 export async function getOneMovieById(movieId) {
   // request for one movie data by movie_id
-  const response = await axios.get(`${constants.GET_ONE_MOVIE_URL}/${movieId}`, {
-    params: {
-      api_key: constants.API_KEY,
-      language: pageLanguage,
-    },
-  });
+  const response = await axios.get(
+    `${constants.GET_ONE_MOVIE_URL}/${movieId}`,
+    {
+      params: {
+        api_key: constants.API_KEY,
+        language: pageLanguage,
+      },
+    }
+  );
   // array of our beloved genres:)
   const genresArr = [];
   // an object with all the necessary properties for further rendering
@@ -138,6 +141,7 @@ export async function getOneMovieById(movieId) {
   response.data.genres.map(genre => {
     genresArr.push(genre.name);
   });
+  movieData.genres = movieData.genres.join(', ');
   return movieData;
 }
 

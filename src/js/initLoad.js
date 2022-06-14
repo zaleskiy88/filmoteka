@@ -1,9 +1,9 @@
-import {renderingPaginationMarkup} from './paginationMarkup';
+import { renderingPaginationMarkup } from './paginationMarkup';
 import {
-    getDataMovies,
-    getTrendingMoviesData,
-    getGenresIds,
-  } from './movie-fetch';
+  getDataMovies,
+  getTrendingMoviesData,
+  getGenresIds,
+} from './movie-fetch';
 import refs from '../constants/refs';
 import apiFirebase from './api/firebase';
 import MovieLists from './movie-lists';
@@ -13,26 +13,24 @@ import Notiflix from 'notiflix';
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
 
-var swiper = new Swiper(".swiper", {
+var swiper = new Swiper('.swiper', {
   navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
 });
 
 const homeGallery = document.querySelector('#home-gallery');
 
-if(refs.preloaderContainer) {
+if (refs.preloaderContainer) {
   refs.preloaderContainer.innerHTML = preloader();
 }
 
-
-
 async function generateMarkup() {
-  localStorage.removeItem("searchData");
+  localStorage.removeItem('searchData');
   const moviesData = await getTrendingMoviesData();
 
-  localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
+  localStorage.setItem('trendingTotalPages', moviesData.total_pages ?? 0);
   renderingPaginationMarkup(1);
   // Creating an object that stores data for handlebars template
   const movieCategories = await generateMoviesWithGenres(moviesData);
@@ -40,7 +38,10 @@ async function generateMarkup() {
   // Rendering markup
   setTimeout(() => {
     refs.preloaderContainer.innerHTML = '';
-    refs.homeGallery.insertAdjacentHTML('beforeend', itemsTemplate(movieCategories));
+    refs.homeGallery.insertAdjacentHTML(
+      'beforeend',
+      itemsTemplate(movieCategories)
+    );
     refs.footer.style.position = 'static';
   }, 2000);
 }
@@ -52,14 +53,12 @@ async function onSearchSubmit(event) {
     Notiflix.Notify.info('Search query cannot be empty.');
     return;
   }
-  const moviesData = await getDataMovies(
-    searchQuery
-  );
-  const searchData ={
-    "onSearchTotalPages": moviesData.total_pages ?? 0,
-    "onSearchQuery": searchQuery ?? "",
-  }
-  localStorage.setItem("searchData", JSON.stringify(searchData));
+  const moviesData = await getDataMovies(searchQuery);
+  const searchData = {
+    onSearchTotalPages: moviesData.total_pages ?? 0,
+    onSearchQuery: searchQuery ?? '',
+  };
+  localStorage.setItem('searchData', JSON.stringify(searchData));
   renderingPaginationMarkup(1);
   const movieCategories = await generateMoviesWithGenres(moviesData);
 
@@ -97,10 +96,10 @@ async function generateMoviesWithGenres(data) {
     };
 
     genresFilm();
+    movieInfo.genres = movieInfo.genres.join(', ');
     return movieInfo;
   });
 }
-
 
 // scroll handle to add an endless gallery
 
