@@ -14,7 +14,7 @@ let maxPage = localStorage.getItem("searchData")
 async function renderingFilmsMarkup(currentPage) {
       renderingPaginationMarkup(currentPage);
       let data = null;
-      if (localStorage.getItem("searchData")) {
+      if (JSON.parse(localStorage.getItem("searchData"))?.onSearchQuery) {
         data = await getMoreDataMovies(JSON.parse(localStorage.getItem("searchData")).onSearchQuery, currentPage);
       }
       else {

@@ -29,6 +29,7 @@ if(refs.preloaderContainer) {
 
 
 async function generateMarkup() {
+  localStorage.removeItem("searchData");
   const moviesData = await getTrendingMoviesData();
 
   localStorage.setItem("trendingTotalPages", moviesData.total_pages ?? 0);
