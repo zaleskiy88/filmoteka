@@ -1,7 +1,5 @@
 import auth from './auth_firebase';
+import refs from '../../../constants/refs';
 
-const googleIn = document.querySelector('#google-login');
-googleIn.addEventListener('click', auth.logInByGoogle);
-
-const googleOut = document.querySelector('#signout');
-googleOut.addEventListener('click', auth.logOut);
+refs.googleIn.addEventListener('click', auth.logInByGoogle);
+refs.googleOut.addEventListener('click', auth.logOut);
