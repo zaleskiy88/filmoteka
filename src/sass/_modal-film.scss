@@ -133,16 +133,14 @@
 }
 .film-info__item {
   margin-bottom: 20px;
-  max-height: 150px;
-  @media screen and (max-width: 767px) {
-    overflow: scroll;
-  }
 }
 .film-about {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
   color: var(--text-color-main);
+  height: 150px;
+    overflow: scroll;
 }
 .btn-add {
   display: flex;

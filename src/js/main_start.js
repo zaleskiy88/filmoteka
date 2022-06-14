@@ -1,4 +1,9 @@
 import refs from '../constants/refs';
+
+if (!refs.main) {
+    return;
+}
+
 const mainStart = sessionStorage.getItem('main-display')|| "";
 
 if (mainStart !== "") {

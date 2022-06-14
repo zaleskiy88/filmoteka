@@ -44,8 +44,10 @@ function onOpenModalRegistrationClick(){
         refs.singIn.classList.remove('login-modal__active');
     }
 };
+if (refs.btnSignin) {
+    refs.btnSignin.addEventListener('click', onOpenModalLoginClick);
+}
 
-refs.btnSignin.addEventListener('click', onOpenModalLoginClick);
 
 function onOpenModalLoginClick(){
     refs.backdropIn.style.display = 'block';
