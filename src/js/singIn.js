@@ -10,7 +10,7 @@ const emailLogin = document.querySelector('#email');
 const passwordLogin = document.querySelector('#password-1'); 
 const formLog = document.querySelector('.login-modal_form');
 const body = document.querySelector('body');
-const backdropIn = document.querySelector('.backdrop-in');
+const backdropIn = document.querySelector('.backdrop-in-reg');
 
 
 function onEventListener(){
@@ -103,7 +103,6 @@ function closeModalKeydown(event){
 //backdropIn.addEventListener('click', onBackdropClick);
 
 function onBackdropClick(event) {
-  event.preventDefault();
   if (event.target === event.currentTarget) {
         backdropIn.style.display = 'none';
         body.style.overflow = 'visible';
