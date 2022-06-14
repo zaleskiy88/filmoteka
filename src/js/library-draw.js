@@ -1,17 +1,21 @@
 import itemsTemplate from '../templates/list-of-card-library.hbs';
 import getUsersMovieList from '../js/api/firebase/firebase_read_db';
+import auth from './api/firebase/auth_firebase';
 
 const axios = require('axios').default;
 const API_KEY = '842344de8347536aefc6f17e8e76d4bd';
 const MOVIE_URL = `https://api.themoviedb.org/3/movie/`;
 const galleryLibrary = document.querySelector('#library-gallery');
+const btnSignOut = document.querySelector('#signout-library');
 const btnWatched = document.querySelector('#btn-watched');  // Select Watched button
 const btnQueue = document.querySelector('#btn-queue');      // Select Queue button
 const upBtn = document.querySelector('.go-up');             // button up to top page
 btnWatched.addEventListener('click', onLibraryBtnClick);    // Set the listener on Watch button
 btnQueue.addEventListener('click', onLibraryBtnClick);      // Set the listener on Queque button
 upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
-
+btnSignOut.addEventListener('click', auth.logOut);
+const googleUserLibrary = document.querySelector('#googleUserLibrary');
+googleUserLibrary.textContent = localStorage.getItem('user-name');
 
 let pageOfList = 1;             // package number
 let marker = false;             // a marker of whether the received packet is drawn
@@ -95,3 +99,4 @@ window.addEventListener("scroll", () => {
 function onUpClick() {
     document.documentElement.scrollTop = 0;
 }
+

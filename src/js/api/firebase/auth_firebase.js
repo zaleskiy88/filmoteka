@@ -14,12 +14,19 @@ onAuthStateChanged(auth, user => {
         currentUser.userEmail = user.email;
         currentUser.userUiid = user.uid;
         currentUser.isAuth = true;
-
+        localStorage.setItem('user-id', currentUser.userUiid);
+        localStorage.setItem('user-name', currentUser.userName);
+        localStorage.setItem('auth', currentUser.isAuth);
+    try {
         logInBtn.classList.toggle('auth-hide');
         logOutBtn.classList.toggle('auth-hide');
         googleUser.classList.toggle('auth-hide');
         googleUser.textContent = currentUser.userName;
-
+        myLibraryBtn.classList.remove('unactive');
+        localStorage.removeItem('user-id');
+        localStorage.removeItem('user-name');
+        localStorage.removeItem('auth');
+    } catch (error) {}
     } else {
         console.log('User is signed out');
         currentUser.isAuth = false;
@@ -27,6 +34,7 @@ onAuthStateChanged(auth, user => {
         currentUser.userEmail = '';
         currentUser.userUiid = '';
         currentUser.movieLists = {};
+        myLibraryBtn.classList.add('unactive');
     }
 });
 
@@ -44,6 +52,9 @@ function logOut() {
             logOutBtn.classList.toggle('auth-hide');
             googleUser.classList.toggle('auth-hide');
             console.log(currentUser);
+            localStorage.removeItem('user-id');
+            localStorage.removeItem('user-name');
+            localStorage.removeItem('auth');
         })
         .catch(error => {
             console.log('Sign-out error', error);

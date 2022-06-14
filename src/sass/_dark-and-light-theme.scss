@@ -142,4 +142,22 @@
     color:var(--text-dark-theme) ;
     background-color: var(--dark-theme) ; 
   }
+
+  .film-card {
+    background-color: var(--dark-theme);
+    color:var(--text-dark-theme) ;
+  }
+  .film-about {
+    background-color: var(--dark-theme);
+    color:var(--text-dark-theme) ;
+  }
+  .film-title {
+    color:var(--text-dark-theme) ;
+  }
+  .film-text__right {
+    color:var(--text-dark-theme) ;
+  }
+  .film-text__left {
+    color:rgba(255, 255, 255, 0.70); 
+  }
 }
