@@ -3,13 +3,11 @@ import { app } from "./firebase_app";
 import currentUser from "../../storage/currentUser";
 import { onCloseModalLoginClick } from '../../singIn.js'
 import Notiflix from "notiflix";
+import localizeString from "../../utils/localizeString";
 
 const auth = getAuth(app);
 const signUpForm = document.getElementById("registration-form-un");
 const signInForm = document.getElementById("from-sing-in");
-
-console.log('signUpForm', signUpForm);
-console.log('signInForm', signInForm);
 
 signUpForm.password.onchange = validatePassword;
 signUpForm.confirmPassword.onkeyup = validatePassword;
@@ -30,7 +28,8 @@ signUpForm.addEventListener("submit", (e) => {
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // Signed in 
-            console.log('userCredential', userCredential);
+            // console.log('userCredential', userCredential);
+            Notiflix.Notify.success(localizeString("signUpSuccess"));
             const user = userCredential.user;
             updateProfile(user, { displayName })
             currentUser.isAuth = true;
@@ -43,7 +42,8 @@ signUpForm.addEventListener("submit", (e) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            Notiflix.Notify.failure(errorMessage)
+            console.log(error.code);
+            Notiflix.Notify.failure(localizeString(error.code))
         });
 });
 signInForm.addEventListener("submit", (e) => {
@@ -64,6 +64,6 @@ signInForm.addEventListener("submit", (e) => {
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            Notiflix.Notify.failure(errorMessage)
+            Notiflix.Notify.failure(localizeString(error.code))
         });
 })

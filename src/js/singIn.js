@@ -73,7 +73,7 @@ function onOpenModalLoginClick() {
 
 //btnModalClose.addEventListener('click', onCloseModalLoginClick);
 
-function onCloseModalLoginClick() {
+export function onCloseModalLoginClick() {
     backdropIn.style.display = 'none';
     body.style.overflow = 'visible';
     onCloseModalRegistrationClick();

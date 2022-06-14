@@ -149,7 +149,37 @@ const lengArr = {
         "en": "Sign Out",
         "ru": "Выйти",
         "uk": "Вийти"
-    }
+    },
+    "auth/user-not-found": {
+        "en": "User not found",
+        "ru": "Пользователь не найден",
+        "uk": "Користувач не знайдений"
+    },
+    "auth/wrong-password": {
+        "en": "Wrong password",
+        "ru": "Неверный пароль",
+        "uk": "Невірний пароль"
+    },
+    "auth/account-exists-with-different-credential": {
+        "en": "Email already associated with another account.",
+        "ru": "Электронная почта уже привязана к другому аккаунту.",
+        "uk": "Електронна пошта вже прив'язана до іншого акаунту."
+    },
+    "auth/too-many-requests": {
+        "en": "Too many requests. Try again later.",
+        "ru": "Слишком много неудачных попыток. Повторите попытку позже.",
+        "uk": "Забагато невдалих спроб. Спробуйте повторити пізніше."
+    },
+    "auth/email-already-in-use": {
+        "en": "Email already in use.",
+        "ru": "Электронная почта уже используется.",
+        "uk": "Електронна пошта вже використовується."
+    },
+    "signUpSuccess": {
+        "en": "Registration successful",
+        "ru": "Регистрация прошла успешно",
+        "uk": "Реєстрація пройшла успішно"
+    },
 }
 
 export default lengArr;
