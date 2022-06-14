@@ -6,7 +6,7 @@ function onEventListener(){
     refs.singUp.addEventListener('click', onOpenModalRegistrationClick);
     refs.btnModalClose.addEventListener('click', onCloseModalLoginClick);
     refs.formLog.addEventListener('submit', saveLocalStorage);
-    refs.window.addEventListener('keydown', closeModalKeydown);
+    window.addEventListener('keydown', closeModalKeydown);
     refs.backdropIn.addEventListener('click', onBackdropClick);
 }
 
