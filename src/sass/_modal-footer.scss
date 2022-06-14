@@ -1,9 +1,6 @@
 @import './variables.scss';
 @import url('../../node_modules/swiper/swiper-bundle.css');
 
-body .modal-footer__open-modal {
-  overflow: hidden;
-}
 
 .backdrop {
   width: 100%;
@@ -36,7 +33,7 @@ body.show-modal .footer-team-link {
 }
 
 .swiper {
-  width: 100%;
+  width: 50%;
   height: 450px;
 
 @media screen and (min-width: $tab) {
