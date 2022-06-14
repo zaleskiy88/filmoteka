@@ -57,7 +57,7 @@ function onOpenModalLoginClick(){
     onEventListener();
 };
 
-function onCloseModalLoginClick(){
+export function onCloseModalLoginClick(){
     refs.backdropIn.style.display = 'none';
     refs.body.style.overflow = 'visible';
     onCloseModalRegistrationClick();
