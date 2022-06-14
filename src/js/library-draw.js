@@ -2,6 +2,7 @@ import constants from '../constants/constants';
 import itemsTemplate from '../templates/list-of-card-library.hbs';
 import getUsersMovieList from '../js/api/firebase/firebase_read_db';
 import auth from './api/firebase/auth_firebase';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const axios = require('axios').default;
 const MOVIE_URL = `https://api.themoviedb.org/3/movie/`;
@@ -23,7 +24,12 @@ let typeOfList = 'btn-queue';   // initial value of page type (Queue)
 let listofMovie;                // global var for scrolling
 
 // -------------------------- drawing initial page
-getUsersMovieList(typeOfList).then(generateLibraryMarkup); 
+const authent = getAuth();
+onAuthStateChanged(authent, (user) => {
+  if (user) {
+    getUsersMovieList(typeOfList).then(generateLibraryMarkup); 
+  } else {}
+});
 
 // -------------------------- handle button click
 async function onLibraryBtnClick(event) {
