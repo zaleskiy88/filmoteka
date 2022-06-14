@@ -80,7 +80,6 @@ function closeModalKeydown(event){
 //////////////////////////////////////////////////////////close modal in backdrop//////////////////////////////////////////////////////////////
 
 function onBackdropClick(event) {
-  event.preventDefault();
   if (event.target === event.currentTarget) {
         refs.backdropIn.style.display = 'none';
         refs.body.style.overflow = 'visible';
