@@ -21,7 +21,7 @@ function ofEventListener(){
 
 function onCloseModalRegistrationClick(){
     if(refs.singIn.classList.contains('login-modal__active')){
-        return
+        return;
     }
     else{
         refs.modalRegistration.style.transform = 'translateX(100%)';

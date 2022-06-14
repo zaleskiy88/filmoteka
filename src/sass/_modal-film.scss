@@ -140,8 +140,11 @@
   font-size: 12px;
   line-height: 1.17;
   color: var(--text-color-main);
-  max-height: 150px;
-    overflow: scroll;
+  @media screen and (max-width: $desc) {
+    overflow-y: scroll;
+  }
+   
+    
 }
 .btn-add {
   display: flex;
