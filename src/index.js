@@ -1,7 +1,8 @@
 import Notiflix from 'notiflix';
 import './js/pagination';
 import './js/modal-film';
-import {renderingPaginationMarkup} from './js/paginationMarkup';
+import { renderingPaginationMarkup } from './js/paginationMarkup';
+import './js/singIn';
 
 import {
   getDataMovies,
@@ -37,7 +38,7 @@ const myLibraryBtn = document.querySelector('#myLibraryBtn');
 const upBtn = document.querySelector('.go-up');             // button up to top page
 upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 
-if(preloaderContainer) {
+if (preloaderContainer) {
   preloaderContainer.innerHTML = preloader();
 }
 
@@ -71,7 +72,7 @@ async function onSearchSubmit(event) {
   const moviesData = await getDataMovies(
     searchQuery
   );
-  const searchData ={
+  const searchData = {
     "onSearchTotalPages": moviesData.total_pages ?? 0,
     "onSearchQuery": searchQuery ?? "",
   }
@@ -119,30 +120,31 @@ async function generateMoviesWithGenres(data) {
 
 // if user is unauth then my library is unactive
 function handleMyLibraryClick(ev) {
-    const lang = localStorage.getItem('lang') || '';
-    if (!currentUser.isAuth) {
-      let message = "";
-        ev.preventDefault();
-        switch (lang) {
-        case 'en':
-                message = 'Please, sign in to enter My library';
-            break;
-        case 'ru':
-                message = 'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
-            break;
-        case 'uk':
-                message = 'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
-            break;
-}
-        Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+  const lang = localStorage.getItem('lang') || '';
+  if (!currentUser.isAuth) {
+    let message = "";
+    ev.preventDefault();
+    switch (lang) {
+      case 'en':
+        message = 'Please, sign in to enter My library';
+        break;
+      case 'ru':
+        message = 'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
+        break;
+      case 'uk':
+        message = 'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
+        break;
     }
+    Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+  }
 }
 
 // scroll handle to add an endless gallery
 window.addEventListener("scroll", () => {
-    if (window.pageYOffset > 70) {                      // on / off button up
-        upBtn.classList.add("on-screen")}
-        else {upBtn.classList.remove("on-screen")}
+  if (window.pageYOffset > 70) {                      // on / off button up
+    upBtn.classList.add("on-screen")
+  }
+  else { upBtn.classList.remove("on-screen") }
 });
 
 // handle a click on the button Up

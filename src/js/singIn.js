@@ -7,13 +7,13 @@ const btnSignin = document.querySelector('#signin');
 const btnModalClose = document.querySelector('.modal-close');
 const mobalCheckBox = document.querySelector('#checkbox-log');
 const emailLogin = document.querySelector('#email');
-const passwordLogin = document.querySelector('#password-1'); 
+const passwordLogin = document.querySelector('#password-1');
 const formLog = document.querySelector('.login-modal_form');
 const body = document.querySelector('body');
 const backdropIn = document.querySelector('.backdrop-in');
 
 
-function onEventListener(){
+function onEventListener() {
 
     singIn.addEventListener('click', onCloseModalRegistrationClick);
     singUp.addEventListener('click', onOpenModalRegistrationClick);
@@ -23,7 +23,7 @@ function onEventListener(){
     backdropIn.addEventListener('click', onBackdropClick);
 }
 
-function ofEventListener(){
+function ofEventListener() {
     singIn.removeEventListener('click', onOpenModalLoginClick);
     singUp.removeEventListener('click', onOpenModalRegistrationClick);
     btnModalClose.removeEventListener('click', onCloseModalLoginClick);
@@ -35,11 +35,11 @@ function ofEventListener(){
 
 //singIn.addEventListener('click', onCloseModalRegistrationClick);
 
-function onCloseModalRegistrationClick(){
-    if(singIn.classList.contains('login-modal__active')){
+function onCloseModalRegistrationClick() {
+    if (singIn.classList.contains('login-modal__active')) {
         return
     }
-    else{
+    else {
         modalRegistration.style.transform = 'translateX(100%)';
         singUp.classList.add('login-modal__noactive');
         singUp.classList.remove('login-modal__active');
@@ -50,11 +50,11 @@ function onCloseModalRegistrationClick(){
 
 //singUp.addEventListener('click', onOpenModalRegistrationClick);
 
-function onOpenModalRegistrationClick(){
-    if(singUp.classList.contains('login-modal__active')){
+function onOpenModalRegistrationClick() {
+    if (singUp.classList.contains('login-modal__active')) {
         return
     }
-    else{
+    else {
         modalRegistration.style.transform = 'translateX(0%)';
         singUp.classList.add('login-modal__active');
         singUp.classList.remove('login-modal__noactive');
@@ -65,7 +65,7 @@ function onOpenModalRegistrationClick(){
 
 btnSignin.addEventListener('click', onOpenModalLoginClick);
 
-function onOpenModalLoginClick(){
+function onOpenModalLoginClick() {
     backdropIn.style.display = 'block';
     body.style.overflow = 'hidden';
     onEventListener();
@@ -73,7 +73,7 @@ function onOpenModalLoginClick(){
 
 //btnModalClose.addEventListener('click', onCloseModalLoginClick);
 
-function onCloseModalLoginClick(){
+function onCloseModalLoginClick() {
     backdropIn.style.display = 'none';
     body.style.overflow = 'visible';
     onCloseModalRegistrationClick();
@@ -85,12 +85,12 @@ function onCloseModalLoginClick(){
 ////////////////////////close modal in ESC//////////////////////////////
 //window.addEventListener("keydown", closeModalKeydown);
 
-function closeModalKeydown(event){
-    if(event.code !== "Escape"){
+function closeModalKeydown(event) {
+    if (event.code !== "Escape") {
         return
     }
 
-    else{
+    else {
         backdropIn.style.display = 'none';
         body.style.overflow = 'visible';
         onCloseModalRegistrationClick();
@@ -103,25 +103,24 @@ function closeModalKeydown(event){
 //backdropIn.addEventListener('click', onBackdropClick);
 
 function onBackdropClick(event) {
-  event.preventDefault();
-  if (event.target === event.currentTarget) {
+    if (event.target === event.currentTarget) {
         backdropIn.style.display = 'none';
         body.style.overflow = 'visible';
         onCloseModalRegistrationClick();
         ofEventListener()
-  }
+    }
 }
 
-  ////////////////////////remember login and password//////////////////////////////
-  
-    const localLogin = localStorage.getItem('login') || '';
-    const localPassword = localStorage.getItem('password')|| '';
-    const localCxheckboxLog = localStorage.getItem('checkboxlog') || '';
+////////////////////////remember login and password//////////////////////////////
 
-if (localLogin !=="") {
+const localLogin = localStorage.getItem('login') || '';
+const localPassword = localStorage.getItem('password') || '';
+const localCxheckboxLog = localStorage.getItem('checkboxlog') || '';
+
+if (localLogin !== "") {
     emailLogin.value = localLogin;
 }
-if (localPassword !=="") {
+if (localPassword !== "") {
     passwordLogin.value = localPassword;
 }
 if (localCxheckboxLog !== "") {
@@ -130,20 +129,20 @@ if (localCxheckboxLog !== "") {
 
 
 function rememberAndDeletLoginAndPassword() {
-    if(mobalCheckBox.checked){
+    if (mobalCheckBox.checked) {
         localStorage.setItem('checkboxlog', true); // save
         localStorage.setItem('login', emailLogin.value); // save
         localStorage.setItem('password', passwordLogin.value); // save
-    }else {
+    } else {
         localStorage.removeItem('login'); // delete
         localStorage.removeItem('password'); // delete
         localStorage.removeItem('checkboxlog');// delete
     }
-    }
+}
 
 //formLog.addEventListener('submit', saveLocalStorage);
 
-function  saveLocalStorage(e){
+function saveLocalStorage(e) {
     e.preventDefault();
     rememberAndDeletLoginAndPassword();
 };
