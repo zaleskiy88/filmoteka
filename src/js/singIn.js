@@ -15,7 +15,7 @@ function ofEventListener(){
     refs.singUp.removeEventListener('click', onOpenModalRegistrationClick);
     refs.btnModalClose.removeEventListener('click', onCloseModalLoginClick);
     refs.formLog.removeEventListener('submit', saveLocalStorage);
-    refs.window.removeEventListener('keydown', closeModalKeydown);
+    window.removeEventListener('keydown', closeModalKeydown);
     refs.backdropIn.removeEventListener('click', onBackdropClick);
 }
 

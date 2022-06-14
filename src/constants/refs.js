@@ -15,7 +15,7 @@ export default {
     passwordLogin: document.querySelector('#password-1'),
     formLog: document.querySelector('.login-modal_form'),
     body: document.querySelector('body'),
-    backdropIn: document.querySelector('.backdrop-in'),
+    backdropIn: document.querySelector('.backdrop-in-reg'),
     paginationList: document.querySelector('.pagination-list'),
     input: document.querySelector(".header__input"),
     gallery:document.querySelector('.gallery'),
