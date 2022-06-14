@@ -1,9 +1,11 @@
+import constants from '../constants/constants';
 import itemsTemplate from '../templates/list-of-card-library.hbs';
 import getUsersMovieList from '../js/api/firebase/firebase_read_db';
 import auth from './api/firebase/auth_firebase';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import currentUser from './storage/currentUser';
 
 const axios = require('axios').default;
-const API_KEY = '842344de8347536aefc6f17e8e76d4bd';
 const MOVIE_URL = `https://api.themoviedb.org/3/movie/`;
 const galleryLibrary = document.querySelector('#library-gallery');
 const btnSignOut = document.querySelector('#signout-library');
@@ -15,7 +17,6 @@ btnQueue.addEventListener('click', onLibraryBtnClick);      // Set the listener 
 upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 btnSignOut.addEventListener('click', auth.logOut);
 const googleUserLibrary = document.querySelector('#googleUserLibrary');
-googleUserLibrary.textContent = localStorage.getItem('user-name');
 
 let pageOfList = 1;             // package number
 let marker = false;             // a marker of whether the received packet is drawn
@@ -23,7 +24,13 @@ let typeOfList = 'btn-queue';   // initial value of page type (Queue)
 let listofMovie;                // global var for scrolling
 
 // -------------------------- drawing initial page
-getUsersMovieList(typeOfList).then(generateLibraryMarkup); 
+const authent = getAuth();
+onAuthStateChanged(authent, (user) => {
+  if (user) {
+      getUsersMovieList(typeOfList).then(generateLibraryMarkup); 
+      googleUserLibrary.textContent = currentUser.userEmail;
+  } else {}
+});
 
 // -------------------------- handle button click
 async function onLibraryBtnClick(event) {
@@ -31,6 +38,11 @@ async function onLibraryBtnClick(event) {
     readyToNew(typeOfList);         // clear old data
     await getUsersMovieList(typeOfList, event).then(generateLibraryMarkup); // drawing initial selected page
 };
+
+async function onAddRemoveBntClick() {
+    galleryLibrary.innerHTML = "";      // clear content 
+    await getUsersMovieList(typeOfList).then(generateLibraryMarkup); // drawing initial selected page
+}
 
 // -------------------------- preparation before drawing
 function readyToNew(typeOfList) {
@@ -55,7 +67,7 @@ async function generateLibraryMarkup(usersList) {
 async function makeArreyOfDataMovies(array) {
     document.body.style.cursor = 'wait';
     const arr = await Promise.all(array.map(async (el) => {
-        el = await axios.get(`${MOVIE_URL}${el}`, { params: { api_key: API_KEY, language: 'ru-RU' } }); // fetch data by movie id
+        el = await axios.get(`${MOVIE_URL}${el}`, { params: { api_key: constants.API_KEY, language: 'ru-RU' } }); // fetch data by movie id
         el = el.data;                                                                                   
         el.name = el.title.toUpperCase();                                                               // ajust data for the template
         el.release = el.release_date?.slice(0, 4) || 2022;
@@ -100,3 +112,4 @@ function onUpClick() {
     document.documentElement.scrollTop = 0;
 }
 
+export default onAddRemoveBntClick;

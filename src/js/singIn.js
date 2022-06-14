@@ -1,98 +1,79 @@
-
-const singIn = document.querySelector('.login-modal__in');
-const singUp = document.querySelector('.login-modal__up');
-const modalRegistration = document.querySelector('.registration-modal');
-const modalnput = document.querySelector('.login-modal');
-const btnSignin = document.querySelector('#signin');
-const btnModalClose = document.querySelector('.modal-close');
-const mobalCheckBox = document.querySelector('#checkbox-log');
-const emailLogin = document.querySelector('#email');
-const passwordLogin = document.querySelector('#password-1');
-const formLog = document.querySelector('.login-modal_form');
-const body = document.querySelector('body');
-const backdropIn = document.querySelector('.backdrop-in');
+import refs from '../constants/refs';
 
 
 function onEventListener() {
 
-    singIn.addEventListener('click', onCloseModalRegistrationClick);
-    singUp.addEventListener('click', onOpenModalRegistrationClick);
-    btnModalClose.addEventListener('click', onCloseModalLoginClick);
-    formLog.addEventListener('submit', saveLocalStorage);
+    refs.singIn.addEventListener('click', onCloseModalRegistrationClick);
+    refs.singUp.addEventListener('click', onOpenModalRegistrationClick);
+    refs.btnModalClose.addEventListener('click', onCloseModalLoginClick);
+    refs.formLog.addEventListener('submit', saveLocalStorage);
     window.addEventListener('keydown', closeModalKeydown);
-    backdropIn.addEventListener('click', onBackdropClick);
+    refs.backdropIn.addEventListener('click', onBackdropClick);
 }
 
-function ofEventListener() {
-    singIn.removeEventListener('click', onOpenModalLoginClick);
-    singUp.removeEventListener('click', onOpenModalRegistrationClick);
-    btnModalClose.removeEventListener('click', onCloseModalLoginClick);
-    formLog.removeEventListener('submit', saveLocalStorage);
+function ofEventListener(){
+    refs.singIn.removeEventListener('click', onOpenModalLoginClick);
+    refs.singUp.removeEventListener('click', onOpenModalRegistrationClick);
+    refs.btnModalClose.removeEventListener('click', onCloseModalLoginClick);
+    refs.formLog.removeEventListener('submit', saveLocalStorage);
     window.removeEventListener('keydown', closeModalKeydown);
-    backdropIn.removeEventListener('click', onBackdropClick);
+    refs.backdropIn.removeEventListener('click', onBackdropClick);
+}
+
+function onCloseModalRegistrationClick(){
+    if(refs.singIn.classList.contains('login-modal__active')){
+        return;
+    }
+    else{
+        refs.modalRegistration.style.transform = 'translateX(100%)';
+        refs.singUp.classList.add('login-modal__noactive');
+        refs.singUp.classList.remove('login-modal__active');
+        refs.singIn.classList.add('login-modal__active');
+        refs.singIn.classList.remove('login-modal__noactive');
+    }
+};
+
+function onOpenModalRegistrationClick(){
+    if(refs.singUp.classList.contains('login-modal__active')){
+        return;
+    }
+    else{
+        refs.modalRegistration.style.transform = 'translateX(0%)';
+        refs.singUp.classList.add('login-modal__active');
+        refs.singUp.classList.remove('login-modal__noactive');
+        refs.singIn.classList.add('login-modal__noactive');
+        refs.singIn.classList.remove('login-modal__active');
+    }
+};
+if (refs.btnSignin) {
+    refs.btnSignin.addEventListener('click', onOpenModalLoginClick);
 }
 
 
-//singIn.addEventListener('click', onCloseModalRegistrationClick);
 
-function onCloseModalRegistrationClick() {
-    if (singIn.classList.contains('login-modal__active')) {
-        return
-    }
-    else {
-        modalRegistration.style.transform = 'translateX(100%)';
-        singUp.classList.add('login-modal__noactive');
-        singUp.classList.remove('login-modal__active');
-        singIn.classList.add('login-modal__active');
-        singIn.classList.remove('login-modal__noactive');
-    }
-};
-
-//singUp.addEventListener('click', onOpenModalRegistrationClick);
-
-function onOpenModalRegistrationClick() {
-    if (singUp.classList.contains('login-modal__active')) {
-        return
-    }
-    else {
-        modalRegistration.style.transform = 'translateX(0%)';
-        singUp.classList.add('login-modal__active');
-        singUp.classList.remove('login-modal__noactive');
-        singIn.classList.add('login-modal__noactive');
-        singIn.classList.remove('login-modal__active');
-    }
-};
-
-btnSignin.addEventListener('click', onOpenModalLoginClick);
-
-function onOpenModalLoginClick() {
-    backdropIn.style.display = 'block';
-    body.style.overflow = 'hidden';
+function onOpenModalLoginClick(){
+    refs.backdropIn.style.display = 'block';
+    refs.body.style.overflow = 'hidden';
     onEventListener();
 };
 
-//btnModalClose.addEventListener('click', onCloseModalLoginClick);
-
-export function onCloseModalLoginClick() {
-    backdropIn.style.display = 'none';
-    body.style.overflow = 'visible';
+function onCloseModalLoginClick(){
+    refs.backdropIn.style.display = 'none';
+    refs.body.style.overflow = 'visible';
     onCloseModalRegistrationClick();
     ofEventListener()
 };
 
-
-
 ////////////////////////close modal in ESC//////////////////////////////
-//window.addEventListener("keydown", closeModalKeydown);
 
-function closeModalKeydown(event) {
-    if (event.code !== "Escape") {
-        return
+function closeModalKeydown(event){
+    if(event.code !== "Escape"){
+        return;
     }
 
-    else {
-        backdropIn.style.display = 'none';
-        body.style.overflow = 'visible';
+    else{
+        refs.backdropIn.style.display = 'none';
+        refs.body.style.overflow = 'visible';
         onCloseModalRegistrationClick();
         ofEventListener()
     }
@@ -100,12 +81,10 @@ function closeModalKeydown(event) {
 
 //////////////////////////////////////////////////////////close modal in backdrop//////////////////////////////////////////////////////////////
 
-//backdropIn.addEventListener('click', onBackdropClick);
-
 function onBackdropClick(event) {
-    if (event.target === event.currentTarget) {
-        backdropIn.style.display = 'none';
-        body.style.overflow = 'visible';
+  if (event.target === event.currentTarget) {
+        refs.backdropIn.style.display = 'none';
+        refs.body.style.overflow = 'visible';
         onCloseModalRegistrationClick();
         ofEventListener()
     }

@@ -1,10 +1,4 @@
-const refs = {
-    paginationList: document.querySelector('.pagination-list'),
-    input: document.querySelector(".header__input"),
-    gallery:document.querySelector('.gallery'),
-    preloaderContainer:document.querySelector('.preloader'),
-    footer:document.querySelector('.footer'),
-  };
+import refs from '../constants/refs';
 
 function renderSpan(value) {
     return `<span data-value='${value}'>${value}</span>`;

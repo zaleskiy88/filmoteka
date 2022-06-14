@@ -1,34 +1,32 @@
-
-const btnTheme = document.querySelector('#dark-theme');
-const body = document.querySelector('.body-theme');
+import refs from '../constants/refs';
 
 const localTheme = localStorage.getItem('color-theme');
 
 if (localTheme ==="dark-theme") {
-    body.classList.add('dark-theme');
+    refs.bodyTheme.classList.add('dark-theme');
 }
-
-btnTheme.addEventListener('click', darkThemeColor);
-
-function darkThemeColor(){
-    body.classList.toggle('dark-theme');
-    switchThemeColor() ;
-};
 
 const localCxheckboxLog = localStorage.getItem('checkbox-theme') || '';
 
 if (localCxheckboxLog !=="") {
-    btnTheme.checked = true;
+    refs.btnTheme.checked = true;
 }
+
+function darkThemeColor(){
+    refs.bodyTheme.classList.toggle('dark-theme');
+    switchThemeColor() ;
+};
 
 function switchThemeColor() {
     if (document.querySelector('.dark-theme')){
-        localStorage.setItem('checkbox-theme', 'true'); // save
-        localStorage.setItem('color-theme','dark-theme'); // save
+        localStorage.setItem('checkbox-theme', 'true'); // add
+        localStorage.setItem('color-theme','dark-theme'); // add
     }
     else {
-        localStorage.removeItem('color-theme'); // delete
-        localStorage.removeItem('checkbox-theme'); // delete
+        localStorage.removeItem('color-theme'); // remove
+        localStorage.removeItem('checkbox-theme'); // remove
     }
 }
+
+refs.btnTheme.addEventListener('click', darkThemeColor);
 

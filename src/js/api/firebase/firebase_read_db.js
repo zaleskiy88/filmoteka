@@ -2,9 +2,9 @@ import { doc, getDoc } from "firebase/firestore";
 import {db, app} from '../firebase/firebase_app';
 import userInfo from '../../storage/currentUser';
 import Notiflix from 'notiflix';
+import refs from '../../../constants/refs';
 
 let usersList = [];
-const preloaderContainer = document.querySelector('.preloader');
 // -------------------------- getting user's movie list 
 async function getUsersMovieList(typeOfList, event) {
     const lang = localStorage.getItem('lang') || '';
@@ -27,7 +27,7 @@ async function getUsersMovieList(typeOfList, event) {
                     break;
             }
             Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
-            preloaderContainer.innerHTML = "";
+            refs.preloaderContainer.innerHTML = "";
         }
      
         usersList = (typeOfList === 'btn-watched') ? docSnap.data().watched : docSnap.data().queue;    // get movie list array 

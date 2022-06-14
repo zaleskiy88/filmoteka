@@ -132,7 +132,7 @@ body {
 }
 
 .header__navigation-item:not(:last-child) {
-  margin-right: 39px;
+  margin-right: 25px;
 }
 .header__logotext-link {
   font-family: Roboto;
@@ -319,8 +319,14 @@ body {
   background-color: transparent;
   color: var(--bg-color);
   border: none;
+  margin-left: 32px;
+
+  @media screen and (max-width: $mob) {
+    margin-left: 20px;
+  }
 }
 
 .header__select--option {
   color: var(--text-color-main);
 }
+
