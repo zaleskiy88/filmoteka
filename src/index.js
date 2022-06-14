@@ -7,6 +7,5 @@ import './js/modal-film';
 import './js/initLoad';
 import "./js/modal-footer";
 import './js/scroll';
-// import './js/api/firebase/auth-google';
 import './js/singIn';
 import './js/dark-theme';

@@ -3,6 +3,7 @@ import itemsTemplate from '../templates/list-of-card-library.hbs';
 import getUsersMovieList from '../js/api/firebase/firebase_read_db';
 import auth from './api/firebase/auth_firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import currentUser from './storage/currentUser';
 
 const axios = require('axios').default;
 const MOVIE_URL = `https://api.themoviedb.org/3/movie/`;
@@ -16,7 +17,6 @@ btnQueue.addEventListener('click', onLibraryBtnClick);      // Set the listener 
 upBtn.addEventListener('click', onUpClick);                 // Set the listener on Button Up
 btnSignOut.addEventListener('click', auth.logOut);
 const googleUserLibrary = document.querySelector('#googleUserLibrary');
-googleUserLibrary.textContent = localStorage.getItem('user-name');
 
 let pageOfList = 1;             // package number
 let marker = false;             // a marker of whether the received packet is drawn
@@ -27,7 +27,8 @@ let listofMovie;                // global var for scrolling
 const authent = getAuth();
 onAuthStateChanged(authent, (user) => {
   if (user) {
-    getUsersMovieList(typeOfList).then(generateLibraryMarkup); 
+      getUsersMovieList(typeOfList).then(generateLibraryMarkup); 
+      googleUserLibrary.textContent = currentUser.userEmail;
   } else {}
 });
 
@@ -37,6 +38,11 @@ async function onLibraryBtnClick(event) {
     readyToNew(typeOfList);         // clear old data
     await getUsersMovieList(typeOfList, event).then(generateLibraryMarkup); // drawing initial selected page
 };
+
+async function onAddRemoveBntClick() {
+    galleryLibrary.innerHTML = "";      // clear content 
+    await getUsersMovieList(typeOfList).then(generateLibraryMarkup); // drawing initial selected page
+}
 
 // -------------------------- preparation before drawing
 function readyToNew(typeOfList) {
@@ -105,3 +111,5 @@ window.addEventListener("scroll", () => {
 function onUpClick() {
     document.documentElement.scrollTop = 0;
 }
+
+export default onAddRemoveBntClick;

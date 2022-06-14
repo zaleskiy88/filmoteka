@@ -324,3 +324,7 @@ body {
 .header__select--option {
   color: var(--text-color-main);
 }
+
+.unactive {
+  pointer-events: none;
+}

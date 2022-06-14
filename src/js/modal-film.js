@@ -65,12 +65,14 @@ function onEscKeyDown(event) {
     /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
     refs.backdropFilm.classList.add("visually-hidden");
     document.body.style.overflow = "visible"; 
-    window.removeEventListener('keydown', onEscKeyDown)
+    window.removeEventListener('keydown', onEscKeyDown);
   }
 }
 
- function onCloseModalFilm() {
+function onCloseModalFilm() {
   /* btnModalFilm.removeEventListener('click', onCloseModalFilm); */
   refs.backdropFilm.classList.add("visually-hidden");
   document.body.style.overflow = "visible";
+  console.log(5555);
+  if (window.location.href.includes('library')) { window.location.reload() }
 } 
