@@ -204,12 +204,6 @@
     background-color:  var(--brand-color);
     border:none ;
   }
-
-  .select-lib{ 
-    opacity: 0;
-    pointer-events: none;
-  }
-
   margin-right: 16px;
 
   // @media screen and (max-width: $mob) {
@@ -237,3 +231,10 @@
   text-align: center;
   margin-left: 10px;
 }
+
+.header__select.header__select-lib{ 
+  
+  opacity: 0;
+  pointer-events: none;
+}
+
