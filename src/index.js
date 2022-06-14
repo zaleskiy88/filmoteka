@@ -122,6 +122,7 @@ async function generateMoviesWithGenres(data) {
 function handleMyLibraryClick(ev) {
     const lang = localStorage.getItem('lang') || '';
     if (!currentUser.isAuth) {
+      let message = "";
         ev.preventDefault();
         switch (lang) {
         case 'en':
