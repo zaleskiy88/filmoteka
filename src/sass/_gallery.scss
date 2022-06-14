@@ -18,18 +18,17 @@
 .movie-card {
   background: var(--bg-color);
   border-radius: 5px;
-  // display: block;
- 
+  
   @media screen and (max-width: 767px) {
     width: 280px;
+    margin-right: auto;
+    margin-left: auto;
   }
   @media screen and (max-width: 419px) {
-    // margin-right: 0;
     margin-bottom: 20px;
   }
   cursor: pointer;
   @media screen and (min-width: $mob) {
-    // margin-right: 0;
     margin-bottom: 20px;
   }
   @media screen and (min-width: $tab) {
