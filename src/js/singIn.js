@@ -1,6 +1,7 @@
 import refs from '../constants/refs';
 
-function onEventListener(){
+
+function onEventListener() {
 
     refs.singIn.addEventListener('click', onCloseModalRegistrationClick);
     refs.singUp.addEventListener('click', onOpenModalRegistrationClick);
@@ -49,6 +50,7 @@ if (refs.btnSignin) {
 }
 
 
+
 function onOpenModalLoginClick(){
     refs.backdropIn.style.display = 'block';
     refs.body.style.overflow = 'hidden';
@@ -85,19 +87,19 @@ function onBackdropClick(event) {
         refs.body.style.overflow = 'visible';
         onCloseModalRegistrationClick();
         ofEventListener()
-  }
+    }
 }
 
-  ////////////////////////remember login and password//////////////////////////////
-  
-    const localLogin = localStorage.getItem('login') || '';
-    const localPassword = localStorage.getItem('password')|| '';
-    const localCxheckboxLog = localStorage.getItem('checkboxlog') || '';
+////////////////////////remember login and password//////////////////////////////
 
-if (localLogin !=="") {
+const localLogin = localStorage.getItem('login') || '';
+const localPassword = localStorage.getItem('password') || '';
+const localCxheckboxLog = localStorage.getItem('checkboxlog') || '';
+
+if (localLogin !== "") {
     emailLogin.value = localLogin;
 }
-if (localPassword !=="") {
+if (localPassword !== "") {
     passwordLogin.value = localPassword;
 }
 if (localCxheckboxLog !== "") {
@@ -106,20 +108,20 @@ if (localCxheckboxLog !== "") {
 
 
 function rememberAndDeletLoginAndPassword() {
-    if(mobalCheckBox.checked){
+    if (mobalCheckBox.checked) {
         localStorage.setItem('checkboxlog', true); // save
         localStorage.setItem('login', emailLogin.value); // save
         localStorage.setItem('password', passwordLogin.value); // save
-    }else {
+    } else {
         localStorage.removeItem('login'); // delete
         localStorage.removeItem('password'); // delete
         localStorage.removeItem('checkboxlog');// delete
     }
-    }
+}
 
 //formLog.addEventListener('submit', saveLocalStorage);
 
-function  saveLocalStorage(e){
+function saveLocalStorage(e) {
     e.preventDefault();
     rememberAndDeletLoginAndPassword();
 };
