@@ -3,5 +3,5 @@ export default {
       SEARCH_URL  : `https://api.themoviedb.org/3/search/movie/`,
       TRENDING_URL  : `https://api.themoviedb.org/3/trending/movie/day`,
       GET_ONE_MOVIE_URL  : `https://api.themoviedb.org/3/movie`,
-      MOVIE_GENRES_URL  : 'https://api.themoviedb.org/3/genre/movie/list',
+      MOVIE_GENRES_URL: 'https://api.themoviedb.org/3/genre/movie/list', 
 }
