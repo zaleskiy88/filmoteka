@@ -4,7 +4,7 @@ import getUsersMovieList from '../js/api/firebase/firebase_read_db';
 import auth from './api/firebase/auth_firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import currentUser from './storage/currentUser';
-import refs from '../constants/refs'
+import refs from '../constants/refs';
 
 const axios = require('axios').default;
 const authent = getAuth();
