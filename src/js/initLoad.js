@@ -4,6 +4,7 @@ import {
   getTrendingMoviesData,
   getGenresIds,
 } from './movie-fetch';
+import getSearchDataMoviesParams from './api/getSearchDataMovies'
 import refs from '../constants/refs';
 import apiFirebase from './api/firebase';
 import MovieLists from './movie-lists';
