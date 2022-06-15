@@ -19,17 +19,20 @@ function changeUrlLng() {
   changeLang();
 }
 
-if (langStart === "en"){
-refs.input.placeholder = "Search films"
-};
+if (refs.input) {
+  if (langStart === "en"){
+    refs.input.placeholder = "Search films"
+    };
+    
+    if (langStart === "ru"){
+      refs.input.placeholder = "Поиск фильма"
+    };
+    
+    if (langStart === "uk"){
+      refs.input.placeholder = "Знайти фільм"
+    };
+}
 
-if (langStart === "ru"){
-  refs.input.placeholder = "Поиск фильма"
-};
-
-if (langStart === "uk"){
-  refs.input.placeholder = "Знайти фільм"
-};
 
 function changeLang() {
   let hash = window.location.hash;

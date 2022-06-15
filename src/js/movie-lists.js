@@ -50,7 +50,7 @@ const ModalMovie = (function () {
 
     function init() {
         console.log(refsMovieLists('addListBtnGroup'));
-        movieId = refsMovieLists('addListBtnGroup').dataset.id;
+        movieId = refsMovieLists('addListBtnGroup').dataset?.id;
 
     const movieInQueueList = checkIfMovieIsInList(
       movieId,
