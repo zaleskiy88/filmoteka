@@ -1,4 +1,4 @@
-import { auth, provider } from './firebase_app'
+import { auth, provider } from './firebase_app';
 import { onAuthStateChanged, signInWithRedirect, signOut } from 'firebase/auth';
 import currentUser from '../../storage/currentUser';
 import refs from '../../../constants/refs';
@@ -22,9 +22,9 @@ onAuthStateChanged(auth, user => {
 });
 
 function logInByGoogle() {
-    console.log('login API');
-    signInWithRedirect(auth, provider);
-    // return getRedirectResult(auth);
+  console.log('login API');
+  signInWithRedirect(auth, provider);
+  // return getRedirectResult(auth);
 }
 
 function logOut() {

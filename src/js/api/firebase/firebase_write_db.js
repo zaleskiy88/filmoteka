@@ -1,18 +1,23 @@
 import currentUser from '../../storage/currentUser';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
-import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, onSnapshot } from 'firebase/firestore';
+import {
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  doc,
+  onSnapshot,
+} from 'firebase/firestore';
 import { db } from './firebase_app';
 
 onAuthStateChanged(getAuth(), user => {
-    if (user) {
-        onSnapshot(
-            doc(db, "users", user.uid),
-            (doc) => {
-                currentUser.movieLists = doc.data();
-            });
-    } else {
-        currentUser.clear();
-    }
+  if (user) {
+    onSnapshot(doc(db, 'users', user.uid), doc => {
+      currentUser.movieLists = doc.data();
+    });
+  } else {
+    currentUser.clear();
+  }
 });
 
 const updateUserMovies = async ({ movieId, movieList }) => {

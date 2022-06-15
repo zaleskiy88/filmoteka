@@ -4,7 +4,6 @@ refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModal.addEventListener('click', onCloseModal);
 refs.backdrop.addEventListener('click', onBackdropClick);
 
- 
 export function onOpenModal() {
   window.addEventListener('keydown', onEscKeydown);
   refs.backdrop.classList.remove('visually-hidden');
