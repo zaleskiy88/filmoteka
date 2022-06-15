@@ -78,12 +78,10 @@ input:checked + .slider {
 
 input:focus + .slider {
   box-shadow: 0 0 1px transparent;
-  // border: 1px solid #ccc;
 }
 
 input:checked + .slider:before {
-  transform: translateX(12px);
-  // border: 1px solid #ccc;
+  transform: translateX(14px);
 }
 
 /* Rounded sliders */
@@ -106,22 +104,22 @@ input:checked + .slider:before {
 
 .body-theme.dark-theme {
   color: var(--text-dark-theme);
-  background-color: var(--dark-theme);
+  background-color: #161107;
 
   .movie-card {
-    background-color: var(--dark-theme);
+    background-color: #161107;
   }
   .movie-name {
     color: var(--text-dark-theme);
   }
   .footer {
     color: var(--text-dark-theme);
-    background-color: var(--dark-theme);
+    background-color: #161107;
   }
 
   .footer {
     color: var(--text-dark-theme);
-    background-color: var(--dark-theme);
+    background-color: #161107;
   }
 
   .footer-text {
@@ -133,12 +131,12 @@ input:checked + .slider:before {
   }
   .signin {
     color: var(--text-dark-theme);
-    background-color: var(--dark-theme);
+    background-color: #161107;
   }
 
   .registration-form {
     color: var(--text-dark-theme);
-    background-color: var(--dark-theme);
+    background-color: #161107;
   }
 
   .label-text {
@@ -147,7 +145,7 @@ input:checked + .slider:before {
 
   .registration-btn {
     color: var(--text-dark-theme);
-    background-color: var(--dark-theme);
+    background-color: #161107;
   }
 
   .film-card {
@@ -170,6 +168,6 @@ input:checked + .slider:before {
 
   .pagination__prev,
   .pagination__next {
-    color: var(--dark-theme);
+    color: #161107;
   }
 }
