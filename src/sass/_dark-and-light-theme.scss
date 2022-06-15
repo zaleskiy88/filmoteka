@@ -167,4 +167,9 @@
   .pagination__prev, .pagination__next {
     color: var(--dark-theme);
   }
+
+  .registration-btn:hover, .registration-btn:focus, .signin:hover, .signin:focus {
+    background-color: var(--text-color-caption);
+    color: var(--text-color-header);
+  }
 }
