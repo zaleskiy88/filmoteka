@@ -17,6 +17,13 @@
   @mixin scale($val) {
     transform: scale($val);
   }
+
+.main-start{
+  @media screen and (max-width: 860px) {
+    display: none;
+  }
+}
+
   .body-start-img{
     overflow: hidden;
   }

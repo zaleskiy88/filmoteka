@@ -8,5 +8,4 @@ import './js/initLoad';
 import './js/modal-footer';
 import './js/scroll';
 import './js/singIn';
-import './js/dark-theme';
 import './js/night-theme';
