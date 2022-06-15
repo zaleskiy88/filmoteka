@@ -185,6 +185,70 @@ const lengArr = {
         "ru": "Регистрация прошла успешно",
         "uk": "Реєстрація пройшла успішно"
     },
+    "FooterText1" :{
+        "en": "All Rights Reserved",
+        "ru": "Все права защищены",
+        "uk":"Всi права захищенi"
+      },
+      "FooterText2" :{
+        "en" : "Developed with",
+        "ru" : "Разработано с",
+        "uk" : "Розробка з",
+      },
+      "Anastacia" :{
+        "en" : "Andrieieva Anastasiia",
+        "ru" : "Андреева Анастасия",
+        "uk" : "Андрєєва Анастасія",
+      },
+      "Danylo" :{
+        "en" : "Hulenko Danylo ",
+        "ru" : "Гуленко Данил",
+        "uk" : "Гуленко Данило",
+      },
+      "Kateryna" :{
+        "en" : "Holder Kateryna",
+        "ru" : "Гольдер Екатерина",
+        "uk" : "Гольдер Катерина",
+      },
+      "Artem" :{
+        "en" : "Artem Prysyajnyuk",
+        "ru" : "Артём Присяжнюк",
+        "uk" : "Артем Присяжнюк",
+      },
+      "Maxim" :{
+        "en" : "Maxim Arbakov",
+        "ru" : "Арбаков Максим",
+        "uk" : "Арбаков Максим",
+      },
+      "Vadym" :{
+        "en" : "Vadym Raylyan",
+        "ru" : "Райлян Вадим",
+        "uk" : "Райлян Вадим",
+      },
+      "Andrii" :{
+        "en" : "Andrii Korchevnyi",
+        "ru" : "****** **********",
+        "uk" : "****** **********",
+      },
+      "Vladislav" :{
+        "en" : "Vladislav Zubin",
+        "ru" : "Владислав Зубин",
+        "uk" : "Владислав Зубин",
+      },
+      "Jenya" :{
+        "en" : "Jenya Zaleskiy",
+        "ru" : "***** ********",
+        "uk" : "***** ********",
+      },
+      "Iryna" :{
+        "en" : "Iryna Diachenko",
+        "ru" : "Ирина Дяченко",
+        "uk" : "Iрина Дяченко",
+      },
+      "Liubov" :{
+        "en" : "Liubov Zadoiko",
+        "ru" : "Любовь Задойко",
+        "uk" : "Любов Задойко",
+      },
 }
-
 export default lengArr;
