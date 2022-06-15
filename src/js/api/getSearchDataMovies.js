@@ -1,14 +1,13 @@
-import api from './api';
-
-export const getSearchDataMoviesParams = {
-        query: "",
+import axios from 'axios';
+import constants from '../../constants/constants';
+export async function getDataMovies(searchQuery, page) {
+    const response = await axios.get(`${constants.SEARCH_URL}`, {
+      params: {
+        api_key: constants.API_KEY,
+        query: searchQuery,
         page,
         language: localStorage.lang,
-}
-
-export async function getSearchDataMovies() {
-    const response = await api.get("search/movie/", {
-      params: getSearchDataMoviesParams,
+      },
     });
   
     //checking whether poster_path has an image url

@@ -1,10 +1,10 @@
 import { renderingPaginationMarkup } from './paginationMarkup';
 import {
-  getDataMovies,
   getTrendingMoviesData,
   getGenresIds,
 } from './movie-fetch';
-import getSearchDataMoviesParams from './api/getSearchDataMovies'
+// import { getSearchDataMoviesParams } from './api/getSearchDataMovies';
+import { getDataMovies } from './api/getSearchDataMovies';
 import refs from '../constants/refs';
 import apiFirebase from './api/firebase';
 import MovieLists from './movie-lists';
@@ -54,12 +54,14 @@ async function onSearchSubmit(event) {
     Notiflix.Notify.info('Search query cannot be empty.');
     return;
   }
+  // getSearchDataMoviesParams.query = searchQuery;
   const moviesData = await getDataMovies(searchQuery);
   const searchData = {
     onSearchTotalPages: moviesData.total_pages ?? 0,
     onSearchQuery: searchQuery ?? '',
   };
   localStorage.setItem('searchData', JSON.stringify(searchData));
+  console.log(moviesData);
   renderingPaginationMarkup(1);
   const movieCategories = await generateMoviesWithGenres(moviesData);
 

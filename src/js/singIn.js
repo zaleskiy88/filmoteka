@@ -89,13 +89,13 @@ const localPassword = localStorage.getItem('password') || '';
 const localCxheckboxLog = localStorage.getItem('checkboxlog') || '';
 
 if (localLogin !== '') {
-  emailLogin.value = localLogin;
+  refs.emailLogin.value = localLogin;
 }
 if (localPassword !== '') {
-  passwordLogin.value = localPassword;
+  refs.passwordLogin.value = localPassword;
 }
 if (localCxheckboxLog !== '') {
-  mobalCheckBox.checked = true;
+  refs.mobalCheckBox.checked = true;
 }
 
 function rememberAndDeletLoginAndPassword() {

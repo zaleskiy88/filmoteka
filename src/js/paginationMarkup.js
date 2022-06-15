@@ -6,7 +6,7 @@ function renderSpan(value) {
 
 export function renderingPaginationMarkup(currentPage) {
   let maxPage = refs.input?.value
-    ? Number(JSON.parse(localStorage.getItem('searchData')).onSearchTotalPages)
+    ? Number(JSON.parse(localStorage.getItem('searchData'))?.onSearchTotalPages)
     : Number(localStorage.getItem('trendingTotalPages'));
   const pagesArray = Array.apply(null, {
     length: maxPage ?? 0,
