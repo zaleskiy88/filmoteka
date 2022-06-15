@@ -32,7 +32,6 @@ async function generateMarkup() {
 
   localStorage.setItem('trendingTotalPages', moviesData.total_pages ?? 0);
   renderingPaginationMarkup(1);
-  console.log(moviesData);
   // Creating an object that stores data for handlebars template
   const movieCategories = await generateMoviesWithGenres(moviesData.results);
 
