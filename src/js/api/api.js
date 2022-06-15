@@ -1,9 +1,12 @@
 import axios from 'axios';
-import { BASE_URL, API_KEY } from './../../constants/constants';
+import { BASE_URL } from './../../constants/constants';
 
 export const api = axios.create({
   baseURL: BASE_URL,
-  params: {
-    api_key: API_KEY,
-  },
 });
+
+export const searchParameters = {
+  query: '',
+  page: 1,
+  language: localStorage.lang,
+};
