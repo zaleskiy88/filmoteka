@@ -11,4 +11,5 @@ import './js/singIn';
 // import './js/dark-theme';
 import './js/night-theme';
 import './js/api/getSearchDataMovies';
+import './js/api/testApi';
 
