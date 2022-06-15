@@ -170,4 +170,9 @@ input:checked + .slider:before {
   .pagination__next {
     color: #161107;
   }
+
+  .registration-btn:hover, .registration-btn:focus, .signin:hover, .signin:focus {
+    background-color: var(--text-color-caption);
+    color: var(--text-color-header);
+  }
 }
