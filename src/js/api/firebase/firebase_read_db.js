@@ -17,7 +17,7 @@ async function getUsersMovieList(typeOfList, event) {
         if (!docSnap.data()) {
             switch (lang) {
                 case 'en':
-                    message = `You have no movies in WATCHED и QUEUE`;
+                    message = `You have no movies in WATCHED and QUEUE`;
                     break;
                 case 'ru':
                     message = 'Вы еще не добавили ни одного фильма в разделы ОЧЕРЕДЬ и ПРОСМОТРЕНО';

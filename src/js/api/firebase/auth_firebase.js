@@ -9,18 +9,12 @@ onAuthStateChanged(auth, user => {
         currentUser.userEmail = user.email;
         currentUser.userUiid = user.uid;
         currentUser.isAuth = true;
-        localStorage.setItem('user-id', currentUser.userUiid);
-        localStorage.setItem('user-name', currentUser.userName);
-        localStorage.setItem('auth', currentUser.isAuth);
         try {
-            logInBtn.classList.toggle('auth-hide');
-            logOutBtn.classList.toggle('auth-hide');
-            googleUser.classList.toggle('auth-hide');
-            googleUser.textContent = currentUser.userName;
+            if (!refs.btnSignin.classList.contains('auth-hide')) { refs.btnSignin.classList.toggle('auth-hide') };
+            if (refs.googleOut.classList.contains('auth-hide')) { refs.googleOut.classList.toggle('auth-hide') };
+            if (refs.googleUser.classList.contains('auth-hide')) { refs.googleUser.classList.toggle('auth-hide') };
+            googleUser.textContent = currentUser.userEmail;
             myLibraryBtn.classList.remove('unactive');
-            localStorage.removeItem('user-id');
-            localStorage.removeItem('user-name');
-            localStorage.removeItem('auth');
         } catch (error) { }
     } else {
         currentUser.clear();
