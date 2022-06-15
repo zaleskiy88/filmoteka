@@ -1,44 +1,53 @@
 import currentUser from '../../storage/currentUser';
 import { onAuthStateChanged, getAuth } from 'firebase/auth';
-import { setDoc, updateDoc, arrayUnion, arrayRemove, doc, onSnapshot } from 'firebase/firestore';
+import {
+  setDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+  doc,
+  onSnapshot,
+} from 'firebase/firestore';
 import { db } from './firebase_app';
 
 onAuthStateChanged(getAuth(), user => {
-    if (user) {
-        onSnapshot(
-            doc(db, "users", user.uid),
-            (doc) => {
-                currentUser.movieLists = doc.data();
-            });
-    } else {
-        currentUser.clear();
-    }
+  if (user) {
+    onSnapshot(doc(db, 'users', user.uid), doc => {
+      currentUser.movieLists = doc.data();
+    });
+  } else {
+    currentUser.clear();
+  }
 });
 
 const updateUserMovies = async ({ movieId, movieList }) => {
-    try {
-        await setDoc(doc(db, "users", currentUser.userUiid), {
-            [movieList]: arrayUnion(parseInt(movieId))
-        }, { merge: true });
-    } catch (e) {
-        throw Error(`Error adding to ${movieList}:`, e);
-    }
-}
-const removeFromQueue = async (movieId) => {
-    try {
-        updateDoc(doc(db, "users", currentUser.userUiid), {
-            queue: arrayRemove(parseInt(movieId))
-        });
-    } catch (error) {
-        throw Error(`Error removing from queue:`, e);
-    }
-}
-const addToQueue = async (movieId) => {
-    await updateUserMovies({ movieId, movieList: "queue" });
-}
-const addToWatched = async (movieId) => {
-    await updateUserMovies({ movieId, movieList: "watched" });
-    removeFromQueue(movieId);
-}
+  try {
+    await setDoc(
+      doc(db, 'users', currentUser.userUiid),
+      {
+        [movieList]: arrayUnion(parseInt(movieId)),
+      },
+      { merge: true }
+    );
+  } catch (e) {
+    throw Error(`Error adding to ${movieList}:`, e);
+  }
+};
+const removeFromQueue = async movieId => {
+  try {
+    updateDoc(doc(db, 'users', currentUser.userUiid), {
+      queue: arrayRemove(parseInt(movieId)),
+    });
+  } catch (error) {
+    throw Error(`Error removing from queue:`, e);
+  }
+};
+const addToQueue = async movieId => {
+  await updateUserMovies({ movieId, movieList: 'queue' });
+};
+const addToWatched = async movieId => {
+  await updateUserMovies({ movieId, movieList: 'watched' });
+  removeFromQueue(movieId);
+};
 
 export default { removeFromQueue, addToQueue, addToWatched };

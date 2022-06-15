@@ -1,22 +1,29 @@
-import {getMoreTrendingMoviesData, generateMoviesWithGenres, getMoreDataMovies} from "./movie-fetch";
+import {
+  getMoreTrendingMoviesData,
+  generateMoviesWithGenres,
+  getMoreDataMovies,
+} from './movie-fetch';
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
-import {renderingPaginationMarkup} from "./paginationMarkup";
+import { renderingPaginationMarkup } from './paginationMarkup';
 import refs from '../constants/refs';
 
 let currentPage = 1;
 
-let maxPage = localStorage.getItem("searchData") 
-? Number(localStorage.getItem("onSearchTotalPages")) 
-: Number(localStorage.getItem("trendingTotalPages"));
+let maxPage = localStorage.getItem('searchData')
+  ? Number(localStorage.getItem('onSearchTotalPages'))
+  : Number(localStorage.getItem('trendingTotalPages'));
 /////////////////////////////////////////////////////////
 
 async function renderingFilmsMarkup(currentPage) {
-      renderingPaginationMarkup(currentPage);
-      let data = JSON.parse(localStorage.getItem("searchData"))?.onSearchQuery ? 
-      await getMoreDataMovies(JSON.parse(localStorage.getItem("searchData")).onSearchQuery, currentPage)
-     :await getMoreTrendingMoviesData(currentPage);
-      const movieCategories = await generateMoviesWithGenres(data.results);
+  renderingPaginationMarkup(currentPage);
+  let data = JSON.parse(localStorage.getItem('searchData'))?.onSearchQuery
+    ? await getMoreDataMovies(
+        JSON.parse(localStorage.getItem('searchData')).onSearchQuery,
+        currentPage
+      )
+    : await getMoreTrendingMoviesData(currentPage);
+  const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
   setTimeout(() => {
@@ -54,11 +61,10 @@ async function onPaginationBtnClick(event) {
       return;
     }
   }
-    currentPage = Number(event.target.textContent);
-    renderingFilmsMarkup(currentPage);
+  currentPage = Number(event.target.textContent);
+  renderingFilmsMarkup(currentPage);
 }
 
 if (refs.paginationList) {
   refs.paginationList.addEventListener('click', onPaginationBtnClick);
 }
-
