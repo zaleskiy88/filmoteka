@@ -4,6 +4,7 @@ import getUsersMovieList from '../js/api/firebase/firebase_read_db';
 import auth from './api/firebase/auth_firebase';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import currentUser from './storage/currentUser';
+import refs from '../constants/refs';
 
 const axios = require('axios').default;
 const MOVIE_URL = `https://api.themoviedb.org/3/movie/`;
@@ -60,7 +61,8 @@ async function generateLibraryMarkup(usersList) {
     onePageList = await makeArreyOfDataMovies(onePageList);                                     // making array of the movie objects = movies id list 
     galleryLibrary.insertAdjacentHTML('beforeend', itemsTemplate(onePageList));                 // drawinf gallery
     document.body.style.cursor = 'default';                                                     // 
-    marker = true;                                                                              // set markup (ready)
+    marker = true;
+    // if (onePageList.length > 0) { refs.footer.style.position = "static" };
 }
 
 // -------------------------- making movies data object array
