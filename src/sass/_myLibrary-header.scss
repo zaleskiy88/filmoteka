@@ -170,9 +170,6 @@
   margin-left: auto;
 }
 
-body.darkmode--activated .header-library__libraryPage::after {
-  background-color: #0894ed;
-}
 ////////////////////////кнопки просмотрено и очередь//////////////////////////////
 .header-library__button {
   display: flex;
@@ -222,10 +219,6 @@ body.darkmode--activated .header-library__libraryPage::after {
 .active-btn {
   background-color: var(--brand-color);
   border: none;
-}
-
-body.darkmode--activated .active-btn {
-  background-color: #0894ed;
 }
 
 .movie-vote {

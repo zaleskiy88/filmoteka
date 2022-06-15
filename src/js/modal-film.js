@@ -54,12 +54,6 @@ async function onModalClick(event) {
     new CustomEvent('modal-film-opened', { bubbles: true })
   );
   const btnModalFilm = document.querySelector('.btn-modal-film');
-  const modalFilmCard = document.querySelector('.film-card');
-
-  if (refs.body.classList.contains('darkmode--activated')) {
-    modalFilmCard.classList.add('film-card--night');
-  }
-
   btnModalFilm.addEventListener('click', onCloseModalFilm);
 }
 

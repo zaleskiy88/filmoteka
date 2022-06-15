@@ -179,13 +179,6 @@ body {
   }
 }
 
-body.darkmode--activated .header__input {
-  &:hover,
-  &:focus {
-    border-bottom: 1px solid #0894ed;
-  }
-}
-
 .header__input::placeholder {
   font-size: 14px;
   line-height: 16px;
@@ -230,10 +223,6 @@ body.darkmode--activated .header__input {
   width: 100%;
   background-color: var(--brand-color);
   margin-bottom: 20px;
-}
-
-body.darkmode--activated .header__navigation-link.current::after {
-  background-color: #0894ed;
 }
 
 // tablet
