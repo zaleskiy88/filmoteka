@@ -1,4 +1,5 @@
 import Darkmode from 'darkmode-js';
+import refs from '../constants/refs';
 
 const options = {
   bottom: '80px', // default: '32px'

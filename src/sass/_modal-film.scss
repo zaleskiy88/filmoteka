@@ -143,8 +143,6 @@
   @media screen and (max-width: $desc) {
     overflow-y: scroll;
   }
-   
-    
 }
 .btn-add {
   display: flex;
@@ -218,5 +216,41 @@
   &:hover,
   &:focus {
     color: red;
+  }
+}
+
+.film-card--night {
+  background-color: #111010;
+  border: 2px solid #02385a;
+
+  .film-title {
+    color: #0894ed;
+  }
+
+  .film-text__left {
+    color: #8c8c8c;
+  }
+
+  .film-text__right {
+    color: #ffffff;
+  }
+
+  .box-film {
+    background: #0894ed;
+  }
+
+  .film-info__item {
+    color: #ffffff;
+  }
+
+  .film-about {
+    color: #ffffff;
+  }
+
+  .button {
+    &:hover,
+    &:focus {
+      background: #0894ed;
+    }
   }
 }
