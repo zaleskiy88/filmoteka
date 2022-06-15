@@ -1,7 +1,7 @@
 import modalFilmEn from '../templates/modal-film-en.hbs';
 import modalFilmRu from '../templates/modal-film-ru.hbs';
 import modalFilmUk from '../templates/modal-film-uk.hbs';
-import { getOneMovieById } from './movie-fetch';
+import getOneMovieById from './api/getMovieById';
 import refs from '../constants/refs';
 
 let langStart = localStorage.getItem('lang') || '';

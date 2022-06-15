@@ -1,8 +1,6 @@
-import {
-  getMoreTrendingMoviesData,
-  generateMoviesWithGenres,
-  getMoreDataMovies,
-} from './movie-fetch';
+import getSearchDataMovies from './api/getSearchDataMovies';
+import getTrendingMoviesData from './api/getTrendingMoviesData';
+import generateMoviesWithGenres from './api/generateMoviesWithGenres';
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
 import { renderingPaginationMarkup } from './paginationMarkup';
@@ -18,11 +16,11 @@ let maxPage = localStorage.getItem('searchData')
 async function renderingFilmsMarkup(currentPage) {
   renderingPaginationMarkup(currentPage);
   let data = JSON.parse(localStorage.getItem('searchData'))?.onSearchQuery
-    ? await getMoreDataMovies(
+    ? await getSearchDataMovies(
         JSON.parse(localStorage.getItem('searchData')).onSearchQuery,
         currentPage
       )
-    : await getMoreTrendingMoviesData(currentPage);
+    : await getTrendingMoviesData(currentPage);
   const movieCategories = await generateMoviesWithGenres(data.results);
 
   // Rendering markup
