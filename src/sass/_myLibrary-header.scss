@@ -170,6 +170,9 @@
   margin-left: auto;
 }
 
+body.darkmode--activated .header-library__libraryPage::after {
+  background-color: #0894ed;
+}
 ////////////////////////кнопки просмотрено и очередь//////////////////////////////
 .header-library__button {
   display: flex;
@@ -200,9 +203,9 @@
     width: 129px;
     height: 44px;
   }
-  .header-library__btnQue{
-    background-color:  var(--brand-color);
-    border:none ;
+  .header-library__btnQue {
+    background-color: var(--brand-color);
+    border: none;
   }
   margin-right: 16px;
 
@@ -221,6 +224,10 @@
   border: none;
 }
 
+body.darkmode--activated .active-btn {
+  background-color: #0894ed;
+}
+
 .movie-vote {
   display: inline-block;
   width: 36px;
@@ -232,8 +239,7 @@
   margin-left: 10px;
 }
 
-.header__select.header__select-lib{ 
+.header__select.header__select-lib {
   opacity: 0;
   pointer-events: none;
 }
-
