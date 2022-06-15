@@ -12,6 +12,10 @@ import Swiper from '../../node_modules/swiper/swiper-bundle';
 import Notiflix from 'notiflix';
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
+import Notiflix from 'notiflix';
+
+
+refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 
 var swiper = new Swiper('.swiper', {
   navigation: {
@@ -107,3 +111,25 @@ if (refs.homeGallery) {
   generateMarkup();
   refs.searchForm.addEventListener('submit', onSearchSubmit);
 }
+
+// if user is unauth then my library is unactive
+function handleMyLibraryClick(e) {
+    const lang = localStorage.getItem('lang') || '';
+    if (!currentUser.isAuth) {
+        e.preventDefault();
+        let message = "";
+        switch (lang) {
+        case 'en':
+                message = 'Please, sign in to enter My library';
+            break;
+        case 'ru':
+                message = 'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
+            break;
+        case 'uk':
+                message = 'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
+            break;
+}
+        Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+    }
+}
+

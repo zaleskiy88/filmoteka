@@ -102,10 +102,11 @@
 
 .body-theme.dark-theme{
   color:var(--text-dark-theme) ;
-  background-color: var(--dark-theme)  ; 
+  background-color: var(--dark-theme); 
 
   .movie-card {
     background-color: var(--dark-theme) ; 
+    border: 1px solid #fff;
   }
   .movie-name {
     color: var(--text-dark-theme) ; 
@@ -149,6 +150,7 @@
   .film-card {
     background-color: var(--dark-theme);
     color:var(--text-dark-theme) ;
+    border: 1px solid #fff;
   }
   .film-about {
     background-color: var(--dark-theme);
@@ -166,5 +168,10 @@
 
   .pagination__prev, .pagination__next {
     color: var(--dark-theme);
+  }
+
+  .registration-btn:hover, .registration-btn:focus, .signin:hover, .signin:focus {
+    background-color: var(--text-color-caption);
+    color: var(--text-color-header);
   }
 }
