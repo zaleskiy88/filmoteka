@@ -5,8 +5,6 @@ import refs from '../../../constants/refs';
 
 onAuthStateChanged(auth, user => {
     if (user) {
-        console.log('User is signed in');
-        console.log(user);
         currentUser.userName = user.displayName;
         currentUser.userEmail = user.email;
         currentUser.userUiid = user.uid;
@@ -36,10 +34,8 @@ function logInByGoogle() {
 }
 
 function logOut() {
-    console.log('logout API');
     signOut(auth)
         .then(() => {
-            console.log('Sign-out successful');
             refs.btnSignin.classList.toggle('auth-hide');
             refs.googleOut.classList.toggle('auth-hide');
             refs.googleUser.classList.toggle('auth-hide');

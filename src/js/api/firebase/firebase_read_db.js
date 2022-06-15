@@ -7,7 +7,7 @@ import refs from '../../../constants/refs';
 let usersList = [];
 // -------------------------- getting user's movie list 
 async function getUsersMovieList(typeOfList, event) {
-    const lang = localStorage.getItem('lang') || '';
+    const lang = localStorage.getItem('lang') || 'en';
     let message;
     if (event) { event.preventDefault() };                             // block reload page
         const usersCollection = doc(db, 'users', userInfo.userUiid);   // forming a querry
@@ -32,7 +32,7 @@ async function getUsersMovieList(typeOfList, event) {
      
         usersList = (typeOfList === 'btn-watched') ? docSnap.data().watched : docSnap.data().queue;    // get movie list array 
 
-        if (usersList.length === 0) {
+        if (usersList == undefined || usersList.length === 0) {
             switch (lang) {
                 case 'en':
                     message = `You have no movies in ${typeOfList === 'btn-watched' ? 'WATCHED' : 'QUEUE'}`;
@@ -45,6 +45,7 @@ async function getUsersMovieList(typeOfList, event) {
                     break;
             }
             Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 94, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+            usersList = [];
         }
     }
     catch {
@@ -60,7 +61,7 @@ async function getUsersMovieList(typeOfList, event) {
                 break;
         }
         Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 94, titleColor: '#111111', okButtonBackground: '#ff6b08' });
-        console.log(error);
+        // console.log(error);
     }
     
     return usersList;
