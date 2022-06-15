@@ -84,7 +84,6 @@ async function getUsersMovieList(typeOfList, event) {
       titleColor: '#111111',
       okButtonBackground: '#ff6b08',
     });
-    console.log(error);
   }
 
   return usersList;

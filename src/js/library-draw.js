@@ -4,6 +4,7 @@ import getUsersMovieList from '../js/api/firebase/firebase_read_db';
 import auth from './api/firebase/auth_firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import currentUser from './storage/currentUser';
+import refs from '../constants/refs';
 
 const axios = require('axios').default;
 const MOVIE_URL = `https://api.themoviedb.org/3/movie/`;
@@ -11,10 +12,10 @@ const galleryLibrary = document.querySelector('#library-gallery');
 const btnSignOut = document.querySelector('#signout-library');
 const btnWatched = document.querySelector('#btn-watched'); // Select Watched button
 const btnQueue = document.querySelector('#btn-queue'); // Select Queue button
-const upBtn = document.querySelector('.go-up'); // button up to top page
+
 btnWatched.addEventListener('click', onLibraryBtnClick); // Set the listener on Watch button
 btnQueue.addEventListener('click', onLibraryBtnClick); // Set the listener on Queque button
-upBtn.addEventListener('click', onUpClick); // Set the listener on Button Up
+
 btnSignOut.addEventListener('click', auth.logOut);
 const googleUserLibrary = document.querySelector('#googleUserLibrary');
 
@@ -54,17 +55,15 @@ function readyToNew(typeOfList) {
 
 // -------------------------- generate the markup
 async function generateLibraryMarkup(usersList) {
-  const moviesPerPage = 12; // cards per fetch
-  listofMovie = usersList; // set global value for scrolling                                                                     // current page for markup
-  let startItemPosition = (pageOfList - 1) * moviesPerPage; // first item in list for murkup
-  let onePageList = usersList.slice(
-    startItemPosition,
-    startItemPosition + moviesPerPage
-  ); // get list of movie's id for current fetch
-  onePageList = await makeArreyOfDataMovies(onePageList); // making array of the movie objects = movies id list
-  galleryLibrary.insertAdjacentHTML('beforeend', itemsTemplate(onePageList)); // drawinf gallery
-  document.body.style.cursor = 'default'; //
-  marker = true; // set markup (ready)
+    const moviesPerPage = 12;                                                                   // cards per fetch
+    listofMovie = usersList;                                                                    // set global value for scrolling                                                                     // current page for markup
+    let startItemPosition = (pageOfList - 1) * moviesPerPage;                                   // first item in list for murkup
+    let onePageList = usersList.slice(startItemPosition, startItemPosition + moviesPerPage);    // get list of movie's id for current fetch
+    onePageList = await makeArreyOfDataMovies(onePageList);                                     // making array of the movie objects = movies id list 
+    galleryLibrary.insertAdjacentHTML('beforeend', itemsTemplate(onePageList));                 // drawinf gallery
+    document.body.style.cursor = 'default';                                                     // 
+    marker = true;
+    // if (onePageList.length > 0) { refs.footer.style.position = "static" };
 }
 
 // -------------------------- making movies data object array
@@ -121,10 +120,5 @@ window.addEventListener('scroll', () => {
     upBtn.classList.remove('on-screen');
   }
 });
-
-// handle a click on the button Up
-function onUpClick() {
-  document.documentElement.scrollTop = 0;
-}
 
 export default onAddRemoveBntClick;
