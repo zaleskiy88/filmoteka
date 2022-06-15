@@ -1,15 +1,16 @@
 import firebaseWriteDb from "./api/firebase/firebase_write_db";
 import refsMovieLists from "../constants/refsMovieLists";
 import currentUser from './storage/currentUser';
+import localizeString from "./utils/localizeString";
 // import onAddRemoveBntClick from './library-draw';
 
 const buttonStates = {
     addWatchedBtn: {
         inWatched: {
             watched: true,
-            text: 'Watched',
+            text: 'Remove from watched',
             lngKey: 'addWatchedBtn_watched',
-            action: () => { },
+            action: firebaseWriteDb.removeFromWatched,
         },
         default: {
             default: true,
@@ -42,7 +43,8 @@ const ModalMovie = (function () {
     const checkIfMovieIsInList = (movieId, list) => list?.includes(parseInt(movieId));
 
     function init() {
-        movieId = refsMovieLists().addListBtnGroup.dataset.id;
+        console.log(refsMovieLists('addListBtnGroup'));
+        movieId = refsMovieLists('addListBtnGroup').dataset.id;
 
         const movieInQueueList = checkIfMovieIsInList(movieId, currentUser.movieLists?.queue)
         const movieInWatchedList = checkIfMovieIsInList(movieId, currentUser.movieLists?.watched)
@@ -62,6 +64,8 @@ const ModalMovie = (function () {
             if (addWatchedBtnState.default) {
                 addWatchedBtnState = buttonStates.addWatchedBtn.inWatched;
                 addQueueBtnState = buttonStates.addQueueBtn.default;
+            } else {
+                addWatchedBtnState = buttonStates.addWatchedBtn.default;
             }
         }
         ModalMovie
@@ -70,14 +74,19 @@ const ModalMovie = (function () {
 
     }
     function render() {
-        refsMovieLists().addListBtnGroup.innerHTML = currentUser.isAuth ? view() : ''
+        // refsMovieLists().addListBtnGroup.innerHTML = currentUser.isAuth ? view() : ''
+        refsMovieLists().addWatchedBtn.dataset.active = addWatchedBtnState.default ? 'false' : 'true';
+        refsMovieLists().addWatchedBtn.textContent = localizeString(addWatchedBtnState.lngKey);
+        refsMovieLists().addQueueBtn.dataset.active = addQueueBtnState.default ? 'false' : 'true';
+        refsMovieLists().addQueueBtn.textContent = localizeString(addQueueBtnState.lngKey);
+
         return ModalMovie
     }
 
     function view() {
         return `
-            <button class="button" id="add-watched" type="button" ${addWatchedBtnState.watched ? 'disabled' : ''} data-lng="${addWatchedBtnState.lngKey}">${addWatchedBtnState.text}</button>
-            <button class="button" id="add-queue"  type="button" data-lng="${addQueueBtnState.lngKey}">${addQueueBtnState.text}</button>
+            <!--<button class="button ${addWatchedBtnState.watched ? 'button--active' : 'button--inactive'}" id="add-watched" type="button" data-lng="${addWatchedBtnState.lngKey}">${localizeString(addWatchedBtnState.lngKey)}</button>-->
+            <button class="button" id="add-queue"  type="button" data-lng="${addQueueBtnState.lngKey}">${localizeString(addQueueBtnState.lngKey)}</button>
         `
     }
 
