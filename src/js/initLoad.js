@@ -10,7 +10,7 @@ import Swiper from '../../node_modules/swiper/swiper-bundle';
 import Notiflix from 'notiflix';
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
-import generateMoviesWithGenres from './api/generateMoviesWithGenres';
+import generateMoviesWithGenres from './generateMoviesWithGenres';
 
 refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 

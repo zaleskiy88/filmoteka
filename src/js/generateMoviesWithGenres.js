@@ -1,4 +1,4 @@
-import getGenresIds from './getGanresId';
+import getGenresIds from './api/getGanresId';
 
 export default async function generateMoviesWithGenres(data) {
     const genres = await getGenresIds();

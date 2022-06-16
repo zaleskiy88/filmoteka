@@ -329,11 +329,12 @@ body {
   background-color: transparent;
   color: var(--bg-color);
   border: none;
+  cursor: pointer;
 
   top: 0;
   right: 0;
-  margin-right: 32px;
-  margin-top: 80px;
+  margin-right: 48px;
+  margin-top: 87px;
 
   font-family: Roboto;
   font-size: 12px;
@@ -341,8 +342,18 @@ body {
   font-weight: 500;
   line-height: 14px;
   z-index: 2;
+
+  &:hover {
+    color: darkgrey;
+    transition: color 300ms;
+  }
 }
 
 .header__select--option {
   color: var(--text-color-main);
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
 }

@@ -1,6 +1,6 @@
 import getSearchDataMovies from './api/getSearchDataMovies';
 import getTrendingMoviesData from './api/getTrendingMoviesData';
-import generateMoviesWithGenres from './api/generateMoviesWithGenres';
+import generateMoviesWithGenres from './generateMoviesWithGenres';
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
 import { renderingPaginationMarkup } from './paginationMarkup';
