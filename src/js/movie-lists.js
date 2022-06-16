@@ -1,16 +1,15 @@
-import firebaseWriteDb from './api/firebase/firebase_write_db';
-import refsMovieLists from '../constants/refsMovieLists';
+import firebaseWriteDb from "./api/firebase/firebase_write_db";
+import refsMovieLists from "../constants/refsMovieLists";
 import currentUser from './storage/currentUser';
-import localizeString from "./utils/localizeString";
 // import onAddRemoveBntClick from './library-draw';
 
 const buttonStates = {
     addWatchedBtn: {
         inWatched: {
             watched: true,
-            text: 'Remove from watched',
+            text: 'Watched',
             lngKey: 'addWatchedBtn_watched',
-            action: firebaseWriteDb.removeFromWatched,
+            action: () => { },
         },
         default: {
             default: true,
@@ -19,63 +18,38 @@ const buttonStates = {
             action: firebaseWriteDb.addToWatched
         },
     },
-    default: {
-      default: true,
-      text: 'Add to watched',
-      lngKey: 'addWatchedBtn',
-      action: firebaseWriteDb.addToWatched,
-    },
-  addQueueBtn: {
-    inQueue: {
-      queued: true,
-      text: 'Remove from queue',
-      lngKey: 'addQueueBtn_queue',
-      action: firebaseWriteDb.removeFromQueue,
-    },
-    default: {
-      default: true,
-      text: 'Add to queue',
-      lngKey: 'addQueueBtn',
-      action: firebaseWriteDb.addToQueue,
-    },
-  },
-};
+    addQueueBtn: {
+        inQueue: {
+            queued: true,
+            text: 'Remove from queue',
+            lngKey: 'addQueueBtn_queue',
+            action: firebaseWriteDb.removeFromQueue
+
+        },
+        default: {
+            default: true,
+            text: 'Add to queue',
+            lngKey: 'addQueueBtn',
+            action: firebaseWriteDb.addToQueue
+        }
+    }
+}
 
 const ModalMovie = (function () {
-  let addWatchedBtnState = buttonStates.addWatchedBtn.default;
-  let addQueueBtnState = buttonStates.addQueueBtn.default;
-  let movieId = null;
-  const checkIfMovieIsInList = (movieId, list) =>
-    list?.includes(parseInt(movieId));
+    let addWatchedBtnState = buttonStates.addWatchedBtn.default;
+    let addQueueBtnState = buttonStates.addQueueBtn.default;
+    let movieId = null;
+    const checkIfMovieIsInList = (movieId, list) => list?.includes(parseInt(movieId));
 
     function init() {
-        console.log(refsMovieLists('addListBtnGroup'));
-        movieId = refsMovieLists('addListBtnGroup').dataset?.id;
+        movieId = refsMovieLists().addListBtnGroup.dataset.id;
 
-    const movieInQueueList = checkIfMovieIsInList(
-      movieId,
-      currentUser.movieLists?.queue
-    );
-    const movieInWatchedList = checkIfMovieIsInList(
-      movieId,
-      currentUser.movieLists?.watched
-    );
+        const movieInQueueList = checkIfMovieIsInList(movieId, currentUser.movieLists?.queue)
+        const movieInWatchedList = checkIfMovieIsInList(movieId, currentUser.movieLists?.watched)
 
-    addQueueBtnState = movieInQueueList
-      ? buttonStates.addQueueBtn.inQueue
-      : buttonStates.addQueueBtn.default;
-    addWatchedBtnState = movieInWatchedList
-      ? buttonStates.addWatchedBtn.inWatched
-      : buttonStates.addWatchedBtn.default;
-    return ModalMovie;
-  }
-  function listBtnHandler(e) {
-    if (e.target.nodeName !== 'BUTTON') return;
-    if (e.target.id === 'add-queue') {
-      addQueueBtnState.action(movieId);
-      addQueueBtnState = addQueueBtnState.default
-        ? buttonStates.addQueueBtn.inQueue
-        : buttonStates.addQueueBtn.default;
+        addQueueBtnState = movieInQueueList ? buttonStates.addQueueBtn.inQueue : buttonStates.addQueueBtn.default;
+        addWatchedBtnState = movieInWatchedList ? buttonStates.addWatchedBtn.inWatched : buttonStates.addWatchedBtn.default;
+        return ModalMovie;
     }
     function listBtnHandler(e) {
         if (e.target.nodeName !== "BUTTON") return;
@@ -88,8 +62,6 @@ const ModalMovie = (function () {
             if (addWatchedBtnState.default) {
                 addWatchedBtnState = buttonStates.addWatchedBtn.inWatched;
                 addQueueBtnState = buttonStates.addQueueBtn.default;
-            } else {
-                addWatchedBtnState = buttonStates.addWatchedBtn.default;
             }
         }
         ModalMovie
@@ -98,27 +70,14 @@ const ModalMovie = (function () {
 
     }
     function render() {
-        // refsMovieLists().addListBtnGroup.innerHTML = currentUser.isAuth ? view() : ''
-        refsMovieLists().addWatchedBtn.dataset.active = addWatchedBtnState.default ? 'false' : 'true';
-        refsMovieLists().addWatchedBtn.textContent = localizeString(addWatchedBtnState.lngKey);
-        refsMovieLists().addQueueBtn.dataset.active = addQueueBtnState.default ? 'false' : 'true';
-        refsMovieLists().addQueueBtn.textContent = localizeString(addQueueBtnState.lngKey);
-
+        refsMovieLists().addListBtnGroup.innerHTML = currentUser.isAuth ? view() : ''
         return ModalMovie
     }
-    ModalMovie.render().setupEvents();
-  }
-  function render() {
-    refsMovieLists().addListBtnGroup.innerHTML = currentUser.isAuth
-      ? view()
-      : '';
-    return ModalMovie;
-  }
 
     function view() {
         return `
-            <!--<button class="button ${addWatchedBtnState.watched ? 'button--active' : 'button--inactive'}" id="add-watched" type="button" data-lng="${addWatchedBtnState.lngKey}">${localizeString(addWatchedBtnState.lngKey)}</button>-->
-            <button class="button" id="add-queue"  type="button" data-lng="${addQueueBtnState.lngKey}">${localizeString(addQueueBtnState.lngKey)}</button>
+            <button class="button" id="add-watched" type="button" ${addWatchedBtnState.watched ? 'disabled' : ''} data-lng="${addWatchedBtnState.lngKey}">${addWatchedBtnState.text}</button>
+            <button class="button" id="add-queue"  type="button" data-lng="${addQueueBtnState.lngKey}">${addQueueBtnState.text}</button>
         `
     }
 
@@ -128,16 +87,13 @@ const ModalMovie = (function () {
                 .addEventListener("click", ModalMovie.listBtnHandler)
     }
 
-  function setupEvents() {
-    let button = refsMovieLists().addListBtnGroup.addEventListener(
-      'click',
-      ModalMovie.listBtnHandler
-    );
-  }
+    document.addEventListener('modal-film-opened', (e) => {
+        ModalMovie
+            .init()
+            .render()
+            .setupEvents();
+    });
 
-  document.addEventListener('modal-film-opened', e => {
-    ModalMovie.init().render().setupEvents();
-  });
+    return { init, render, listBtnHandler, setupEvents }
 
-  return { init, render, listBtnHandler, setupEvents };
 })();
