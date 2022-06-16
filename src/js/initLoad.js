@@ -52,17 +52,7 @@ async function onSearchSubmit(event) {
     Notiflix.Notify.info('Search query cannot be empty.');
     return;
   }
-  // if (response.data.total_results === 0) {
-  //   Notiflix.Notify.failure(
-  //     'Sorry, there are no films matching your search query. Please try again.'
-  //   );
-  //   return;
-  // } else {
-  //   Notiflix.Notify.success(
-  //     `Hooray! We found ${response.data.total_results} films.`
-  //   );
-  // }
-  // getSearchDataMoviesParams.query = searchQuery;
+
   const moviesData = await getDataMovies(searchQuery);
   const searchData = {
     onSearchTotalPages: moviesData?.total_pages ?? 0,
@@ -71,7 +61,6 @@ async function onSearchSubmit(event) {
   localStorage.setItem('searchData', JSON.stringify(searchData));
   renderingPaginationMarkup(1);
   const movieCategories = await generateMoviesWithGenres(moviesData.results);
-
   // Rendering markup
 
   refs.homeGallery.innerHTML = itemsTemplate(movieCategories);
@@ -102,6 +91,8 @@ function handleMyLibraryClick(e) {
         message =
           'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
         break;
+      default:
+        console.log("Failed authorization");
     }
     Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', {
       titleMaxLength: 64,

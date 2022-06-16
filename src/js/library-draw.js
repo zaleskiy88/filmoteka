@@ -64,9 +64,9 @@ async function makeArreyOfDataMovies(array) {
     const arr = await Promise.all(array.map(async (el) => {
         el = await axios.get(`${constants.GET_ONE_MOVIE_URL}/${el}`, { params: { api_key: constants.API_KEY, language: 'ru-RU' } });   // fetch data by movie id
         el = el.data;                                                                                   
-        el.name = el.title.toUpperCase();                                                                           // ajust data for the template
-        el.release = el.release_date?.slice(0, 4) || 2022;
-        el.genres = el.genres.map(item => item = item.name);                                                        // convert genres data object to genres array
+        el.name = el?.title?.toUpperCase();                                                                           // ajust data for the template
+        el.release = el?.release_date?.slice(0, 4) || 2022;
+        el.genres = el?.genres?.map(item => item = item.name);                                                        // convert genres data object to genres array
         return el;
     }
     ))
