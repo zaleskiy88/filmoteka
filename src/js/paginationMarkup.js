@@ -28,8 +28,10 @@ export function renderingPaginationMarkup(currentPage) {
         {
           return renderSpan(item);
         }
-        if(item === currentPage - 3 || item === currentPage + 3) {
-          return "<span data-value='dots'>...</span>";
+        if(document.documentElement.clientWidth > 420){
+          if(item === currentPage - 3 || item === currentPage + 3) {
+            return "<span data-value='dots'>...</span>";
+          }
         }
         return "";
            
