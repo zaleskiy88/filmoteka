@@ -13,3 +13,5 @@ window.addEventListener("scroll", () => {
       refs.upBtn.classList.add("on-screen")}
         else {refs.upBtn.classList.remove("on-screen")}
 });
+
+export default {onUpClick};

@@ -5,6 +5,7 @@ import auth from './api/firebase/auth_firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import currentUser from './storage/currentUser';
 import refs from '../constants/refs';
+import onUpClick from './scroll';
 
 const axios = require('axios').default;
 const authent = getAuth();
