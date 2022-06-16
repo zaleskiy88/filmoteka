@@ -188,8 +188,8 @@
     margin-right: 15px;
   }
   &:hover,
-  &:focus {
-    background: var(--brand-color);
+  &[data-active='true'] {
+    background-color: var(--brand-color);
     color: var(--text-color-header);
     border-color: var(--brand-color);
   }
@@ -227,7 +227,6 @@
   &:focus {
     background: var(--brand-color);
   }
-  
 }
 
 .film-card--night {
