@@ -1,4 +1,4 @@
-@import './variables.scss';
+@import '../utils/variables';
 @import url('../../node_modules/swiper/swiper-bundle.css');
 
 
@@ -63,7 +63,7 @@ body.show-modal .footer-team-link {
   -webkit-align-items: center;
   align-items: center;
   background-color: transparent;
-  background-image: url(../images/фильм-min.jpg);
+  background-image: url(../images/film-min.jpg);
   background-size: contain;
 
 @media screen and (min-width: $tab) {
