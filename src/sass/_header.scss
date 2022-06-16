@@ -27,7 +27,7 @@ body {
   font-size: 14px;
 }
 input,
-botton,
+button,
 textarea {
   font-family: inherit;
 }
@@ -178,6 +178,7 @@ body {
     transition: border-bottom 500ms;
   }
 }
+
 .header__input::placeholder {
   font-size: 14px;
   line-height: 16px;
@@ -337,4 +338,3 @@ body {
 .header__select--option {
   color: var(--text-color-main);
 }
-
