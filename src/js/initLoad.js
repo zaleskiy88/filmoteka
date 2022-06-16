@@ -27,22 +27,27 @@ if (refs.preloaderContainer) {
 
 async function generateMarkup() {
   localStorage.removeItem('searchData');
-  const moviesData = await getTrendingMoviesData();
 
-  localStorage.setItem('trendingTotalPages', moviesData.total_pages ?? 0);
-  renderingPaginationMarkup(1);
-  // Creating an object that stores data for handlebars template
-  const movieCategories = await generateMoviesWithGenres(moviesData.results);
+  try {
+    const moviesData = await getTrendingMoviesData();
 
-  // Rendering markup
-  setTimeout(() => {
-    refs.preloaderContainer.innerHTML = '';
-    refs.homeGallery.insertAdjacentHTML(
-      'beforeend',
-      itemsTemplate(movieCategories)
-    );
-    refs.footer.style.position = 'static';
-  }, 2000);
+    localStorage.setItem('trendingTotalPages', moviesData.total_pages ?? 0);
+    renderingPaginationMarkup(1);
+    // Creating an object that stores data for handlebars template
+    const movieCategories = await generateMoviesWithGenres(moviesData.results);
+
+    // Rendering markup
+    setTimeout(() => {
+      refs.preloaderContainer.innerHTML = '';
+      refs.homeGallery.insertAdjacentHTML(
+        'beforeend',
+        itemsTemplate(movieCategories)
+      );
+      refs.footer.style.position = 'static';
+    }, 2000);
+  } catch (error) {
+    console.log('error :>> ', error);
+  }
 }
 
 async function onSearchSubmit(event) {
@@ -53,17 +58,22 @@ async function onSearchSubmit(event) {
     return;
   }
 
-  const moviesData = await getDataMovies(searchQuery);
-  const searchData = {
-    onSearchTotalPages: moviesData?.total_pages ?? 0,
-    onSearchQuery: searchQuery ?? '',
-  };
-  localStorage.setItem('searchData', JSON.stringify(searchData));
-  renderingPaginationMarkup(1);
-  const movieCategories = await generateMoviesWithGenres(moviesData.results);
-  // Rendering markup
+  try {
+    const moviesData = await getDataMovies(searchQuery);
+    const searchData = {
+      onSearchTotalPages: moviesData?.total_pages ?? 0,
+      onSearchQuery: searchQuery ?? '',
+    };
 
-  refs.homeGallery.innerHTML = itemsTemplate(movieCategories);
+    localStorage.setItem('searchData', JSON.stringify(searchData));
+    renderingPaginationMarkup(1);
+    const movieCategories = await generateMoviesWithGenres(moviesData.results);
+    // Rendering markup
+
+    refs.homeGallery.innerHTML = itemsTemplate(movieCategories);
+  } catch (error) {
+    console.log('error :>> ', error);
+  }
 }
 
 // scroll handle to add an endless gallery
@@ -92,7 +102,7 @@ function handleMyLibraryClick(e) {
           'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
         break;
       default:
-        console.log("Failed authorization");
+        console.log('Failed authorization');
     }
     Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', {
       titleMaxLength: 64,
