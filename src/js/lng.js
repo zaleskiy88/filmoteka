@@ -1,4 +1,4 @@
-import langArr from './all-leng.js';
+import langArr from './locale/langs';
 import refs from '../constants/refs';
 const AllLng = ['en', 'ru', 'uk'];
 
