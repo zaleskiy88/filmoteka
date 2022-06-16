@@ -73,6 +73,10 @@ const ModalMovie = (function () {
 
   }
   function render() {
+    if (!currentUser.isAuth) {
+      refsMovieLists('addListBtnGroup').innerHTML = '';
+      return ModalMovie;
+    }
     refsMovieLists('addWatchedBtn').dataset.active = addWatchedBtnState.default ? 'false' : 'true';
     refsMovieLists('addWatchedBtn').textContent = localizeString(addWatchedBtnState.lngKey);
     refsMovieLists('addQueueBtn').dataset.active = addQueueBtnState.default ? 'false' : 'true';
