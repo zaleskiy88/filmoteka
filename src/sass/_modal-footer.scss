@@ -6,17 +6,11 @@
   width: 100%;
   height: 100%;
   position: fixed;
+  padding-top: 20%;
   left: 50%;
+  top: 0;
   transform: translate(-50%, 0);
-  top: 57%;
   transform: scale(1);
-  transition: color 250ms linear,
-  border 250ms linear;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-@media screen and (min-width: $tab) {
-  top: 59%;
-}
 }
 
 body.show-modal .backdrop {
@@ -26,23 +20,31 @@ body.show-modal .backdrop {
   transform: scale(0.5);
   transition: opacity 400ms,
   visibility 400ms;
+  transform: translateX(100%);
+  transition: transform 750ms cubic-bezier(.99,.98,0,-0.01);
 }
 
-body.show-modal .footer-team-link {
-  transform: scale(1);
-}
+
 
 .swiper {
-  width: 50%;
-  height: 450px;
+  width: 100%;
+  height: 465px;
+  border: 1px solid #fff;
+  top: 605px;
+
+@media screen and (max-width: 320px) {
+  width: 320px;
+  top: 645px;
+}
 
 @media screen and (min-width: $tab) {
   width: 75%;
+  top: 560px;
 }
 
 @media screen and (min-width: $desc) {
-  width: 100%;
-  bottom: 220px;
+  width: 50%;
+  top: -132px;
 }
 }
 
@@ -77,16 +79,22 @@ body.show-modal .footer-team-link {
 
 .swiper-slide img {
   display: block;
-  width: 350px;
-  height: 363px;
+  width: 330px;
+  height: 377px;
   object-fit: cover;
+
+  @media screen and (max-width: 320px) {
+  width: 220px;
+  height: 398px;
+}
+
   @media screen and (min-width: $tab) {
   width: 300px;
-  height: 330px;
+  height: 345px;
 }
   @media screen and (min-width: $desc) {
-  width: 290px;
-  height: 311px;
+  width: 320px;
+  height: 320px;
 }
 }
 
@@ -94,9 +102,19 @@ body.show-modal .footer-team-link {
   width: 420px;
   height: 30px;
   position: absolute;
-  top : 380px;
+  top: 395px;
   text-align: center;
-  background-color: blue;
+  background-color: var(--brand-color);
+
+  @media screen and (max-width: 320px) {
+  width: 300px;
+  top: 400px;
+}
+
+@media screen and (min-width: $tab) {
+  width: 300px;
+  top: 385px;
+}
 }
 
 .modal-info__name {
@@ -110,63 +128,82 @@ body.show-modal .footer-team-link {
   color: #fff;
 } 
 
-.swiper-slide__hover:hover {
-  border-radius: 50%;
-}
-
 .swiper-wrapper {
   background-color: transparent;
 }
 
 .modal-footer__close {
   position: relative;
-top: 0;
-right: 50%;
+  top: 0;
+  left: 0;
+  transition: fill 250ms linear;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 3000);
 }
 
 .modal-footer__close-modal {
   position: absolute;
-  top: 5px;
+  top: 610px;
   right: 5px;
   z-index: 5;
   border-radius: 50%;
   padding: 6px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  z-index: 4;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    background: blue;
+    background: var(--brand-color);
   }
+
+  @media screen and (max-width: 320px) {
+  top: 650px;
+  right: 5px;
+}
+
   @media screen and (min-width: $tab) {
-  top: 5px;
+  top: 565px;
   right: 105px;
 }
   @media screen and (min-width: $desc) {
-  top: -215px;
-  right: 5px;
+  top: -125px;
+  right: 390px;
 }
 }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color:white;
+}
+
 
 
 //////////////////////social media//////////////////////////////
-.swiper {
-  width: 50%;
-  // position: relative;
-}
+
 .swiper-social{
   position: absolute;
   right: 50px;
 }
 
 .swiper-social__network {
-  display: block;
-  top: -100px;
-  left: 50px;
-  position: relative;
-  
-  @media screen and(min-width: $desc) {
-  justify-content: center;
   display: flex;
+  right: 235px;
+  bottom: 130px;
+  z-index: 5;
+  position: absolute;
+
+  @media screen and (max-width: 320px) {
+  right: 125px;
+  bottom: 140px;
+}
+  
+  @media screen and(min-width: $tab) {
+  right: 295px;
+  bottom: 110px;
+}
+
+ @media screen and(min-width: $desc) {
+  right: 395px;
+  bottom: 110px;
 }
 }
 
@@ -184,16 +221,15 @@ justify-content: center;
 height: 44px;
 width: 44px;
 border-radius: 50%;
-fill: blue;
+fill: var(--brand-color);
 transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
   fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-
 &:hover,
 &:focus {
-background-color: black;
+background-color: var(--brand-color);
 fill: var(--text-color-header);
 outline: none;
+z-index: 5;
 }
 }
 
@@ -202,3 +238,4 @@ width: 20px;
 height: 20px;
 --brand-color: currentColor;
 }
+
