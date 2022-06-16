@@ -2,9 +2,10 @@ import constants from '../constants/constants';
 import itemsTemplate from '../templates/list-of-card-library.hbs';
 import getUsersMovieList from '../js/api/firebase/firebase_read_db';
 import auth from './api/firebase/auth_firebase';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import currentUser from './storage/currentUser';
 import refs from '../constants/refs';
+import onUpClick from './scroll';
 
 const axios = require('axios').default;
 const authent = getAuth();
@@ -100,10 +101,5 @@ window.addEventListener("scroll", () => {
         refs.upBtn.classList.add("on-screen")}
         else {refs.upBtn.classList.remove("on-screen")}
 });
-
-// handle a click on the button Up
-function onUpClick() {
-    document.documentElement.scrollTop = 0;
-}
 
 export default onAddRemoveBntClick;

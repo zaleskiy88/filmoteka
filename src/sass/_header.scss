@@ -27,7 +27,7 @@ body {
   font-size: 14px;
 }
 input,
-botton,
+button,
 textarea {
   font-family: inherit;
 }
@@ -178,6 +178,7 @@ body {
     transition: border-bottom 500ms;
   }
 }
+
 .header__input::placeholder {
   font-size: 14px;
   line-height: 16px;
@@ -316,17 +317,24 @@ body {
 }
 
 .header__select {
+  position: absolute;
   background-color: transparent;
   color: var(--bg-color);
   border: none;
-  margin-left: 32px;
 
-  @media screen and (max-width: $mob) {
-    margin-left: 20px;
-  }
+  top: 0;
+  right: 0;
+  margin-right: 32px;
+  margin-top: 85px;
+
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  z-index: 2;
 }
 
 .header__select--option {
   color: var(--text-color-main);
 }
-
