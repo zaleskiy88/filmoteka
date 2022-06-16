@@ -29,6 +29,7 @@ export default async function generateMoviesWithGenres(data) {
       };
   
       genresFilm();
+      movieInfo.genres = movieInfo.genres.join(", ")
       return movieInfo;
     });
   }
