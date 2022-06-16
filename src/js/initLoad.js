@@ -1,7 +1,7 @@
 import { renderingPaginationMarkup } from './paginationMarkup';
 import getTrendingMoviesData from './api/getTrendingMoviesData';
-// import { getSearchDataMoviesParams } from './api/getSearchDataMovies';
-import getSearchDataMovies from './api/getSearchDataMovies';
+//import { getDataMoviesParams } from './api/getSearchDataMovies';
+import getDataMovies from './api/getSearchDataMovies';
 import refs from '../constants/refs';
 import apiFirebase from './api/firebase';
 import MovieLists from './movie-lists';
@@ -11,7 +11,6 @@ import Notiflix from 'notiflix';
 import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
 import generateMoviesWithGenres from './api/generateMoviesWithGenres';
-
 
 refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);
 
@@ -64,7 +63,7 @@ async function onSearchSubmit(event) {
   //   );
   // }
   // getSearchDataMoviesParams.query = searchQuery;
-  const moviesData = await getSearchDataMovies(searchQuery);
+  const moviesData = await getDataMovies(searchQuery);
   const searchData = {
     onSearchTotalPages: moviesData?.total_pages ?? 0,
     onSearchQuery: searchQuery ?? '',
@@ -87,22 +86,27 @@ if (refs.homeGallery) {
 
 // if user is unauth then my library is unactive
 function handleMyLibraryClick(e) {
-    const lang = localStorage.getItem('lang') || '';
-    if (!currentUser.isAuth) {
-        e.preventDefault();
-        let message = "";
-        switch (lang) {
-        case 'en':
-                message = 'Please, sign in to enter My library';
-            break;
-        case 'ru':
-                message = 'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
-            break;
-        case 'uk':
-                message = 'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
-            break;
-}
-        Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', { titleMaxLength: 64, titleColor: '#111111', okButtonBackground: '#ff6b08' });
+  const lang = localStorage.getItem('lang') || '';
+  if (!currentUser.isAuth) {
+    e.preventDefault();
+    let message = '';
+    switch (lang) {
+      case 'en':
+        message = 'Please, sign in to enter My library';
+        break;
+      case 'ru':
+        message =
+          'Пожалуйста, авторизуйтесь, чтобы зайти в раздел Моя библиотека';
+        break;
+      case 'uk':
+        message =
+          'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
+        break;
     }
+    Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', {
+      titleMaxLength: 64,
+      titleColor: '#111111',
+      okButtonBackground: '#ff6b08',
+    });
+  }
 }
-

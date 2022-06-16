@@ -1,13 +1,14 @@
-import axios from "axios";
 import constants from '../../constants/constants';
+import { api } from './api';
+
+const getGenresIdsParams = {
+  language: localStorage.lang || 'en',
+};
 // Get genres array
 export default async function getGenresIds() {
-    const response = await axios.get(`${constants.MOVIE_GENRES_URL}`, {
-      params: {
-        api_key: constants.API_KEY,
-        language: localStorage.lang,
-      },
-    });
-  
-    return response.data.genres;
-  }
+  const response = await api.get(constants.MOVIE_GENRES_URL, {
+    params: getGenresIdsParams,
+  });
+
+  return response.data.genres;
+}
