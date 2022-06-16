@@ -48,4 +48,5 @@ export default {
   btnTheme: document.querySelector('#dark-theme'),
   googleIn: document.querySelector('#google-login'),
   googleOut: document.querySelector('#signout'),
+  backdropFooter: document.querySelector('.backdrop-footer'),
 };

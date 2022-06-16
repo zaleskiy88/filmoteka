@@ -2,17 +2,17 @@ import refs from '../constants/refs';
 
 refs.openModal.addEventListener('click', onOpenModal);
 refs.closeModal.addEventListener('click', onCloseModal);
-refs.backdrop.addEventListener('click', onBackdropClick);
+refs.backdropFooter.addEventListener('click', onBackdropClick);
 
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeydown);
-  refs.backdrop.classList.remove('visually-hidden');
+  refs.backdropFooter.style.display = 'flex';
   refs.body.style.overflow = 'hidden';
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', onEscKeydown);
-  refs.backdrop.classList.add('visually-hidden');
+  refs.backdropFooter.style.display = 'none';
   refs.body.style.overflow = 'visible';
 }
 
