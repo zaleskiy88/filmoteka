@@ -2,20 +2,32 @@
 @import url('../../node_modules/swiper/swiper-bundle.css');
 
 
-.backdrop {
+.backdrop-footer{
+  display: none;
   width: 100%;
   height: 100%;
   position: fixed;
   left: 50%;
+  top: 0;
   transform: translate(-50%, 0);
-  top: 57%;
   transform: scale(1);
-  transition: color 250ms linear,
-  border 250ms linear;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  align-items: center;
+}
 
-@media screen and (min-width: $tab) {
-  top: 59%;
+.modal-container {
+  position: relative;
+  // height: 400px;
+  width: 400px;
+  // background-color: tomato;
+  @media screen and (min-width: $tab) {
+  width: 768px;
+}
+
+
+  @media screen and (min-width: $desc) {
+  width: 1024px;
 }
 }
 
@@ -26,23 +38,25 @@ body.show-modal .backdrop {
   transform: scale(0.5);
   transition: opacity 400ms,
   visibility 400ms;
+  transform: translateX(100%);
+  transition: transform 750ms cubic-bezier(.99,.98,0,-0.01);
 }
 
-body.show-modal .footer-team-link {
-  transform: scale(1);
-}
+
 
 .swiper {
-  width: 50%;
-  height: 450px;
+  // width: 100%;
+  // width: 320px;
+  // height: 465px;
+  border: 1px solid #fff;
+//   top: 605px;
 
-@media screen and (min-width: $tab) {
-  width: 75%;
+@media screen and (min-width: 320px) {
+  width: 320px;
 }
 
-@media screen and (min-width: $desc) {
-  width: 100%;
-  bottom: 220px;
+@media screen and (min-width: $tab) {
+  width: 50%;
 }
 }
 
@@ -66,27 +80,33 @@ body.show-modal .footer-team-link {
   background-image: url(../images/film-min.jpg);
   background-size: contain;
 
-@media screen and (min-width: $tab) {
-  width: 100%;
-}
+// @media screen and (min-width: $tab) {
+//   width: 100%;
+// }
 
-@media screen and (min-width: $desc) {
-  width: 100%;
-}
+// @media screen and (min-width: $desc) {
+//   width: 100%;
+// }
 }
 
 .swiper-slide img {
   display: block;
-  width: 350px;
-  height: 363px;
+  width: 270px;
+  height: 350px;
   object-fit: cover;
+
+  @media screen and (min-width: 320px) {
+  width: 220px;
+  height: 350px;
+}
+
   @media screen and (min-width: $tab) {
-  width: 300px;
-  height: 330px;
+  width: 250px;
+  height: 355px;
 }
   @media screen and (min-width: $desc) {
-  width: 290px;
-  height: 311px;
+  width: 320px;
+  height: 355px;
 }
 }
 
@@ -94,12 +114,17 @@ body.show-modal .footer-team-link {
   width: 420px;
   height: 30px;
   position: absolute;
-  top : 380px;
+  top: 325px;
   text-align: center;
-  background-color: blue;
+  background-color: var(--brand-color);
+
+  @media screen and (min-width: $desc) {
+    bottom: 250px;
+  }
 }
 
 .modal-info__name {
+
   margin-top: 5px;
   font-style: normal;
   font-weight: 700;
@@ -110,63 +135,78 @@ body.show-modal .footer-team-link {
   color: #fff;
 } 
 
-.swiper-slide__hover:hover {
-  border-radius: 50%;
-}
-
 .swiper-wrapper {
   background-color: transparent;
 }
 
 .modal-footer__close {
-  position: relative;
-top: 0;
-right: 50%;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  transition: fill 250ms linear;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 3000);
 }
 
-.modal-footer__close-modal {
+.modal-footer__close-icon {
   position: absolute;
   top: 5px;
   right: 5px;
   z-index: 5;
   border-radius: 50%;
   padding: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  z-index: 4;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+  fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    background: blue;
+    background: var(--brand-color);
   }
-  @media screen and (min-width: $tab) {
-  top: 5px;
-  right: 105px;
+
+//   @media screen and (max-width: 320px) {
+//   top: 650px;
+//   right: 5px;
+// }
+
+//   @media screen and (min-width: $tab) {
+//   top: 565px;
+//   right: 105px;
+// }
+//   @media screen and (min-width: $desc) {
+//   top: -125px;
+//   right: 390px;
+// }
 }
-  @media screen and (min-width: $desc) {
-  top: -215px;
-  right: 5px;
+
+.swiper-button-next,
+.swiper-button-prev {
+  color:rgb(27, 25, 25);
 }
-}
+
 
 
 //////////////////////social media//////////////////////////////
-.swiper {
-  width: 50%;
-  // position: relative;
-}
+
 .swiper-social{
   position: absolute;
   right: 50px;
 }
 
 .swiper-social__network {
-  display: block;
-  top: -100px;
-  left: 50px;
-  position: relative;
-  
-  @media screen and(min-width: $desc) {
-  justify-content: center;
   display: flex;
+  right: 195px;
+  top: 100px;
+  z-index: 5;
+  position: absolute;
+
+  @media screen and (min-width: 320px) {
+  right: 130px;
+}
+  
+  @media screen and(min-width: $tab) {
+  right: 190px;
+}
+
+ @media screen and(min-width: $desc) {
+  right: 275px;
 }
 }
 
@@ -183,17 +223,17 @@ align-items: center;
 justify-content: center;
 height: 44px;
 width: 44px;
+background-color: var(--brand-color);
 border-radius: 50%;
-fill: blue;
+fill: var(--text-color-header);
 transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
   fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
-
 &:hover,
 &:focus {
-background-color: black;
-fill: var(--text-color-header);
+background-color: var(--text-color-header);
+fill: var(--brand-color);
 outline: none;
+z-index: 5;
 }
 }
 
@@ -202,3 +242,4 @@ width: 20px;
 height: 20px;
 --brand-color: currentColor;
 }
+

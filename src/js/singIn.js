@@ -99,7 +99,7 @@ if (localCxheckboxLog !== '') {
 }
 
 function rememberAndDeletLoginAndPassword() {
-  if (mobalCheckBox.checked) {
+  if (refs.mobalCheckBox.checked) {
     localStorage.setItem('checkboxlog', true); // save
     localStorage.setItem('login', emailLogin.value); // save
     localStorage.setItem('password', passwordLogin.value); // save
