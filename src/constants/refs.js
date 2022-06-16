@@ -22,7 +22,7 @@ export default {
   preloaderContainer: document.querySelector('.preloader'),
   footer: document.querySelector('.footer'),
   openModal: document.querySelector('.modal-footer__open-modal'),
-  closeModal: document.querySelector('.modal-footer__close-modal'),
+  closeModal: document.querySelector('.modal-footer__close-icon'),
   backdrop: document.querySelector('.backdrop'),
   backdropFilm: document.querySelector('.backdrop-film'),
   btnModalFilm: document.querySelector('.btn-modal-film'),
@@ -48,4 +48,5 @@ export default {
   btnTheme: document.querySelector('#dark-theme'),
   googleIn: document.querySelector('#google-login'),
   googleOut: document.querySelector('#signout'),
+  backdropFooter: document.querySelector('.backdrop-footer'),
 };

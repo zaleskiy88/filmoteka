@@ -1,22 +1,22 @@
 
-@import './reset';
-@import './variables';
-@import './common';
-@import './spinner';
-@import './header';
-@import './modal-film';
-@import './container';
-@import './modal-footer';
-@import './gallery';
-@import './singIn';
-@import './footer';
-@import './pagination';
+@import './base/reset';
+@import './utils/variables';
+@import './base/common';
+@import './components/spinner';
+@import './layout/my_library_header';
+@import './layout/header';
+@import './components/modal_film';
+@import './layout/container';
+@import './components/modal_footer';
+@import './layout/gallery';
+@import './layout/singIn';
+@import './layout/footer';
+@import './components/pagination';
 @import './preloader';
-@import './main_start';
-@import './modal-footer';
-@import './btn-up-library';
-@import './auth-btn';
-@import './myLibrary-header';
-@import './dark-and-light-theme';
+@import './utils/main_start';
+@import './components/modal_footer';
+@import './components/btn_up_library';
+@import './layout/auth-btn';
+@import './layout/dark_and_light_theme';
 
 
