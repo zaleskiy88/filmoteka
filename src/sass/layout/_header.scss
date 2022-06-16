@@ -134,6 +134,12 @@ body {
 .header__navigation-item:not(:last-child) {
   margin-right: 25px;
 }
+
+.header__navigation-item {
+  padding-right: 20px;
+}
+
+
 .header__logotext-link {
   font-family: Roboto;
   font-size: 30px;
@@ -200,10 +206,12 @@ body {
   margin-left: auto;
   background: transparent;
   margin-top: 116px;
+  
 
-  @media screen and (max-width: $mob) {
+  @media screen and (max-width: $tab) {
     max-width: 280px;
-    margin-top: 118px;
+    margin-top: 150px;
+  
   }
 }
 .header__input-icon {
@@ -325,7 +333,7 @@ body {
   top: 0;
   right: 0;
   margin-right: 32px;
-  margin-top: 85px;
+  margin-top: 80px;
 
   font-family: Roboto;
   font-size: 14px;

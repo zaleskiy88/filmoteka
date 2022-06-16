@@ -124,6 +124,7 @@
   margin-right: 32px;
   margin-top: 49px;
   z-index: 1;
+ 
 
   @media screen and (max-width: $mob) {
     margin-right: 20px;
@@ -206,6 +207,11 @@
   }
   margin-right: 16px;
 
+.active-btn {
+  background-color: var(--brand-color);
+  border: none;
+}
+
 .movie-vote {
   display: inline-block;
   width: 36px;
@@ -216,9 +222,4 @@
   text-align: center;
   margin-left: 10px;
 }
-}
-
-.active-btn {
-  background-color: var(--brand-color);
-  border: none;
 }
