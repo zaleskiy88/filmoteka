@@ -102,22 +102,9 @@ input:checked + .slider:before {
 
 /* dark-theme.css */
 
-.body-theme.dark-theme {
-  color: var(--text-dark-theme);
-  background-color: #161107;
+.body-theme.darkmode--activated {
 
-  .movie-card {
-    background-color: #161107;
-  }
-  .movie-name {
-    color: var(--text-dark-theme);
-  }
-  .footer {
-    color: var(--text-dark-theme);
-    background-color: #161107;
-  }
-
-  .footer {
+   .footer {
     color: var(--text-dark-theme);
     background-color: #161107;
   }
@@ -128,7 +115,7 @@ input:checked + .slider:before {
 
   .footer-team-link {
     color: var(--text-dark-theme);
-  }
+  } 
   .signin {
     color: var(--text-dark-theme);
     background-color: #161107;
