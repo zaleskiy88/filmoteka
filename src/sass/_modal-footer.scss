@@ -10,17 +10,23 @@
   top: 0;
   transform: translate(-50%, 0);
   transform: scale(1);
-  background-color: aqua;
+  background-color: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .modal-container {
   position: relative;
-  height: 400px;
+  // height: 400px;
   width: 400px;
-  background-color: tomato;
+  // background-color: tomato;
+
+  @media screen and (min-width: $desc) {
+  width: 500px;
 }
+}
+
 body.show-modal .backdrop {
   opacity: 1;
   visibility: visible;
@@ -36,24 +42,17 @@ body.show-modal .backdrop {
 
 .swiper {
   // width: 100%;
-  width: 320px;
+  // width: 320px;
   // height: 465px;
   border: 1px solid #fff;
 //   top: 605px;
 
-// @media screen and (max-width: 320px) {
-//   width: 320px;
-//   top: 645px;
-// }
-
-// @media screen and (min-width: $tab) {
-//   width: 75%;
-//   top: 560px;
-// }
+@media screen and (max-width: 320px) {
+  width: 320px;
+}
 
 // @media screen and (min-width: $desc) {
 //   width: 50%;
-//   top: -132px;
 // }
 }
 
@@ -77,33 +76,33 @@ body.show-modal .backdrop {
   background-image: url(../images/фильм-min.jpg);
   background-size: contain;
 
-@media screen and (min-width: $tab) {
-  width: 100%;
-}
+// @media screen and (min-width: $tab) {
+//   width: 100%;
+// }
 
-@media screen and (min-width: $desc) {
-  width: 100%;
-}
+// @media screen and (min-width: $desc) {
+//   width: 100%;
+// }
 }
 
 .swiper-slide img {
   display: block;
-  width: 330px;
-  height: 377px;
+  width: 270px;
+  height: 350px;
   object-fit: cover;
 
   @media screen and (max-width: 320px) {
   width: 220px;
-  height: 398px;
+  height: 350px;
 }
 
   @media screen and (min-width: $tab) {
-  width: 300px;
-  height: 345px;
+  width: 250px;
+  height: 355px;
 }
   @media screen and (min-width: $desc) {
   width: 320px;
-  height: 320px;
+  height: 355px;
 }
 }
 
@@ -111,22 +110,17 @@ body.show-modal .backdrop {
   width: 420px;
   height: 30px;
   position: absolute;
-  top: 395px;
+  top: 325px;
   text-align: center;
   background-color: var(--brand-color);
 
-  @media screen and (max-width: 320px) {
-  width: 300px;
-  top: 400px;
-}
-
-@media screen and (min-width: $tab) {
-  width: 300px;
-  top: 385px;
-}
+  @media screen and (min-width: $desc) {
+    bottom: 250px;
+  }
 }
 
 .modal-info__name {
+
   margin-top: 5px;
   font-style: normal;
   font-weight: 700;
@@ -149,14 +143,14 @@ body.show-modal .backdrop {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 3000);
 }
 
-.modal-footer__close-modal {
+.modal-footer__close-icon {
   position: absolute;
   top: 5px;
   right: 5px;
   z-index: 5;
   border-radius: 50%;
   padding: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  // border: 1px solid rgba(0, 0, 0, 0.1);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
   fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
@@ -195,24 +189,21 @@ body.show-modal .backdrop {
 
 .swiper-social__network {
   display: flex;
-  right: 235px;
-  bottom: 130px;
+  right: 195px;
+  top: 100px;
   z-index: 5;
   position: absolute;
 
   @media screen and (max-width: 320px) {
-  right: 125px;
-  bottom: 140px;
+  right: 130px;
 }
   
   @media screen and(min-width: $tab) {
-  right: 295px;
-  bottom: 110px;
+  right: 190px;
 }
 
  @media screen and(min-width: $desc) {
-  right: 395px;
-  bottom: 110px;
+  right: 275px;
 }
 }
 
@@ -229,14 +220,15 @@ align-items: center;
 justify-content: center;
 height: 44px;
 width: 44px;
+background-color: var(--brand-color);
 border-radius: 50%;
-fill: var(--brand-color);
+fill: var(--text-color-header);
 transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
   fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 &:hover,
 &:focus {
-background-color: var(--brand-color);
-fill: var(--text-color-header);
+background-color: var(--text-color-header);
+fill: var(--brand-color);
 outline: none;
 z-index: 5;
 }
