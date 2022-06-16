@@ -51,15 +51,6 @@ function changeLang() {
       elem.innerHTML = langArr[key][hash];
     }
   }
-
-  function changeLng() {
-    let hash = window.location.hash;
-    hash = hash.slice(1);
-    if (!AllLng.includes(hash)) {
-      location.href = window.location.pathname + '#en';
-      localStorage.setItem('lang', 'en');
-    }
-  }
 }
 
 refs.langSelector.addEventListener('change', e => window.location.reload());
