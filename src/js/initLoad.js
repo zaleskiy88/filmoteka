@@ -70,7 +70,6 @@ async function onSearchSubmit(event) {
     onSearchQuery: searchQuery ?? '',
   };
   localStorage.setItem('searchData', JSON.stringify(searchData));
-  console.log(moviesData);
   renderingPaginationMarkup(1);
   const movieCategories = await generateMoviesWithGenres(moviesData.results);
 
