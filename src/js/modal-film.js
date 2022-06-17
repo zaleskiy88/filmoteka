@@ -3,6 +3,7 @@ import modalFilmRu from '../templates/modal-film-ru.hbs';
 import modalFilmUk from '../templates/modal-film-uk.hbs';
 import getOneMovieById from './api/getMovieById';
 import refs from '../constants/refs';
+import { refsModalFilm } from '../constants/dynamicRefs';
 
 let langStart = localStorage.getItem('lang') || '';
 if (langStart === '') {
@@ -51,8 +52,7 @@ async function onModalClick(event) {
   refs.backdropFilm.dispatchEvent(
     new CustomEvent('modal-film-opened', { bubbles: true })
   );
-  const btnModalFilm = document.querySelector('.btn-modal-film');
-  btnModalFilm.addEventListener('click', onCloseModalFilm);
+  refsModalFilm().btnModalFilm.addEventListener('click', onCloseModalFilm);
 }
 
 function onEscKeyDown(event) {

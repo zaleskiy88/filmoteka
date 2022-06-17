@@ -49,4 +49,6 @@ export default {
   googleIn: document.querySelector('#google-login'),
   googleOut: document.querySelector('#signout'),
   backdropFooter: document.querySelector('.backdrop-footer'),
+  signUpForm: document.getElementById('registration-form-un'),
+  signInForm: document.getElementById('from-sing-in'),
 };

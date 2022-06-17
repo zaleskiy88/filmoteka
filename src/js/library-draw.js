@@ -8,16 +8,11 @@ import refs from '../constants/refs';
 
 const axios = require('axios').default;
 const MOVIE_URL = `https://api.themoviedb.org/3/movie/`;
-const galleryLibrary = document.querySelector('#library-gallery');
-const btnSignOut = document.querySelector('#signout-library');
-const btnWatched = document.querySelector('#btn-watched'); // Select Watched button
-const btnQueue = document.querySelector('#btn-queue'); // Select Queue button
 
-btnWatched.addEventListener('click', onLibraryBtnClick); // Set the listener on Watch button
-btnQueue.addEventListener('click', onLibraryBtnClick); // Set the listener on Queque button
+refs.btnWatched.addEventListener('click', onLibraryBtnClick); // Set the listener on Watch button
+refs.btnQueue.addEventListener('click', onLibraryBtnClick); // Set the listener on Queque button
 
-btnSignOut.addEventListener('click', auth.logOut);
-const googleUserLibrary = document.querySelector('#googleUserLibrary');
+refs.btnSignOut.addEventListener('click', auth.logOut);
 
 let pageOfList = 1; // package number
 let marker = false; // a marker of whether the received packet is drawn
@@ -29,7 +24,7 @@ const authent = getAuth();
 onAuthStateChanged(authent, user => {
   if (user) {
     getUsersMovieList(typeOfList).then(generateLibraryMarkup);
-    googleUserLibrary.textContent = currentUser.userEmail;
+    refs.googleUserLibrary.textContent = currentUser.userEmail;
   } else {
   }
 });
@@ -42,28 +37,28 @@ async function onLibraryBtnClick(event) {
 }
 
 async function onAddRemoveBntClick() {
-  galleryLibrary.innerHTML = ''; // clear content
+  refs.galleryLibrary.innerHTML = ''; // clear content
   await getUsersMovieList(typeOfList).then(generateLibraryMarkup); // drawing initial selected page
 }
 
 // -------------------------- preparation before drawing
 function readyToNew(typeOfList) {
   btnChangeColor(typeOfList); // clear field
-  galleryLibrary.innerHTML = ''; // clear content
+  refs.galleryLibrary.innerHTML = ''; // clear content
   pageOfList = 1; // return to the initial value of the packet (=1)
 }
 
 // -------------------------- generate the markup
 async function generateLibraryMarkup(usersList) {
-    const moviesPerPage = 12;                                                                   // cards per fetch
-    listofMovie = usersList;                                                                    // set global value for scrolling                                                                     // current page for markup
-    let startItemPosition = (pageOfList - 1) * moviesPerPage;                                   // first item in list for murkup
-    let onePageList = usersList.slice(startItemPosition, startItemPosition + moviesPerPage);    // get list of movie's id for current fetch
-    onePageList = await makeArreyOfDataMovies(onePageList);                                     // making array of the movie objects = movies id list 
-    galleryLibrary.insertAdjacentHTML('beforeend', itemsTemplate(onePageList));                 // drawinf gallery
-    document.body.style.cursor = 'default';                                                     // 
-    marker = true;
-    // if (onePageList.length > 0) { refs.footer.style.position = "static" };
+  const moviesPerPage = 12;                                                                   // cards per fetch
+  listofMovie = usersList;                                                                    // set global value for scrolling                                                                     // current page for markup
+  let startItemPosition = (pageOfList - 1) * moviesPerPage;                                   // first item in list for murkup
+  let onePageList = usersList.slice(startItemPosition, startItemPosition + moviesPerPage);    // get list of movie's id for current fetch
+  onePageList = await makeArreyOfDataMovies(onePageList);                                     // making array of the movie objects = movies id list 
+  refs.galleryLibrary.insertAdjacentHTML('beforeend', itemsTemplate(onePageList));                 // drawinf gallery
+  document.body.style.cursor = 'default';                                                     // 
+  marker = true;
+  // if (onePageList.length > 0) { refs.footer.style.position = "static" };
 }
 
 // -------------------------- making movies data object array
@@ -86,15 +81,15 @@ async function makeArreyOfDataMovies(array) {
 
 // --------------------------- btn Change Color
 function btnChangeColor(ev) {
-  if (ev === 'btn-watched' && !btnWatched.classList.contains('active-btn')) {
-    btnWatched.classList.toggle('active-btn');
-    btnQueue.classList.toggle('active-btn');
+  if (ev === 'btn-watched' && !refs.btnWatched.classList.contains('active-btn')) {
+    refs.btnWatched.classList.toggle('active-btn');
+    refs.btnQueue.classList.toggle('active-btn');
     return;
   }
 
-  if (ev === 'btn-queue' && !btnQueue.classList.contains('active-btn')) {
-    btnQueue.classList.toggle('active-btn');
-    btnWatched.classList.toggle('active-btn');
+  if (ev === 'btn-queue' && !refs.btnQueue.classList.contains('active-btn')) {
+    refs.btnQueue.classList.toggle('active-btn');
+    refs.btnWatched.classList.toggle('active-btn');
     return;
   }
 }

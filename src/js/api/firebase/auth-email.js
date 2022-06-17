@@ -1,40 +1,34 @@
 import {
-  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
 } from 'firebase/auth';
-import { app } from './firebase_app';
+import { auth } from './firebase_app';
 import currentUser from '../../storage/currentUser';
 import { onCloseModalLoginClick } from '../../singIn.js';
 import Notiflix from 'notiflix';
 import localizeString from '../../utils/localizeString';
+import refs from '../../../constants/refs';
 
-const auth = getAuth(app);
-const signUpForm = document.getElementById('registration-form-un');
-const signInForm = document.getElementById('from-sing-in');
-
-if (signUpForm) {
-  signUpForm.password.onchange = validatePassword;
-  signUpForm.confirmPassword.onkeyup = validatePassword;
+if (refs.signUpForm) {
+  refs.signUpForm.password.onchange = validatePassword;
+  refs.signUpForm.confirmPassword.onkeyup = validatePassword;
   function validatePassword() {
-    if (signUpForm.password.value != signUpForm.confirmPassword.value) {
-      signUpForm.confirmPassword.setCustomValidity("Passwords Don't Match");
+    if (refs.signUpForm.password.value != refs.signUpForm.confirmPassword.value) {
+      refs.signUpForm.confirmPassword.setCustomValidity("Passwords Don't Match");
     } else {
-      signUpForm.confirmPassword.setCustomValidity('');
+      refs.signUpForm.confirmPassword.setCustomValidity('');
     }
   }
 
-  signUpForm.addEventListener('submit', e => {
+  refs.signUpForm.addEventListener('submit', e => {
     e.preventDefault();
-    const displayName = signUpForm.name.value;
-    const email = signUpForm.email.value;
-    const password = signUpForm.password.value;
-    const confirmPassword = signUpForm.confirmPassword.value;
+    const displayName = refs.signUpForm.name.value;
+    const email = refs.signUpForm.email.value;
+    const password = refs.signUpForm.password.value;
     createUserWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
         // Signed in
-        // console.log('userCredential', userCredential);
         Notiflix.Notify.success(localizeString('signUpSuccess'));
         const user = userCredential.user;
         updateProfile(user, { displayName });
@@ -46,16 +40,14 @@ if (signUpForm) {
         // ...
       })
       .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
         console.log(error.code);
         Notiflix.Notify.failure(localizeString(error.code));
       });
   });
-  signInForm.addEventListener('submit', e => {
+  refs.signInForm.addEventListener('submit', e => {
     e.preventDefault();
-    const email = signInForm.email.value;
-    const password = signInForm.password.value;
+    const email = refs.signInForm.email.value;
+    const password = refs.signInForm.password.value;
 
     signInWithEmailAndPassword(auth, email, password)
       .then(userCredential => {
@@ -68,8 +60,6 @@ if (signUpForm) {
         onCloseModalLoginClick();
       })
       .catch(error => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
         Notiflix.Notify.failure(localizeString(error.code));
       });
   });

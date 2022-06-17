@@ -1,5 +1,5 @@
 import firebaseWriteDb from "./api/firebase/firebase_write_db";
-import refsMovieLists from "../constants/refsMovieLists";
+import { refsMovieLists } from "../constants/dynamicRefs";
 import currentUser from './storage/currentUser';
 import localizeString from "./utils/localizeString";
 // import onAddRemoveBntClick from './library-draw';
