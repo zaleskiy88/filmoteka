@@ -340,6 +340,12 @@ body {
   font-weight: 500;
   line-height: 14px;
   z-index: 2;
+
+  @media screen and (max-width: $mob) {
+    top: 81px;
+    right: 30px;
+  }
+
   &:hover {
     color: darkgrey;
     transition: color 300ms;
