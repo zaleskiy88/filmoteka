@@ -49,12 +49,17 @@ main {
   height: 50%;
   @include transition(3s);
   will-change: transform;
+  background-color: #000;
 
   img {
     position: absolute;
-    top: -10%;
-    left: 0;
     width: 100%;
+    object-fit: cover;
+    height: 100%;
+
+    @media screen and (min-width: 1140px) {
+      object-fit: contain;
+    }
   }
 
   &.top {
@@ -63,10 +68,6 @@ main {
 
   &.bottom {
     top: 50%;
-
-    img {
-      top: -110%;
-    }
   }
 
   &.active.top {
