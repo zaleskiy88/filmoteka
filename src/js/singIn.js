@@ -1,23 +1,5 @@
 import refs from '../constants/refs';
 
-function onEventListener() {
-  refs.singIn.addEventListener('click', onCloseModalRegistrationClick);
-  refs.singUp.addEventListener('click', onOpenModalRegistrationClick);
-  refs.btnModalClose.addEventListener('click', onCloseModalLoginClick);
-  refs.formLog.addEventListener('submit', saveLocalStorage);
-  window.addEventListener('keydown', closeModalKeydown);
-  refs.backdropIn.addEventListener('click', onBackdropClick);
-}
-
-function ofEventListener() {
-  refs.singIn.removeEventListener('click', onOpenModalLoginClick);
-  refs.singUp.removeEventListener('click', onOpenModalRegistrationClick);
-  refs.btnModalClose.removeEventListener('click', onCloseModalLoginClick);
-  refs.formLog.removeEventListener('submit', saveLocalStorage);
-  window.removeEventListener('keydown', closeModalKeydown);
-  refs.backdropIn.removeEventListener('click', onBackdropClick);
-}
-
 function onCloseModalRegistrationClick() {
   if (refs.singIn.classList.contains('login-modal__active')) {
     return;
@@ -115,4 +97,23 @@ function rememberAndDeletLoginAndPassword() {
 function saveLocalStorage(e) {
   e.preventDefault();
   rememberAndDeletLoginAndPassword();
+}
+
+
+function onEventListener() {
+  refs.singIn.addEventListener('click', onCloseModalRegistrationClick);
+  refs.singUp.addEventListener('click', onOpenModalRegistrationClick);
+  refs.btnModalClose.addEventListener('click', onCloseModalLoginClick);
+  refs.formLog.addEventListener('submit', saveLocalStorage);
+  window.addEventListener('keydown', closeModalKeydown);
+  refs.backdropIn.addEventListener('click', onBackdropClick);
+}
+
+function ofEventListener() {
+  refs.singIn.removeEventListener('click', onOpenModalLoginClick);
+  refs.singUp.removeEventListener('click', onOpenModalRegistrationClick);
+  refs.btnModalClose.removeEventListener('click', onCloseModalLoginClick);
+  refs.formLog.removeEventListener('submit', saveLocalStorage);
+  window.removeEventListener('keydown', closeModalKeydown);
+  refs.backdropIn.removeEventListener('click', onBackdropClick);
 }

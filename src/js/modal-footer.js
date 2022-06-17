@@ -1,9 +1,5 @@
 import refs from '../constants/refs';
 
-refs.openModal.addEventListener('click', onOpenModal);
-refs.closeModal.addEventListener('click', onCloseModal);
-refs.backdropFooter.addEventListener('click', onBackdropClick);
-
 function onOpenModal() {
   window.addEventListener('keydown', onEscKeydown);
   refs.backdropFooter.style.display = 'flex';
@@ -30,3 +26,7 @@ function onEscKeydown(e) {
     refs.body.style.overflow = 'visible';
   }
 }
+
+refs.openModal.addEventListener('click', onOpenModal);
+refs.closeModal.addEventListener('click', onCloseModal);
+refs.backdropFooter.addEventListener('click', onBackdropClick);

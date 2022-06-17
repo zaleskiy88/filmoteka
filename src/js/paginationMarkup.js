@@ -29,22 +29,24 @@ export function renderingPaginationMarkup(currentPage) {
             ) {
               return renderSpan(item);
             }
-            if (item === currentPage - 3 || item === currentPage + 3) {
-              return "<span data-value='dots'>...</span>";
+            if (document.documentElement.clientWidth > 420) {
+              if (item === currentPage - 3 || item === currentPage + 3) {
+                return "<span data-value='dots'>...</span>";
+              }
             }
             return '';
           })
           .join('');
   if (currentPage > 1) {
     result =
-      `<span class='pagination__prev' data-span='prev'>&#129044</span>` +
+      `<span class='pagination__prev' data-span='prev'>←</span>` +
       result;
   }
   if (currentPage >= 1 && currentPage !== maxPage) {
     result =
       result +
       `<span class='pagination__next' data-span='next'>	
-          &#10141</span>`;
+      →</span>`;
   }
   if (refs.paginationList) {
     refs.paginationList.innerHTML = result;
