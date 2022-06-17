@@ -7,7 +7,6 @@
   background: rgba(0, 0, 0, 0.2);
   z-index: 2;
 }
-
 .film-card {
   background-color: var(--bg-color);
   position: absolute;
@@ -17,8 +16,9 @@
   display: block;
   width: 280px;
   padding: 48px 20px 40px 20px;
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(0, 0, 0, 0.1);
 
   @media screen and (max-width: 767px) {
     height: 570px;
@@ -40,6 +40,10 @@
 }
 .film-img {
   border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3),
+    -23px 0 20px -23px rgba(0, 0, 0, 0.6), 23px 0 20px -23px rgba(0, 0, 0, 0.6),
+    inset 0 0 40px rgba(0, 0, 0, 0.1);
+
   @media screen and (max-width: 419px) {
     width: 240px;
     height: 357px;
@@ -223,41 +227,5 @@
   &:hover,
   &:focus {
     background: var(--brand-color);
-  }
-}
-
-.film-card--night {
-  background-color: #111010;
-  border: 2px solid #02385a;
-
-  .film-title {
-    color: #0894ed;
-  }
-
-  .film-text__left {
-    color: #8c8c8c;
-  }
-
-  .film-text__right {
-    color: #ffffff;
-  }
-
-  .box-film {
-    background: #0894ed;
-  }
-
-  .film-info__item {
-    color: #ffffff;
-  }
-
-  .film-about {
-    color: #ffffff;
-  }
-
-  .button {
-    &:hover,
-    &:focus {
-      background: #0894ed;
-    }
   }
 }
