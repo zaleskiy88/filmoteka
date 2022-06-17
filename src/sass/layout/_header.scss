@@ -139,7 +139,6 @@ body {
   padding-right: 20px;
 }
 
-
 .header__logotext-link {
   font-family: Roboto;
   font-size: 30px;
@@ -206,7 +205,6 @@ body {
   margin-left: auto;
   background: transparent;
   margin-top: 116px;
-  
 
   @media screen and (max-width: 850px) {
     max-width: 280px;
@@ -340,6 +338,10 @@ body {
   &:hover {
     color: darkgrey;
     transition: color 300ms;
+  }
+  @media screen and (max-width: 420px) {
+    top: -6px;
+    right: -10px;
   }
 }
 

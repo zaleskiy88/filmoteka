@@ -6,9 +6,13 @@ const getGenresIdsParams = {
 };
 // Get genres array
 export default async function getGenresIds() {
-  const response = await api.get(constants.MOVIE_GENRES_URL, {
-    params: getGenresIdsParams,
-  });
+  try {
+    const response = await api.get(constants.MOVIE_GENRES_URL, {
+      params: getGenresIdsParams,
+    });
 
-  return response.data.genres;
+    return response.data.genres;
+  } catch (error) {
+    console.log('error.code :>> ', error.code);
+  }
 }
