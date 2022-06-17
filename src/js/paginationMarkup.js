@@ -15,34 +15,34 @@ export function renderingPaginationMarkup(currentPage) {
     .map(item => item + 1);
   let result =
     pagesArray.length <= 3
-      ? pagesArray.map(item => renderSpan(item))
+      ? pagesArray.map(item => renderSpan(item)).join('')
       : pagesArray
-          .map(item => {
-            if (
-              item === maxPage ||
-              item === 1 ||
-              item === currentPage - 1 ||
-              item === currentPage + 1 ||
-              item === currentPage - 2 ||
-              item === currentPage + 2 ||
-              item === currentPage
-            ) {
-              return renderSpan(item);
+        .map(item => {
+          if (
+            item === maxPage ||
+            item === 1 ||
+            item === currentPage - 1 ||
+            item === currentPage + 1 ||
+            item === currentPage - 2 ||
+            item === currentPage + 2 ||
+            item === currentPage
+          ) {
+            return renderSpan(item);
+          }
+          if (document.documentElement.clientWidth > 420) {
+            if (item === currentPage - 3 || item === currentPage + 3) {
+              return "<span data-value='dots'>...</span>";
             }
-            if (document.documentElement.clientWidth > 420) {
-              if (item === currentPage - 3 || item === currentPage + 3) {
-                return "<span data-value='dots'>...</span>";
-              }
-            }
-            return '';
-          })
-          .join('');
+          }
+          return '';
+        })
+        .join('');
   if (currentPage > 1) {
     result =
       `<span class='pagination__prev' data-span='prev'>←</span>` +
       result;
   }
-  if (currentPage >= 1 && currentPage !== maxPage) {
+  if (currentPage >= 1 && currentPage !== maxPage && maxPage !== 0) {
     result =
       result +
       `<span class='pagination__next' data-span='next'>	
