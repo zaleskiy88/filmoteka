@@ -12,8 +12,6 @@ import itemsTemplate from '../templates/list-of-card.hbs';
 import preloader from '../templates/preloader.hbs';
 import generateMoviesWithGenres from './generateMoviesWithGenres';
 
-refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);
-
 var swiper = new Swiper('.swiper', {
   navigation: {
     nextEl: '.swiper-button-next',
@@ -74,7 +72,7 @@ if (refs.homeGallery) {
 }
 
 // if user is unauth then my library is unactive
-function handleMyLibraryClick(e) {
+export default function handleMyLibraryClick(e) {
   const lang = localStorage.getItem('lang') || '';
   if (!currentUser.isAuth) {
     e.preventDefault();
@@ -92,7 +90,7 @@ function handleMyLibraryClick(e) {
           'Будь ласка, авторизуйтесь, щоб зайти у розділ Моя бібліотека';
         break;
       default:
-        console.log("Failed authorization");
+        console.log('Failed authorization');
     }
     Notiflix.Confirm.show(`${message}`, '', 'Ok', '', '', '', {
       titleMaxLength: 64,
@@ -101,3 +99,5 @@ function handleMyLibraryClick(e) {
     });
   }
 }
+
+refs.myLibraryBtn.addEventListener('click', handleMyLibraryClick);

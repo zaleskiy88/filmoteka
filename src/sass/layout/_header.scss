@@ -208,10 +208,9 @@ body {
   margin-top: 116px;
   
 
-  @media screen and (max-width: $tab) {
+  @media screen and (max-width: 850px) {
     max-width: 280px;
     margin-top: 150px;
-  
   }
 }
 .header__input-icon {
@@ -330,23 +329,22 @@ body {
   color: var(--bg-color);
   border: none;
   cursor: pointer;
-
-  top: 0;
-  right: 0;
-  margin-right: 48px;
-  margin-top: 87px;
-
+  top: 87px;
+  right: 48px;
   font-family: Roboto;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
   line-height: 14px;
   z-index: 2;
-
   &:hover {
     color: darkgrey;
     transition: color 300ms;
   }
+}
+
+.header__select.library__select {
+right: 30px;
 }
 
 .header__select--option {
