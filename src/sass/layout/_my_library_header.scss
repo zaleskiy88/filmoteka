@@ -208,10 +208,7 @@
   }
   margin-right: 16px;
 
-  .active-btn {
-    background-color: var(--brand-color);
-    border: none;
-  }
+
 
   .movie-vote {
     display: inline-block;
@@ -223,4 +220,9 @@
     text-align: center;
     margin-left: 10px;
   }
+}
+
+.active-btn {
+  background-color: var(--brand-color);
+  border: none;
 }
