@@ -26,6 +26,7 @@ export default {
   backdrop: document.querySelector('.backdrop'),
   backdropFilm: document.querySelector('.backdrop-film'),
   btnModalFilm: document.querySelector('.btn-modal-film'),
+  modalFilmCard: document.querySelector('.film-card'),
   main: document.querySelector('.main-start'),
   half: document.querySelector('.half'),
   overlay: document.querySelector('.overlay'),

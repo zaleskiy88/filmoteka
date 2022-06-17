@@ -16,11 +16,20 @@ if (refs.backdropFilm) {
   refs.backdropFilm.addEventListener('click', onBackdropClick);
 }
 
+function closeModal() {
+  refs.backdropFilm.classList.remove('modal-film--show');
+  document.body.style.overflow = 'visible';
+  document.body.style.paddingRight = '0px';
+  setTimeout(() => {
+    refs.modalFilmCard.innerHTML = '';
+  });
+}
+
+
 function onBackdropClick(event) {
   event.preventDefault();
   if (event.target === event.currentTarget) {
-    refs.backdropFilm.classList.add('visually-hidden');
-    document.body.style.overflow = 'visible';
+    closeModal();
   }
 }
 
@@ -28,7 +37,13 @@ async function onModalClick(event) {
   if (event.target.nodeName !== 'IMG') {
     return;
   }
-  document.body.style.overflow = 'hidden';
+  const computeBodyPaddingRight = window.innerWidth - document.body.clientWidth;
+  requestAnimationFrame(() => {
+    refs.backdropFilm.classList.add('modal-film--show');
+    document.body.style.overflow = 'hidden';
+    document.body.style.paddingRight = `${computeBodyPaddingRight}px`;
+  });
+
   window.addEventListener('keydown', onEscKeyDown);
   const movieId = event.target.dataset.id;
   const dataMovie = await getOneMovieById(movieId);
@@ -47,8 +62,7 @@ async function onModalClick(event) {
       console.log('Invalid language');
       break;
   }
-  refs.backdropFilm.innerHTML = markup;
-  refs.backdropFilm.classList.remove('visually-hidden');
+  refs.modalFilmCard.innerHTML = markup;
   refs.backdropFilm.dispatchEvent(
     new CustomEvent('modal-film-opened', { bubbles: true })
   );
@@ -60,15 +74,13 @@ function onEscKeyDown(event) {
   const isEscKey = event.code === ESC_KEY_CODE;
 
   if (isEscKey) {
-    refs.backdropFilm.classList.add('visually-hidden');
-    document.body.style.overflow = 'visible';
+    closeModal();
     window.removeEventListener('keydown', onEscKeyDown);
   }
 }
 
 function onCloseModalFilm() {
-  refs.backdropFilm.classList.add('visually-hidden');
-  document.body.style.overflow = 'visible';
+  closeModal();
   if (window.location.href.includes('library')) {
     window.location.reload();
   }
