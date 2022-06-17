@@ -28,14 +28,17 @@ if (refs.btnSignin) {
 }
 
 function onOpenModalLoginClick() {
-  refs.backdropIn.style.display = 'block';
+  const computeBodyPaddingRight = window.innerWidth - document.body.clientWidth;
   refs.body.style.overflow = 'hidden';
+  refs.body.style.paddingRight = `${computeBodyPaddingRight}px`;
+  refs.backdropIn.classList.add('modal-in-reg--show');
   onEventListener();
 }
 
 export function onCloseModalLoginClick() {
-  refs.backdropIn.style.display = 'none';
+  document.body.style.paddingRight = '0px';
   refs.body.style.overflow = 'visible';
+  refs.backdropIn.classList.remove('modal-in-reg--show');
   onCloseModalRegistrationClick();
   ofEventListener();
 }
@@ -43,13 +46,8 @@ export function onCloseModalLoginClick() {
 ////////////////////////close modal in ESC//////////////////////////////
 
 function closeModalKeydown(event) {
-  if (event.code !== 'Escape') {
-    return;
-  } else {
-    refs.backdropIn.style.display = 'none';
-    refs.body.style.overflow = 'visible';
-    onCloseModalRegistrationClick();
-    ofEventListener();
+  if (event.code === 'Escape') {
+    onCloseModalLoginClick();
   }
 }
 
@@ -57,10 +55,7 @@ function closeModalKeydown(event) {
 
 function onBackdropClick(event) {
   if (event.target === event.currentTarget) {
-    refs.backdropIn.style.display = 'none';
-    refs.body.style.overflow = 'visible';
-    onCloseModalRegistrationClick();
-    ofEventListener();
+    onCloseModalLoginClick();
   }
 }
 
