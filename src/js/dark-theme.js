@@ -1,4 +1,5 @@
 import refs from '../constants/refs';
+import { refsDarkTheme } from '../constants/dynamicRefs';
 
 const localTheme = localStorage.getItem('color-theme');
 
@@ -18,7 +19,7 @@ function darkThemeColor() {
 }
 
 function switchThemeColor() {
-  if (document.querySelector('.dark-theme')) {
+  if (refsDarkTheme('isDarkTheme')) {
     localStorage.setItem('checkbox-theme', 'true'); // add
     localStorage.setItem('color-theme', 'dark-theme'); // add
   } else {
