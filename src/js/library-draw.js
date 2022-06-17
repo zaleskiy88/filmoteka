@@ -115,9 +115,9 @@ window.addEventListener('scroll', () => {
 
   if (window.pageYOffset > 70) {
     // on / off button up
-    upBtn.classList.add('on-screen');
+    refs.upBtn.classList.add('on-screen');
   } else {
-    upBtn.classList.remove('on-screen');
+    refs.upBtn.classList.remove('on-screen');
   }
 });
 
