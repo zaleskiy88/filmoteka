@@ -52,4 +52,5 @@ export default {
   backdropFooter: document.querySelector('.backdrop-footer'),
   signUpForm: document.getElementById('registration-form-un'),
   signInForm: document.getElementById('from-sing-in'),
+  inputValidationError: document.querySelector('.validation-error'),
 };

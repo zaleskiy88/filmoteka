@@ -52,8 +52,7 @@ async function onSearchSubmit(event) {
   event.preventDefault();
   const searchQuery = event.currentTarget?.elements.searchQuery.value;
   if (searchQuery === '') {
-    Notiflix.Notify.info('Search query cannot be empty.');
-    return;
+    emptyInput();
   }
 
   try {
@@ -62,6 +61,12 @@ async function onSearchSubmit(event) {
       onSearchTotalPages: moviesData?.total_pages ?? 0,
       onSearchQuery: searchQuery ?? '',
     };
+
+    if (moviesData.total_results === 0) {
+      noDataInput();
+    } else {
+      filmsQuantityInput(moviesData.total_results);
+    }
 
     localStorage.setItem('searchData', JSON.stringify(searchData));
     renderingPaginationMarkup(1);
@@ -72,6 +77,93 @@ async function onSearchSubmit(event) {
   } catch (error) {
     console.log('error :>> ', error);
   }
+}
+
+function emptyInput() {
+  const lang = localStorage.getItem('lang') || '';
+  let message = '';
+  switch (lang) {
+    case 'en':
+      message = 'Search query cannot be empty.';
+      break;
+    case 'ru':
+      message = 'Поисковой запрос не может быть пустым';
+      break;
+    case 'uk':
+      message = 'Пошуковий запит не може бути пустим';
+      break;
+    default:
+      console.log('Failed query');
+  }
+
+  const error = refs.inputValidationError;
+
+  error.style.color = 'red';
+  error.textContent = message;
+  error.style.opacity = 1;
+
+  setTimeout(() => {
+    error.style.opacity = 0;
+  }, 4000);
+}
+
+function noDataInput() {
+  const lang = localStorage.getItem('lang') || '';
+  let message = '';
+  switch (lang) {
+    case 'en':
+      message =
+        'Search result is not successful. Enter the correct movie name and try again';
+      break;
+    case 'ru':
+      message =
+        'Результат поиска не увенчался успехом. Введите правильное название фильма и повторите попытку';
+      break;
+    case 'uk':
+      message =
+        'Результат пошуку не вдалий. Введіть правильну назву фільму та повторіть спробу';
+      break;
+    default:
+      console.log('Failed query');
+  }
+
+  const error = refs.inputValidationError;
+
+  error.style.color = 'red';
+  error.textContent = message;
+  error.style.opacity = 1;
+
+  setTimeout(() => {
+    error.style.opacity = 0;
+  }, 4000);
+}
+
+function filmsQuantityInput(quantity) {
+  const lang = localStorage.getItem('lang') || '';
+  let message = '';
+  switch (lang) {
+    case 'en':
+      message = `We finded ${quantity} films. Watch with pleasure 😌`;
+      break;
+    case 'ru':
+      message = `Мы нашли ${quantity} фильмов. Смотрите с удовольствием 😌`;
+      break;
+    case 'uk':
+      message = `Ми знайшли ${quantity} фільмів. Дивіться з задоволенням 😌`;
+      break;
+    default:
+      console.log('Failed query');
+  }
+
+  const error = refs.inputValidationError;
+
+  error.textContent = message;
+  error.style.color = '#ff6b08';
+  error.style.opacity = 1;
+
+  setTimeout(() => {
+    error.style.opacity = 0;
+  }, 4000);
 }
 
 // scroll handle to add an endless gallery

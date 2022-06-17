@@ -221,6 +221,15 @@ body {
   top: 4px;
   right: 0px;
 }
+
+.validation-error {
+  opacity: 0;
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+  transition: opacity 1s ease-out;
+}
+
 .header__navigation-link.current {
   position: relative;
 }
@@ -353,7 +362,7 @@ body {
 }
 
 .header__select.library__select {
-right: 30px;
+  right: 30px;
 }
 
 .header__select--option {
