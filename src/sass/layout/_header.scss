@@ -131,13 +131,16 @@ body {
   transition: stroke 300ms;
 }
 
+body.darkmode--activated .header__logo-list:hover > .header__logo-icon {
+  stroke: #0894ed;
+}
+
 .header__navigation-item:not(:last-child) {
   margin-right: 39px;
 
   @media screen and (max-width: $tab) {
     margin-right: 15px;
   }
-
 }
 
 /* .header__navigation-item {
@@ -186,6 +189,13 @@ body {
   &:focus {
     border-bottom: 1px solid #ff6b08;
     transition: border-bottom 500ms;
+  }
+}
+
+body.darkmode--activated .header__input {
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid #0894ed;
   }
 }
 
@@ -242,6 +252,9 @@ body {
   width: 100%;
   background-color: var(--brand-color);
   margin-bottom: 20px;
+}
+body.darkmode--activated .header__navigation-link.current::after {
+  background-color: #0894ed;
 }
 
 // tablet

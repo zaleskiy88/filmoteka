@@ -62,6 +62,10 @@
   padding-left: 6px;
   padding-right: 6px;
 }
+
+body.darkmode--activated .footer-heart-span {
+  color: #0894ed;
+}
 .footer-team-link {
   text-decoration: underline;
   color: var(--text-color-footer);
