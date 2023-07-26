@@ -49,3 +49,15 @@ https://github.com/vebsterr - Vebster;
 https://github.com/Vadim-kaR - Vabym Raylyan;
 
 https://github.com/zoobeen1 - Vlad Zubin;
+
+## Stack of used technologies
+
+Axios;  
+Darkmode-js;  
+Firebase;  
+Handlebars;  
+Modern-normalize;  
+Notiflix;  
+Swiper;  
+Parcel;  
+TMBD movie database;
