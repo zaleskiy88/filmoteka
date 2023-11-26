@@ -1,0 +1,150 @@
+@media screen and (max-width: 860px) {
+  .main-start {
+    display: none;
+  }
+}
+
+.body-start-img {
+  overflow: hidden;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.half {
+  position: absolute;
+  overflow: hidden;
+  z-index: 50;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  transition: 3s;
+  will-change: transform;
+  background-color: #000;
+}
+.half img {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+@media screen and (min-width: 1140px) {
+  .half img {
+    object-fit: contain;
+  }
+}
+.half.top {
+  top: 0;
+}
+.half.bottom {
+  top: 50%;
+}
+.half.active.top {
+  transform: translateX(0) translateY(-100%);
+}
+.half.active.bottom {
+  transform: translateX(0) translateY(100%);
+}
+
+.super-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 200;
+  width: 200px;
+  height: 80px;
+  opacity: 0.8;
+  transform: translateX(-50%) translateY(-50%);
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: bold;
+  color: #8f8f8f;
+  background-color: transparent;
+  border: 4px solid rgba(143, 143, 143, 0.5);
+  transition: 1.5s;
+  will-change: color, opacity, border-color;
+}
+.super-button:hover {
+  color: #fff;
+  opacity: 1;
+  border-color: #fff;
+}
+.super-button:hover ~ .overlay {
+  background-color: rgba(155, 0, 0, 0.5);
+}
+.super-button:hover ~ .overlay.active {
+  background-color: transparent;
+}
+.super-button:hover ~ .button-line .inner {
+  max-width: 100%;
+}
+.super-button.active {
+  transition: 4.5s;
+  transform: translateX(-50%) translateY(-1000px);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(155, 0, 0, 0);
+  transition: 1.5s;
+  will-change: background-color;
+}
+.overlay.active {
+  background-color: transparent;
+}
+
+.button-line {
+  position: absolute;
+  top: -webkit-calc(50% - 2px);
+  top: -moz-calc(50% - 2px);
+  top: calc(50% - 2px);
+  left: 0;
+  z-index: 200;
+  width: -webkit-calc(50% - 100px);
+  width: -moz-calc(50% - 100px);
+  width: calc(50% - 100px);
+  height: 4px;
+  background-color: rgba(143, 143, 143, 0.5);
+  transition: 0.5s;
+  will-change: width, max-width;
+}
+.button-line.left {
+  transform: rotate(180deg);
+}
+.button-line.right {
+  left: -webkit-calc(50% + 100px);
+  left: -moz-calc(50% + 100px);
+  left: calc(50% + 100px);
+}
+.button-line .inner {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  max-width: 0;
+  transition: 1.5s;
+}
+.button-line.active {
+  opacity: 0;
+}
+
+.darkmode-toggle {
+  z-index: 5;
+}/*# sourceMappingURL=main_start.css.map */

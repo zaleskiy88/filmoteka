@@ -9,7 +9,7 @@
 Filmoteka - is a web application designed to search information about movies,
 series and TV shows. You can create you account and add your movies to the
 watched list or to the queue list. It is fully responsive, so it is convenient
-to use on any device. User-friendly and easy to use
+to use on any device. User-friendly and easy to use.
 
 ## Features
 
@@ -49,6 +49,8 @@ https://github.com/vebsterr - Vebster;
 https://github.com/Vadim-kaR - Vabym Raylyan;
 
 https://github.com/zoobeen1 - Vlad Zubin;
+
+https://github.com/zaleskiy88 - Yev Zaleskyy;
 
 ## Stack of used technologies
 
